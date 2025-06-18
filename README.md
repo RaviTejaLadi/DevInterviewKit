@@ -366,12 +366,3 @@ class LRU {
   }
 }
 ```
-
----
-
-Let me know if you want:
-
-* These problems in PDF/Markdown
-* Solutions with test cases
-* React-specific DSA questions
-* or daily challenges for practice.
