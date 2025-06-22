@@ -1,4 +1,4 @@
-import { useState, useMemo, lazy, Suspense } from 'react';
+import { useState, useMemo, lazy, Suspense, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 
 import { markdownData } from './data/markdown-content';
@@ -15,10 +15,37 @@ const SearchResults = lazy(() =>
 );
 
 function App() {
-  const [selectedDocument, setSelectedDocument] = useState<MarkdownDocument | null>(
-    markdownData[0]?.documents[0] || null
-  );
+  // Get all available documents for selection and persistence
+  const allDocuments = useMemo(() => {
+    const docs: MarkdownDocument[] = [];
+    markdownData.forEach((category) => {
+      if (category.documents) {
+        docs.push(...category.documents);
+      } else if (category.document) {
+        docs.push(category.document);
+      }
+    });
+    return docs;
+  }, []);
+
+  // Initialize selected document from localStorage or default to first document
+  const [selectedDocument, setSelectedDocument] = useState<MarkdownDocument | null>(() => {
+    const savedDocumentId = localStorage.getItem('selectedDocumentId');
+    if (savedDocumentId) {
+      const savedDoc = allDocuments.find((doc) => doc.id === savedDocumentId);
+      if (savedDoc) return savedDoc;
+    }
+    return allDocuments[0] || null;
+  });
+
   const [searchTerm, setSearchTerm] = useState('');
+
+  // Save selected document to localStorage whenever it changes
+  useEffect(() => {
+    if (selectedDocument) {
+      localStorage.setItem('selectedDocumentId', selectedDocument.id);
+    }
+  }, [selectedDocument]);
 
   // Search functionality
   const searchResults = useMemo(() => {
@@ -28,14 +55,23 @@ function App() {
     const lowerSearchTerm = searchTerm.toLowerCase();
 
     markdownData.forEach((category) => {
-      category.documents.forEach((document) => {
-        const titleMatch = document.title.toLowerCase().includes(lowerSearchTerm);
-        const contentMatch = document.content.toLowerCase().includes(lowerSearchTerm);
+      if (category.documents) {
+        category.documents.forEach((document) => {
+          const titleMatch = document.title.toLowerCase().includes(lowerSearchTerm);
+          const contentMatch = document.content.toLowerCase().includes(lowerSearchTerm);
+
+          if (titleMatch || contentMatch) {
+            results.push(document);
+          }
+        });
+      } else if (category.document) {
+        const titleMatch = category.document.title.toLowerCase().includes(lowerSearchTerm);
+        const contentMatch = category.document.content.toLowerCase().includes(lowerSearchTerm);
 
         if (titleMatch || contentMatch) {
-          results.push(document);
+          results.push(category.document);
         }
-      });
+      }
     });
 
     return results;
@@ -47,7 +83,6 @@ function App() {
   };
 
   const showSearchResults = searchTerm.trim().length > 0;
-
   return (
     <ThemeProvider>
       <div className=" bg-background text-foreground">

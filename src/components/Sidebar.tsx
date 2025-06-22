@@ -11,7 +11,7 @@ interface SidebarProps {
 }
 
 export function Sidebar({ categories, selectedDocument, onDocumentSelect, className }: SidebarProps) {
-  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(['getting-started']));
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(['welcome']));
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const toggleCategory = (categoryId: string) => {
@@ -36,46 +36,71 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
           {categories.map((category, index) => {
             const { Icon } = category;
             const isExpanded = expandedCategories.has(category.id);
+            const hasMultipleDocuments = category.documents && category.documents.length > 0;
+            const singleDocument = category.document;
 
             return (
               <div key={category.id} className="space-y-[0.5px]">
-                <button
-                  onClick={() => toggleCategory(category.id)}
-                  style={{ animationDelay: `${index * 100}ms` }}
-                  className={cn(
-                    'group w-full relative flex items-center justify-between py-1 px-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors',
-                    'cursor-pointer transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4'
-                  )}
-                >
-                  {/* Subtle gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {hasMultipleDocuments ? (
+                  <>
+                    <button
+                      onClick={() => toggleCategory(category.id)}
+                      style={{ animationDelay: `${index * 100}ms` }}
+                      className={cn(
+                        'group w-full relative flex items-center justify-between py-1 px-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors',
+                        'cursor-pointer transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4'
+                      )}
+                    >
+                      {/* Subtle gradient overlay on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                  <div className="flex items-center space-x-2">
-                    {Icon ? <Icon className="w-4 h-4 mr-1" /> : ''}
-                    <span>{category.title}</span>
-                  </div>
-                  {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+                      <div className="flex items-center space-x-2">
+                        {Icon ? <Icon className="w-4 h-4 mr-1" /> : ''}
+                        <span>{category.title}</span>
+                      </div>
+                      {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
 
-                  <div className="absolute inset-0 rounded-sm bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
-                </button>
+                      <div className="absolute inset-0 rounded-sm bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
+                    </button>
 
-                {isExpanded && (
-                  <div className="ml-6 space-y-1">
-                    {category.documents.map((document) => (
-                      <button
-                        key={document.id}
-                        onClick={() => handleDocumentSelect(document)}
-                        className={cn(
-                          'w-full text-left py-1 px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors',
-                          selectedDocument?.id === document.id &&
-                            'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10 font-medium text-foreground'
-                        )}
-                      >
-                        {document.title}
-                      </button>
-                    ))}
-                  </div>
-                )}
+                    {isExpanded && (
+                      <div className="ml-6 space-y-1">
+                        {category?.documents?.map((document) => (
+                          <button
+                            key={document.id}
+                            onClick={() => handleDocumentSelect(document)}
+                            className={cn(
+                              'w-full text-left py-1 px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors',
+                              selectedDocument?.id === document.id &&
+                                'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10 font-medium text-foreground'
+                            )}
+                          >
+                            {document.title}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : singleDocument ? (
+                  <button
+                    onClick={() => toggleCategory(category.id)}
+                    style={{ animationDelay: `${index * 100}ms` }}
+                    className={cn(
+                      'group w-full relative flex items-center justify-between py-1 px-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors',
+                      'cursor-pointer transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4'
+                    )}
+                  >
+                    {/* Subtle gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div className="flex items-center space-x-2">
+                      {Icon ? <Icon className="w-4 h-4 mr-1" /> : ''}
+                      <span>{category.title}</span>
+                    </div>
+
+                    <div className="absolute inset-0 rounded-sm bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
+                  </button>
+                ) : null}
               </div>
             );
           })}

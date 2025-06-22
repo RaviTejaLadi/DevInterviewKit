@@ -50,13 +50,11 @@ export const markdownData: Category[] = [
     id: 'welcome',
     title: 'Welcome',
     Icon: Namaste,
-    documents: [
-      {
-        id: 'introduction',
-        title: 'Introduction',
-        content: introduction,
-      },
-    ],
+    document: {
+      id: 'introduction',
+      title: 'Introduction',
+      content: introduction,
+    },
   },
   {
     id: 'html',
