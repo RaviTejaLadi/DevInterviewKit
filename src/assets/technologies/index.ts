@@ -26,7 +26,7 @@ import Flow from './Flow';
 import Sheets from './Sheets';
 import WebSecurity from './WebSecurity';
 import Network from './Network';
-
+import ErrorLogging from './ErrorLogging';
 export {
   WebSecurity,
   Sheets,
@@ -56,4 +56,5 @@ export {
   VsCode,
   HTML,
   Network,
+  ErrorLogging,
 };

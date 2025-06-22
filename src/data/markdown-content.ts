@@ -53,9 +53,12 @@ import webSecurity from './web-security.md?raw';
 
 import networking from './networking.md?raw';
 
+import errorLogging from './logging-and-monitoring.md?raw';
+
 import Namaste from '@/assets/Icons/Namaste';
 import {
   Css,
+  ErrorLogging,
   Flow,
   HTML,
   JavaScript,
@@ -315,6 +318,16 @@ export const markdownData: Category[] = [
       id: 'networking-questions',
       title: 'Introduction',
       content: networking,
+    },
+  },
+  {
+    id: 'error-logging',
+    title: 'Error Logging',
+    Icon: ErrorLogging,
+    document: {
+      id: '   error-logging-questions',
+      title: 'Introduction',
+      content: errorLogging,
     },
   },
   {
