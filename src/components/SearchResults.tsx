@@ -34,7 +34,7 @@ export function SearchResults({ results, searchTerm, onDocumentSelect }: SearchR
 
     return parts.map((part, index) =>
       regex.test(part) ? (
-        <mark key={index} className="bg-yellow-200 dark:bg-yellow-800 px-1 rounded">
+        <mark key={index} className="bg-yellow-200 dark:bg-yellow-500 px-1 rounded">
           {part}
         </mark>
       ) : (
