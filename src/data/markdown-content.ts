@@ -2,7 +2,9 @@ import type { Category } from '@/types/markdown-content-types';
 import introduction from './introduction.md?raw';
 
 import htmlIntro from './html/html-intro.md?raw';
+import htmlQuickReview from './html/quick-review-checklist.md?raw';
 import htmlInterviewQuestions from './html/top-50-q-&-a.md?raw';
+import SemanticHTMLAccessibility from './html/Semantic HTML & Accessibility.md?raw';
 
 import cssIntro from './css/css-intro.md?raw';
 import cssInterviewQuestions from './css/top-50-q-&-a.md?raw';
@@ -54,6 +56,16 @@ export const markdownData: Category[] = [
         id: 'html-intro',
         title: 'Introduction to HTML',
         content: htmlIntro,
+      },
+      {
+        id: 'html-quick-review-checklist',
+        title: 'Quick Review Checklist',
+        content: htmlQuickReview,
+      },
+      {
+        id: 'semantic-html-and-accessibility',
+        title: 'Semantic HTML & Accessibility',
+        content: SemanticHTMLAccessibility,
       },
       {
         id: 'html-top50q&a',
