@@ -55,7 +55,7 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
   };
 
   const sidebarContent = (
-    <div className="h-full flex flex-col">
+    <div className="h-full w-[18rem] flex flex-col">
       <nav className="flex-1 overflow-y-auto p-4">
         <div className="space-y-2">
           {categories.map((category, index) => {

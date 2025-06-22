@@ -20,6 +20,8 @@ import reactInterviewQuestions from './react/interview-questions.md?raw';
 import reactTsxSetup from './react/react-tsx-setup.md?raw';
 import hooks from './react/hooks.md?raw';
 import reactQuickReview from './react/quick-review-checklist.md?raw';
+import reactFilesAndFoldersStructure from './react/files-and-folders-stracture.md?raw';
+
 
 import reactOpenSourcePackages from './react-libraries-&-utilities/react open source packages.md?raw';
 import reactHookFormDocs from './react-libraries-&-utilities/react-hook-form.md?raw';
@@ -132,6 +134,11 @@ export const markdownData: Category[] = [
         id: 'intro-to-react',
         title: 'Introduction to React',
         content: reactIntro,
+      },
+            {
+        id: 'react-files-and-folders-structure',
+        title: 'Files and Folders Structure',
+        content: reactFilesAndFoldersStructure,
       },
       {
         id: 'quick-review-checklist',
