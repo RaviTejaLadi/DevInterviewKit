@@ -267,7 +267,7 @@ export const markdownData: Category[] = [
         title: 'Git',
         content: gitCheatSheet,
       },
-            {
+      {
         id: 'http-cheat-sheet',
         title: 'HTTP',
         content: httpCheatSheet,
