@@ -5,6 +5,7 @@ import rehypeRaw from 'rehype-raw';
 import { FileText } from 'lucide-react';
 import 'highlight.js/styles/github-dark.css';
 import { MarkdownDocument } from '@/types/markdown-content-types';
+import { Table, TableCell, TableHead, TableHeader } from './ui/table';
 
 interface ContentAreaProps {
   selectedDocument: MarkdownDocument | null;
@@ -70,14 +71,18 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
               pre: ({ children }) => <pre className="bg-muted p-2 rounded-lg overflow-x-auto mb-4 ">{children}</pre>,
               table: ({ children }) => (
                 <div className="overflow-x-auto mb-4">
-                  <table className="min-w-full border border-border rounded-lg">{children}</table>
+                  <Table className="min-w-full border border-border rounded-lg">{children}</Table>
                 </div>
               ),
-              thead: ({ children }) => <thead className="bg-muted">{children}</thead>,
+              thead: ({ children }) => <TableHeader className="bg-muted">{children}</TableHeader>,
               th: ({ children }) => (
-                <th className="border border-border px-4 py-2 text-left font-semibold text-foreground">{children}</th>
+                <TableHead className="border border-border px-4 py-2 text-left font-semibold text-foreground">
+                  {children}
+                </TableHead>
               ),
-              td: ({ children }) => <td className="border border-border px-4 py-2 text-foreground">{children}</td>,
+              td: ({ children }) => (
+                <TableCell className="border border-border px-4 py-2 text-foreground">{children}</TableCell>
+              ),
               a: ({ children, href }) => (
                 <a
                   href={href}

@@ -22,7 +22,6 @@ import hooks from './react/hooks.md?raw';
 import reactQuickReview from './react/quick-review-checklist.md?raw';
 import reactFilesAndFoldersStructure from './react/files-and-folders-stracture.md?raw';
 
-
 import reactOpenSourcePackages from './react-libraries-&-utilities/react open source packages.md?raw';
 import reactHookFormDocs from './react-libraries-&-utilities/react-hook-form.md?raw';
 import reactQuery from './react-libraries-&-utilities/react-query.md?raw';
@@ -35,6 +34,8 @@ import stateManagementIntro from './state-management/intro.md?raw';
 import reduxToolkit from './state-management/Redux Toolkit.md?raw';
 import zustand from './state-management/Zustand.md?raw';
 import useReducerSetup from './state-management/State Management with useReducer and useContext in TypeScript.md?raw';
+
+import htmlCheatSheet from './cheat-sheets/html.md?raw';
 
 export const markdownData: Category[] = [
   {
@@ -135,7 +136,7 @@ export const markdownData: Category[] = [
         title: 'Introduction to React',
         content: reactIntro,
       },
-            {
+      {
         id: 'react-files-and-folders-structure',
         title: 'Files and Folders Structure',
         content: reactFilesAndFoldersStructure,
@@ -213,6 +214,33 @@ export const markdownData: Category[] = [
         id: 'intro-to-state-management',
         title: 'Introduction',
         content: stateManagementIntro,
+      },
+      {
+        id: 'use-reducer-setup',
+        title: 'useReducer Setup',
+        content: useReducerSetup,
+      },
+      {
+        id: 'redux-toolkit',
+        title: 'Redux Toolkit Setup',
+        content: reduxToolkit,
+      },
+      {
+        id: 'zustand',
+        title: 'Zustand Setup',
+        content: zustand,
+      },
+    ],
+  },
+  {
+    id: 'cheat-sheets',
+    title: 'Cheat Sheets',
+    icon: 'Code',
+    documents: [
+      {
+        id: 'html-cheat-sheet',
+        title: 'Html Cheat Sheet',
+        content: htmlCheatSheet,
       },
       {
         id: 'use-reducer-setup',
