@@ -1,12 +1,18 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, lazy, Suspense } from 'react';
 import { Sidebar } from './components/Sidebar';
-import { ContentArea } from './components/ContentArea';
-import { SearchResults } from './components/SearchResults';
+
 import { markdownData } from './data/markdown-content';
 import { Navbar } from './components/NavBar';
 import { ThemeProvider } from './context/ThemeContext';
 import { MarkdownDocument } from './types/markdown-content-types';
 import Footer from './components/Footer';
+import Loading from './components/Loading';
+
+// Lazy-loaded components
+const ContentArea = lazy(() => import('./components/ContentArea').then((module) => ({ default: module.ContentArea })));
+const SearchResults = lazy(() =>
+  import('./components/SearchResults').then((module) => ({ default: module.SearchResults }))
+);
 
 function App() {
   const [selectedDocument, setSelectedDocument] = useState<MarkdownDocument | null>(
@@ -53,12 +59,13 @@ function App() {
             selectedDocument={selectedDocument}
             onDocumentSelect={handleDocumentSelect}
           />
-
-          {showSearchResults ? (
-            <SearchResults results={searchResults} searchTerm={searchTerm} onDocumentSelect={handleDocumentSelect} />
-          ) : (
-            <ContentArea selectedDocument={selectedDocument} />
-          )}
+          <Suspense fallback={<Loading />}>
+            {showSearchResults ? (
+              <SearchResults results={searchResults} searchTerm={searchTerm} onDocumentSelect={handleDocumentSelect} />
+            ) : (
+              <ContentArea selectedDocument={selectedDocument} />
+            )}
+          </Suspense>
         </div>
         <Footer />
       </div>
