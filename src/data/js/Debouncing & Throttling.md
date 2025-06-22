@@ -1,19 +1,18 @@
-# Debouncing & Throttling
+# Debouncing & Throttling 🚦
 
-## Debouncing
+## Debouncing ⏳
 
 **Debouncing** is a technique that delays the execution of a function until after a specified period of inactivity. If the function is called again before the delay period ends, the timer resets.
 
-It is a strategy used to improve the performance of a feature by controlling the time at which a
-function should be executed
+It is a strategy used to improve the performance of a feature by controlling the time at which a function should be executed.
 
-Think of it like an elevator - it waits a few seconds after the last person presses a button before closing the doors.
+Think of it like an elevator 🚪 — it waits a few seconds after the last person presses a button before closing the doors.
 
 ### How it works:
-- Function is called
-- Timer starts
-- If function is called again before timer expires, reset the timer
-- Execute function only when timer completes without interruption
+- 🏁 Function is called
+- ⏲️ Timer starts
+- 🔄 If function is called again before timer expires, reset the timer
+- ✅ Execute function only when timer completes without interruption
 
 ### Simple Example:
 
@@ -50,29 +49,28 @@ function handleResize() {
   console.log("Window resized", window.innerWidth);
 }
 
-window.addEventListener("resize", debouncing(handleResize, 300));
+window.addEventListener("resize", debounce(handleResize, 300));
 ```
 
-**Use Cases:**
-- Search input fields
-- Form validation
-- Window resize events
-- Button click prevention (prevent double-clicks)
+**Use Cases:**  
+- 🔍 Search input fields  
+- ✅ Form validation  
+- 🖥️ Window resize events  
+- 🚫 Button click prevention (prevent double-clicks)
 
 ---
 
-## Throttling
+## Throttling 🚥
 
-**Throttling** is a mechanism that allows a function execution for a limited number of times after that
-it will block its execution. It can also prohibit a function from execution if it is invoked recently. It also determines a consistent rate of execution.
+**Throttling** is a mechanism that allows a function execution for a limited number of times after that it will block its execution. It can also prohibit a function from execution if it is invoked recently. It also determines a consistent rate of execution.
 
-Think of it like a toll booth - only one car can pass through every few seconds, regardless of how many cars are waiting.
+Think of it like a toll booth 🚗 — only one car can pass through every few seconds, regardless of how many cars are waiting.
 
 ### How it works:
-- Function is called
-- If not in cooldown period, execute immediately and start cooldown
-- If in cooldown period, ignore the call (or queue it)
-- After cooldown expires, can execute again
+- 🏁 Function is called
+- ⏩ If not in cooldown period, execute immediately and start cooldown
+- 🛑 If in cooldown period, ignore the call (or queue it)
+- 🔁 After cooldown expires, can execute again
 
 ### Simple Example:
 
@@ -105,25 +103,25 @@ const throttledScroll = throttle(handleScroll, 100);
 window.addEventListener('scroll', throttledScroll);
 ```
 
-**Use Cases:**
-- Scroll events
-- Mouse movement tracking
-- API rate limiting
-- Button clicks with loading states
-- Game loop functions
+**Use Cases:**  
+- 🖱️ Scroll events  
+- 🐭 Mouse movement tracking  
+- 🌐 API rate limiting  
+- 🔄 Button clicks with loading states  
+- 🎮 Game loop functions
 
 ---
 
-## Key Differences
+## Key Differences 🆚
 
-| Aspect | Debouncing | Throttling |
-|--------|------------|------------|
+| Aspect | Debouncing ⏳ | Throttling 🚥 |
+|--------|--------------|--------------|
 | **Timing** | Waits for inactivity | Executes at regular intervals |
 | **Frequency** | Once after delay | Multiple times within intervals |
 | **Best for** | Final action matters | Consistent updates matter |
 | **Example** | Search after user stops typing | Smooth scroll animations |
 
-## Quick Memory Trick
+## Quick Memory Trick 🧠
 
-- **Debouncing**: "Wait until they're done" (like waiting for someone to finish speaking)
-- **Throttling**: "Steady pace" (like a speed limit - you can't go faster than X)
+- **Debouncing**: "Wait until they're done" (like waiting for someone to finish speaking) 🗣️
+- **Throttling**: "Steady pace" (like a speed limit — you can't go faster than X) 🏎️
