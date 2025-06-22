@@ -3,12 +3,30 @@
 ## 📡 Internet Fundamentals
 
 ### 1. How the Internet Works (Non-Technical Explanation)
-
 Think of the internet like a massive postal system:
 
 ```bash
-Your Computer → ISP → Internet Backbone → Destination Server
-     📱           📮        🌐              🏢
+🧑‍💻 You (Client)
+     |
+     | 1️⃣ Type "www.google.com" in browser
+     v
+🔍 DNS Lookup
+     |
+     | 2️⃣ DNS finds IP → 142.250.195.78
+     v
+🌐 Internet (Network)
+     |
+     | 3️⃣ Connect via TCP/IP
+     v
+🖥️ Web Server (Google)
+     |
+     | 4️⃣ Server responds with HTML/CSS/JS
+     v
+🧠 Browser Processes
+     |
+     | 5️⃣ Renders the Page
+     v
+📱 You see Google Homepage
 ```
 
 - **Your device** is like your house with a unique address
