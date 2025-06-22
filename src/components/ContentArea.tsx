@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
@@ -6,6 +7,7 @@ import { FileText } from 'lucide-react';
 import 'highlight.js/styles/github-dark.css';
 import { MarkdownDocument } from '@/types/markdown-content-types';
 import { Table, TableCell, TableHead, TableHeader } from './ui/table';
+import { cn } from '@/lib/utils';
 
 interface ContentAreaProps {
   selectedDocument: MarkdownDocument | null;
@@ -54,7 +56,17 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
                   <div className="text-muted-foreground italic">{children}</div>
                 </blockquote>
               ),
-              code: ({ inline, className, children, ...props }) => {
+              code: ({
+                inline,
+                className,
+                children,
+                ...props
+              }: {
+                inline?: boolean;
+                className?: string;
+                children?: React.ReactNode;
+                [key: string]: any;
+              }) => {
                 if (inline) {
                   return (
                     <code className="bg-muted px-1.5 py-0.5 rounded-lg text-sm font-mono text-foreground" {...props}>
@@ -63,7 +75,13 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
                   );
                 }
                 return (
-                  <code className={`${className} block rounded-lg whitespace-pre-wrap break-words font-mono text-sm`} {...props}>
+                  <code
+                    className={cn(
+                      'inline-block rounded-lg whitespace-pre-wrap break-words font-mono text-sm',
+                      className
+                    )}
+                    {...props}
+                  >
                     {children}
                   </code>
                 );
