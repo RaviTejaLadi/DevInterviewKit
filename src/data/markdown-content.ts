@@ -38,6 +38,7 @@ import useReducerSetup from './state-management/State Management with useReducer
 import htmlCheatSheet from './cheat-sheets/html.md?raw';
 import cssCheatSheet from './cheat-sheets/css.md?raw';
 import jsCheatSheet from './cheat-sheets/js.md?raw';
+import reactCheatSheet from './cheat-sheets/react.md?raw';
 
 export const markdownData: Category[] = [
   {
@@ -241,23 +242,23 @@ export const markdownData: Category[] = [
     documents: [
       {
         id: 'html-cheat-sheet',
-        title: 'HTML Cheat Sheet',
+        title: 'HTML',
         content: htmlCheatSheet,
       },
       {
         id: 'css-cheat-sheet',
-        title: 'CSS Cheat Sheet',
+        title: 'CSS',
         content: cssCheatSheet,
       },
       {
         id: 'js-cheat-sheet',
-        title: 'Javascript Cheat Sheet',
+        title: 'Javascript',
         content: jsCheatSheet,
       },
       {
-        id: 'zustand',
-        title: 'Zustand Setup',
-        content: zustand,
+        id: 'react-cheat-sheet',
+        title: 'React',
+        content: reactCheatSheet,
       },
     ],
   },
