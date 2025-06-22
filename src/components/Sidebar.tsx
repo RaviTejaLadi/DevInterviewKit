@@ -1,16 +1,5 @@
-import React, { useState } from 'react';
-import {
-  ChevronDown,
-  ChevronRight,
-  Menu,
-  X,
-  BookOpen,
-  Code,
-  GraduationCap,
-  Code2,
-  ExternalLink,
-  Home,
-} from 'lucide-react';
+import { useState } from 'react';
+import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { Category, MarkdownDocument } from '@/types/markdown-content-types';
 
@@ -40,25 +29,12 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
     setIsMobileOpen(false); // Close mobile sidebar when document is selected
   };
 
-  const getIcon = (iconName: string) => {
-    const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
-      Home,
-      BookOpen,
-      Code,
-      GraduationCap,
-      Code2,
-      ExternalLink,
-    };
-
-    const IconComponent = iconMap[iconName];
-    return IconComponent ? <IconComponent className="w-4 h-4" /> : null;
-  };
-
   const sidebarContent = (
     <div className="h-full w-[18rem] flex flex-col">
       <nav className="flex-1 overflow-y-auto p-4">
         <div className="space-y-2">
           {categories.map((category, index) => {
+            const { Icon } = category;
             const isExpanded = expandedCategories.has(category.id);
 
             return (
@@ -75,7 +51,7 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                   <div className="flex items-center space-x-2">
-                    {getIcon(category.icon)}
+                    {Icon ? <Icon className="w-4 h-4 mr-1" /> : ''}
                     <span>{category.title}</span>
                   </div>
                   {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}

@@ -42,11 +42,14 @@ import reactCheatSheet from './cheat-sheets/react.md?raw';
 import gitCheatSheet from './cheat-sheets/git.md?raw';
 import httpCheatSheet from './cheat-sheets/http.md?raw';
 
+import Namaste from '@/assets/Icons/Namaste';
+import { Css, Flow, HTML, JavaScript, React, Sheets, Utils } from '@/assets/technologies';
+
 export const markdownData: Category[] = [
   {
     id: 'welcome',
     title: 'Welcome',
-    icon: 'Home',
+    Icon: Namaste,
     documents: [
       {
         id: 'introduction',
@@ -58,7 +61,7 @@ export const markdownData: Category[] = [
   {
     id: 'html',
     title: 'HTML',
-    icon: 'BookOpen',
+    Icon: HTML,
     documents: [
       {
         id: 'html-intro',
@@ -85,7 +88,7 @@ export const markdownData: Category[] = [
   {
     id: 'css',
     title: 'Css',
-    icon: 'Code',
+    Icon: Css,
     documents: [
       {
         id: 'intro-to-css',
@@ -102,7 +105,7 @@ export const markdownData: Category[] = [
   {
     id: 'javascript',
     title: 'JavaScript',
-    icon: 'Code',
+    Icon: JavaScript,
     documents: [
       {
         id: 'intro-to-js',
@@ -134,7 +137,7 @@ export const markdownData: Category[] = [
   {
     id: 'react',
     title: 'React',
-    icon: 'Code',
+    Icon: React,
     documents: [
       {
         id: 'intro-to-react',
@@ -171,7 +174,7 @@ export const markdownData: Category[] = [
   {
     id: 'react-libraries',
     title: 'React Libraries And Utilities',
-    icon: 'Code',
+    Icon: Utils,
     documents: [
       {
         id: 'most-useful-react-libraries',
@@ -213,7 +216,7 @@ export const markdownData: Category[] = [
   {
     id: 'state-management',
     title: 'State Management',
-    icon: 'Code',
+    Icon: Flow,
     documents: [
       {
         id: 'intro-to-state-management',
@@ -240,7 +243,7 @@ export const markdownData: Category[] = [
   {
     id: 'cheat-sheets',
     title: 'Cheat Sheets',
-    icon: 'Code',
+    Icon: Sheets,
     documents: [
       {
         id: 'html-cheat-sheet',
