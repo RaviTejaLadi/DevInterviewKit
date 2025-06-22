@@ -51,6 +51,8 @@ import httpCheatSheet from './cheat-sheets/http.md?raw';
 
 import webSecurity from './web-security.md?raw';
 
+import networking from "./networking.md?raw";
+
 import Namaste from '@/assets/Icons/Namaste';
 import { Css, Flow, HTML, JavaScript, React, Sheets, TypeScript, Utils, WebSecurity } from '@/assets/technologies';
 
@@ -292,6 +294,15 @@ export const markdownData: Category[] = [
       id: 'web-security-intro',
       title: 'Introduction',
       content: webSecurity,
+    },
+  },{
+    id: 'networking',
+    title: 'Networking',
+    Icon: WebSecurity,
+    document: {
+      id: 'networking-questions',
+      title: 'Introduction',
+      content: networking,
     },
   },
   {
