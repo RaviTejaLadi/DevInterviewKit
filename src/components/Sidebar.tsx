@@ -58,7 +58,7 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
     <div className="h-full flex flex-col">
       <nav className="flex-1 overflow-y-auto p-4">
         <div className="space-y-2">
-          {categories.map((category,index) => {
+          {categories.map((category, index) => {
             const isExpanded = expandedCategories.has(category.id);
 
             return (
@@ -71,17 +71,16 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
                     'cursor-pointer transition-all duration-300 hover:-translate-y-1 bg-card/50 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4'
                   )}
                 >
-                   {/* Subtle gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
+                  {/* Subtle gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
                   <div className="flex items-center space-x-2">
                     {getIcon(category.icon)}
                     <span>{category.title}</span>
                   </div>
                   {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-        
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
 
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
                 </button>
 
                 {isExpanded && (

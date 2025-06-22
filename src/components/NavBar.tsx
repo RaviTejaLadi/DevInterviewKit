@@ -40,7 +40,7 @@ const Navbar = ({
   onSearchChange,
 }: NavbarProps) => {
   return (
-    <div className="flex h-11 px-10 justify-between space-x-10 fixed top-0 z-50 w-full  border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-inherit">
+    <div className="flex h-11 px-10 justify-between space-x-10 fixed top-0 z-50 w-full  border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-inherit">
       {/* Desktop Menu */}
       <nav className="hidden justify-between lg:flex w-full">
         <div className="flex items-center justify-between gap-6 w-full">

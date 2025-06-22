@@ -6,6 +6,7 @@ import { markdownData } from './data/markdown-content';
 import { Navbar } from './components/NavBar';
 import { ThemeProvider } from './context/ThemeContext';
 import { MarkdownDocument } from './types/markdown-content-types';
+import Footer from './components/Footer';
 
 function App() {
   const [selectedDocument, setSelectedDocument] = useState<MarkdownDocument | null>(
@@ -46,7 +47,7 @@ function App() {
       <div className=" bg-background text-foreground">
         <Navbar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 
-        <div className=" mt-11 flex h-screen ">
+        <div className=" mt-11 flex h-full ">
           <Sidebar
             categories={markdownData}
             selectedDocument={selectedDocument}
@@ -59,6 +60,7 @@ function App() {
             <ContentArea selectedDocument={selectedDocument} />
           )}
         </div>
+        <Footer />
       </div>
     </ThemeProvider>
   );
