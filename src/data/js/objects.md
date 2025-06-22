@@ -1,53 +1,53 @@
-# JavaScript Object Methods
+# JavaScript Object Methods 🚀
 
-## What is an Object?
+## What is an Object? 🧩
 
 An object in JavaScript is a collection of key-value pairs where each key (property) maps to a value. Objects are used to store complex data structures and represent real-world entities.
 
-## Why Use Objects?
+## Why Use Objects? 🤔
 
-1. **Structured Data**: Organize related data and functionality
-2. **Key-Value Pairs**: Access data by meaningful names (keys) rather than indexes
-3. **Methods**: Can store functions as object properties (methods)
-4. **Flexibility**: Dynamic structure - can add/remove properties at runtime
-5. **OOP**: Foundation for object-oriented programming in JavaScript
+1. **Structured Data**: Organize related data and functionality 📦
+2. **Key-Value Pairs**: Access data by meaningful names (keys) rather than indexes 🔑
+3. **Methods**: Can store functions as object properties (methods) 🛠️
+4. **Flexibility**: Dynamic structure - can add/remove properties at runtime 🔄
+5. **OOP**: Foundation for object-oriented programming in JavaScript 🏗️
 
-## When to Use Objects?
+## When to Use Objects? 🕒
 
-- When you need to represent an entity with multiple attributes
-- When you need to group related data and functionality
-- When you need to pass complex data structures between functions
-- When you need to model real-world objects in your code
-- When you need to organize code using object-oriented principles
+- When you need to represent an entity with multiple attributes 🏷️
+- When you need to group related data and functionality 📚
+- When you need to pass complex data structures between functions 🔗
+- When you need to model real-world objects in your code 🌍
+- When you need to organize code using object-oriented principles 🧱
 
-## JavaScript Object Methods
+## JavaScript Object Methods 📝
 
 Here's a comprehensive table of JavaScript object methods:
 
 | Method | Description | Example Usage | Output |
 |--------|-------------|---------------|--------|
-| `Object.keys()` | Returns array of object's own property names | `Object.keys(obj)` | `['prop1', 'prop2']` |
-| `Object.values()` | Returns array of object's own property values | `Object.values(obj)` | `['value1', 'value2']` |
-| `Object.entries()` | Returns array of [key, value] pairs | `Object.entries(obj)` | `[['prop1','value1'],...]` |
-| `Object.assign()` | Copies properties from source to target object | `Object.assign({}, obj)` | New object with copied properties |
-| `Object.create()` | Creates new object with specified prototype | `Object.create(proto)` | New object inheriting from proto |
-| `Object.freeze()` | Prevents modifications to object | `Object.freeze(obj)` | Frozen object |
-| `Object.seal()` | Prevents adding/removing properties | `Object.seal(obj)` | Sealed object |
-| `Object.isFrozen()` | Checks if object is frozen | `Object.isFrozen(obj)` | `true`/`false` |
-| `Object.isSealed()` | Checks if object is sealed | `Object.isSealed(obj)` | `true`/`false` |
-| `Object.getPrototypeOf()` | Returns object's prototype | `Object.getPrototypeOf(obj)` | Prototype object |
-| `Object.setPrototypeOf()` | Sets object's prototype | `Object.setPrototypeOf(obj, proto)` | Modified object |
-| `Object.hasOwnProperty()` | Checks if property exists directly on object | `obj.hasOwnProperty('prop')` | `true`/`false` |
-| `Object.is()` | Compares if two values are the same | `Object.is(val1, val2)` | `true`/`false` |
-| `Object.getOwnPropertyNames()` | Returns all own property names | `Object.getOwnPropertyNames(obj)` | Array of property names |
-| `Object.getOwnPropertyDescriptor()` | Returns property descriptor | `Object.getOwnPropertyDescriptor(obj, 'prop')` | Property descriptor object |
-| `Object.defineProperty()` | Defines new/modifies existing property | `Object.defineProperty(obj, 'prop', descriptor)` | Modified object |
-| `Object.defineProperties()` | Defines multiple properties | `Object.defineProperties(obj, descriptors)` | Modified object |
-| `Object.fromEntries()` | Creates object from [key, value] pairs | `Object.fromEntries([['a',1],['b',2]])` | `{a:1, b:2}` |
-| `Object.preventExtensions()` | Prevents adding new properties | `Object.preventExtensions(obj)` | Non-extensible object |
-| `Object.isExtensible()` | Checks if object is extensible | `Object.isExtensible(obj)` | `true`/`false` |
+| `Object.keys()` | Returns array of object's own property names 🗝️ | `Object.keys(obj)` | `['prop1', 'prop2']` |
+| `Object.values()` | Returns array of object's own property values 💎 | `Object.values(obj)` | `['value1', 'value2']` |
+| `Object.entries()` | Returns array of [key, value] pairs 📑 | `Object.entries(obj)` | `[['prop1','value1'],...]` |
+| `Object.assign()` | Copies properties from source to target object 📋 | `Object.assign({}, obj)` | New object with copied properties |
+| `Object.create()` | Creates new object with specified prototype 🧬 | `Object.create(proto)` | New object inheriting from proto |
+| `Object.freeze()` | Prevents modifications to object ❄️ | `Object.freeze(obj)` | Frozen object |
+| `Object.seal()` | Prevents adding/removing properties 🔒 | `Object.seal(obj)` | Sealed object |
+| `Object.isFrozen()` | Checks if object is frozen 🧊 | `Object.isFrozen(obj)` | `true`/`false` |
+| `Object.isSealed()` | Checks if object is sealed 🏷️ | `Object.isSealed(obj)` | `true`/`false` |
+| `Object.getPrototypeOf()` | Returns object's prototype 🧬 | `Object.getPrototypeOf(obj)` | Prototype object |
+| `Object.setPrototypeOf()` | Sets object's prototype 🏗️ | `Object.setPrototypeOf(obj, proto)` | Modified object |
+| `Object.hasOwnProperty()` | Checks if property exists directly on object 🔍 | `obj.hasOwnProperty('prop')` | `true`/`false` |
+| `Object.is()` | Compares if two values are the same ⚖️ | `Object.is(val1, val2)` | `true`/`false` |
+| `Object.getOwnPropertyNames()` | Returns all own property names 🏷️ | `Object.getOwnPropertyNames(obj)` | Array of property names |
+| `Object.getOwnPropertyDescriptor()` | Returns property descriptor 📝 | `Object.getOwnPropertyDescriptor(obj, 'prop')` | Property descriptor object |
+| `Object.defineProperty()` | Defines new/modifies existing property 🛠️ | `Object.defineProperty(obj, 'prop', descriptor)` | Modified object |
+| `Object.defineProperties()` | Defines multiple properties 🛠️🛠️ | `Object.defineProperties(obj, descriptors)` | Modified object |
+| `Object.fromEntries()` | Creates object from [key, value] pairs 🏗️ | `Object.fromEntries([['a',1],['b',2]])` | `{a:1, b:2}` |
+| `Object.preventExtensions()` | Prevents adding new properties 🚫 | `Object.preventExtensions(obj)` | Non-extensible object |
+| `Object.isExtensible()` | Checks if object is extensible 🔓 | `Object.isExtensible(obj)` | `true`/`false` |
 
-## Sample Object with Different Data Types
+## Sample Object with Different Data Types 🧪
 
 Let's declare a sample object with mixed data types and perform operations on it:
 
@@ -158,12 +158,12 @@ console.log("Full name:", sampleObject.getFullName());
 console.log("'name' exists in object:", 'name' in sampleObject);
 ```
 
-## Important Notes About Objects
+## Important Notes About Objects 📝
 
-1. **Property Access**: Can use dot notation (`obj.prop`) or bracket notation (`obj['prop']`)
-2. **Property Enumeration**: Some methods only return enumerable properties
-3. **Prototype Chain**: Methods like `hasOwnProperty()` only check the object itself, not the prototype chain
-4. **Immutability**: `freeze()`, `seal()`, and `preventExtensions()` provide different levels of immutability
-5. **Property Descriptors**: Can control property behavior (writable, enumerable, configurable)
+1. **Property Access**: Can use dot notation (`obj.prop`) or bracket notation (`obj['prop']`) 🖊️
+2. **Property Enumeration**: Some methods only return enumerable properties 📋
+3. **Prototype Chain**: Methods like `hasOwnProperty()` only check the object itself, not the prototype chain ⛓️
+4. **Immutability**: `freeze()`, `seal()`, and `preventExtensions()` provide different levels of immutability 🧊
+5. **Property Descriptors**: Can control property behavior (writable, enumerable, configurable) ⚙️
 
-Objects are fundamental to JavaScript programming, and mastering these methods will give you powerful tools for working with complex data structures.
+Objects are fundamental to JavaScript programming, and mastering these methods will give you powerful tools for working with complex data structures. 💡
