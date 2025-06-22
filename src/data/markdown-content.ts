@@ -49,8 +49,10 @@ import reactCheatSheet from './cheat-sheets/react.md?raw';
 import gitCheatSheet from './cheat-sheets/git.md?raw';
 import httpCheatSheet from './cheat-sheets/http.md?raw';
 
+import webSecurity from './web-security.md?raw';
+
 import Namaste from '@/assets/Icons/Namaste';
-import { Css, Flow, HTML, JavaScript, React, Sheets, TypeScript, Utils } from '@/assets/technologies';
+import { Css, Flow, HTML, JavaScript, React, Sheets, TypeScript, Utils, WebSecurity } from '@/assets/technologies';
 
 export const markdownData: Category[] = [
   {
@@ -281,6 +283,16 @@ export const markdownData: Category[] = [
         content: zustand,
       },
     ],
+  },
+  {
+    id: 'web-security',
+    title: 'Web Security',
+    Icon: WebSecurity,
+    document: {
+      id: 'web-security-intro',
+      title: 'Introduction',
+      content: webSecurity,
+    },
   },
   {
     id: 'cheat-sheets',

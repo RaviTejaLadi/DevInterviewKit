@@ -24,7 +24,10 @@ import HTML from './HTML';
 import Utils from './Utils';
 import Flow from './Flow';
 import Sheets from './Sheets';
+import WebSecurity from './WebSecurity';
+
 export {
+  WebSecurity,
   Sheets,
   Utils,
   Flow,
