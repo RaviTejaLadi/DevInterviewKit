@@ -1,4 +1,4 @@
-import { Category } from '@/types/markdown-content-types';
+import type { Category } from '@/types/markdown-content-types';
 import introduction from './introduction.md?raw';
 
 import htmlIntro from './html/html-intro.md?raw';

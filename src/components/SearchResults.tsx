@@ -1,4 +1,4 @@
-import { MarkdownDocument } from '../data/markdown-content';
+import { MarkdownDocument } from '@/types/markdown-content-types';
 import { FileText, Search } from 'lucide-react';
 
 interface SearchResultsProps {

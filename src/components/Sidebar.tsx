@@ -11,8 +11,8 @@ import {
   ExternalLink,
   Home,
 } from 'lucide-react';
-import { Category, MarkdownDocument } from '../data/markdown-content';
 import { cn } from '../lib/utils';
+import { Category, MarkdownDocument } from '@/types/markdown-content-types';
 
 interface SidebarProps {
   categories: Category[];

@@ -2,9 +2,9 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
-import { MarkdownDocument } from '../data/markdown-content';
 import { FileText } from 'lucide-react';
 import 'highlight.js/styles/github-dark.css';
+import { MarkdownDocument } from '@/types/markdown-content-types';
 
 interface ContentAreaProps {
   selectedDocument: MarkdownDocument | null;

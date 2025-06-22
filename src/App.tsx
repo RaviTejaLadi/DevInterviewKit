@@ -3,9 +3,9 @@ import { Sidebar } from './components/Sidebar';
 import { ContentArea } from './components/ContentArea';
 import { SearchResults } from './components/SearchResults';
 import { markdownData } from './data/markdown-content';
-import type { MarkdownDocument } from './data/markdown-content';
 import { Navbar } from './components/NavBar';
 import { ThemeProvider } from './context/ThemeContext';
+import { MarkdownDocument } from './types/markdown-content-types';
 
 function App() {
   const [selectedDocument, setSelectedDocument] = useState<MarkdownDocument | null>(
