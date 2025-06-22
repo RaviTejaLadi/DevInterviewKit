@@ -189,14 +189,14 @@ export const markdownData: Category[] = [
         content: reactIntro,
       },
       {
-        id: 'react-files-and-folders-structure',
-        title: 'Files and Folders Structure',
-        content: reactFilesAndFoldersStructure,
-      },
-      {
         id: 'quick-review-checklist',
         title: 'Quick Review Checklist',
         content: reactQuickReview,
+      },
+      {
+        id: 'react-files-and-folders-structure',
+        title: 'Files and Folders Structure',
+        content: reactFilesAndFoldersStructure,
       },
       {
         id: 'react-q&a',
