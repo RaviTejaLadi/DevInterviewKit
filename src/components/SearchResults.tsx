@@ -26,9 +26,7 @@ export function SearchResults({ results, searchTerm, onDocumentSelect }: SearchR
             </h2>
             <p className="text-muted-foreground leading-relaxed">
               No documents match your search for{' '}
-              <span className="font-semibold text-foreground bg-muted px-2 py-1 rounded-md">
-                "{searchTerm}"
-              </span>
+              <span className="font-semibold text-foreground bg-muted px-2 py-1 rounded-md">"{searchTerm}"</span>
               <br />
               Try different keywords or browse the categories.
             </p>
@@ -46,7 +44,10 @@ export function SearchResults({ results, searchTerm, onDocumentSelect }: SearchR
 
     return parts.map((part, index) =>
       regex.test(part) ? (
-        <mark key={index} className="bg-gradient-to-r from-yellow-200 to-yellow-300 dark:from-yellow-400/30 dark:to-yellow-500/30 px-1.5 py-0.5 rounded-md font-medium shadow-sm">
+        <mark
+          key={index}
+          className="bg-gradient-to-r from-yellow-200 to-yellow-300 dark:from-yellow-400/30 dark:to-yellow-500/30 px-1.5 py-0.5 rounded-md font-medium shadow-sm"
+        >
           {part}
         </mark>
       ) : (
@@ -86,15 +87,10 @@ export function SearchResults({ results, searchTerm, onDocumentSelect }: SearchR
           </div>
           <div className="flex items-center space-x-2 text-sm">
             <span className="text-muted-foreground">for</span>
-            <span className="font-semibold text-foreground bg-muted px-3 py-1 rounded-full">
-              "{searchTerm}"
-            </span>
+            <span className="font-semibold text-foreground bg-muted px-3 py-1 rounded-full">"{searchTerm}"</span>
             <span className="text-muted-foreground">•</span>
             <span className="text-muted-foreground">
-              Found{' '}
-              <span className="font-semibold text-foreground">
-                {results.length}
-              </span>{' '}
+              Found <span className="font-semibold text-foreground">{results.length}</span>{' '}
               {results.length === 1 ? 'result' : 'results'}
             </span>
           </div>
@@ -103,7 +99,7 @@ export function SearchResults({ results, searchTerm, onDocumentSelect }: SearchR
 
       {/* Enhanced Results */}
       <div className="p-6 lg:p-8">
-        <div className="space-y-4 grid md:grid-cols-2 lg:grid-cols-4 sm:block columns-2  lg:columns-3 lg:gap-6 mx-auto space-y-4 lg:space-y-6 sm:grid-cols-2  md:grid-col-3 gap-4">
+        <div className="space-y-4 grid md:grid-cols-2 lg:grid-cols-4 sm:block columns-2  lg:columns-3 lg:gap-6 mx-auto lg:space-y-6 sm:grid-cols-2  md:grid-col-3 gap-4">
           {results.map((document, index) => {
             const excerpt = getExcerpt(document.content, searchTerm);
 
@@ -116,19 +112,19 @@ export function SearchResults({ results, searchTerm, onDocumentSelect }: SearchR
               >
                 {/* Subtle gradient overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
+
                 <div className="relative flex items-start space-x-4">
                   {/* Enhanced icon */}
                   <div className="flex-shrink-0 p-2.5 bg-gradient-to-br from-muted to-muted/50 rounded-lg group-hover:from-blue-500/10 group-hover:to-purple-500/10 transition-all duration-300">
                     <FileText className="w-5 h-5 text-muted-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300" />
                   </div>
-                  
+
                   <div className="flex-1 min-w-0 space-y-3">
                     {/* Enhanced title */}
                     <h3 className="text-xl font-semibold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight">
                       {highlightText(document.title, searchTerm)}
                     </h3>
-                    
+
                     {/* Enhanced excerpt */}
                     <div className="prose prose-sm max-w-none">
                       <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300 line-clamp-3 leading-relaxed">
