@@ -99,7 +99,7 @@ export function SearchResults({ results, searchTerm, onDocumentSelect }: SearchR
 
       {/* Enhanced Results */}
       <div className="p-6 lg:p-8">
-        <div className="space-y-4 grid md:grid-cols-2 lg:grid-cols-4 sm:block columns-2  lg:columns-3 lg:gap-6 mx-auto lg:space-y-6 sm:grid-cols-2  md:grid-col-3 gap-4">
+        <div className="space-y-4 flex flex-wrap gap-2 justify-evenly items-center">
           {results.map((document, index) => {
             const excerpt = getExcerpt(document.content, searchTerm);
 
@@ -107,7 +107,7 @@ export function SearchResults({ results, searchTerm, onDocumentSelect }: SearchR
               <div
                 key={document.id}
                 onClick={() => onDocumentSelect(document)}
-                className="group relative p-6 w-[30rem] border dark:border-gray-200/10 rounded-xl hover:border-border hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-white/5 cursor-pointer transition-all duration-300 hover:-translate-y-1 bg-card/50 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4"
+                className="group relative p-6 w-full h-auto border dark:border-gray-200/10 rounded-xl hover:border-border hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-white/5 cursor-pointer transition-all duration-300 hover:-translate-y-1 bg-card/50 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Subtle gradient overlay on hover */}
