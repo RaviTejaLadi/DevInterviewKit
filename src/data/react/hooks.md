@@ -1,22 +1,5 @@
 # React Hooks Guide  
 
-## Table of Contents  
-1. [Introduction to Hooks](#introduction-to-hooks)  
-2. [Basic Hooks](#basic-hooks)  
-   - [useState](#usestate)  
-   - [useEffect](#useeffect)  
-   - [useContext](#usecontext)  
-3. [Advanced Hooks](#advanced-hooks)  
-   - [useReducer](#usereducer)  
-   - [useCallback](#usecallback)  
-   - [useMemo](#usememo)  
-   - [useRef](#useref)  
-   - [useImperativeHandle](#useimperativehandle)  
-   - [useLayoutEffect](#uselayouteffect)  
-   - [useDebugValue](#usedebugvalue)  
-
----
-
 ## Introduction to Hooks  
 Hooks are like "magic functions" that let you "hook into" React features (like state & lifecycle) from function components. They make React code cleaner and easier to reuse.  
 

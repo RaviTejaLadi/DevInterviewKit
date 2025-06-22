@@ -406,4 +406,3 @@ function stringToObject(path, value) {
 console.log(stringToObject("a.b.c", "someValue"));
 // { a: { b: { c: "someValue" } } }
 ```
-
