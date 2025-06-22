@@ -88,7 +88,7 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
                 );
               },
               pre: ({ children }) => (
-                <pre className="bg-muted p-2 rounded-xl overflow-x-auto mb-4 whitespace-pre-wrap break-words">
+                <pre className="border-[2px] border-border rounded-xl overflow-x-auto mb-4 whitespace-pre-wrap break-words">
                   {children}
                 </pre>
               ),
