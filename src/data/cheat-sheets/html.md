@@ -1,4 +1,4 @@
-# HTML Cheat Sheet - Table Format
+# HTML Cheat Sheet
 
 ## Basic Structure
 

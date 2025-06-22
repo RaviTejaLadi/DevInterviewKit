@@ -36,6 +36,7 @@ import zustand from './state-management/Zustand.md?raw';
 import useReducerSetup from './state-management/State Management with useReducer and useContext in TypeScript.md?raw';
 
 import htmlCheatSheet from './cheat-sheets/html.md?raw';
+import cssCheatSheet from './cheat-sheets/css.md?raw';
 
 export const markdownData: Category[] = [
   {
@@ -239,13 +240,13 @@ export const markdownData: Category[] = [
     documents: [
       {
         id: 'html-cheat-sheet',
-        title: 'Html Cheat Sheet',
+        title: 'HTML Cheat Sheet',
         content: htmlCheatSheet,
       },
       {
-        id: 'use-reducer-setup',
-        title: 'useReducer Setup',
-        content: useReducerSetup,
+        id: 'css-cheat-sheet',
+        title: 'CSS Cheat Sheet',
+        content: cssCheatSheet,
       },
       {
         id: 'redux-toolkit',
