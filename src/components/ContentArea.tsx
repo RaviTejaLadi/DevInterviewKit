@@ -54,21 +54,25 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
                   <div className="text-muted-foreground italic">{children}</div>
                 </blockquote>
               ),
-              // code: ({ inline, children, ...props }) => {
-              //   if (inline) {
-              //     return (
-              //       <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-foreground" {...props}>
-              //         {children}
-              //       </code>
-              //     );
-              //   }
-              //   return (
-              //     <code className="block" {...props}>
-              //       {children}
-              //     </code>
-              //   );
-              // },
-              pre: ({ children }) => <pre className="bg-muted p-2 rounded-lg overflow-x-auto mb-4 ">{children}</pre>,
+              code: ({ inline, className, children, ...props }) => {
+                if (inline) {
+                  return (
+                    <code className="bg-muted px-1.5 py-0.5 rounded-lg text-sm font-mono text-foreground" {...props}>
+                      {children}
+                    </code>
+                  );
+                }
+                return (
+                  <code className={`${className} block rounded-lg whitespace-pre-wrap break-words font-mono text-sm`} {...props}>
+                    {children}
+                  </code>
+                );
+              },
+              pre: ({ children }) => (
+                <pre className="bg-muted p-2 rounded-xl overflow-x-auto mb-4 whitespace-pre-wrap break-words">
+                  {children}
+                </pre>
+              ),
               table: ({ children }) => (
                 <div className="overflow-x-auto mb-4">
                   <Table className="min-w-full border border-border rounded-lg">{children}</Table>
