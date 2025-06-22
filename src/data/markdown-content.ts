@@ -19,6 +19,9 @@ import debounceAndThrottle from './js/Debouncing & Throttling.md?raw';
 import variablesAndScoping from './js/Variables & Scoping.md?raw';
 import dataTypesAndTypeConversion from './js/Data Types & Type Conversion.md?raw';
 
+import tsIntro from './ts/Introduction to TypeScript.md?raw';
+import tsInterviewQuestions from './ts/interview-questions-theory.md?raw';
+
 import reactIntro from './react/react-intro.md?raw';
 import reactInterviewQuestions from './react/interview-questions.md?raw';
 import reactTsxSetup from './react/react-tsx-setup.md?raw';
@@ -47,7 +50,7 @@ import gitCheatSheet from './cheat-sheets/git.md?raw';
 import httpCheatSheet from './cheat-sheets/http.md?raw';
 
 import Namaste from '@/assets/Icons/Namaste';
-import { Css, Flow, HTML, JavaScript, React, Sheets, Utils } from '@/assets/technologies';
+import { Css, Flow, HTML, JavaScript, React, Sheets, TypeScript, Utils } from '@/assets/technologies';
 
 export const markdownData: Category[] = [
   {
@@ -153,6 +156,23 @@ export const markdownData: Category[] = [
         id: 'js-datatypes-And-TypeConversion',
         title: 'Data Types & Type Conversion',
         content: dataTypesAndTypeConversion,
+      },
+    ],
+  },
+  {
+    id: 'typescript',
+    title: 'Typescript',
+    Icon: TypeScript,
+    documents: [
+      {
+        id: 'intro-to-ts',
+        title: 'Introduction',
+        content: tsIntro,
+      },
+      {
+        id: 'ts-q-&-a',
+        title: 'TypeScript Interview Questions',
+        content: tsInterviewQuestions,
       },
     ],
   },
