@@ -37,6 +37,7 @@ import useReducerSetup from './state-management/State Management with useReducer
 
 import htmlCheatSheet from './cheat-sheets/html.md?raw';
 import cssCheatSheet from './cheat-sheets/css.md?raw';
+import jsCheatSheet from './cheat-sheets/js.md?raw';
 
 export const markdownData: Category[] = [
   {
@@ -249,9 +250,9 @@ export const markdownData: Category[] = [
         content: cssCheatSheet,
       },
       {
-        id: 'redux-toolkit',
-        title: 'Redux Toolkit Setup',
-        content: reduxToolkit,
+        id: 'js-cheat-sheet',
+        title: 'Javascript Cheat Sheet',
+        content: jsCheatSheet,
       },
       {
         id: 'zustand',
