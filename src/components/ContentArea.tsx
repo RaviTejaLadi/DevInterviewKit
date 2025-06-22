@@ -8,6 +8,7 @@ import 'highlight.js/styles/github-dark.css';
 import { MarkdownDocument } from '@/types/markdown-content-types';
 import { Table, TableCell, TableHead, TableHeader } from './ui/table';
 import { cn } from '@/lib/utils';
+import { ScrollArea } from './ui/scroll-area';
 
 interface ContentAreaProps {
   selectedDocument: MarkdownDocument | null;
@@ -30,7 +31,7 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
   }
 
   return (
-    <div className="container">
+    <ScrollArea className="container h-screen">
       {/* Content */}
       <div className="mx-auto p-4 lg:p-8">
         <article className="prose prose-neutral dark:prose-invert max-w-none">
@@ -123,6 +124,6 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
           </ReactMarkdown>
         </article>
       </div>
-    </div>
+    </ScrollArea>
   );
 }
