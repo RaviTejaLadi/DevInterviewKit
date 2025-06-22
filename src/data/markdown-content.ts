@@ -17,6 +17,7 @@ import objects from './js/objects.md?raw';
 import eventHandling from './js/event-handeling.md?raw';
 import debounceAndThrottle from './js/Debouncing & Throttling.md?raw';
 import variablesAndScoping from './js/Variables & Scoping.md?raw';
+import dataTypesAndTypeConversion from './js/Data Types & Type Conversion.md?raw';
 
 import reactIntro from './react/react-intro.md?raw';
 import reactInterviewQuestions from './react/interview-questions.md?raw';
@@ -147,6 +148,11 @@ export const markdownData: Category[] = [
         id: 'js-variables-&-scoping',
         title: 'Variables & Scoping',
         content: variablesAndScoping,
+      },
+      {
+        id: 'js-datatypes-And-TypeConversion',
+        title: 'Data Types & Type Conversion',
+        content: dataTypesAndTypeConversion,
       },
     ],
   },
