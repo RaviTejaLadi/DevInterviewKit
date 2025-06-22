@@ -1,5 +1,7 @@
 # 🚀 Frontend Interview Mastery Hub
 
+A comprehensive collection of resources, interactive tools, coding challenges, and best practices to help you prepare for frontend developer interviews. This project covers key frontend concepts, frameworks, UI/UX patterns, and includes hands-on exercises to enhance your problem-solving skills.
+
 > **Your Ultimate Destination for Frontend Interview Success**
 
 ---

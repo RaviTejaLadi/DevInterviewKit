@@ -1,5 +1,6 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "frontend-interview-preparation-kit",
+  "description": "A comprehensive collection of resources, interactive tools, coding challenges, and best practices to help you prepare for frontend developer interviews. This project covers key frontend concepts, frameworks, UI/UX patterns, and includes hands-on exercises to enhance your problem-solving skills.",
   "private": true,
   "version": "0.0.0",
   "type": "module",
