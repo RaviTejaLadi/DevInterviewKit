@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
-import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
+import { ChevronDown, ChevronRight, X } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { Category, MarkdownDocument } from '@/types/markdown-content-types';
+import { ScrollArea } from './ui/scroll-area';
+import Logo from './Logo';
+import { useMobileStore } from '@/stores/useMobileStore';
+import { Button } from './ui/button';
 
 interface SidebarProps {
   categories: Category[];
@@ -12,7 +16,8 @@ interface SidebarProps {
 
 export function Sidebar({ categories, selectedDocument, onDocumentSelect, className }: SidebarProps) {
   const [expandedCategories, setExpandedCategories] = useState<Set<string | null>>(new Set());
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const { isMobileOpen, setIsMobileOpen } = useMobileStore();
+  // const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   // Initialize expanded categories based on saved document
   useEffect(() => {
@@ -145,14 +150,6 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
 
   return (
     <>
-      {/* Mobile menu button */}
-      <button
-        onClick={() => setIsMobileOpen(true)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-background border border-border rounded-md shadow-sm"
-      >
-        <Menu className="w-5 h-5" />
-      </button>
-
       {/* Mobile overlay */}
       {isMobileOpen && (
         <div className="lg:hidden fixed inset-0 bg-black/50 z-40" onClick={() => setIsMobileOpen(false)} />
@@ -160,7 +157,7 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
 
       {/* Desktop sidebar */}
       <aside className={cn('hidden lg:block w-80 bg-background border-r border-border', className)}>
-        {sidebarContent}
+        <ScrollArea className="h-screen">{sidebarContent}</ScrollArea>
       </aside>
 
       {/* Mobile sidebar */}
@@ -170,12 +167,17 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
           isMobileOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <div className="absolute top-4 right-4">
-          <button onClick={() => setIsMobileOpen(false)} className="p-2 hover:bg-accent rounded-md transition-colors">
+        <div className="flex justify-between items-center mx-4">
+          <div className="px-6 py-5">
+            <Logo />
+          </div>
+
+          <Button variant={'outline'} size={'icon'} onClick={() => setIsMobileOpen(false)}>
             <X className="w-5 h-5" />
-          </button>
+          </Button>
         </div>
-        {sidebarContent}
+
+        <ScrollArea className="h-screen">{sidebarContent}</ScrollArea>
       </aside>
     </>
   );

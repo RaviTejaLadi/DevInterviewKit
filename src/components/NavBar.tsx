@@ -9,10 +9,9 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from './ui/navigation-menu';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import Logo from './Logo';
 import { ThemeToggle } from './ThemeToggle';
+import { useMobileStore } from '@/stores/useMobileStore';
 
 interface MenuItem {
   title: string;
@@ -39,6 +38,7 @@ const Navbar = ({
   searchTerm,
   onSearchChange,
 }: NavbarProps) => {
+  const { toggleMobile } = useMobileStore();
   return (
     <div className="flex h-11 px-10 justify-between space-x-10 fixed top-0 z-50 w-full  border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-inherit">
       {/* Desktop Menu */}
@@ -85,45 +85,16 @@ const Navbar = ({
       </nav>
 
       {/* Mobile Menu */}
-      <div className="block lg:hidden py-2 items-center w-full">
-        <div className="flex items-center justify-between">
+      <div className="block lg:hidden py-1 items-center w-full">
+        <div className="flex items-center justify-start gap-4">
+          {/* Mobile menu button */}
+          <Button size={'icon'} variant={'outline'} onClick={toggleMobile}>
+            <Menu className="w-5 h-5" />
+          </Button>
           {/* Logo */}
           <a href="/" className="text-md w-auto">
             <Logo />
           </a>
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="size-4" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent className="overflow-y-auto">
-              <SheetHeader>
-                <SheetTitle>
-                  <a href="/" className="text-md w-auto">
-                    <Logo />
-                  </a>
-                </SheetTitle>
-              </SheetHeader>
-              <div className="flex flex-col mt-4 gap-6 p-4">
-                <Accordion type="single" collapsible className="flex w-full flex-col gap-4">
-                  {menu.map((item) => renderMobileMenuItem(item))}
-                </Accordion>
-              </div>
-              <div className=" flex items-center justify-end">
-                <ThemeToggle />
-                <a
-                  href="https://github.com/RaviTejaLadi/Frontend-Interview-Prep-Kit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button variant="outline" size="icon" accessKey="View source code" aria-label="View source code">
-                    <Github className="h-4 w-4" />
-                  </Button>
-                </a>
-              </div>
-            </SheetContent>
-          </Sheet>
         </div>
       </div>
     </div>
@@ -155,31 +126,6 @@ const renderMenuItem = (item: MenuItem) => {
         {item.title}
       </NavigationMenuLink>
     </NavigationMenuItem>
-  );
-};
-
-const renderMobileMenuItem = (item: MenuItem) => {
-  if (item.items) {
-    return (
-      <AccordionItem key={item.title} value={item.title} className="border-b-0">
-        <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline">{item.title}</AccordionTrigger>
-        <AccordionContent className="mt-2">
-          {item.items.map((subItem) => (
-            <SubMenuLink key={subItem.title} item={subItem} />
-          ))}
-        </AccordionContent>
-      </AccordionItem>
-    );
-  }
-
-  return (
-    <a
-      key={item.title}
-      href={item.url}
-      className="group flex justify-start h-6 w-full text-muted-foreground items-center  rounded bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-accent-foreground"
-    >
-      {item.title}
-    </a>
   );
 };
 
