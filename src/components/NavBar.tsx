@@ -71,7 +71,11 @@ const Navbar = ({
               </div>
             </div>
             <ThemeToggle />
-            <a href="https://github.com/RaviTejaLadi/Frontend-Interview-Prep-Kit" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/RaviTejaLadi/Frontend-Interview-Prep-Kit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="ghost" size="icon" accessKey="View source code" aria-label="View source code">
                 <Github className="h-4 w-4" />
               </Button>
@@ -108,7 +112,11 @@ const Navbar = ({
               </div>
               <div className=" flex items-center justify-end">
                 <ThemeToggle />
-                <a href="https://github.com/RaviTejaLadi/Frontend-Interview-Prep-Kit" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/RaviTejaLadi/Frontend-Interview-Prep-Kit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button variant="outline" size="icon" accessKey="View source code" aria-label="View source code">
                     <Github className="h-4 w-4" />
                   </Button>
