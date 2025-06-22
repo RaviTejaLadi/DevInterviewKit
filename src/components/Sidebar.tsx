@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { Category, MarkdownDocument } from '@/types/markdown-content-types';
@@ -11,8 +11,38 @@ interface SidebarProps {
 }
 
 export function Sidebar({ categories, selectedDocument, onDocumentSelect, className }: SidebarProps) {
-  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(['welcome']));
+  const [expandedCategories, setExpandedCategories] = useState<Set<string | null>>(new Set());
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  // Initialize expanded categories based on saved document
+  useEffect(() => {
+    const savedDocumentId = localStorage.getItem('selectedDocumentId');
+    if (!savedDocumentId) return;
+
+    // Find the category that contains the saved document
+    let categoryToExpand: string | null = null;
+
+    for (const category of categories) {
+      // Check if category has a single document that matches
+      if (category.document && category.document.id === savedDocumentId) {
+        categoryToExpand = category.id;
+        break;
+      }
+
+      // Check if category has multiple documents that include the saved one
+      if (category.documents) {
+        const foundDoc = category.documents.find((doc) => doc.id === savedDocumentId);
+        if (foundDoc) {
+          categoryToExpand = category.id;
+          break;
+        }
+      }
+    }
+
+    if (categoryToExpand) {
+      setExpandedCategories(new Set([categoryToExpand]));
+    }
+  }, [categories]);
 
   const toggleCategory = (categoryId: string) => {
     const newExpanded = new Set(expandedCategories);
@@ -26,9 +56,11 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
 
   const handleDocumentSelect = (document: MarkdownDocument) => {
     onDocumentSelect(document);
-    setIsMobileOpen(false); // Close mobile sidebar when document is selected
+    localStorage.setItem('selectedDocumentId', document.id);
+    setIsMobileOpen(false);
   };
 
+  // Rest of your component remains the same...
   const sidebarContent = (
     <div className="h-full w-[18rem] flex flex-col">
       <nav className="flex-1 overflow-y-auto p-4">
@@ -83,11 +115,13 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
                   </>
                 ) : singleDocument ? (
                   <button
-                    onClick={() => toggleCategory(category.id)}
+                    onClick={() => handleDocumentSelect(singleDocument)}
                     style={{ animationDelay: `${index * 100}ms` }}
                     className={cn(
                       'group w-full relative flex items-center justify-between py-1 px-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors',
-                      'cursor-pointer transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4'
+                      'cursor-pointer transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4',
+                      selectedDocument?.id === singleDocument.id &&
+                        'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10 font-medium text-foreground'
                     )}
                   >
                     {/* Subtle gradient overlay on hover */}
