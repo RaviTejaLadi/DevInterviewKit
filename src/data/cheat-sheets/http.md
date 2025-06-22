@@ -66,7 +66,7 @@
 ---
 
 ### **URL Structure**
-```
+```bash
   https://example.com:443/path?query=param#fragment
   \___/   \_________/ \__/\____/ \_________/ \______/
     |          |       |    |         |          |
