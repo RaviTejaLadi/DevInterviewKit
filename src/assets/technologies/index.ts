@@ -27,6 +27,8 @@ import Sheets from './Sheets';
 import WebSecurity from './WebSecurity';
 import Network from './Network';
 import ErrorLogging from './ErrorLogging';
+import Owasp from './Owasp';
+
 export {
   WebSecurity,
   Sheets,
@@ -57,4 +59,5 @@ export {
   HTML,
   Network,
   ErrorLogging,
+  Owasp,
 };

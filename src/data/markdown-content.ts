@@ -50,10 +50,9 @@ import gitCheatSheet from './cheat-sheets/git.md?raw';
 import httpCheatSheet from './cheat-sheets/http.md?raw';
 
 import webSecurity from './web-security.md?raw';
-
 import networking from './networking.md?raw';
-
 import errorLogging from './logging-and-monitoring.md?raw';
+import owasp from './owasp.md?raw';
 
 import Namaste from '@/assets/Icons/Namaste';
 import {
@@ -63,6 +62,7 @@ import {
   HTML,
   JavaScript,
   Network,
+  Owasp,
   React,
   Sheets,
   TypeScript,
@@ -328,6 +328,16 @@ export const markdownData: Category[] = [
       id: '   error-logging-questions',
       title: 'Introduction',
       content: errorLogging,
+    },
+  },
+  {
+    id: 'owasp-top-10',
+    title: 'OWASP Top 10',
+    Icon: Owasp,
+    document: {
+      id: 'owasp',
+      title: 'Introduction',
+      content: owasp,
     },
   },
   {
