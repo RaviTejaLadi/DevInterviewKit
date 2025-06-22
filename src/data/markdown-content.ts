@@ -17,6 +17,7 @@ import reactIntro from './react/react-intro.md?raw';
 import reactInterviewQuestions from './react/interview-questions.md?raw';
 import reactTsxSetup from './react/react-tsx-setup.md?raw';
 import hooks from './react/hooks.md?raw';
+import reactQuickReview from "./react/quick-review-checklist.md?raw";
 
 import reactOpenSourcePackages from './react-libraries-&-utilities/react open source packages.md?raw';
 import reactHookFormDocs from './react-libraries-&-utilities/react-hook-form.md?raw';
@@ -119,6 +120,10 @@ export const markdownData: Category[] = [
         id: 'intro-to-react',
         title: 'Introduction to React',
         content: reactIntro,
+      },{
+        id: 'quick-review-checklist',
+        title: 'Quick Review Checklist',
+        content: reactQuickReview,
       },
       {
         id: 'react-q&a',
