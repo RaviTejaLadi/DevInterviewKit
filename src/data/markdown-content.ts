@@ -14,8 +14,9 @@ import jsInterviewQuestions from './js/top-30-q-&-a.md?raw';
 import JSL1andL2InterviewQuestions from './js/21-programs-inL1&L2.md?raw';
 import Arrays from './js/arrays.md?raw';
 import objects from './js/objects.md?raw';
-import eventHandling from "./js/event-handeling.md?raw";
+import eventHandling from './js/event-handeling.md?raw';
 import debounceAndThrottle from './js/Debouncing & Throttling.md?raw';
+import variablesAndScoping from './js/Variables & Scoping.md?raw';
 
 import reactIntro from './react/react-intro.md?raw';
 import reactInterviewQuestions from './react/interview-questions.md?raw';
@@ -109,38 +110,43 @@ export const markdownData: Category[] = [
     documents: [
       {
         id: 'intro-to-js',
-        title: 'Introduction to Javascript',
+        title: 'Introduction',
         content: jsIntro,
       },
       {
         id: 'js-top30q&a',
-        title: 'Javascript Interview Questions',
+        title: 'Interview Questions',
         content: jsInterviewQuestions,
       },
       {
         id: 'js-l1-l2-interview',
-        title: 'L1 & L2 javascript interviews Questions',
+        title: 'L1 & L2 interviews Questions',
         content: JSL1andL2InterviewQuestions,
       },
       {
         id: 'js-array-methods',
-        title: 'Javascript Arrays Methods',
+        title: 'Arrays Methods',
         content: Arrays,
       },
       {
         id: 'js-objects',
-        title: 'JavaScript Object Methods',
+        title: 'Object Methods',
         content: objects,
       },
       {
         id: 'js-event-handling',
-        title: 'Event Handling in JavaScript',
+        title: 'Event Handling',
         content: eventHandling,
       },
-            {
+      {
         id: 'js-debouncing-&-throttling',
         title: 'Debouncing & Throttling',
         content: debounceAndThrottle,
+      },
+      {
+        id: 'js-variables-&-scoping',
+        title: 'Variables & Scoping',
+        content: variablesAndScoping,
       },
     ],
   },
