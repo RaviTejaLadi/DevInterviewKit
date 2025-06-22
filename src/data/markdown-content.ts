@@ -39,6 +39,7 @@ import htmlCheatSheet from './cheat-sheets/html.md?raw';
 import cssCheatSheet from './cheat-sheets/css.md?raw';
 import jsCheatSheet from './cheat-sheets/js.md?raw';
 import reactCheatSheet from './cheat-sheets/react.md?raw';
+import gitCheatSheet from './cheat-sheets/git.md?raw';
 
 export const markdownData: Category[] = [
   {
@@ -259,6 +260,10 @@ export const markdownData: Category[] = [
         id: 'react-cheat-sheet',
         title: 'React',
         content: reactCheatSheet,
+      },      {
+        id: 'git-cheat-sheet',
+        title: 'Git',
+        content: gitCheatSheet,
       },
     ],
   },
