@@ -1,17 +1,17 @@
-# JavaScript Variables & Scoping
+# 🟨 JavaScript Variables & Scoping
 
-## Variable Declarations: `var`, `let`, `const`
+## 📝 Variable Declarations: `var`, `let`, `const`
 
 | Feature | `var` | `let` | `const` |
 |---------|-------|-------|---------|
-| **Scope** | Function or Global | Block | Block |
-| **Hoisting** | Yes (initialized with `undefined`) | Yes (but in TDZ) | Yes (but in TDZ) |
-| **Re-declaration** | Allowed | Not allowed in same scope | Not allowed in same scope |
-| **Re-assignment** | Allowed | Allowed | Not allowed |
-| **Temporal Dead Zone** | No | Yes | Yes |
+| **Scope** | 🌍 Function or Global | 🧱 Block | 🧱 Block |
+| **Hoisting** | ✅ (initialized with `undefined`) | ✅ (but in 🕳️ TDZ) | ✅ (but in 🕳️ TDZ) |
+| **Re-declaration** | 🔁 Allowed | 🚫 Not allowed in same scope | 🚫 Not allowed in same scope |
+| **Re-assignment** | 🔁 Allowed | 🔁 Allowed | 🚫 Not allowed |
+| **Temporal Dead Zone** | ❌ No | ✅ Yes | ✅ Yes |
 | **Introduced** | ES5 | ES6 (2015) | ES6 (2015) |
 
-### Examples
+### 💡 Examples
 
 #### `var` Declaration
 ```javascript
@@ -70,14 +70,14 @@ arr.push(4); // Allowed
 // arr = [5, 6, 7]; // TypeError: Assignment to constant variable
 ```
 
-## Hoisting & Temporal Dead Zone (TDZ)
+## 🚀 Hoisting & Temporal Dead Zone (TDZ)
 
 | Concept | Definition | Applies To |
 |---------|------------|------------|
-| **Hoisting** | JavaScript's behavior of moving declarations to the top of their scope during compilation | All declarations (`var`, `let`, `const`, functions) |
-| **Temporal Dead Zone** | Period between entering scope and declaration where variable cannot be accessed | `let` and `const` only |
+| **Hoisting** | ⬆️ JavaScript's behavior of moving declarations to the top of their scope during compilation | All declarations (`var`, `let`, `const`, functions) |
+| **Temporal Dead Zone** | ⏳ Period between entering scope and declaration where variable cannot be accessed | `let` and `const` only |
 
-### Hoisting Examples
+### 🏗️ Hoisting Examples
 
 #### `var` Hoisting
 ```javascript
@@ -119,15 +119,15 @@ var myFuncExpr = function() {
 };
 ```
 
-## Scoping Types
+## 🗂️ Scoping Types
 
 | Scope Type | Definition | Created By | Accessibility |
 |------------|------------|------------|---------------|
-| **Global Scope** | Variables accessible everywhere in the program | Variables declared outside functions/blocks | Entire program |
-| **Function Scope** | Variables accessible only within the function | `var` declarations, function parameters | Within function only |
-| **Block Scope** | Variables accessible only within the block | `let`, `const` declarations | Within `{}` block only |
+| **Global Scope** | 🌐 Variables accessible everywhere in the program | Variables declared outside functions/blocks | Entire program |
+| **Function Scope** | 🏛️ Variables accessible only within the function | `var` declarations, function parameters | Within function only |
+| **Block Scope** | 🧱 Variables accessible only within the block | `let`, `const` declarations | Within `{}` block only |
 
-### Scope Examples
+### 🔍 Scope Examples
 
 #### Global Scope
 ```javascript
@@ -191,19 +191,19 @@ for (let i = 0; i < 3; i++) {
 // console.log(blockScoped); // ReferenceError
 ```
 
-## Best Practices
+## 🌟 Best Practices
 
 | Practice | Reason | Example |
 |----------|--------|---------|
-| **Use `const` by default** | Prevents accidental reassignment | `const name = 'John';` |
-| **Use `let` when reassignment needed** | Block scoped and safer than `var` | `let counter = 0;` |
-| **Avoid `var`** | Function scoped, hoisting issues | Use `let`/`const` instead |
-| **Declare variables at top of scope** | Makes hoisting behavior explicit | Declare before use |
-| **Use meaningful names** | Improves code readability | `userAge` vs `x` |
+| **Use `const` by default** | 🛡️ Prevents accidental reassignment | `const name = 'John';` |
+| **Use `let` when reassignment needed** | 🧱 Block scoped and safer than `var` | `let counter = 0;` |
+| **Avoid `var`** | ⚠️ Function scoped, hoisting issues | Use `let`/`const` instead |
+| **Declare variables at top of scope** | ⬆️ Makes hoisting behavior explicit | Declare before use |
+| **Use meaningful names** | 🏷️ Improves code readability | `userAge` vs `x` |
 
-## Common Pitfalls
+## ⚠️ Common Pitfalls
 
-### Loop Variable Issue with `var`
+### 🔁 Loop Variable Issue with `var`
 ```javascript
 // Problem with var
 for (var i = 0; i < 3; i++) {
@@ -216,7 +216,7 @@ for (let i = 0; i < 3; i++) {
 }
 ```
 
-### Temporal Dead Zone Confusion
+### ⏳ Temporal Dead Zone Confusion
 ```javascript
 function tdz() {
     console.log(typeof x); // ReferenceError (not "undefined")
