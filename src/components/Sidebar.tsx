@@ -17,7 +17,6 @@ interface SidebarProps {
 export function Sidebar({ categories, selectedDocument, onDocumentSelect, className }: SidebarProps) {
   const [expandedCategories, setExpandedCategories] = useState<Set<string | null>>(new Set());
   const { isMobileOpen, setIsMobileOpen } = useMobileStore();
-  // const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   // Initialize expanded categories based on saved document
   useEffect(() => {
