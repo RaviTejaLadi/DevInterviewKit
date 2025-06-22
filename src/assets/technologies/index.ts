@@ -25,6 +25,7 @@ import Utils from './Utils';
 import Flow from './Flow';
 import Sheets from './Sheets';
 import WebSecurity from './WebSecurity';
+import Network from './Network';
 
 export {
   WebSecurity,
@@ -54,4 +55,5 @@ export {
   Vite,
   VsCode,
   HTML,
+  Network,
 };

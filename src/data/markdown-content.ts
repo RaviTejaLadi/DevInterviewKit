@@ -51,10 +51,21 @@ import httpCheatSheet from './cheat-sheets/http.md?raw';
 
 import webSecurity from './web-security.md?raw';
 
-import networking from "./networking.md?raw";
+import networking from './networking.md?raw';
 
 import Namaste from '@/assets/Icons/Namaste';
-import { Css, Flow, HTML, JavaScript, React, Sheets, TypeScript, Utils, WebSecurity } from '@/assets/technologies';
+import {
+  Css,
+  Flow,
+  HTML,
+  JavaScript,
+  Network,
+  React,
+  Sheets,
+  TypeScript,
+  Utils,
+  WebSecurity,
+} from '@/assets/technologies';
 
 export const markdownData: Category[] = [
   {
@@ -295,10 +306,11 @@ export const markdownData: Category[] = [
       title: 'Introduction',
       content: webSecurity,
     },
-  },{
+  },
+  {
     id: 'networking',
     title: 'Networking',
-    Icon: WebSecurity,
+    Icon: Network,
     document: {
       id: 'networking-questions',
       title: 'Introduction',
