@@ -92,7 +92,7 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
                         className={cn(
                           'w-full text-left py-1 px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors',
                           selectedDocument?.id === document.id &&
-                            'bg-blue-500/20 border-blue-200 border shadow-sm dark:bg-gray-200/10 dark:border-gray-200/10 font-medium text-foreground'
+                            'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10 font-medium text-foreground'
                         )}
                       >
                         {document.title}
