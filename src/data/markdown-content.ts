@@ -15,6 +15,7 @@ import JSL1andL2InterviewQuestions from './js/21-programs-inL1&L2.md?raw';
 import Arrays from './js/arrays.md?raw';
 import objects from './js/objects.md?raw';
 import eventHandling from "./js/event-handeling.md?raw";
+import debounceAndThrottle from './js/Debouncing & Throttling.md?raw';
 
 import reactIntro from './react/react-intro.md?raw';
 import reactInterviewQuestions from './react/interview-questions.md?raw';
@@ -135,6 +136,11 @@ export const markdownData: Category[] = [
         id: 'js-event-handling',
         title: 'Event Handling in JavaScript',
         content: eventHandling,
+      },
+            {
+        id: 'js-debouncing-&-throttling',
+        title: 'Debouncing & Throttling',
+        content: debounceAndThrottle,
       },
     ],
   },
