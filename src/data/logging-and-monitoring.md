@@ -54,9 +54,9 @@ BENEFITS ✅               CHALLENGES ❌
 
 ```bash
     🔐 PRIVACY-FIRST APPROACH
-         │
-    ┌────┼────┐
-    ▼    ▼    ▼
+             │
+    ┌────────┼────────┐
+    ▼        ▼        ▼
  Consent Anonymous Minimal
   Based    Data     Data
 ```
