@@ -38,10 +38,10 @@ import reactTable from './react-libraries-&-utilities/react-table.md?raw';
 import reactTableHooks from './react-libraries-&-utilities/react-table-hooks-synatx.md?raw';
 import reactRouterDom from './react-libraries-&-utilities/react-router-dom.md?raw';
 
-import stateManagementIntro from './state-management/intro.md?raw';
-import reduxToolkit from './state-management/Redux Toolkit.md?raw';
-import zustand from './state-management/Zustand.md?raw';
-import useReducerSetup from './state-management/State Management with useReducer and useContext in TypeScript.md?raw';
+import stateManagementIntro from './Frontend/state-management/intro.md?raw';
+import reduxToolkit from './Frontend/state-management/Redux Toolkit.md?raw';
+import zustand from './Frontend/state-management/Zustand.md?raw';
+import useReducerSetup from './Frontend/state-management/State Management with useReducer and useContext in TypeScript.md?raw';
 
 import htmlCheatSheet from './cheat-sheets/html.md?raw';
 import cssCheatSheet from './cheat-sheets/css.md?raw';
