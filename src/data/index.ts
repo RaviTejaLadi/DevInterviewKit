@@ -20,6 +20,7 @@ import variablesAndScoping from './Frontend/js/Variables & Scoping.md?raw';
 import dataTypesAndTypeConversion from './Frontend/js/Data Types & Type Conversion.md?raw';
 import webStorageApi from './Frontend/js/web-storage-api.md?raw';
 import loopingStatements from './Frontend/js/looping-statements.md?raw';
+import conditionalStatements from './Frontend/js/conditional-statements.md?raw';
 
 import tsIntro from './Frontend/ts/Introduction to TypeScript.md?raw';
 import tsInterviewQuestions from './Frontend/ts/interview-questions-theory.md?raw';
@@ -179,6 +180,11 @@ export const markdownData: Category[] = [
         id: 'js-looping-statements',
         title: 'Looping Statements',
         content: loopingStatements,
+      },
+      {
+        id: 'js-conditional-statements',
+        title: 'Conditional Statements',
+        content: conditionalStatements,
       },
     ],
   },
