@@ -43,13 +43,13 @@ import reduxToolkit from './Frontend/state-management/Redux Toolkit.md?raw';
 import zustand from './Frontend/state-management/Zustand.md?raw';
 import useReducerSetup from './Frontend/state-management/State Management with useReducer and useContext in TypeScript.md?raw';
 
-import htmlCheatSheet from './cheat-sheets/html.md?raw';
-import cssCheatSheet from './cheat-sheets/css.md?raw';
-import jsCheatSheet from './cheat-sheets/js.md?raw';
-import reactCheatSheet from './cheat-sheets/react.md?raw';
-import gitCheatSheet from './cheat-sheets/git.md?raw';
-import httpCheatSheet from './cheat-sheets/http.md?raw';
-import tailwindCheatSheet from './cheat-sheets/tailwind.md?raw';
+import htmlCheatSheet from './Resources/cheat-sheets/html.md?raw';
+import cssCheatSheet from './Resources/cheat-sheets/css.md?raw';
+import jsCheatSheet from './Resources/cheat-sheets/js.md?raw';
+import reactCheatSheet from './Resources/cheat-sheets/react.md?raw';
+import gitCheatSheet from './Resources/cheat-sheets/git.md?raw';
+import httpCheatSheet from './Resources/cheat-sheets/http.md?raw';
+import tailwindCheatSheet from './Resources/cheat-sheets/tailwind.md?raw';
 
 import webSecurity from './web-security.md?raw';
 import networking from './networking.md?raw';
