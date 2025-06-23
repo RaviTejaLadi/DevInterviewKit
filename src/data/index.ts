@@ -59,18 +59,14 @@ import owasp from './SystemDesign/owasp.md?raw';
 import Namaste from '@/assets/Icons/Namaste';
 import {
   Css,
-  ErrorLogging,
   Flow,
   HTML,
   JavaScript,
-  Network,
-  Owasp,
   React,
   Sheets,
   System,
   TypeScript,
   Utils,
-  WebSecurity,
 } from '@/assets/technologies';
 
 export const markdownData: Category[] = [
