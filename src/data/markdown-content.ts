@@ -1,10 +1,10 @@
 import type { Category } from '@/types/markdown-content-types';
 import introduction from './introduction.md?raw';
 
-import htmlIntro from './html/html-intro.md?raw';
-import htmlQuickReview from './html/quick-review-checklist.md?raw';
-import htmlInterviewQuestions from './html/top-50-q-&-a.md?raw';
-import SemanticHTMLAccessibility from './html/Semantic HTML & Accessibility.md?raw';
+import htmlIntro from './Frontend/html/html-intro.md?raw';
+import htmlQuickReview from './Frontend/html/quick-review-checklist.md?raw';
+import htmlInterviewQuestions from './Frontend/html/top-50-q-&-a.md?raw';
+import SemanticHTMLAccessibility from './Frontend/html/Semantic HTML & Accessibility.md?raw';
 
 import cssIntro from './css/css-intro.md?raw';
 import cssInterviewQuestions from './css/top-50-q-&-a.md?raw';
