@@ -49,6 +49,7 @@ import jsCheatSheet from './cheat-sheets/js.md?raw';
 import reactCheatSheet from './cheat-sheets/react.md?raw';
 import gitCheatSheet from './cheat-sheets/git.md?raw';
 import httpCheatSheet from './cheat-sheets/http.md?raw';
+import tailwindCheatSheet from './cheat-sheets/tailwind.md?raw';
 
 import webSecurity from './web-security.md?raw';
 import networking from './networking.md?raw';
@@ -360,6 +361,11 @@ export const markdownData: Category[] = [
         id: 'css-cheat-sheet',
         title: 'CSS',
         content: cssCheatSheet,
+      },
+      {
+        id: 'tailwind-cheat-sheet',
+        title: 'Tailwind CSS',
+        content: tailwindCheatSheet,
       },
       {
         id: 'js-cheat-sheet',
