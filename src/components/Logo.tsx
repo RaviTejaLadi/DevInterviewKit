@@ -9,9 +9,9 @@ const Logo = () => {
       </div>
       <div className="flex flex-col">
         <span className="text-md my-0 font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-          Frontend Interview
+          Dev Interview
         </span>
-        <span className="text-[.5rem] font-medium -mt-2 text-muted-foreground tracking-wider">Preparation Kit</span>
+        <span className="text-[.5rem] font-medium -mt-2 text-muted-foreground tracking-wider"> Kit</span>
       </div>
     </div>
   );
