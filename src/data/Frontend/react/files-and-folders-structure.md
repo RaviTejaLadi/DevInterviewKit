@@ -1,6 +1,6 @@
-# 📁 Vite React Project – Complete File Guide
+# 📁 Vite React Project – Default Files and Folders structure
 
-```tsx
+```bash
 my-vite-react-app/
 ├── node_modules/          # 📦 3rd-party packages
 ├── public/                # 🗂️ Static assets

@@ -63,8 +63,27 @@ import levelOneDsa from './DSA/15-easy.md?raw';
 import levelTwoDsa from './DSA/25-medium.md?raw';
 import levelThreeDsa from './DSA/10-hard.md?raw';
 
+import nextIntro from './Frontend/Next/intro.md?raw';
+import nextInterviewQuestions from './Frontend/Next/files-and-folders-structure.md?raw';
+import nextQuickReview from './Frontend/Next/quick-review-checklist.md?raw';
+import commonNextInterviewQuestions from './Frontend/Next/common-questions.md?raw';
+import pagesRouterNextInterviewQuestions from './Frontend/Next/pages-router-questions.md?raw';
+import appRouterNextInterviewQuestions from './Frontend/Next/app-router-questions.md?raw';
+
 import Namaste from '@/assets/Icons/Namaste';
-import { Css, Dsa, Flow, HTML, JavaScript, React, Sheets, System, TypeScript, Utils } from '@/assets/technologies';
+import {
+  Css,
+  Dsa,
+  Flow,
+  HTML,
+  JavaScript,
+  NextJS,
+  React,
+  Sheets,
+  System,
+  TypeScript,
+  Utils,
+} from '@/assets/technologies';
 
 export const markdownData: Category[] = [
   {
@@ -362,6 +381,43 @@ export const markdownData: Category[] = [
         id: 'level-three-dsa-easy',
         title: 'Level 3 DSA Hard',
         content: levelThreeDsa,
+      },
+    ],
+  },
+  {
+    id: 'next-js',
+    title: 'Next.js',
+    Icon: NextJS,
+    documents: [
+      {
+        id: 'next-js-intro',
+        title: 'Introduction',
+        content: nextIntro,
+      },
+      {
+        id: 'next-quick-review-checklist',
+        title: 'Quick Review Checklist',
+        content: nextQuickReview,
+      },
+      {
+        id: 'next-js-files-and-folders-structure',
+        title: 'Files and Folders Structure',
+        content: nextInterviewQuestions,
+      },
+      {
+        id: 'common-next-js-interview-questions',
+        title: 'Common Interview Questions',
+        content: commonNextInterviewQuestions,
+      },
+      {
+        id: 'pages-routers-next-js-interview-questions',
+        title: 'Pages Routers Interview Questions',
+        content: pagesRouterNextInterviewQuestions,
+      },
+      {
+        id: 'app-routers-next-js-interview-questions',
+        title: 'App Routers Interview Questions',
+        content: appRouterNextInterviewQuestions,
       },
     ],
   },

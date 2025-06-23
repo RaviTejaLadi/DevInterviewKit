@@ -29,9 +29,11 @@ import Network from './Network';
 import ErrorLogging from './ErrorLogging';
 import Owasp from './Owasp';
 import System from './System';
-import Dsa from "./Dsa";
+import Dsa from './Dsa';
+import NextJS from './NextJS';
 
 export {
+  NextJS,
   Dsa,
   WebSecurity,
   Sheets,
