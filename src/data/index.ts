@@ -56,18 +56,13 @@ import networking from './SystemDesign/networking.md?raw';
 import errorLogging from './SystemDesign/logging-and-monitoring.md?raw';
 import owasp from './SystemDesign/owasp.md?raw';
 
+import dsaIntro from './DSA/intro.md?raw';
+import levelOneDsa from './DSA/15-easy.md?raw';
+import levelTwoDsa from './DSA/25-medium.md?raw';
+import levelThreeDsa from './DSA/10-hard.md?raw';
+
 import Namaste from '@/assets/Icons/Namaste';
-import {
-  Css,
-  Flow,
-  HTML,
-  JavaScript,
-  React,
-  Sheets,
-  System,
-  TypeScript,
-  Utils,
-} from '@/assets/technologies';
+import { Css, Dsa, Flow, HTML, JavaScript, React, Sheets, System, TypeScript, Utils } from '@/assets/technologies';
 
 export const markdownData: Category[] = [
   {
@@ -331,7 +326,33 @@ export const markdownData: Category[] = [
       },
     ],
   },
-
+  {
+    id: 'dsa',
+    title: 'DSA',
+    Icon: Dsa,
+    documents: [
+      {
+        id: 'dsa-intro',
+        title: 'Introduction',
+        content: dsaIntro,
+      },
+      {
+        id: 'level-one-dsa-easy',
+        title: 'Level 1 DSA Easy',
+        content: levelOneDsa,
+      },
+      {
+        id: 'level-two-dsa-easy',
+        title: 'Level 2 DSA Medium',
+        content: levelTwoDsa,
+      },
+      {
+        id: 'level-three-dsa-easy',
+        title: 'Level 3 DSA Hard',
+        content: levelThreeDsa,
+      },
+    ],
+  },
   {
     id: 'cheat-sheets',
     title: 'Cheat Sheets',

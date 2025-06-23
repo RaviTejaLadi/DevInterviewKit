@@ -29,8 +29,10 @@ import Network from './Network';
 import ErrorLogging from './ErrorLogging';
 import Owasp from './Owasp';
 import System from './System';
+import Dsa from "./Dsa";
 
 export {
+  Dsa,
   WebSecurity,
   Sheets,
   Utils,
