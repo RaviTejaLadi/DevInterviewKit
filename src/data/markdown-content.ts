@@ -6,19 +6,19 @@ import htmlQuickReview from './Frontend/html/quick-review-checklist.md?raw';
 import htmlInterviewQuestions from './Frontend/html/top-50-q-&-a.md?raw';
 import SemanticHTMLAccessibility from './Frontend/html/Semantic HTML & Accessibility.md?raw';
 
-import cssIntro from './css/css-intro.md?raw';
-import cssInterviewQuestions from './css/top-50-q-&-a.md?raw';
+import cssIntro from './Frontend/css/css-intro.md?raw';
+import cssInterviewQuestions from './Frontend/css/top-50-q-&-a.md?raw';
 
-import jsIntro from './js/js-intro.md?raw';
-import jsInterviewQuestions from './js/top-30-q-&-a.md?raw';
-import JSL1andL2InterviewQuestions from './js/21-programs-inL1&L2.md?raw';
-import Arrays from './js/arrays.md?raw';
-import objects from './js/objects.md?raw';
-import eventHandling from './js/event-handeling.md?raw';
-import debounceAndThrottle from './js/Debouncing & Throttling.md?raw';
-import variablesAndScoping from './js/Variables & Scoping.md?raw';
-import dataTypesAndTypeConversion from './js/Data Types & Type Conversion.md?raw';
-import webStorageApi from './js/web-storage-api.md?raw';
+import jsIntro from './Frontend/js/js-intro.md?raw';
+import jsInterviewQuestions from './Frontend/js/top-30-q-&-a.md?raw';
+import JSL1andL2InterviewQuestions from './Frontend/js/21-programs-inL1&L2.md?raw';
+import Arrays from './Frontend/js/arrays.md?raw';
+import objects from './Frontend/js/objects.md?raw';
+import eventHandling from './Frontend/js/event-handling.md?raw';
+import debounceAndThrottle from './Frontend/js/Debouncing & Throttling.md?raw';
+import variablesAndScoping from './Frontend/js/Variables & Scoping.md?raw';
+import dataTypesAndTypeConversion from './Frontend/js/Data Types & Type Conversion.md?raw';
+import webStorageApi from './Frontend/js/web-storage-api.md?raw';
 
 import tsIntro from './ts/Introduction to TypeScript.md?raw';
 import tsInterviewQuestions from './ts/interview-questions-theory.md?raw';
