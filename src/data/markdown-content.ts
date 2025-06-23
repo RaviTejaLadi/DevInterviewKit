@@ -20,8 +20,8 @@ import variablesAndScoping from './Frontend/js/Variables & Scoping.md?raw';
 import dataTypesAndTypeConversion from './Frontend/js/Data Types & Type Conversion.md?raw';
 import webStorageApi from './Frontend/js/web-storage-api.md?raw';
 
-import tsIntro from './ts/Introduction to TypeScript.md?raw';
-import tsInterviewQuestions from './ts/interview-questions-theory.md?raw';
+import tsIntro from './Frontend/ts/Introduction to TypeScript.md?raw';
+import tsInterviewQuestions from './Frontend/ts/interview-questions-theory.md?raw';
 
 import reactIntro from './Frontend/react/react-intro.md?raw';
 import reactInterviewQuestions from './Frontend/react/interview-questions.md?raw';
