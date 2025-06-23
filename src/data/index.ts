@@ -51,10 +51,10 @@ import gitCheatSheet from './Resources/cheat-sheets/git.md?raw';
 import httpCheatSheet from './Resources/cheat-sheets/http.md?raw';
 import tailwindCheatSheet from './Resources/cheat-sheets/tailwind.md?raw';
 
-import webSecurity from './web-security.md?raw';
-import networking from './networking.md?raw';
-import errorLogging from './logging-and-monitoring.md?raw';
-import owasp from './owasp.md?raw';
+import webSecurity from './SystemDesign/web-security.md?raw';
+import networking from './SystemDesign/networking.md?raw';
+import errorLogging from './SystemDesign/logging-and-monitoring.md?raw';
+import owasp from './SystemDesign/owasp.md?raw';
 
 import Namaste from '@/assets/Icons/Namaste';
 import {
@@ -67,6 +67,7 @@ import {
   Owasp,
   React,
   Sheets,
+  System,
   TypeScript,
   Utils,
   WebSecurity,
@@ -308,45 +309,33 @@ export const markdownData: Category[] = [
     ],
   },
   {
-    id: 'web-security',
-    title: 'Web Security',
-    Icon: WebSecurity,
-    document: {
-      id: 'web-security-intro',
-      title: 'Introduction',
-      content: webSecurity,
-    },
+    id: 'system-design',
+    title: 'System Design',
+    Icon: System,
+    documents: [
+      {
+        id: 'web-security-intro',
+        title: 'Introduction',
+        content: webSecurity,
+      },
+      {
+        id: 'networking-questions',
+        title: 'Introduction',
+        content: networking,
+      },
+      {
+        id: '   error-logging-questions',
+        title: 'Introduction',
+        content: errorLogging,
+      },
+      {
+        id: 'owasp',
+        title: 'Introduction',
+        content: owasp,
+      },
+    ],
   },
-  {
-    id: 'networking',
-    title: 'Networking',
-    Icon: Network,
-    document: {
-      id: 'networking-questions',
-      title: 'Introduction',
-      content: networking,
-    },
-  },
-  {
-    id: 'error-logging',
-    title: 'Error Logging',
-    Icon: ErrorLogging,
-    document: {
-      id: '   error-logging-questions',
-      title: 'Introduction',
-      content: errorLogging,
-    },
-  },
-  {
-    id: 'owasp-top-10',
-    title: 'OWASP Top 10',
-    Icon: Owasp,
-    document: {
-      id: 'owasp',
-      title: 'Introduction',
-      content: owasp,
-    },
-  },
+
   {
     id: 'cheat-sheets',
     title: 'Cheat Sheets',

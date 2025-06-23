@@ -1,7 +1,7 @@
 import { useState, useMemo, lazy, Suspense, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 
-import { markdownData } from './data/markdown-content';
+import { markdownData } from './data';
 import { Navbar } from './components/NavBar';
 import { ThemeProvider } from './context/ThemeContext';
 import { MarkdownDocument } from './types/markdown-content-types';

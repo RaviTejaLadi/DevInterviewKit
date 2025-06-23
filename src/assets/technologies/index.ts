@@ -28,6 +28,7 @@ import WebSecurity from './WebSecurity';
 import Network from './Network';
 import ErrorLogging from './ErrorLogging';
 import Owasp from './Owasp';
+import System from './System';
 
 export {
   WebSecurity,
@@ -60,4 +61,5 @@ export {
   Network,
   ErrorLogging,
   Owasp,
+  System,
 };
