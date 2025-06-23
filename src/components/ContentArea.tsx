@@ -93,13 +93,13 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
                 </pre>
               ),
               table: ({ children }) => (
-                <div className="overflow-x-auto mb-4">
-                  <Table className="min-w-full border border-border rounded-lg">{children}</Table>
+                <div className="overflow-x-auto mb-4 border border-border rounded-lg">
+                  <Table className="min-w-full border-none">{children}</Table>
                 </div>
               ),
               thead: ({ children }) => <TableHeader className="bg-muted">{children}</TableHeader>,
               th: ({ children }) => (
-                <TableHead className="border border-border px-4 py-2 text-left font-semibold text-foreground">
+                <TableHead className="border-none px-4 py-2 text-left font-semibold text-foreground">
                   {children}
                 </TableHead>
               ),
