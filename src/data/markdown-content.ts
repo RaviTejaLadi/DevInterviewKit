@@ -30,13 +30,13 @@ import hooks from './Frontend/react/hooks.md?raw';
 import reactQuickReview from './Frontend/react/quick-review-checklist.md?raw';
 import reactFilesAndFoldersStructure from './Frontend/react/files-and-folders-structure.md?raw';
 
-import reactOpenSourcePackages from './react-libraries-&-utilities/react open source packages.md?raw';
-import reactHookFormDocs from './react-libraries-&-utilities/react-hook-form.md?raw';
-import reactQuery from './react-libraries-&-utilities/react-query.md?raw';
-import reactQueryHooks from './react-libraries-&-utilities/react-query-hooks-synatx.md?raw';
-import reactTable from './react-libraries-&-utilities/react-table.md?raw';
-import reactTableHooks from './react-libraries-&-utilities/react-table-hooks-synatx.md?raw';
-import reactRouterDom from './react-libraries-&-utilities/react-router-dom.md?raw';
+import reactOpenSourcePackages from './Frontend/react-libraries-&-utilities/react open source packages.md?raw';
+import reactHookFormDocs from './Frontend/react-libraries-&-utilities/react-hook-form.md?raw';
+import reactQuery from './Frontend/react-libraries-&-utilities/react-query.md?raw';
+import reactQueryHooks from './Frontend/react-libraries-&-utilities/react-query-hooks-syntax.md?raw';
+import reactTable from './Frontend/react-libraries-&-utilities/react-table.md?raw';
+import reactTableHooks from './Frontend/react-libraries-&-utilities/react-table-hooks-syntax.md?raw';
+import reactRouterDom from './Frontend/react-libraries-&-utilities/react-router-dom.md?raw';
 
 import stateManagementIntro from './Frontend/state-management/intro.md?raw';
 import reduxToolkit from './Frontend/state-management/Redux Toolkit.md?raw';
