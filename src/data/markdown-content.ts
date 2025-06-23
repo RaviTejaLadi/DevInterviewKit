@@ -23,12 +23,12 @@ import webStorageApi from './Frontend/js/web-storage-api.md?raw';
 import tsIntro from './ts/Introduction to TypeScript.md?raw';
 import tsInterviewQuestions from './ts/interview-questions-theory.md?raw';
 
-import reactIntro from './react/react-intro.md?raw';
-import reactInterviewQuestions from './react/interview-questions.md?raw';
-import reactTsxSetup from './react/react-tsx-setup.md?raw';
-import hooks from './react/hooks.md?raw';
-import reactQuickReview from './react/quick-review-checklist.md?raw';
-import reactFilesAndFoldersStructure from './react/files-and-folders-stracture.md?raw';
+import reactIntro from './Frontend/react/react-intro.md?raw';
+import reactInterviewQuestions from './Frontend/react/interview-questions.md?raw';
+import reactTsxSetup from './Frontend/react/react-tsx-setup.md?raw';
+import hooks from './Frontend/react/hooks.md?raw';
+import reactQuickReview from './Frontend/react/quick-review-checklist.md?raw';
+import reactFilesAndFoldersStructure from './Frontend/react/files-and-folders-structure.md?raw';
 
 import reactOpenSourcePackages from './react-libraries-&-utilities/react open source packages.md?raw';
 import reactHookFormDocs from './react-libraries-&-utilities/react-hook-form.md?raw';
