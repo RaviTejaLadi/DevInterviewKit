@@ -31,8 +31,10 @@ import Owasp from './Owasp';
 import System from './System';
 import Dsa from './Dsa';
 import NextJS from './NextJS';
+import Vue from './Vue';
 
 export {
+  Vue,
   NextJS,
   Dsa,
   WebSecurity,

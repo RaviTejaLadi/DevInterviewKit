@@ -43,7 +43,7 @@ import zustand from './state-management/Zustand.md?raw';
 import useReducerSetup from './state-management/State Management with useReducer and useContext in TypeScript.md?raw';
 
 import nextIntro from './Next/intro.md?raw';
-import nextInterviewQuestions from './Next/files-and-folders-structure.md?raw';
+import nextFilesAndFoldersStructure from './Next/files-and-folders-structure.md?raw';
 import nextQuickReview from './Next/quick-review-checklist.md?raw';
 import commonNextInterviewQuestions from './Next/common-questions.md?raw';
 import pagesRouterNextInterviewQuestions from './Next/pages-router-questions.md?raw';
@@ -55,7 +55,11 @@ import reactMachineCodingMediumLevel from './react-machine-coding/level-medium.m
 import reactMachineCodingHardLevel from './react-machine-coding/level-hard.md?raw';
 import reactMachineCodingExpertLevel from './react-machine-coding/level-expert.md?raw';
 
-import { Css, Flow, HTML, JavaScript, NextJS, React, TypeScript, Utils } from '@/assets/technologies';
+import vueIntro from './vue/intro.md?raw';
+import vueFilesAndFoldersStructure from './vue/files-and-folders-structure.md?raw';
+import vueTheoryQuestions from './vue/theory-questions.md?raw';
+import vueCodingQuestions from './vue/coding-questions.md?raw';
+import { Css, Flow, HTML, JavaScript, NextJS, React, TypeScript, Utils, Vue } from '@/assets/technologies';
 
 export const frontendData = [
   {
@@ -188,7 +192,7 @@ export const frontendData = [
   },
   {
     id: 'react',
-    title: 'React',
+    title: 'React.js',
     Icon: React,
     documents: [
       {
@@ -241,7 +245,7 @@ export const frontendData = [
       {
         id: 'next-js-files-and-folders-structure',
         title: 'Files and Folders Structure',
-        content: nextInterviewQuestions,
+        content: nextFilesAndFoldersStructure,
       },
       {
         id: 'common-next-js-interview-questions',
@@ -257,6 +261,38 @@ export const frontendData = [
         id: 'app-routers-next-js-interview-questions',
         title: 'App Routers Interview Questions',
         content: appRouterNextInterviewQuestions,
+      },
+    ],
+  },
+  {
+    id: 'vue-js',
+    title: 'Vue.js',
+    Icon: Vue,
+    documents: [
+      {
+        id: 'vue-js-intro',
+        title: 'Introduction',
+        content: vueIntro,
+      },
+      {
+        id: 'vue-js-files-and-folders-structure',
+        title: 'Files and Folders Structure',
+        content: vueFilesAndFoldersStructure,
+      },
+      {
+        id: 'common-next-js-interview-questions',
+        title: 'Common Interview Questions',
+        content: commonNextInterviewQuestions,
+      },
+      {
+        id: 'theory-vue-js-interview-questions',
+        title: 'Theory Interview Questions',
+        content: vueTheoryQuestions,
+      },
+      {
+        id: 'coding-vue-js-interview-questions',
+        title: 'coding Interview Questions',
+        content: vueCodingQuestions,
       },
     ],
   },
