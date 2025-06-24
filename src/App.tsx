@@ -18,12 +18,14 @@ function App() {
   // Get all available documents for selection and persistence
   const allDocuments = useMemo(() => {
     const docs: MarkdownDocument[] = [];
-    markdownData.forEach((category) => {
-      if (category.documents) {
-        docs.push(...category.documents);
-      } else if (category.document) {
-        docs.push(category.document);
-      }
+    markdownData.forEach((section) => {
+      section.categories.forEach((category) => {
+        if (category.documents) {
+          docs.push(...category.documents);
+        } else if (category.document) {
+          docs.push(category.document);
+        }
+      });
     });
     return docs;
   }, []);
@@ -54,24 +56,26 @@ function App() {
     const results: MarkdownDocument[] = [];
     const lowerSearchTerm = searchTerm.toLowerCase();
 
-    markdownData.forEach((category) => {
-      if (category.documents) {
-        category.documents.forEach((document) => {
-          const titleMatch = document.title.toLowerCase().includes(lowerSearchTerm);
-          const contentMatch = document.content.toLowerCase().includes(lowerSearchTerm);
+    markdownData.forEach((section) => {
+      section.categories.forEach((category) => {
+        if (category.documents) {
+          category.documents.forEach((document) => {
+            const titleMatch = document.title.toLowerCase().includes(lowerSearchTerm);
+            const contentMatch = document.content.toLowerCase().includes(lowerSearchTerm);
+
+            if (titleMatch || contentMatch) {
+              results.push(document);
+            }
+          });
+        } else if (category.document) {
+          const titleMatch = category.document.title.toLowerCase().includes(lowerSearchTerm);
+          const contentMatch = category.document.content.toLowerCase().includes(lowerSearchTerm);
 
           if (titleMatch || contentMatch) {
-            results.push(document);
+            results.push(category.document);
           }
-        });
-      } else if (category.document) {
-        const titleMatch = category.document.title.toLowerCase().includes(lowerSearchTerm);
-        const contentMatch = category.document.content.toLowerCase().includes(lowerSearchTerm);
-
-        if (titleMatch || contentMatch) {
-          results.push(category.document);
         }
-      }
+      });
     });
 
     return results;
@@ -83,6 +87,7 @@ function App() {
   };
 
   const showSearchResults = searchTerm.trim().length > 0;
+
   return (
     <ThemeProvider>
       <div className=" bg-background text-foreground">
@@ -90,7 +95,7 @@ function App() {
 
         <div className=" mt-11 flex h-full ">
           <Sidebar
-            categories={markdownData}
+            sections={markdownData}
             selectedDocument={selectedDocument}
             onDocumentSelect={handleDocumentSelect}
           />

@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { ChevronDown, ChevronRight, X, Search, FileText } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { Category, MarkdownDocument } from '@/types/markdown-content-types';
+import { Section, MarkdownDocument } from '@/types/markdown-content-types';
 import { ScrollArea } from './ui/scroll-area';
 import { Input } from './ui/input';
 import Logo from './Logo';
@@ -10,13 +10,13 @@ import { Button } from './ui/button';
 import { highlightText } from '@/utils/highlightText';
 
 interface SidebarProps {
-  categories: Category[];
+  sections: Section[];
   selectedDocument: MarkdownDocument | null;
   onDocumentSelect: (document: MarkdownDocument) => void;
   className?: string;
 }
 
-export function Sidebar({ categories, selectedDocument, onDocumentSelect, className }: SidebarProps) {
+export function Sidebar({ sections, selectedDocument, onDocumentSelect, className }: SidebarProps) {
   const [expandedCategories, setExpandedCategories] = useState<Set<string | null>>(new Set());
   const [searchQuery, setSearchQuery] = useState('');
   const { isMobileOpen, setIsMobileOpen } = useMobileStore();
@@ -29,68 +29,85 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
     // Find the category that contains the saved document
     let categoryToExpand: string | null = null;
 
-    for (const category of categories) {
-      // Check if category has a single document that matches
-      if (category.document && category.document.id === savedDocumentId) {
-        categoryToExpand = category.id;
-        break;
-      }
-
-      // Check if category has multiple documents that include the saved one
-      if (category.documents) {
-        const foundDoc = category.documents.find((doc) => doc.id === savedDocumentId);
-        if (foundDoc) {
+    for (const section of sections) {
+      for (const category of section.categories) {
+        // Check if category has a single document that matches
+        if (category.document && category.document.id === savedDocumentId) {
           categoryToExpand = category.id;
           break;
         }
+
+        // Check if category has multiple documents that include the saved one
+        if (category.documents) {
+          const foundDoc = category.documents.find((doc) => doc.id === savedDocumentId);
+          if (foundDoc) {
+            categoryToExpand = category.id;
+            break;
+          }
+        }
       }
+      if (categoryToExpand) break;
     }
 
     if (categoryToExpand) {
       setExpandedCategories(new Set([categoryToExpand]));
     }
-  }, [categories]);
+  }, [sections]);
 
-  // Filter categories and documents based on search query
-  const filteredCategories = useMemo(() => {
+  // Filter sections and categories based on search query
+  const filteredSections = useMemo(() => {
     if (!searchQuery.trim()) {
-      return categories;
+      return sections;
     }
 
     const query = searchQuery.toLowerCase();
 
-    return categories
-      .map((category) => {
-        // Check if category title matches
-        const categoryMatches = category.title.toLowerCase().includes(query);
+    return sections
+      .map((section) => {
+        const filteredCategories = section.categories
+          .map((category) => {
+            // Check if category title matches
+            const categoryMatches = category.title.toLowerCase().includes(query);
 
-        // Filter documents within the category
-        let filteredDocuments: MarkdownDocument[] = [];
+            // Filter documents within the category
+            let filteredDocuments: MarkdownDocument[] = [];
 
-        if (category.documents) {
-          filteredDocuments = category.documents.filter(
-            (doc) => doc.title.toLowerCase().includes(query) || doc.content?.toLowerCase().includes(query)
-          );
-        }
+            if (category.documents) {
+              filteredDocuments = category.documents.filter(
+                (doc) => doc.title.toLowerCase().includes(query) || doc.content?.toLowerCase().includes(query)
+              );
+            }
 
-        // Check single document
-        const singleDocumentMatches =
-          category.document &&
-          (category.document.title.toLowerCase().includes(query) ||
-            category.document.content?.toLowerCase().includes(query));
+            // Check single document
+            const singleDocumentMatches =
+              category.document &&
+              (category.document.title.toLowerCase().includes(query) ||
+                category.document.content?.toLowerCase().includes(query));
 
-        // Include category if it matches or has matching documents
-        if (categoryMatches || filteredDocuments.length > 0 || singleDocumentMatches) {
+            // Include category if it matches or has matching documents
+            if (categoryMatches || filteredDocuments.length > 0 || singleDocumentMatches) {
+              return {
+                ...category,
+                documents: filteredDocuments.length > 0 ? filteredDocuments : category.documents,
+              };
+            }
+
+            return null;
+          })
+          .filter(Boolean);
+
+        // Include section if it has matching categories
+        if (filteredCategories.length > 0) {
           return {
-            ...category,
-            documents: filteredDocuments.length > 0 ? filteredDocuments : category.documents,
+            ...section,
+            categories: filteredCategories,
           };
         }
 
         return null;
       })
-      .filter(Boolean) as Category[];
-  }, [categories, searchQuery]);
+      .filter(Boolean) as Section[];
+  }, [sections, searchQuery]);
 
   // Get all matching documents for search results view
   const searchResults = useMemo(() => {
@@ -99,36 +116,40 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
     }
 
     const query = searchQuery.toLowerCase();
-    const results: Array<{ document: MarkdownDocument; categoryTitle: string }> = [];
+    const results: Array<{ document: MarkdownDocument; categoryTitle: string; sectionTitle: string }> = [];
 
-    categories.forEach((category) => {
-      // Check single document
-      if (
-        category.document &&
-        (category.document.title.toLowerCase().includes(query) ||
-          category.document.content?.toLowerCase().includes(query))
-      ) {
-        results.push({
-          document: category.document,
-          categoryTitle: category.title,
-        });
-      }
+    sections.forEach((section) => {
+      section.categories.forEach((category) => {
+        // Check single document
+        if (
+          category.document &&
+          (category.document.title.toLowerCase().includes(query) ||
+            category.document.content?.toLowerCase().includes(query))
+        ) {
+          results.push({
+            document: category.document,
+            categoryTitle: category.title,
+            sectionTitle: section.title,
+          });
+        }
 
-      // Check multiple documents
-      if (category.documents) {
-        category.documents.forEach((doc) => {
-          if (doc.title.toLowerCase().includes(query) || doc.content?.toLowerCase().includes(query)) {
-            results.push({
-              document: doc,
-              categoryTitle: category.title,
-            });
-          }
-        });
-      }
+        // Check multiple documents
+        if (category.documents) {
+          category.documents.forEach((doc) => {
+            if (doc.title.toLowerCase().includes(query) || doc.content?.toLowerCase().includes(query)) {
+              results.push({
+                document: doc,
+                categoryTitle: category.title,
+                sectionTitle: section.title,
+              });
+            }
+          });
+        }
+      });
     });
 
     return results;
-  }, [categories, searchQuery]);
+  }, [sections, searchQuery]);
 
   const toggleCategory = (categoryId: string) => {
     const newExpanded = new Set(expandedCategories);
@@ -169,7 +190,7 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
         </div>
       ) : (
         <div className="space-y-1">
-          {searchResults.map(({ document, categoryTitle }, index) => (
+          {searchResults.map(({ document, categoryTitle, sectionTitle }, index) => (
             <button
               key={`${document.id}-${index}`}
               onClick={() => handleDocumentSelect(document)}
@@ -183,9 +204,11 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
                 <FileText className="w-4 h-4 mt-0.5 text-muted-foreground group-hover:text-foreground" />
                 <div className="flex-1 min-w-0">
                   <div className="font-medium text-foreground truncate">
-                    {highlightText(document.title, searchQuery)}
+                    {highlightText(document?.title, searchQuery)}
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1">in {categoryTitle}</div>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    in {sectionTitle} → {categoryTitle}
+                  </div>
                 </div>
               </div>
             </button>
@@ -195,79 +218,91 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
     </div>
   );
 
-  const renderCategoryView = () => (
-    <div className="space-y-2">
-      {filteredCategories.map((category, index) => {
-        const { Icon } = category;
-        const isExpanded = expandedCategories.has(category.id);
-        const hasMultipleDocuments = category.documents && category.documents.length > 0;
-        const singleDocument = category.document;
+  const renderSectionView = () => (
+    <div className="space-y-8">
+      {filteredSections.map((section) => (
+        <div key={section.id} className="space-y-2">
+          {/* Section Heading */}
+          <div className="px-2 ">
+            <p className="text-[0.6rem] font-medium text-muted-foreground uppercase tracking-wide">{section.title}</p>
+          </div>
 
-        return (
-          <div key={category.id} className="space-y-[0.5px]">
-            {hasMultipleDocuments ? (
-              <>
-                <button
-                  onClick={() => toggleCategory(category.id)}
-                  style={{ animationDelay: `${index * 100}ms` }}
-                  className={cn(
-                    'group w-full relative flex items-center justify-between py-1 px-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors',
-                    'cursor-pointer transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4'
-                  )}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {/* Categories in this section */}
+          <div className="space-y-2">
+            {section.categories.map((category, index) => {
+              const { Icon } = category;
+              const isExpanded = expandedCategories.has(category.id);
+              const hasMultipleDocuments = category.documents && category.documents.length > 0;
+              const singleDocument = category.document;
 
-                  <div className="flex items-center space-x-2">
-                    {Icon ? <Icon className="w-4 h-4 mr-1" /> : ''}
-                    <span>{highlightText(category.title, searchQuery)}</span>
-                  </div>
-                  {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-
-                  <div className="absolute inset-0 rounded-sm bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
-                </button>
-
-                {isExpanded && (
-                  <div className="ml-6 space-y-1">
-                    {category?.documents?.map((document) => (
+              return (
+                <div key={category.id} className="space-y-[0.5px]">
+                  {hasMultipleDocuments ? (
+                    <>
                       <button
-                        key={document.id}
-                        onClick={() => handleDocumentSelect(document)}
+                        onClick={() => toggleCategory(category.id)}
+                        style={{ animationDelay: `${index * 100}ms` }}
                         className={cn(
-                          'w-full text-left py-1 px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors',
-                          selectedDocument?.id === document.id &&
-                            'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10 font-medium text-foreground'
+                          'group w-full relative flex items-center justify-between py-1 px-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors',
+                          'cursor-pointer transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4'
                         )}
                       >
-                        {highlightText(document.title, searchQuery)}
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                        <div className="flex items-center space-x-2">
+                          {Icon ? <Icon className="w-4 h-4 mr-1" /> : ''}
+                          <span>{highlightText(category.title, searchQuery)}</span>
+                        </div>
+                        {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+
+                        <div className="absolute inset-0 rounded-sm bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
                       </button>
-                    ))}
-                  </div>
-                )}
-              </>
-            ) : singleDocument ? (
-              <button
-                onClick={() => handleDocumentSelect(singleDocument)}
-                style={{ animationDelay: `${index * 100}ms` }}
-                className={cn(
-                  'group w-full relative flex items-center justify-between py-1 px-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors',
-                  'cursor-pointer transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4',
-                  selectedDocument?.id === singleDocument.id &&
-                    'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10 font-medium text-foreground'
-                )}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                <div className="flex items-center space-x-2">
-                  {Icon ? <Icon className="w-4 h-4 mr-1" /> : ''}
-                  <span>{highlightText(category.title, searchQuery)}</span>
+                      {isExpanded && (
+                        <div className="ml-6 space-y-1">
+                          {category?.documents?.map((document) => (
+                            <button
+                              key={document.id}
+                              onClick={() => handleDocumentSelect(document)}
+                              className={cn(
+                                'w-full text-left py-1 px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors',
+                                selectedDocument?.id === document.id &&
+                                  'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10 font-medium text-foreground'
+                              )}
+                            >
+                              {highlightText(document.title, searchQuery)}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : singleDocument ? (
+                    <button
+                      onClick={() => handleDocumentSelect(singleDocument)}
+                      style={{ animationDelay: `${index * 100}ms` }}
+                      className={cn(
+                        'group w-full relative flex items-center justify-between py-1 px-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors',
+                        'cursor-pointer transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4',
+                        selectedDocument?.id === singleDocument.id &&
+                          'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10 font-medium text-foreground'
+                      )}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                      <div className="flex items-center space-x-2">
+                        {Icon ? <Icon className="w-4 h-4 mr-1" /> : ''}
+                        <span>{highlightText(category.title, searchQuery)}</span>
+                      </div>
+
+                      <div className="absolute inset-0 rounded-sm bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
+                    </button>
+                  ) : null}
                 </div>
-
-                <div className="absolute inset-0 rounded-sm bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
-              </button>
-            ) : null}
+              );
+            })}
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 
@@ -299,7 +334,7 @@ export function Sidebar({ categories, selectedDocument, onDocumentSelect, classN
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto p-4">
-        {searchQuery.trim() ? renderSearchResults() : renderCategoryView()}
+        {searchQuery.trim() ? renderSearchResults() : renderSectionView()}
       </nav>
     </div>
   );

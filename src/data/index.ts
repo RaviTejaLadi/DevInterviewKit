@@ -1,4 +1,4 @@
-import type { Category } from '@/types/markdown-content-types';
+import type { Section } from '@/types/markdown-content-types';
 import introduction from './Welcome/introduction.md?raw';
 import contentPolicy from './Welcome/content-policy.md?raw';
 import contribution from './Welcome/contribution.md?raw';
@@ -47,6 +47,19 @@ import reduxToolkit from './Frontend/state-management/Redux Toolkit.md?raw';
 import zustand from './Frontend/state-management/Zustand.md?raw';
 import useReducerSetup from './Frontend/state-management/State Management with useReducer and useContext in TypeScript.md?raw';
 
+import nextIntro from './Frontend/Next/intro.md?raw';
+import nextInterviewQuestions from './Frontend/Next/files-and-folders-structure.md?raw';
+import nextQuickReview from './Frontend/Next/quick-review-checklist.md?raw';
+import commonNextInterviewQuestions from './Frontend/Next/common-questions.md?raw';
+import pagesRouterNextInterviewQuestions from './Frontend/Next/pages-router-questions.md?raw';
+import appRouterNextInterviewQuestions from './Frontend/Next/app-router-questions.md?raw';
+
+import reactMachineCodingIntro from './Frontend/react-machine-coding/intro.md?raw';
+import reactMachineCodingEasyLevel from './Frontend/react-machine-coding/level-easy.md?raw';
+import reactMachineCodingMediumLevel from './Frontend/react-machine-coding/level-medium.md?raw';
+import reactMachineCodingHardLevel from './Frontend/react-machine-coding/level-hard.md?raw';
+import reactMachineCodingExpertLevel from './Frontend/react-machine-coding/level-expert.md?raw';
+
 import htmlCheatSheet from './Resources/cheat-sheets/html.md?raw';
 import cssCheatSheet from './Resources/cheat-sheets/css.md?raw';
 import jsCheatSheet from './Resources/cheat-sheets/js.md?raw';
@@ -65,19 +78,6 @@ import levelOneDsa from './DSA/15-easy.md?raw';
 import levelTwoDsa from './DSA/25-medium.md?raw';
 import levelThreeDsa from './DSA/10-hard.md?raw';
 
-import nextIntro from './Frontend/Next/intro.md?raw';
-import nextInterviewQuestions from './Frontend/Next/files-and-folders-structure.md?raw';
-import nextQuickReview from './Frontend/Next/quick-review-checklist.md?raw';
-import commonNextInterviewQuestions from './Frontend/Next/common-questions.md?raw';
-import pagesRouterNextInterviewQuestions from './Frontend/Next/pages-router-questions.md?raw';
-import appRouterNextInterviewQuestions from './Frontend/Next/app-router-questions.md?raw';
-
-import reactMachineCodingIntro from './Frontend/react-machine-coding/intro.md?raw';
-import reactMachineCodingEasyLevel from './Frontend/react-machine-coding/level-easy.md?raw';
-import reactMachineCodingMediumLevel from './Frontend/react-machine-coding/level-medium.md?raw';
-import reactMachineCodingHardLevel from './Frontend/react-machine-coding/level-hard.md?raw';
-import reactMachineCodingExpertLevel from './Frontend/react-machine-coding/level-expert.md?raw';
-
 import Namaste from '@/assets/Icons/Namaste';
 import {
   Css,
@@ -93,425 +93,455 @@ import {
   Utils,
 } from '@/assets/technologies';
 
-export const markdownData: Category[] = [
+export const markdownData: Section[] = [
   {
-    id: 'welcome',
-    title: 'Welcome',
-    Icon: Namaste,
-    documents: [
+    id: 'home',
+    title: 'Home',
+    categories: [
       {
-        id: 'introduction',
-        title: 'Introduction',
-        content: introduction,
-      },
-      {
-        id: 'content-policy',
-        title: 'Content Policy',
-        content: contentPolicy,
-      },
-      {
-        id: 'contribution',
-        title: 'Contribution Guide',
-        content: contribution,
+        id: 'welcome',
+        title: 'Welcome',
+        Icon: Namaste,
+        documents: [
+          {
+            id: 'introduction',
+            title: 'Introduction',
+            content: introduction,
+          },
+          {
+            id: 'content-policy',
+            title: 'Content Policy',
+            content: contentPolicy,
+          },
+          {
+            id: 'contribution',
+            title: 'Contribution Guide',
+            content: contribution,
+          },
+        ],
       },
     ],
   },
   {
-    id: 'html',
-    title: 'HTML',
-    Icon: HTML,
-    documents: [
+    id: 'frontend',
+    title: 'Frontend',
+    categories: [
       {
-        id: 'html-intro',
-        title: 'Introduction to HTML',
-        content: htmlIntro,
-      },
-      {
-        id: 'html-quick-review-checklist',
-        title: 'Quick Review Checklist',
-        content: htmlQuickReview,
-      },
-      {
-        id: 'semantic-html-and-accessibility',
-        title: 'Semantic HTML & Accessibility',
-        content: SemanticHTMLAccessibility,
-      },
-      {
-        id: 'html-top50q&a',
-        title: 'HTML Interview Questions',
-        content: htmlInterviewQuestions,
-      },
-    ],
-  },
-  {
-    id: 'css',
-    title: 'Css',
-    Icon: Css,
-    documents: [
-      {
-        id: 'intro-to-css',
-        title: 'Introduction to CSS',
-        content: cssIntro,
-      },
-      {
-        id: 'css-top50q&a',
-        title: 'CSS Interview Questions',
-        content: cssInterviewQuestions,
-      },
-    ],
-  },
-  {
-    id: 'javascript',
-    title: 'JavaScript',
-    Icon: JavaScript,
-    documents: [
-      {
-        id: 'intro-to-js',
-        title: 'Introduction',
-        content: jsIntro,
-      },
-      {
-        id: 'js-top30q&a',
-        title: 'Interview Questions',
-        content: jsInterviewQuestions,
-      },
-      {
-        id: 'js-l1-l2-interview',
-        title: 'L1 & L2 interviews Questions',
-        content: JSL1andL2InterviewQuestions,
-      },
-      {
-        id: 'js-array-methods',
-        title: 'Arrays Methods',
-        content: Arrays,
-      },
-      {
-        id: 'js-objects',
-        title: 'Object Methods',
-        content: objects,
-      },
-      {
-        id: 'js-event-handling',
-        title: 'Event Handling',
-        content: eventHandling,
-      },
-      {
-        id: 'js-debouncing-&-throttling',
-        title: 'Debouncing & Throttling',
-        content: debounceAndThrottle,
-      },
-      {
-        id: 'js-variables-&-scoping',
-        title: 'Variables & Scoping',
-        content: variablesAndScoping,
-      },
-      {
-        id: 'js-datatypes-And-TypeConversion',
-        title: 'Data Types & Type Conversion',
-        content: dataTypesAndTypeConversion,
-      },
-      {
-        id: 'js-web-storage-api',
-        title: 'Web Storage API',
-        content: webStorageApi,
-      },
-      {
-        id: 'js-looping-statements',
-        title: 'Looping Statements',
-        content: loopingStatements,
-      },
-      {
-        id: 'js-conditional-statements',
-        title: 'Conditional Statements',
-        content: conditionalStatements,
-      },
-    ],
-  },
-  {
-    id: 'typescript',
-    title: 'Typescript',
-    Icon: TypeScript,
-    documents: [
-      {
-        id: 'intro-to-ts',
-        title: 'Introduction',
-        content: tsIntro,
-      },
-      {
-        id: 'ts-q-&-a',
-        title: 'TypeScript Interview Questions',
-        content: tsInterviewQuestions,
-      },
-    ],
-  },
-  {
-    id: 'react',
-    title: 'React',
-    Icon: React,
-    documents: [
-      {
-        id: 'intro-to-react',
-        title: 'Introduction to React',
-        content: reactIntro,
-      },
-      {
-        id: 'quick-review-checklist',
-        title: 'Quick Review Checklist',
-        content: reactQuickReview,
-      },
-      {
-        id: 'react-files-and-folders-structure',
-        title: 'Files and Folders Structure',
-        content: reactFilesAndFoldersStructure,
-      },
-      {
-        id: 'react-q&a',
-        title: 'React Interview Questions',
-        content: reactInterviewQuestions,
-      },
-      {
-        id: 'react-tsx-setup',
-        title: 'React TypeScript Setup',
-        content: reactTsxSetup,
-      },
-      {
-        id: 'react-hooks',
-        title: 'Hooks in React',
-        content: hooks,
-      },
-    ],
-  },
-  {
-    id: 'react-machine-coding',
-    title: 'React Machine Coding',
-    Icon: React,
-    documents: [
-      {
-        id: 'intro-to-react-machine-coding',
-        title: 'Introduction',
-        content: reactMachineCodingIntro,
-      },
-      {
-        id: 'level-easy-react-machine-coding',
-        title: 'Easy Level',
-        content: reactMachineCodingEasyLevel,
-      },
-      {
-        id: 'level-medium-react-machine-coding',
-        title: 'Medium Level',
-        content: reactMachineCodingMediumLevel,
-      },
-      {
-        id: 'level-hard-react-machine-coding',
-        title: '  Hard Level',
-        content: reactMachineCodingHardLevel,
-      },
-      {
-        id: 'level-expert-react-machine-coding',
-        title: '  Expert Level',
-        content: reactMachineCodingExpertLevel,
-      },
-    ],
-  },
-  {
-    id: 'react-libraries',
-    title: 'React Libraries And Utilities',
-    Icon: Utils,
-    documents: [
-      {
-        id: 'most-useful-react-libraries',
-        title: 'Most Useful React Libraries And Utilities',
-        content: reactOpenSourcePackages,
-      },
-      {
-        id: 'react-hook-form-docs',
-        title: 'React Hook Form Usage',
-        content: reactHookFormDocs,
-      },
-      {
-        id: 'react-query-docs',
-        title: 'React Query Usage',
-        content: reactQuery,
-      },
-      {
-        id: 'react-query-hooks-docs',
-        title: 'React Query Hooks Syntax',
-        content: reactQueryHooks,
-      },
-      {
-        id: 'react-table-docs',
-        title: 'React Table Usage',
-        content: reactTable,
-      },
-      {
-        id: 'react-table-hooks-docs',
-        title: 'React Table Hooks Syntax',
-        content: reactTableHooks,
-      },
-      {
-        id: 'react-router-dom-docs',
-        title: 'React Router Dom Usage',
-        content: reactRouterDom,
-      },
-    ],
-  },
-  {
-    id: 'state-management',
-    title: 'State Management',
-    Icon: Flow,
-    documents: [
-      {
-        id: 'intro-to-state-management',
-        title: 'Introduction',
-        content: stateManagementIntro,
-      },
-      {
-        id: 'use-reducer-setup',
-        title: 'useReducer Setup',
-        content: useReducerSetup,
-      },
-      {
-        id: 'redux-toolkit',
-        title: 'Redux Toolkit Setup',
-        content: reduxToolkit,
-      },
-      {
-        id: 'zustand',
-        title: 'Zustand Setup',
-        content: zustand,
-      },
-    ],
-  },
-  {
-    id: 'system-design',
-    title: 'System Design',
-    Icon: System,
-    documents: [
-      {
-        id: 'web-security-intro',
-        title: 'Introduction',
-        content: webSecurity,
-      },
-      {
-        id: 'networking-questions',
-        title: 'Introduction',
-        content: networking,
-      },
-      {
-        id: '   error-logging-questions',
-        title: 'Introduction',
-        content: errorLogging,
-      },
-      {
-        id: 'owasp',
-        title: 'Introduction',
-        content: owasp,
-      },
-    ],
-  },
-  {
-    id: 'dsa',
-    title: 'DSA',
-    Icon: Dsa,
-    documents: [
-      {
-        id: 'dsa-intro',
-        title: 'Introduction',
-        content: dsaIntro,
-      },
-      {
-        id: 'level-one-dsa-easy',
-        title: 'Level 1 DSA Easy',
-        content: levelOneDsa,
-      },
-      {
-        id: 'level-two-dsa-easy',
-        title: 'Level 2 DSA Medium',
-        content: levelTwoDsa,
-      },
-      {
-        id: 'level-three-dsa-easy',
-        title: 'Level 3 DSA Hard',
-        content: levelThreeDsa,
-      },
-    ],
-  },
-  {
-    id: 'next-js',
-    title: 'Next.js',
-    Icon: NextJS,
-    documents: [
-      {
-        id: 'next-js-intro',
-        title: 'Introduction',
-        content: nextIntro,
-      },
-      {
-        id: 'next-quick-review-checklist',
-        title: 'Quick Review Checklist',
-        content: nextQuickReview,
-      },
-      {
-        id: 'next-js-files-and-folders-structure',
-        title: 'Files and Folders Structure',
-        content: nextInterviewQuestions,
-      },
-      {
-        id: 'common-next-js-interview-questions',
-        title: 'Common Interview Questions',
-        content: commonNextInterviewQuestions,
-      },
-      {
-        id: 'pages-routers-next-js-interview-questions',
-        title: 'Pages Routers Interview Questions',
-        content: pagesRouterNextInterviewQuestions,
-      },
-      {
-        id: 'app-routers-next-js-interview-questions',
-        title: 'App Routers Interview Questions',
-        content: appRouterNextInterviewQuestions,
-      },
-    ],
-  },
-  {
-    id: 'cheat-sheets',
-    title: 'Cheat Sheets',
-    Icon: Sheets,
-    documents: [
-      {
-        id: 'html-cheat-sheet',
+        id: 'html',
         title: 'HTML',
-        content: htmlCheatSheet,
+        Icon: HTML,
+        documents: [
+          {
+            id: 'html-intro',
+            title: 'Introduction to HTML',
+            content: htmlIntro,
+          },
+          {
+            id: 'html-quick-review-checklist',
+            title: 'Quick Review Checklist',
+            content: htmlQuickReview,
+          },
+          {
+            id: 'semantic-html-and-accessibility',
+            title: 'Semantic HTML & Accessibility',
+            content: SemanticHTMLAccessibility,
+          },
+          {
+            id: 'html-top50q&a',
+            title: 'HTML Interview Questions',
+            content: htmlInterviewQuestions,
+          },
+        ],
       },
       {
-        id: 'css-cheat-sheet',
+        id: 'css',
         title: 'CSS',
-        content: cssCheatSheet,
+        Icon: Css,
+        documents: [
+          {
+            id: 'intro-to-css',
+            title: 'Introduction to CSS',
+            content: cssIntro,
+          },
+          {
+            id: 'css-top50q&a',
+            title: 'CSS Interview Questions',
+            content: cssInterviewQuestions,
+          },
+        ],
       },
       {
-        id: 'tailwind-cheat-sheet',
-        title: 'Tailwind CSS',
-        content: tailwindCheatSheet,
+        id: 'javascript',
+        title: 'JavaScript',
+        Icon: JavaScript,
+        documents: [
+          {
+            id: 'intro-to-js',
+            title: 'Introduction',
+            content: jsIntro,
+          },
+          {
+            id: 'js-top30q&a',
+            title: 'Interview Questions',
+            content: jsInterviewQuestions,
+          },
+          {
+            id: 'js-l1-l2-interview',
+            title: 'L1 & L2 interviews Questions',
+            content: JSL1andL2InterviewQuestions,
+          },
+          {
+            id: 'js-array-methods',
+            title: 'Arrays Methods',
+            content: Arrays,
+          },
+          {
+            id: 'js-objects',
+            title: 'Object Methods',
+            content: objects,
+          },
+          {
+            id: 'js-event-handling',
+            title: 'Event Handling',
+            content: eventHandling,
+          },
+          {
+            id: 'js-debouncing-&-throttling',
+            title: 'Debouncing & Throttling',
+            content: debounceAndThrottle,
+          },
+          {
+            id: 'js-variables-&-scoping',
+            title: 'Variables & Scoping',
+            content: variablesAndScoping,
+          },
+          {
+            id: 'js-datatypes-And-TypeConversion',
+            title: 'Data Types & Type Conversion',
+            content: dataTypesAndTypeConversion,
+          },
+          {
+            id: 'js-web-storage-api',
+            title: 'Web Storage API',
+            content: webStorageApi,
+          },
+          {
+            id: 'js-looping-statements',
+            title: 'Looping Statements',
+            content: loopingStatements,
+          },
+          {
+            id: 'js-conditional-statements',
+            title: 'Conditional Statements',
+            content: conditionalStatements,
+          },
+        ],
       },
       {
-        id: 'js-cheat-sheet',
-        title: 'Javascript',
-        content: jsCheatSheet,
+        id: 'typescript',
+        title: 'TypeScript',
+        Icon: TypeScript,
+        documents: [
+          {
+            id: 'intro-to-ts',
+            title: 'Introduction',
+            content: tsIntro,
+          },
+          {
+            id: 'ts-q-&-a',
+            title: 'TypeScript Interview Questions',
+            content: tsInterviewQuestions,
+          },
+        ],
       },
       {
-        id: 'react-cheat-sheet',
+        id: 'react',
         title: 'React',
-        content: reactCheatSheet,
+        Icon: React,
+        documents: [
+          {
+            id: 'intro-to-react',
+            title: 'Introduction to React',
+            content: reactIntro,
+          },
+          {
+            id: 'quick-review-checklist',
+            title: 'Quick Review Checklist',
+            content: reactQuickReview,
+          },
+          {
+            id: 'react-files-and-folders-structure',
+            title: 'Files and Folders Structure',
+            content: reactFilesAndFoldersStructure,
+          },
+          {
+            id: 'react-q&a',
+            title: 'React Interview Questions',
+            content: reactInterviewQuestions,
+          },
+          {
+            id: 'react-tsx-setup',
+            title: 'React TypeScript Setup',
+            content: reactTsxSetup,
+          },
+          {
+            id: 'react-hooks',
+            title: 'Hooks in React',
+            content: hooks,
+          },
+        ],
       },
       {
-        id: 'git-cheat-sheet',
-        title: 'Git',
-        content: gitCheatSheet,
+        id: 'next-js',
+        title: 'Next.js',
+        Icon: NextJS,
+        documents: [
+          {
+            id: 'next-js-intro',
+            title: 'Introduction',
+            content: nextIntro,
+          },
+          {
+            id: 'next-quick-review-checklist',
+            title: 'Quick Review Checklist',
+            content: nextQuickReview,
+          },
+          {
+            id: 'next-js-files-and-folders-structure',
+            title: 'Files and Folders Structure',
+            content: nextInterviewQuestions,
+          },
+          {
+            id: 'common-next-js-interview-questions',
+            title: 'Common Interview Questions',
+            content: commonNextInterviewQuestions,
+          },
+          {
+            id: 'pages-routers-next-js-interview-questions',
+            title: 'Pages Routers Interview Questions',
+            content: pagesRouterNextInterviewQuestions,
+          },
+          {
+            id: 'app-routers-next-js-interview-questions',
+            title: 'App Routers Interview Questions',
+            content: appRouterNextInterviewQuestions,
+          },
+        ],
       },
       {
-        id: 'http-cheat-sheet',
-        title: 'HTTP',
-        content: httpCheatSheet,
+        id: 'react-machine-coding',
+        title: 'React Machine Coding',
+        Icon: React,
+        documents: [
+          {
+            id: 'intro-to-react-machine-coding',
+            title: 'Introduction',
+            content: reactMachineCodingIntro,
+          },
+          {
+            id: 'level-easy-react-machine-coding',
+            title: 'Easy Level',
+            content: reactMachineCodingEasyLevel,
+          },
+          {
+            id: 'level-medium-react-machine-coding',
+            title: 'Medium Level',
+            content: reactMachineCodingMediumLevel,
+          },
+          {
+            id: 'level-hard-react-machine-coding',
+            title: 'Hard Level',
+            content: reactMachineCodingHardLevel,
+          },
+          {
+            id: 'level-expert-react-machine-coding',
+            title: 'Expert Level',
+            content: reactMachineCodingExpertLevel,
+          },
+        ],
+      },
+      {
+        id: 'react-libraries',
+        title: 'React Libraries',
+        Icon: Utils,
+        documents: [
+          {
+            id: 'most-useful-react-libraries',
+            title: 'Most Useful React Libraries',
+            content: reactOpenSourcePackages,
+          },
+          {
+            id: 'react-hook-form-docs',
+            title: 'React Hook Form',
+            content: reactHookFormDocs,
+          },
+          {
+            id: 'react-query-docs',
+            title: 'React Query',
+            content: reactQuery,
+          },
+          {
+            id: 'react-query-hooks-docs',
+            title: 'React Query Hooks',
+            content: reactQueryHooks,
+          },
+          {
+            id: 'react-table-docs',
+            title: 'React Table',
+            content: reactTable,
+          },
+          {
+            id: 'react-table-hooks-docs',
+            title: 'React Table Hooks',
+            content: reactTableHooks,
+          },
+          {
+            id: 'react-router-dom-docs',
+            title: 'React Router Dom',
+            content: reactRouterDom,
+          },
+        ],
+      },
+      {
+        id: 'state-management',
+        title: 'State Management',
+        Icon: Flow,
+        documents: [
+          {
+            id: 'intro-to-state-management',
+            title: 'Introduction',
+            content: stateManagementIntro,
+          },
+          {
+            id: 'use-reducer-setup',
+            title: 'useReducer Setup',
+            content: useReducerSetup,
+          },
+          {
+            id: 'redux-toolkit',
+            title: 'Redux Toolkit',
+            content: reduxToolkit,
+          },
+          {
+            id: 'zustand',
+            title: 'Zustand',
+            content: zustand,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'backend',
+    title: 'Backend',
+    categories: [
+      {
+        id: 'system-design',
+        title: 'System Design',
+        Icon: System,
+        documents: [
+          {
+            id: 'web-security-intro',
+            title: 'Web Security',
+            content: webSecurity,
+          },
+          {
+            id: 'networking-questions',
+            title: 'Networking',
+            content: networking,
+          },
+          {
+            id: 'error-logging-questions',
+            title: 'Logging & Monitoring',
+            content: errorLogging,
+          },
+          {
+            id: 'owasp',
+            title: 'OWASP',
+            content: owasp,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'algorithms',
+    title: 'Algorithms',
+    categories: [
+      {
+        id: 'dsa',
+        title: 'DSA',
+        Icon: Dsa,
+        documents: [
+          {
+            id: 'dsa-intro',
+            title: 'Introduction',
+            content: dsaIntro,
+          },
+          {
+            id: 'level-one-dsa-easy',
+            title: 'Level 1 - Easy',
+            content: levelOneDsa,
+          },
+          {
+            id: 'level-two-dsa-medium',
+            title: 'Level 2 - Medium',
+            content: levelTwoDsa,
+          },
+          {
+            id: 'level-three-dsa-hard',
+            title: 'Level 3 - Hard',
+            content: levelThreeDsa,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'resources',
+    title: 'Resources',
+    categories: [
+      {
+        id: 'cheat-sheets',
+        title: 'Cheat Sheets',
+        Icon: Sheets,
+        documents: [
+          {
+            id: 'html-cheat-sheet',
+            title: 'HTML',
+            content: htmlCheatSheet,
+          },
+          {
+            id: 'css-cheat-sheet',
+            title: 'CSS',
+            content: cssCheatSheet,
+          },
+          {
+            id: 'tailwind-cheat-sheet',
+            title: 'Tailwind CSS',
+            content: tailwindCheatSheet,
+          },
+          {
+            id: 'js-cheat-sheet',
+            title: 'JavaScript',
+            content: jsCheatSheet,
+          },
+          {
+            id: 'react-cheat-sheet',
+            title: 'React',
+            content: reactCheatSheet,
+          },
+          {
+            id: 'git-cheat-sheet',
+            title: 'Git',
+            content: gitCheatSheet,
+          },
+          {
+            id: 'http-cheat-sheet',
+            title: 'HTTP',
+            content: httpCheatSheet,
+          },
+        ],
       },
     ],
   },

@@ -7,7 +7,13 @@ export interface MarkdownDocument {
 export interface Category {
   id: string;
   title: string;
-  Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  Icon: React.ComponentType<any>;
   documents?: MarkdownDocument[];
   document?: MarkdownDocument;
+}
+
+export interface Section {
+  id: string;
+  title: string;
+  categories: Category[];
 }
