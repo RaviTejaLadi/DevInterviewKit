@@ -13,18 +13,14 @@ import gitCheatSheet from './Resources/cheat-sheets/git.md?raw';
 import httpCheatSheet from './Resources/cheat-sheets/http.md?raw';
 import tailwindCheatSheet from './Resources/cheat-sheets/tailwind.md?raw';
 
-import webSecurity from './SystemDesign/web-security.md?raw';
-import networking from './SystemDesign/networking.md?raw';
-import errorLogging from './SystemDesign/logging-and-monitoring.md?raw';
-import owasp from './SystemDesign/owasp.md?raw';
-
 import dsaIntro from './DSA/intro.md?raw';
 import levelOneDsa from './DSA/15-easy.md?raw';
 import levelTwoDsa from './DSA/25-medium.md?raw';
 import levelThreeDsa from './DSA/10-hard.md?raw';
 
 import Namaste from '@/assets/Icons/Namaste';
-import { Dsa, Sheets, System } from '@/assets/technologies';
+import { Dsa, Sheets } from '@/assets/technologies';
+import { backendData } from './Backend';
 
 export const markdownData: Section[] = [
   {
@@ -63,35 +59,7 @@ export const markdownData: Section[] = [
   {
     id: 'backend',
     title: 'Backend',
-    categories: [
-      {
-        id: 'system-design',
-        title: 'System Design',
-        Icon: System,
-        documents: [
-          {
-            id: 'web-security-intro',
-            title: 'Web Security',
-            content: webSecurity,
-          },
-          {
-            id: 'networking-questions',
-            title: 'Networking',
-            content: networking,
-          },
-          {
-            id: 'error-logging-questions',
-            title: 'Logging & Monitoring',
-            content: errorLogging,
-          },
-          {
-            id: 'owasp',
-            title: 'OWASP',
-            content: owasp,
-          },
-        ],
-      },
-    ],
+    categories: backendData,
   },
   {
     id: 'algorithms',
