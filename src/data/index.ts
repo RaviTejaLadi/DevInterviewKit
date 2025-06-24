@@ -70,6 +70,8 @@ import commonNextInterviewQuestions from './Frontend/Next/common-questions.md?ra
 import pagesRouterNextInterviewQuestions from './Frontend/Next/pages-router-questions.md?raw';
 import appRouterNextInterviewQuestions from './Frontend/Next/app-router-questions.md?raw';
 
+import todoApp from './Frontend/react-machine-codaing/basic/todo-list.md?raw';
+
 import Namaste from '@/assets/Icons/Namaste';
 import {
   Css,
@@ -258,6 +260,18 @@ export const markdownData: Category[] = [
         id: 'react-hooks',
         title: 'Hooks in React',
         content: hooks,
+      },
+    ],
+  },
+  {
+    id: 'react-machine-coding',
+    title: 'React Machine Coding',
+    Icon: React,
+    documents: [
+      {
+        id: 'todo-app',
+        title: 'Todo App',
+        content: todoApp,
       },
     ],
   },
