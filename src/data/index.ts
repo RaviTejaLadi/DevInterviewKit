@@ -1,5 +1,7 @@
 import type { Category } from '@/types/markdown-content-types';
-import introduction from './introduction.md?raw';
+import introduction from './Welcome/introduction.md?raw';
+import contentPolicy from './Welcome/content-policy.md?raw';
+import contribution from './Welcome/contribution.md?raw';
 
 import htmlIntro from './Frontend/html/html-intro.md?raw';
 import htmlQuickReview from './Frontend/html/quick-review-checklist.md?raw';
@@ -70,7 +72,11 @@ import commonNextInterviewQuestions from './Frontend/Next/common-questions.md?ra
 import pagesRouterNextInterviewQuestions from './Frontend/Next/pages-router-questions.md?raw';
 import appRouterNextInterviewQuestions from './Frontend/Next/app-router-questions.md?raw';
 
-import todoApp from './Frontend/react-machine-codaing/basic/todo-list.md?raw';
+import reactMachineCodingIntro from './Frontend/react-machine-coding/intro.md?raw';
+import reactMachineCodingEasyLevel from './Frontend/react-machine-coding/level-easy.md?raw';
+import reactMachineCodingMediumLevel from './Frontend/react-machine-coding/level-medium.md?raw';
+import reactMachineCodingHardLevel from './Frontend/react-machine-coding/level-hard.md?raw';
+import reactMachineCodingExpertLevel from './Frontend/react-machine-coding/level-expert.md?raw';
 
 import Namaste from '@/assets/Icons/Namaste';
 import {
@@ -92,11 +98,23 @@ export const markdownData: Category[] = [
     id: 'welcome',
     title: 'Welcome',
     Icon: Namaste,
-    document: {
-      id: 'introduction',
-      title: 'Introduction',
-      content: introduction,
-    },
+    documents: [
+      {
+        id: 'introduction',
+        title: 'Introduction',
+        content: introduction,
+      },
+      {
+        id: 'content-policy',
+        title: 'Content Policy',
+        content: contentPolicy,
+      },
+      {
+        id: 'contribution',
+        title: 'Contribution Guide',
+        content: contribution,
+      },
+    ],
   },
   {
     id: 'html',
@@ -269,9 +287,29 @@ export const markdownData: Category[] = [
     Icon: React,
     documents: [
       {
-        id: 'todo-app',
-        title: 'Todo App',
-        content: todoApp,
+        id: 'intro-to-react-machine-coding',
+        title: 'Introduction',
+        content: reactMachineCodingIntro,
+      },
+      {
+        id: 'level-easy-react-machine-coding',
+        title: 'Easy Level',
+        content: reactMachineCodingEasyLevel,
+      },
+      {
+        id: 'level-medium-react-machine-coding',
+        title: 'Medium Level',
+        content: reactMachineCodingMediumLevel,
+      },
+      {
+        id: 'level-hard-react-machine-coding',
+        title: '  Hard Level',
+        content: reactMachineCodingHardLevel,
+      },
+      {
+        id: 'level-expert-react-machine-coding',
+        title: '  Expert Level',
+        content: reactMachineCodingExpertLevel,
       },
     ],
   },
