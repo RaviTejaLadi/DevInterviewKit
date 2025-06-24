@@ -1,4 +1,4 @@
-import { Github, Menu, Search } from 'lucide-react';
+import { Github, Menu, Search, X } from 'lucide-react';
 import React from 'react';
 import { Button } from './ui/button';
 import {
@@ -12,6 +12,7 @@ import {
 import Logo from './Logo';
 import { ThemeToggle } from './ThemeToggle';
 import { useMobileStore } from '@/stores/useMobileStore';
+import { Input } from './ui/input';
 
 interface MenuItem {
   title: string;
@@ -39,6 +40,9 @@ const Navbar = ({
   onSearchChange,
 }: NavbarProps) => {
   const { toggleMobile } = useMobileStore();
+  const clearSearch = () => {
+    onSearchChange('');
+  };
   return (
     <div className="flex h-11 px-10 justify-between space-x-10 fixed top-0 z-50 w-full  border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-inherit">
       {/* Desktop Menu */}
@@ -61,13 +65,23 @@ const Navbar = ({
             <div className="p-4 lg:p-6">
               <div className="relative max-w-md">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <input
+                <Input
                   type="text"
                   placeholder="Search topic..."
                   value={searchTerm}
                   onChange={(e) => onSearchChange(e.target.value)}
                   className="w-full pl-10 pr-4 py-1 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                 />
+                {searchTerm && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={clearSearch}
+                    className="absolute right-1 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0 hover:bg-muted"
+                  >
+                    <X className="w-3 h-3" />
+                  </Button>
+                )}
               </div>
             </div>
             <ThemeToggle />
