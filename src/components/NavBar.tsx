@@ -70,7 +70,7 @@ const Navbar = ({
                   placeholder="Search topic..."
                   value={searchTerm}
                   onChange={(e) => onSearchChange(e.target.value)}
-                  className="w-full pl-10 pr-4 py-1 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-1 text-sm border-none border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                 />
                 {searchTerm && (
                   <Button
