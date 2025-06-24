@@ -3,7 +3,7 @@ import { marked } from 'marked';
 
 export function markdownLoader(source: string): string {
   // Process component tags
-  const processedSource = source.replace(/<(\w+)([^>]*)\/>/g, (match: string, componentName: string, props: string) => {
+  const processedSource = source.replace(/<(\w+)([^>]*)\/>/g, (componentName: string, props: string) => {
     return `{${componentName}(${props})}`;
   });
 
