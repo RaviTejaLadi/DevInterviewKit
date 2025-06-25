@@ -11,7 +11,7 @@ import levelTwoDsa from './DSA/25-medium.md?raw';
 import levelThreeDsa from './DSA/10-hard.md?raw';
 
 import Namaste from '@/assets/Icons/Namaste';
-import { Dsa, Sheets } from '@/assets/technologies';
+import { Dsa } from '@/assets/technologies';
 import { backendData } from './Backend';
 import { databaseData } from './Database';
 import { resourcesData } from './Resources';
