@@ -36,6 +36,7 @@ import reactQueryHooks from './react-libraries-&-utilities/react-query-hooks-syn
 import reactTable from './react-libraries-&-utilities/react-table.md?raw';
 import reactTableHooks from './react-libraries-&-utilities/react-table-hooks-syntax.md?raw';
 import reactRouterDom from './react-libraries-&-utilities/react-router-dom.md?raw';
+import reactWindow from './react-libraries-&-utilities/react-window.md?raw';
 
 import stateManagementIntro from './state-management/intro.md?raw';
 import reduxToolkit from './state-management/Redux Toolkit.md?raw';
@@ -367,6 +368,11 @@ export const frontendData = [
         id: 'react-router-dom-docs',
         title: 'React Router Dom',
         content: reactRouterDom,
+      },
+      {
+        id: 'react-window-docs',
+        title: 'React Window',
+        content: reactWindow,
       },
     ],
   },
