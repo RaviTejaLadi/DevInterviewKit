@@ -34,8 +34,10 @@ import NextJS from './NextJS';
 import Vue from './Vue';
 import Express from './Express';
 import MongoDB from './MongoDB';
+import Sql from './Sql';
 
 export {
+  Sql,
   MongoDB,
   Express,
   Vue,

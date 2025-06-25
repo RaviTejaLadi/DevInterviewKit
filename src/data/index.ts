@@ -5,14 +5,6 @@ import contribution from './Welcome/contribution.md?raw';
 
 import { frontendData } from './Frontend';
 
-import htmlCheatSheet from './Resources/cheat-sheets/html.md?raw';
-import cssCheatSheet from './Resources/cheat-sheets/css.md?raw';
-import jsCheatSheet from './Resources/cheat-sheets/js.md?raw';
-import reactCheatSheet from './Resources/cheat-sheets/react.md?raw';
-import gitCheatSheet from './Resources/cheat-sheets/git.md?raw';
-import httpCheatSheet from './Resources/cheat-sheets/http.md?raw';
-import tailwindCheatSheet from './Resources/cheat-sheets/tailwind.md?raw';
-
 import dsaIntro from './DSA/intro.md?raw';
 import levelOneDsa from './DSA/15-easy.md?raw';
 import levelTwoDsa from './DSA/25-medium.md?raw';
@@ -22,6 +14,7 @@ import Namaste from '@/assets/Icons/Namaste';
 import { Dsa, Sheets } from '@/assets/technologies';
 import { backendData } from './Backend';
 import { databaseData } from './Database';
+import { resourcesData } from './Resources';
 
 export const markdownData: Section[] = [
   {
@@ -103,49 +96,6 @@ export const markdownData: Section[] = [
   {
     id: 'resources',
     title: 'Resources',
-    categories: [
-      {
-        id: 'cheat-sheets',
-        title: 'Cheat Sheets',
-        Icon: Sheets,
-        documents: [
-          {
-            id: 'html-cheat-sheet',
-            title: 'HTML',
-            content: htmlCheatSheet,
-          },
-          {
-            id: 'css-cheat-sheet',
-            title: 'CSS',
-            content: cssCheatSheet,
-          },
-          {
-            id: 'tailwind-cheat-sheet',
-            title: 'Tailwind CSS',
-            content: tailwindCheatSheet,
-          },
-          {
-            id: 'js-cheat-sheet',
-            title: 'JavaScript',
-            content: jsCheatSheet,
-          },
-          {
-            id: 'react-cheat-sheet',
-            title: 'React',
-            content: reactCheatSheet,
-          },
-          {
-            id: 'git-cheat-sheet',
-            title: 'Git',
-            content: gitCheatSheet,
-          },
-          {
-            id: 'http-cheat-sheet',
-            title: 'HTTP',
-            content: httpCheatSheet,
-          },
-        ],
-      },
-    ],
+    categories: resourcesData,
   },
 ];
