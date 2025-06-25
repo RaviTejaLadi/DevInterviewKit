@@ -21,6 +21,7 @@ import levelThreeDsa from './DSA/10-hard.md?raw';
 import Namaste from '@/assets/Icons/Namaste';
 import { Dsa, Sheets } from '@/assets/technologies';
 import { backendData } from './Backend';
+import { databaseData } from './Database';
 
 export const markdownData: Section[] = [
   {
@@ -60,6 +61,11 @@ export const markdownData: Section[] = [
     id: 'backend',
     title: 'Backend',
     categories: backendData,
+  },
+  {
+    id: 'database',
+    title: 'Database',
+    categories: databaseData,
   },
   {
     id: 'algorithms',
