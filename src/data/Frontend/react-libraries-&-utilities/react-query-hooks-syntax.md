@@ -1,3 +1,5 @@
+# React Query Hooks Syntax Guide
+
 Here's a concise syntax reference for the most commonly used React-Query hooks with explanations:
 
 ---

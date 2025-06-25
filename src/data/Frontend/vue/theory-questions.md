@@ -1,4 +1,4 @@
-### Vue.js Top 30 Theory Questions & Answers
+# Vue.js Top 30 Theory Questions & Answers
 
 #### **1. What is Vue.js?**  
 **Answer:** Vue.js is a **progressive JavaScript framework** for building user interfaces. It focuses on the view layer, offers declarative rendering, component-based architecture, and reactivity, and can scale from lightweight library usage to full-featured frameworks like Vue Router/Pinia.

@@ -1,4 +1,4 @@
-# **Next.js Developer Quick Review Checklist** 🚀  
+# Next.js Developer Quick Review Checklist 🚀  
 Use this checklist to ensure code quality, performance, and best practices in your Next.js projects.
 
 ---

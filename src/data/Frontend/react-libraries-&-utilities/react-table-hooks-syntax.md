@@ -1,3 +1,5 @@
+# React Table Hooks Syntax Guide
+
 Here's a breakdown of the most commonly used React-Table hooks with their syntax and explanations:
 
 ---
