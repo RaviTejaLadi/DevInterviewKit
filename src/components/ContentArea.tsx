@@ -41,11 +41,37 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
             components={{
               // Custom components for better styling
               h1: ({ children }) => (
-                <h1 className="text-4xl font-bold text-foreground mb-6 pb-4 border-b border-border">{children}</h1>
+                <h1
+                  id={String(children).toLowerCase().replace(/\s+/g, '-')}
+                  className="text-4xl font-bold text-foreground mb-6 pb-4 border-b border-border"
+                >
+                  {children}
+                </h1>
               ),
-              h2: ({ children }) => <h2 className="text-3xl font-semibold text-foreground mt-12 mb-4">{children}</h2>,
-              h3: ({ children }) => <h3 className="text-2xl font-semibold text-foreground mt-8 mb-3">{children}</h3>,
-              h4: ({ children }) => <h4 className="text-xl font-semibold text-foreground mt-6 mb-2">{children}</h4>,
+              h2: ({ children }) => (
+                <h2
+                  id={String(children).toLowerCase().replace(/\s+/g, '-')}
+                  className="text-3xl font-semibold text-foreground mt-12 mb-4"
+                >
+                  {children}
+                </h2>
+              ),
+              h3: ({ children }) => (
+                <h3
+                  id={String(children).toLowerCase().replace(/\s+/g, '-')}
+                  className="text-2xl font-semibold text-foreground mt-8 mb-3"
+                >
+                  {children}
+                </h3>
+              ),
+              h4: ({ children }) => (
+                <h4
+                  id={String(children).toLowerCase().replace(/\s+/g, '-')}
+                  className="text-xl font-semibold text-foreground mt-6 mb-2"
+                >
+                  {children}
+                </h4>
+              ),
               p: ({ children }) => <p className="text-muted-foreground leading-7 mb-4">{children}</p>,
               ul: ({ children }) => (
                 <ul className="list-disc list-inside space-y-2 mb-4 text-foreground">{children}</ul>
@@ -106,16 +132,39 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
               td: ({ children }) => (
                 <TableCell className="border border-border px-4 py-2 text-foreground">{children}</TableCell>
               ),
-              a: ({ children, href }) => (
-                <a
-                  href={href}
-                  className="text-primary hover:text-primary/80 underline underline-offset-4 transition-colors"
-                  target={href?.startsWith('http') ? '_blank' : undefined}
-                  rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                >
-                  {children}
-                </a>
-              ),
+              a: ({ children, href }) => {
+                if (href?.startsWith('#')) {
+                  // Handle internal hash links
+                  return (
+                    <a
+                      href={href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const id = href.substring(1);
+                        const element = document.getElementById(id);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                      className="text-primary hover:text-primary/80 underline underline-offset-4 transition-colors"
+                    >
+                      {children}
+                    </a>
+                  );
+                }
+
+                // External links
+                return (
+                  <a
+                    href={href}
+                    className="text-primary hover:text-primary/80 underline underline-offset-4 transition-colors"
+                    target={href?.startsWith('http') ? '_blank' : undefined}
+                    rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  >
+                    {children}
+                  </a>
+                );
+              },
               strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
               em: ({ children }) => <em className="italic text-foreground">{children}</em>,
             }}
