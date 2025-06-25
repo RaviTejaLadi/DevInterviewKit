@@ -1,177 +1,277 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  /* Default Light Theme (Ocean) */
   :root {
-    /* Radix UI Gray (Light Mode) */
-    --background: 0 0% 98%;
-    /* gray1 */
-    --foreground: 0 0% 9%;
-    /* gray12 */
-
+    --background: 210 40% 97%;
+    --foreground: 210 15% 15%;
     --card: 0 0% 100%;
-    /* white */
-    --card-foreground: 0 0% 9%;
-    /* gray12 */
-
-    --muted: 0 0% 96.1%;
-    /* gray3 */
-    --muted-foreground: 0 0% 45.1%;
-    /* gray9 */
-
-    --accent: 0 0% 96.1%;
-    /* gray3 */
-    --accent-foreground: 0 0% 9%;
-    /* gray12 */
-
-    /* Radix Blue (Light Mode) */
-    --primary: hsl(206 100% 50%);
-    /* blue9 */
-    --primary-foreground: hsl(0 0% 100%);
-    /* white */
-
-    /* Radix Gray */
-    --secondary: hsl(220 9% 46%);
-    /* gray9 */
-    --secondary-foreground: hsl(0 0% 100%);
-    /* white */
-
-    /* Radix Teal/Green/Red/Amber/Cyan/Violet (Light Mode) */
-    --success: hsl(152 60% 40%);
-    /* green9 */
-    --success-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --danger: hsl(358 75% 59%);
-    /* red9 */
-    --danger-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --warning: hsl(38 92% 50%);
-    /* amber9 */
-    --warning-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --info: hsl(192 85% 44%);
-    /* cyan9 */
-    --info-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --help: hsl(264 74% 62%);
-    /* violet9 */
-    --help-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --light: hsl(220 14% 96%);
-    /* gray2 */
-    --light-foreground: hsl(220 9% 15%);
-    /* gray11 */
-
-    --dark: hsl(220 9% 15%);
-    /* gray11 */
-    --dark-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --border: 0 0% 89.8%;
-    /* gray4 */
-    --input: 0 0% 89.8%;
-    /* gray4 */
-    --ring: 0 0% 9%;
-    /* gray12 */
-
+    --card-foreground: 210 15% 15%;
+    --muted: 210 40% 94%;
+    --muted-foreground: 210 10% 45%;
+    --accent: 210 40% 94%;
+    --accent-foreground: 210 15% 15%;
+    --primary: 207 95% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 25% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 207 95% 48%;
     --radius: 0.5rem;
-    --icon-color: hsl(220 9% 20%);
-    /* gray10 */
   }
 
+  /* Default Dark Theme (Ocean Dark) */
   .dark {
-    /* Radix UI Gray (Dark Mode) */
-    --background: 0 0% 9%;
-    /* gray12 */
-    --foreground: 0 0% 98%;
-    /* gray1 */
-
-    --card: 0 0% 7%;
-    /* gray11 */
-    --card-foreground: 0 0% 98%;
-    /* gray1 */
-
-    /* Radix Blue (Dark Mode) */
-    --primary: hsl(211 100% 48%);
-    /* blue10 */
-    --primary-foreground: hsl(0 0% 100%);
-    /* white */
-
-    /* Radix Gray (Dark Mode) */
-    --secondary: hsl(215 14% 25%);
-    /* gray8 */
-    --secondary-foreground: hsl(0 0% 100%);
-    /* white */
-
-    /* Radix Teal/Green/Red/Amber/Cyan/Violet (Dark Mode) */
-    --success: hsl(151 55% 42%);
-    /* green10 */
-    --success-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --danger: hsl(358 65% 55%);
-    /* red10 */
-    --danger-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --warning: hsl(32 94% 44%);
-    /* amber10 */
-    --warning-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --info: hsl(193 82% 42%);
-    /* cyan10 */
-    --info-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --help: hsl(264 70% 58%);
-    /* violet10 */
-    --help-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --light: hsl(220 7% 10%);
-    /* gray10 */
-    --light-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --dark: hsl(220 9% 5%);
-    /* gray12 */
-    --dark-foreground: hsl(0 0% 100%);
-    /* white */
-
-    --muted: 0 0% 15%;
-    /* gray8 */
-    --muted-foreground: 0 0% 65%;
-    /* gray4 */
-
-    --accent: 0 0% 15%;
-    /* gray8 */
-    --accent-foreground: 0 0% 98%;
-    /* gray1 */
-
-    --destructive: 0 84% 28%;
-    /* red11 */
-    --destructive-foreground: 0 0% 98%;
-    /* gray1 */
-
-    --border: 0 0% 20%;
-    /* gray7 */
-    --input: 0 0% 20%;
-    /* gray7 */
-    --ring: 0 0% 83.1%;
-    /* gray3 */
-
-    --icon-color: hsl(215 14% 65%);
-    /* gray5 */
+    --background: 215 30% 8%;
+    --foreground: 210 40% 95%;
+    --card: 215 30% 10%;
+    --card-foreground: 210 40% 95%;
+    --muted: 215 30% 12%;
+    --muted-foreground: 210 15% 65%;
+    --accent: 215 30% 12%;
+    --accent-foreground: 210 40% 95%;
+    --primary: 207 95% 55%;
+    --primary-foreground: 215 30% 8%;
+    --secondary: 215 20% 25%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 215 20% 18%;
+    --input: 215 20% 18%;
+    --ring: 207 95% 55%;
   }
 
+  /* Ocean Theme - Light */
+  .ocean {
+    --background: 210 40% 97%;
+    --foreground: 210 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 15% 15%;
+    --muted: 210 40% 94%;
+    --muted-foreground: 210 10% 45%;
+    --accent: 210 40% 94%;
+    --accent-foreground: 210 15% 15%;
+    --primary: 207 95% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 25% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 207 95% 48%;
+  }
+
+  /* Ocean Theme - Dark */
+  .ocean.dark {
+    --background: 215 30% 8%;
+    --foreground: 210 40% 95%;
+    --card: 215 30% 10%;
+    --card-foreground: 210 40% 95%;
+    --muted: 215 30% 12%;
+    --muted-foreground: 210 15% 65%;
+    --accent: 215 30% 12%;
+    --accent-foreground: 210 40% 95%;
+    --primary: 207 95% 55%;
+    --primary-foreground: 215 30% 8%;
+    --secondary: 215 20% 25%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 215 20% 18%;
+    --input: 215 20% 18%;
+    --ring: 207 95% 55%;
+  }
+
+  /* Purple Theme - Light */
+  .purple {
+    --background: 260 60% 97%;
+    --foreground: 260 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 260 15% 15%;
+    --muted: 260 40% 94%;
+    --muted-foreground: 260 10% 45%;
+    --accent: 260 40% 94%;
+    --accent-foreground: 260 15% 15%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 260 15% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 260 20% 88%;
+    --input: 260 20% 88%;
+    --ring: 262 83% 58%;
+  }
+
+  /* Purple Theme - Dark */
+  .purple.dark {
+    --background: 260 25% 8%;
+    --foreground: 260 40% 95%;
+    --card: 260 25% 10%;
+    --card-foreground: 260 40% 95%;
+    --muted: 260 25% 12%;
+    --muted-foreground: 260 15% 65%;
+    --accent: 260 25% 12%;
+    --accent-foreground: 260 40% 95%;
+    --primary: 262 83% 65%;
+    --primary-foreground: 260 25% 8%;
+    --secondary: 260 15% 25%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 260 15% 18%;
+    --input: 260 15% 18%;
+    --ring: 262 83% 65%;
+  }
+
+  /* Emerald Theme - Light */
+  .emerald {
+    --background: 160 60% 97%;
+    --foreground: 160 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 160 15% 15%;
+    --muted: 160 40% 94%;
+    --muted-foreground: 160 10% 45%;
+    --accent: 160 40% 94%;
+    --accent-foreground: 160 15% 15%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 160 15% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 160 20% 88%;
+    --input: 160 20% 88%;
+    --ring: 160 84% 39%;
+  }
+
+  /* Emerald Theme - Dark */
+  .emerald.dark {
+    --background: 160 25% 8%;
+    --foreground: 160 40% 95%;
+    --card: 160 25% 10%;
+    --card-foreground: 160 40% 95%;
+    --muted: 160 25% 12%;
+    --muted-foreground: 160 15% 65%;
+    --accent: 160 25% 12%;
+    --accent-foreground: 160 40% 95%;
+    --primary: 160 84% 45%;
+    --primary-foreground: 160 25% 8%;
+    --secondary: 160 15% 25%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 160 15% 18%;
+    --input: 160 15% 18%;
+    --ring: 160 84% 45%;
+  }
+
+  /* Amber Theme - Light */
+  .amber {
+    --background: 45 96% 97%;
+    --foreground: 20 14% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 15%;
+    --muted: 45 70% 94%;
+    --muted-foreground: 25 10% 45%;
+    --accent: 45 70% 94%;
+    --accent-foreground: 20 14% 15%;
+    --primary: 43 96% 56%;
+    --primary-foreground: 20 14% 15%;
+    --secondary: 25 25% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 45 30% 88%;
+    --input: 45 30% 88%;
+    --ring: 43 96% 56%;
+  }
+
+  /* Amber Theme - Dark */
+  .amber.dark {
+    --background: 20 14% 8%;
+    --foreground: 45 50% 95%;
+    --card: 20 14% 10%;
+    --card-foreground: 45 50% 95%;
+    --muted: 20 14% 12%;
+    --muted-foreground: 25 15% 65%;
+    --accent: 20 14% 12%;
+    --accent-foreground: 45 50% 95%;
+    --primary: 43 96% 60%;
+    --primary-foreground: 20 14% 8%;
+    --secondary: 25 15% 25%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 25 15% 18%;
+    --input: 25 15% 18%;
+    --ring: 43 96% 60%;
+  }
+
+  /* Rose Theme - Light */
+  .rose {
+    --background: 340 50% 97%;
+    --foreground: 340 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 340 15% 15%;
+    --muted: 340 30% 94%;
+    --muted-foreground: 340 10% 45%;
+    --accent: 340 30% 94%;
+    --accent-foreground: 340 15% 15%;
+    --primary: 346 77% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 340 15% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 340 20% 88%;
+    --input: 340 20% 88%;
+    --ring: 346 77% 60%;
+  }
+
+  /* Rose Theme - Dark */
+  .rose.dark {
+    --background: 340 25% 8%;
+    --foreground: 340 40% 95%;
+    --card: 340 25% 10%;
+    --card-foreground: 340 40% 95%;
+    --muted: 340 25% 12%;
+    --muted-foreground: 340 15% 65%;
+    --accent: 340 25% 12%;
+    --accent-foreground: 340 40% 95%;
+    --primary: 346 77% 65%;
+    --primary-foreground: 340 25% 8%;
+    --secondary: 340 15% 25%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 340 15% 18%;
+    --input: 340 15% 18%;
+    --ring: 346 77% 65%;
+  }
+
+  /* Teal Theme - Light */
+  .teal {
+    --background: 170 60% 97%;
+    --foreground: 170 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 170 15% 15%;
+    --muted: 170 40% 94%;
+    --muted-foreground: 170 10% 45%;
+    --accent: 170 40% 94%;
+    --accent-foreground: 170 15% 15%;
+    --primary: 172 76% 41%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 170 15% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 170 20% 88%;
+    --input: 170 20% 88%;
+    --ring: 172 76% 41%;
+  }
+
+  /* Teal Theme - Dark */
+  .teal.dark {
+    --background: 170 25% 8%;
+    --foreground: 170 40% 95%;
+    --card: 170 25% 10%;
+    --card-foreground: 170 40% 95%;
+    --muted: 170 25% 12%;
+    --muted-foreground: 170 15% 65%;
+    --accent: 170 25% 12%;
+    --accent-foreground: 170 40% 95%;
+    --primary: 172 76% 47%;
+    --primary-foreground: 170 25% 8%;
+    --secondary: 170 15% 25%;
+    --secondary-foreground: 0 0% 100%;
+    --border: 170 15% 18%;
+    --input: 170 15% 18%;
+    --ring: 172 76% 47%;
+  }
+
+  /* Scrollbar Styles */
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -181,28 +281,16 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--icon-color);
+    background: hsl(var(--muted-foreground));
     border-radius: 5px;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--icon-color) transparent;
+    scrollbar-color: hsl(var(--muted-foreground)) transparent;
   }
 
-  @media (prefers-color-scheme: dark) {
-    ::-webkit-scrollbar-thumb {
-      background: hsl(215 14% 65%);
-      /* gray5 */
-    }
-
-    * {
-      scrollbar-color: hsl(215 14% 65%) transparent;
-      /* gray5 */
-    }
-  }
-
-  /* NUMBER RENDERER */
+  /* Custom Animations */
   .clip-path-hexagon {
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   }
@@ -219,11 +307,9 @@
     0% {
       transform: perspective(400px) rotateY(0);
     }
-
     50% {
       transform: perspective(400px) rotateY(180deg);
     }
-
     100% {
       transform: perspective(400px) rotateY(360deg);
     }
@@ -233,34 +319,31 @@
     0% {
       transform: rotate(0deg);
     }
-
     25% {
       transform: rotate(-5deg);
     }
-
     50% {
       transform: rotate(0deg);
     }
-
     75% {
       transform: rotate(5deg);
     }
-
     100% {
       transform: rotate(0deg);
     }
   }
-}
 
-@layer base {
-
+  /* Base Styles */
   *,
   *::before,
   *::after {
-    @apply m-0 box-border p-0 font-sans tracking-[0.01rem];
+    @apply m-0 box-border p-0;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.01rem;
   }
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
   }
 }

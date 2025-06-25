@@ -35,44 +35,20 @@ export default {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'var(--primary)',
-          foreground: 'var(--primary-foreground)',
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
-          DEFAULT: 'var(--secondary)',
-          foreground: 'var(--secondary-foreground)',
-        },
-        success: {
-          DEFAULT: 'var(--success)',
-          foreground: 'var(--success-foreground)',
-        },
-        danger: {
-          DEFAULT: 'var(--danger)',
-          foreground: 'var(--danger-foreground)',
-        },
-        warning: {
-          DEFAULT: 'var(--warning)',
-          foreground: 'var(--warning-foreground)',
-        },
-        info: {
-          DEFAULT: 'var(--info)',
-          foreground: 'var(--info-foreground)',
-        },
-        help: {
-          DEFAULT: 'var(--help)',
-          foreground: 'var(--help-foreground)',
-        },
-        light: {
-          DEFAULT: 'var(--light)',
-          foreground: 'var(--light-foreground)',
-        },
-        dark: {
-          DEFAULT: 'var(--dark)',
-          foreground: 'var(--dark-foreground)',
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
@@ -91,6 +67,24 @@ export default {
         glow: '0 0 8px 2px rgba(110, 231, 183, 0.6)',
         retro: '2px 2px 0px 1px rgba(251, 191, 36, 0.8)',
         futuristic: '0 0 12px 4px rgba(110, 231, 183, 0.3)',
+      },
+      animation: {
+        flip: 'flip 2s infinite',
+        wiggle: 'wiggle 0.5s ease-in-out',
+      },
+      keyframes: {
+        flip: {
+          '0%': { transform: 'perspective(400px) rotateY(0)' },
+          '50%': { transform: 'perspective(400px) rotateY(180deg)' },
+          '100%': { transform: 'perspective(400px) rotateY(360deg)' },
+        },
+        wiggle: {
+          '0%': { transform: 'rotate(0deg)' },
+          '25%': { transform: 'rotate(-5deg)' },
+          '50%': { transform: 'rotate(0deg)' },
+          '75%': { transform: 'rotate(5deg)' },
+          '100%': { transform: 'rotate(0deg)' },
+        },
       },
     },
   },
