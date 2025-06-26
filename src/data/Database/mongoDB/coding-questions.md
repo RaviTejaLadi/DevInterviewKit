@@ -1,5 +1,18 @@
 # Top 30 Coding Interview Questions and Answers
 
+## Table of Contents
+
+- [Basic Questions](#basic-questions)
+- [Querying Questions](#querying-questions)
+- [Update Operations](#update-operations)
+- [Delete Operations](#delete-operations)
+- [Indexing Questions](#indexing-questions)
+- [Aggregation Questions](#aggregation-questions)
+- [Advanced Questions](#advanced-questions)
+- [Performance Questions](#performance-questions)
+- [Schema Design Questions](#schema-design-questions)
+- [Security Questions](#security-questions)
+
 ## Basic Questions
 
 ### 1. How do you create a new database in MongoDB?
@@ -254,3 +267,5 @@ db.createUser({
 ```
 
 These questions cover a wide range of MongoDB concepts from basic CRUD operations to advanced topics like transactions and performance optimization. Being able to answer these and write the corresponding code will prepare you well for most MongoDB coding interviews.
+
+**[⬆ Back to Top](#table-of-contents)**

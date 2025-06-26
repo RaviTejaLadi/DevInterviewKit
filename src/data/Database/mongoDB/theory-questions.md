@@ -1,5 +1,20 @@
 #  Top 30 Theory Interview Questions and Answers
 
+## Table of Contents
+
+- [Fundamentals](#fundamentals)
+- [Data Modeling](#data-modeling)
+- [Indexing](#indexing)
+- [Performance](#performance)
+- [Aggregation](#aggregation)
+- [Replication and Sharding](#replication-and-sharding)
+- [Transactions](#transactions)
+- [Security](#security)
+- [Administration](#administration)
+- [Advanced Concepts](#advanced-concepts)
+- [Optimization](#optimization)
+- [Miscellaneous](#miscellaneous)
+
 ## Fundamentals
 
 ### 1. What is MongoDB?
@@ -218,3 +233,5 @@
 - When your data is highly relational
 - For applications requiring strong schema enforcement at database level
 - When your team has strong RDBMS expertise but no MongoDB experience
+
+**[⬆ Back to Top](#table-of-contents)**
