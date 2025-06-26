@@ -2,7 +2,13 @@
 
 As a beginner starting with Data Structures and Algorithms (DSA) using JavaScript, here's a structured approach to your learning journey:
 
-## 📚 Core Topics to Cover
+## Table of Contents
+
+1. [Core Topics to Cover](#core-topics-to-cover)
+2. [Practice Approach](#practice-approach)
+3. [JavaScript-Specific Tips](#javascript-specific-tips)
+
+## Core Topics to Cover
 
 ### 1️⃣ **Basic Programming Concepts**
 - 📊 Variables, data types, operators
@@ -74,7 +80,7 @@ As a beginner starting with Data Structures and Algorithms (DSA) using JavaScrip
 - 🌐 Trie data structure
 - 💻 Bit manipulation
 
-## 🏋️ Practice Approach
+## Practice Approach
 
 1. **Start simple** with basic problems on each topic 🏁
 2. **Use platforms like**:
@@ -86,9 +92,11 @@ As a beginner starting with Data Structures and Algorithms (DSA) using JavaScrip
 4. **Analyze complexity** for each solution 📈
 5. **Daily practice** - aim for 1-2 problems daily ⏰
 
-## 💡 JavaScript-Specific Tips
+## JavaScript-Specific Tips
 
 - 🎯 Master array methods (map, filter, reduce, etc.)
 - 🔄 Understand object vs. Map in JS
 - ✍️ Learn efficient string manipulation
 - 🔁 Practice recursion (essential for tree/graph problems)
+
+**[⬆ Back to Top](#table-of-contents)**

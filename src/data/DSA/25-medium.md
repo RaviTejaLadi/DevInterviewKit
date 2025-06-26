@@ -1,5 +1,33 @@
 # Top 25 DSA Interview Questions in JavaScript
 
+## Table of Contents
+
+1. [Best Time to Buy and Sell Stock](#1.-best-time-to-buy-and-sell-stock)
+2. [Product of Array Except Self](#2.-product-of-array-except-self)
+3. [Maximum Subarray (Kadane's Algorithm)](#3.-maximum-subarray-(kadanes-algorithm))
+4. [Longest Substring Without Repeating Characters](#4.-longest-substring-without-repeating-characters)
+5. [Group Anagrams](#5.-group-anagrams)
+6. [Detect Cycle in Linked List](#6.-detect-cycle-in-linked-list)
+7. [Remove Nth Node From End of List](#7.-remove-nth-node-from-end-of-list)
+8. [Add Two Numbers (Linked List)](#8.-add-two-numbers-(linked-list))
+9. [Validate Binary Search Tree](#9.-validate-binary-search-tree)
+10. [Binary Tree Level Order Traversal](#10.-binary-tree-level-order-traversal)
+11. [Subtree of Another Tree](#11.-subtree-of-another-tree)
+12. [Number of Islands](#12.-number-of-islands)
+13. [Clone Graph](#1.3-clone-graph)
+14. [Coin Change](#14.-coin-change)
+15. [Longest Increasing Subsequence](#15.-longest-increasing-subsequence)
+16. [Word Break](#16.-word-break)
+17. [Unique Paths](#17.-unique-paths)
+18. [Kth Largest Element in Array](#18.-kth-largest-element-in-array)
+19. [Top K Frequent Elements](#19.-top-k-frequent-elements)
+20. [Set Matrix Zeroes](#20.-set-matrix-zeroes)
+21. [Spiral Matrix](#21.-spiral-matrix)
+22. [Rotate Image](#22.-rotate-image)
+23. [Counting Bits](#23.-counting-bits)
+24. [Merge Intervals](#24.-merge-intervals)
+25. [Jump Game](#25.-jump-game)
+
 ### 1. Best Time to Buy and Sell Stock
 **Problem**: Find the maximum profit from buying and selling a stock given its prices over days.
 ```javascript
@@ -534,3 +562,5 @@ function canJump(nums) {
 }
 ```
 **Explanation**: Work backwards tracking earliest position that can reach end.
+
+**[⬆ Back to Top](#table-of-contents)**

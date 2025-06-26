@@ -1,5 +1,23 @@
 # Top 15 Easy DSA Interview Questions in JavaScript
 
+## Table of Contents
+
+1. [Two Sum](#1.-two-sum)
+2. [Contains Duplicate](#2.-contains-duplicate)
+3. [Valid Palindrome](#3.-valid-palindrome)
+4. [Maximum Depth of Binary Tree](#4.-maximum-depth-of-binary-tree)
+5. [Invert Binary Tree](#5.-invert-binary-tree)
+6. [Reverse a Linked List](#6.-reverse-a-linked-list)
+7. [Merge Two Sorted Lists](#7.-merge-two-sorted-lists)
+8. [Climbing Stairs](#8.-climbing-stairs)
+9. [Number of 1 Bits](#9.-number-of-1-bits)
+10. [Missing Number](#10.-missing-number)
+11. [Reverse Bits](#11.-reverse-bits)
+12. [Pow(x, n)](#12.-powx-n)
+13. [Sqrt(x)](#13.-sqrtx)
+14. [Min Stack](#14.-min-stack)
+15. [Valid Parentheses](#15.-valid-parentheses)
+
 ### 1. Two Sum
 **Problem**: Given an array of integers nums and an integer target, return indices of the two numbers that add up to target.
 ```javascript
@@ -258,3 +276,5 @@ function isValid(s) {
 }
 ```
 **Explanation**: Use stack to track opening brackets and match with closing ones.
+
+**[⬆ Back to Top](#table-of-contents)**

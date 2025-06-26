@@ -1,5 +1,18 @@
 # Top 10 DSA Interview Questions in JavaScript
 
+## Table of Contents
+
+1. [Longest Palindromic Substring](#1.-longest-palindromic-substring)
+2. [Course Schedule](#2.-course-schedule)
+3. [Pacific Atlantic Water Flow](#3.-pacific-atlantic-water-flow)
+4. [Word Ladder](#4.-word-ladder)
+5. [Trapping Rain Water](#5.-trapping-rain-water)
+6. [Find Median from Data Stream](#6.-find-median-from-data-stream)
+7. [LRU Cache](#7.-lru-cache)
+8. [Search in Rotated Sorted Array](#8.-search-in-rotated-sorted-array)
+9. [Find First and Last Position in Sorted Array](#9.-find-first-and-last-position-in-sorted-array)
+10. [Divide Two Integers](#10.-divide-two-integers)
+
 ### 1. Longest Palindromic Substring
 **Problem**: Find the longest palindromic substring in a string.
 ```javascript
@@ -330,3 +343,5 @@ function divide(dividend, divisor) {
 }
 ```
 **Explanation**: Exponential search to subtract largest possible divisor multiples.
+
+**[⬆ Back to Top](#table-of-contents)**
