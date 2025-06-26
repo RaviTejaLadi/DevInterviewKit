@@ -1,5 +1,16 @@
 # Top 30 Theory Interview Questions and Answers
 
+## Table of Contents
+
+- [Core Concepts](#core-concepts)
+- [Routing](#routing)
+- [Middleware](#middleware)
+- [Advanced Concepts](#advanced-concepts)
+- [Performance and Security](#performance-and-security)
+- [Deployment and Configuration](#deployment-and-configuration)
+- [Best Practices](#best-practices)
+
+
 ## Core Concepts
 
 1. **What is Express.js?**
@@ -212,3 +223,5 @@
       - Not using gzip compression
 
 These questions cover fundamental to advanced Express.js concepts that are commonly asked in interviews. Understanding these will give you a solid foundation for Express.js development roles.
+
+**[⬆ Back to Top](#table-of-contents)**
