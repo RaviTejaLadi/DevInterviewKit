@@ -1,6 +1,22 @@
 # Top 50 Most Asked HTML Interview Questions 🚀
 
-## Basic HTML Questions 📝
+## Table of Contents
+
+- [Basic HTML Questions ](#basic-html-questions)
+- [HTML5 Specific Questions ](#html5-specific-questions)
+- [Forms and Input ](#forms-and-input)
+- [Multimedia](#multimedia)
+- [Links and Navigation](#links-and-navigation)
+- [Tables ](#tables)
+- [Meta Tags and SEO ](#meta-tags-and-seo)
+- [Accessibility ](#accessibility)
+- [Storage ](#storage)
+- [Performance ](#performance)
+- [Advanced Questions ](#advanced-questions)
+- [Compatibility and Validation ](#compatibility-and-validation)
+- [Miscellaneous ](#miscellaneous)
+
+## Basic HTML Questions 
 
 1. **What is HTML?**  
     - HTML stands for HyperText Markup Language, the standard markup language for creating web pages. 🌐
@@ -28,7 +44,7 @@
 5. **What are void elements in HTML?**  
     - Elements that don't have closing tags or content (e.g., `<img>`, `<br>`, `<input>`). 🚫
 
-## HTML5 Specific Questions ✨
+## HTML5 Specific Questions 
 
 6. **What are the new features in HTML5?**  
     - Semantic elements (`<header>`, `<footer>`, `<article>`, etc.) 🏛️  
@@ -49,7 +65,7 @@
 10. **What are data-* attributes?**  
      - Custom attributes that store extra information (e.g., `<div data-user-id="123"></div>`). 🗃️
 
-## Forms and Input 🖊️
+## Forms and Input 
 
 11. **How do you create a form in HTML?**  
      ```html
@@ -78,7 +94,7 @@
 15. **What is the purpose of the `placeholder` attribute?**  
      - Shows hint text in an input field that disappears when user starts typing. 💡
 
-## Multimedia 🎧🎥
+## Multimedia 
 
 16. **How do you embed audio in HTML5?**  
      ```html
@@ -100,7 +116,7 @@
      - SVG is vector-based, scalable without quality loss, good for static images.  
      - Canvas is pixel-based, better for dynamic content like games. 🖌️
 
-## Links and Navigation 🔗
+## Links and Navigation 
 
 19. **How do you create a hyperlink?**  
      ```html
@@ -117,7 +133,7 @@
      ```
      📧
 
-## Tables 📊
+## Tables 
 
 22. **How do you create a table in HTML?**  
      ```html
@@ -137,7 +153,7 @@
 23. **What is the difference between `<th>` and `<td>`?**  
      - `<th>` defines a header cell, `<td>` defines a standard data cell. 🏷️
 
-## Meta Tags and SEO 🔍
+## Meta Tags and SEO 
 
 24. **What is the purpose of the `<meta>` tag?**  
      - Provides metadata about the HTML document (character set, viewport settings, etc.). 🏷️
@@ -151,7 +167,7 @@
 26. **What is the purpose of the `<title>` tag?**  
      - Defines the title of the document shown in browser's title bar or tab. 🏷️
 
-## Accessibility ♿
+## Accessibility 
 
 27. **What is ARIA in HTML?**  
      - Accessible Rich Internet Applications - attributes that make web content more accessible. 🦾
@@ -159,17 +175,17 @@
 28. **What is the purpose of the `alt` attribute in images?**  
      - Provides alternative text for screen readers and when images can't be displayed. 🖼️
 
-## Storage 💾
+## Storage 
 
 29. **What is the difference between localStorage and sessionStorage?**  
      - localStorage persists after browser closes, sessionStorage clears when session ends. 🗄️
 
-## Performance ⚡
+## Performance 
 
 30. **How can you optimize HTML for better performance?**  
      - Minimize DOM size, use semantic elements, defer non-critical resources, etc. 🚀
 
-## Advanced Questions 🧠
+## Advanced Questions 
 
 31. **What is the difference between HTML and XHTML?**  
      - XHTML is stricter XML-based version of HTML with more rigid syntax rules. 📚
@@ -186,7 +202,7 @@
 35. **What is the purpose of the `defer` and `async` attributes in script tags?**  
      - Both load scripts without blocking rendering, but `async` executes as soon as loaded while `defer` waits for document parsing to complete. ⏳
 
-## Compatibility and Validation ✅
+## Compatibility and Validation 
 
 36. **What is HTML validation?**  
      - Process of checking HTML code against standards to identify errors. ✔️
@@ -194,7 +210,7 @@
 37. **How do you handle browser-specific HTML tags?**  
      - Use feature detection and fallbacks or polyfills. 🧪
 
-## Miscellaneous 🧩
+## Miscellaneous 
 
 38. **What is the purpose of the `<nav>` element?**  
      - Defines a section of navigation links. 🧭

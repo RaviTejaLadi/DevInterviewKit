@@ -1,6 +1,13 @@
 # Deep dive into “Semantic HTML & Accessibility” —crucial topics for frontend interviews:
 
-## 🧠 Semantic HTML
+## Table of Contents
+
+- [ Semantic HTML](#semantic-html)
+- [ Accessibility (a11y)](#accessibility-(a11y))
+- [ Interview Tips](#interview-tips)
+- [ Summary](#summary)
+
+##  Semantic HTML
 
 ### 🔹 What is Semantic HTML?
 
@@ -41,7 +48,7 @@ Semantic HTML uses **meaningful tags** that clearly describe their purpose in th
 
 ---
 
-## ♿ Accessibility (a11y)
+##  Accessibility (a11y)
 
 ### 📌 Goals of Accessibility
 
@@ -82,7 +89,7 @@ Make the web usable for people with disabilities (e.g., vision, mobility, cognit
 
 ---
 
-## 💡 Interview Tips
+## Interview Tips
 
 ### 📌 Common Questions
 
@@ -94,7 +101,7 @@ Make the web usable for people with disabilities (e.g., vision, mobility, cognit
 
 ---
 
-## ✅ Summary
+##  Summary
 
 | Topic             | Remember                                                                |
 | ----------------- | ----------------------------------------------------------------------- |
@@ -102,4 +109,3 @@ Make the web usable for people with disabilities (e.g., vision, mobility, cognit
 | Accessibility     | Add `alt`, `label`, keyboard support, and ARIA where needed             |
 | Interview Insight | Focus on **why** each element improves user experience                  |
 
----

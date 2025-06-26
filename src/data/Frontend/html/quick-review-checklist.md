@@ -1,6 +1,5 @@
 # Most important HTML topics to solidly prepare for an interview—organized from foundational to advanced:
 
----
 
 ### ✅ 1. Basics & Core Concepts
 

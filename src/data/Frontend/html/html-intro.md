@@ -1,10 +1,19 @@
 # 📝 Introduction to HTML: Answers to Common Questions 🌐
 
-## 🤔 What is HTML?
+## 📚 Table of Contents
+
+1. [What is HTML?](#what-is-html?)
+2. [Why Use HTML?](#why-use-html?)
+3. [How to Use HTML](#how-to-use-html)
+    - [Basic HTML Document Structure](#basic-html-document-structure)
+    - [Steps to Use HTML](#steps-to-use-html:)
+4. [Common HTML Questions & Answers](#common-html-questions-and-answers)
+
+## What is HTML?
 
 **HTML (HyperText Markup Language) 🏷️** is the standard markup language used to create and structure content on the web. It provides the basic skeleton 🦴 of all websites by defining the structure and layout of web pages through a system of tags and attributes.
 
-## 💡 Why Use HTML?
+## Why Use HTML?
 
 1. **🌍 Foundation of the Web**: Every website uses HTML as its core structure
 2. **🎓 Easy to Learn**: Simple syntax with clear rules
@@ -12,11 +21,11 @@
 4. **🔍 SEO Benefits**: Proper HTML helps search engines understand your content
 5. **🧩 Integration**: Works seamlessly with CSS (styling) and JavaScript (functionality)
 
-## 🛠️ How to Use HTML
+## How to Use HTML
 
-### 📜 Basic HTML Document Structure
+### Basic HTML Document Structure
 
-```html
+```html 
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,13 +38,13 @@
 </html>
 ```
 
-### 🔧 Steps to Use HTML:
+### Steps to Use HTML:
 1. 📁 Create a file with `.html` extension
 2. ✍️ Write HTML code using tags
 3. 🌐 Open the file in a web browser to view it
 4. 🔄 Edit and refresh to see changes
 
-## ❓ Common HTML Questions & Answers
+## Common HTML Questions and Answers
 
 ### Q: What are HTML tags? 🏷️
 **A:** HTML tags are the hidden keywords within a web page that define how the browser must format and display the content. Tags are surrounded by angle brackets (`< >`) and usually come in pairs (opening and closing).
