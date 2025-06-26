@@ -111,3 +111,5 @@
 3. Use `POST` for creation, `PUT` for full updates, `PATCH` for partial updates.  
 4. Always sanitize inputs to prevent SQLi/XSS.  
 5. Prefer HTTPS over HTTP for security.  
+
+**[⬆ Back to Top](#table-of-contents)**

@@ -1,6 +1,6 @@
 # 🎨 CSS Cheat Sheet
 
-## 📑 Table of Contents
+## Table of Contents
 1. [ CSS Syntax](#css-syntax)
 2. [ CSS Selectors](#css-selectors)
     - [ Basic Selectors](#basic-selectors)
@@ -497,3 +497,5 @@
 | **Conic**      | Gradient rotates around a center point, creating a pie-chart-like effect.    | `conic-gradient(red, yellow, green)` sweeps through colors like a color wheel. |
 | **Repeating**  | Repeats a gradient pattern until filling the space.                         | `repeating-linear-gradient(45deg, red, red 10px, blue 10px, blue 20px)` creates stripes. |
 | **Custom Stops** | Allows precise control over color transition points.                       | `linear-gradient(red 0%, yellow 50%, green 100%)` places yellow at the midpoint. |
+
+**[⬆ Back to Top](#table-of-contents)**

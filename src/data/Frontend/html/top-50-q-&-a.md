@@ -271,3 +271,5 @@
 
 50. **What is the purpose of the `<main>` element?**  
      - Represents the dominant content of the `<body>` of a document. 🏛️
+
+     **[⬆ Back to Top](#table-of-contents)**

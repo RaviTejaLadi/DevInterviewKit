@@ -109,3 +109,4 @@ Make the web usable for people with disabilities (e.g., vision, mobility, cognit
 | Accessibility     | Add `alt`, `label`, keyboard support, and ARIA where needed             |
 | Interview Insight | Focus on **why** each element improves user experience                  |
 
+**[⬆ Back to Top](#table-of-contents)**

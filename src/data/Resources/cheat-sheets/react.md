@@ -194,3 +194,5 @@
 | **Context with useReducer** | Combine useContext and useReducer | Global state management pattern |
 
 This cheat sheet covers most React concepts up to version 18. For more detailed information, always refer to the [official React documentation](https://react.dev/).
+
+**[⬆ Back to Top](#table-of-contents)**

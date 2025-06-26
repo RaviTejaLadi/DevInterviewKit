@@ -1,6 +1,6 @@
 # 📝 Introduction to HTML: Answers to Common Questions 🌐
 
-## 📚 Table of Contents
+## Table of Contents
 
 1. [What is HTML?](#what-is-html?)
 2. [Why Use HTML?](#why-use-html?)
@@ -99,3 +99,5 @@ They work together to create modern, dynamic websites.
 - Interactive learning platforms (freeCodeCamp, Codecademy) 🎓
 
 🚀 **Happy Coding!** Keep practicing to become an HTML pro!
+
+ **[⬆ Back to Top](#table-of-contents)**

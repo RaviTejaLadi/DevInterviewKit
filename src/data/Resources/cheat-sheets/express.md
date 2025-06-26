@@ -249,3 +249,5 @@
 | Morgan logging | `app.use(morgan('combined'))` |
 | Console logging | `console.log(req.method, req.url)` |
 | Error logging | `console.error(err.stack)` |
+
+**[⬆ Back to Top](#table-of-contents)**

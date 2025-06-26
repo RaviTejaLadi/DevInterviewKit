@@ -1,6 +1,7 @@
 # HTML Cheat Sheet
 
 ## Table of Contents
+
 - [Basic Structure](#basic-structure)
 - [Document Metadata](#document-metadata)
 - [Text Content Elements](#text-content-elements)
@@ -278,3 +279,5 @@
 |------|--------|---------|
 | HTML Comment | `<!-- comment -->` | `<!-- This is a comment -->` |
 | Multi-line Comment | `<!-- comment -->` | `<!-- This comment<br>spans multiple<br>lines -->` |
+
+**[⬆ Back to Top](#table-of-contents)**

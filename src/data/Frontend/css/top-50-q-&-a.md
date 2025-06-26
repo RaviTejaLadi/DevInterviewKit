@@ -345,3 +345,5 @@
 - `will-change` hints to the browser what properties will change
 - `translateZ(0)` forces hardware acceleration (hack)
 - `will-change` is the modern, recommended approach
+
+**[⬆ Back to Top](#table-of-contents)**
