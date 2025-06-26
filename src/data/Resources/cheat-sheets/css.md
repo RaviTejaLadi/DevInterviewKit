@@ -1,4 +1,52 @@
-# CSS Cheat Sheet
+# 🎨 CSS Cheat Sheet
+
+## 📑 Table of Contents
+1. [ CSS Syntax](#css-syntax)
+2. [ CSS Selectors](#css-selectors)
+    - [ Basic Selectors](#basic-selectors)
+    - [ Combinator Selectors](#combinator-selectors)
+    - [ Attribute Selectors](#attribute-selectors)
+    - [ Pseudo-classes](#pseudo-classes)
+    - [ Pseudo-elements](#pseudo-elements)
+3. [ Text Properties](#text-properties)
+4. [ Background Properties](#background-properties)
+5. [ Box Model Properties](#box-model-properties)
+    - [ Dimensions](#dimensions)
+    - [ Margin](#margin)
+    - [ Padding](#padding)
+    - [ Border](#border)
+6. [ Layout Properties](#layout-properties)
+    - [ Display](#display)
+    - [ Position](#position)
+    - [ Float and Clear](#float-and-clear)
+    - [ Overflow](#overflow)
+7. [ Flexbox Properties](#flexbox-properties)
+    - [ Container Properties](#container-properties)
+    - [ Item Properties](#item-properties)
+8. [ Grid Properties](#grid-properties)
+    - [ Container Properties](#container-properties-1)
+    - [ Item Properties](#item-properties-1)
+9. [ Animation and Transition](#-animation-and-transition-properties)
+    - [ Transitions](#transitions)
+    - [ Animations](#animations)
+    - [ Transform Properties](#transform-properties)
+10. [ Visual Effects](#visual-effects)
+     - [ Shadows](#shadows)
+     - [ Opacity and Visibility](#opacity-and-visibility)
+     - [ Filters](#filters)
+11. [ List Properties](#list-properties)
+12. [ Table Properties](#table-properties)
+13. [ Units of Measurement](#units-of-measurement)
+     - [ Length Units](#length-units)
+     - [ Color Units](#color-units)
+14. [ Media Queries](#media-queries)
+     - [ Syntax](#syntax)
+     - [ Common Media Features](#common-media-features)
+     - [ Breakpoint Examples](#breakpoint-examples)
+15. [ CSS Functions](#css-functions)
+     - [ Calculation Functions](#calculation-functions)
+     - [ Color Functions](#color-functions)
+     - [ Gradient Functions](#gradient-functions)
 
 ## CSS Syntax
 
@@ -408,7 +456,7 @@
 | `max-height` | Maximum height | `@media (max-height: 800px)` |
 | `orientation` | Screen orientation | `@media (orientation: landscape)` |
 | `aspect-ratio` | Width/height ratio | `@media (aspect-ratio: 16/9)` |
-| `resolution` | Device resolution | `@media (min-resolution: 2dppx)` |
+| `resolution` | Device resolution | `@media (min-resolution: 200px)` |
 
 ### Breakpoint Examples
 

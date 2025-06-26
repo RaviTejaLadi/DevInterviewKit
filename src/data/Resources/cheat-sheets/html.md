@@ -1,5 +1,24 @@
 # HTML Cheat Sheet
 
+## Table of Contents
+- [Basic Structure](#basic-structure)
+- [Document Metadata](#document-metadata)
+- [Text Content Elements](#text-content-elements)
+- [Inline Text Elements](#inline-text-elements)
+- [List Elements](#list-elements)
+- [Link and Navigation Elements](#link-and-navigation-elements)
+- [Image and Media Elements](#image-and-media-elements)
+- [Table Elements](#table-elements)
+- [Form Elements](#form-elements)
+- [Semantic Elements (HTML5)](#semantic-elements-html5)
+- [Container Elements](#container-elements)
+- [Global Attributes](#global-attributes)
+- [ARIA Attributes (Accessibility)](#aria-attributes-accessibility)
+- [Input Attributes](#input-attributes)
+- [HTML Entities (Special Characters)](#html-entities-special-characters)
+- [Best Practices Summary](#best-practices-summary)
+- [Comments](#comments)
+
 ## Basic Structure
 
 | Element | Description | Example |
@@ -259,7 +278,3 @@
 |------|--------|---------|
 | HTML Comment | `<!-- comment -->` | `<!-- This is a comment -->` |
 | Multi-line Comment | `<!-- comment -->` | `<!-- This comment<br>spans multiple<br>lines -->` |
-
----
-
-*This table format provides a quick reference for all HTML elements, attributes, and best practices. Each table is organized by category for easy lookup and reference.*

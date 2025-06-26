@@ -1,6 +1,20 @@
 # Tailwind CSS Cheat Sheet  
 
-## **Layout**  
+## Table of Contents
+
+- [Layout](#layout)
+- [Spacing (Padding & Margin)](#spacing-padding-and-margin)
+- [Typography](#typography)
+- [Colors](#colors)
+- [Borders](#borders)
+- [Flexbox & Grid](#flexbox-and-grid)
+- [Sizing](#sizing)
+- [Effects & Filters](#effects-and-filters)
+- [Transitions & Animations](#transitions-and-animations)
+- [Responsive Design](#responsive-design)
+- [Pseudo-classes & States](#pseudo-classes-and-states)
+
+## Layout  
 
 | Class | Description |
 |-------|------------|
@@ -20,7 +34,7 @@
 
 ---
 
-## **Spacing (Padding & Margin)**  
+## Spacing (Padding and Margin)  
 
 | Class | Description |
 |-------|------------|
@@ -42,7 +56,7 @@
 
 ---
 
-## **Typography**  
+## Typography  
 
 | Class | Description |
 |-------|------------|
@@ -70,7 +84,7 @@
 
 ---
 
-## **Colors**  
+## Colors  
 
 | Class | Description |
 |-------|------------|
@@ -85,7 +99,7 @@
 
 ---
 
-## **Borders**  
+## Borders  
 
 | Class | Description |
 |-------|------------|
@@ -102,7 +116,7 @@
 
 ---
 
-## **Flexbox & Grid**  
+## Flexbox and Grid  
 
 | Class | Description |
 |-------|------------|
@@ -126,7 +140,7 @@
 
 ---
 
-## **Sizing**  
+## Sizing  
 
 | Class | Description |
 |-------|------------|
@@ -143,7 +157,7 @@
 
 ---
 
-## **Effects & Filters**  
+## Effects and Filters  
 
 | Class | Description |
 |-------|------------|
@@ -159,7 +173,7 @@
 
 ---
 
-## **Transitions & Animations**  
+## Transitions and Animations  
 
 | Class | Description |
 |-------|------------|
@@ -174,7 +188,7 @@
 
 ---
 
-## **Responsive Design**  
+## Responsive Design  
 
 | Prefix | Breakpoint |
 |--------|------------|
@@ -186,7 +200,7 @@
 
 ---
 
-## **Pseudo-classes & States**  
+## Pseudo-classes and States  
 
 | Prefix | Description |
 |--------|------------|
