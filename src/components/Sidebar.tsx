@@ -250,6 +250,9 @@ export function Sidebar({ sections, selectedDocument, onDocumentSelect, classNam
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                         <div className="flex items-center space-x-2">
+                          {isExpanded && (
+                            <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
+                          )}
                           {Icon ? <Icon className="w-4 h-4 mr-1" /> : ''}
                           <span>{highlightText(category.title, searchQuery)}</span>
                         </div>
@@ -265,11 +268,14 @@ export function Sidebar({ sections, selectedDocument, onDocumentSelect, classNam
                               key={document.id}
                               onClick={() => handleDocumentSelect(document)}
                               className={cn(
-                                'w-full text-left py-1 px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors',
+                                'flex gap-2 items-center justify-start w-full text-left py-1 px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors',
                                 selectedDocument?.id === document.id &&
                                   'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10 font-medium text-foreground'
                               )}
                             >
+                              {selectedDocument?.id === document.id && (
+                                <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
+                              )}
                               {highlightText(document.title, searchQuery)}
                             </button>
                           ))}
