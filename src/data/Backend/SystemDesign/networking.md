@@ -1,6 +1,17 @@
 # Networking Interview Questions & Answers Guide
 
-## 📡 Internet Fundamentals
+## Table of Contents
+
+- [Internet Fundamentals](#internet-fundamentals)
+- [REST API Concepts](#rest-api-concepts)
+- [GraphQL Concepts](#graphql-concepts)
+- [HTTP Methods Deep Dive](#http-methods-deep-dive)
+- [HTTP Headers](#http-headers)
+- [gRPC Concepts](#grpc-concepts)
+- [Quick Reference Summary](#quick-reference-summary)
+
+
+## Internet Fundamentals
 
 ### 1. How the Internet Works (Non-Technical Explanation)
 Think of the internet like a massive postal system:
@@ -89,7 +100,7 @@ Browser connects to IP address
 3. Your browser connects to that IP address
 4. The server responds with the website content
 
-## 🔄 REST API Concepts
+## REST API Concepts
 
 ### 5. REST (Representational State Transfer)
 
@@ -182,7 +193,7 @@ Request 2: Get user profile + token
 - **Simplicity:** Easier to understand and debug
 - **Caching:** Responses can be cached effectively
 
-## 🔍 GraphQL Concepts
+## GraphQL Concepts
 
 ### 11. Basic GraphQL Query Structure
 
@@ -319,7 +330,7 @@ const postLoader = new DataLoader(async (userIds) => {
 | Microservices architecture | Rapid frontend development |
 | Simple client requirements | Data aggregation from multiple sources |
 
-## 🌐 HTTP Methods Deep Dive
+## HTTP Methods Deep Dive
 
 ### 17. GET vs POST
 
@@ -406,7 +417,7 @@ Access-Control-Allow-Headers: Content-Type, Authorization
 - **API discovery:** Find out what methods are supported
 - **Capability negotiation:** Determine server capabilities
 
-## 📋 HTTP Headers
+## HTTP Headers
 
 ### 22. Content-Type Header
 
@@ -445,7 +456,7 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 - **Security:** Block suspicious or malicious clients
 - **A/B Testing:** Serve different versions to different clients
 
-## ⚡ gRPC Concepts
+## gRPC Concepts
 
 ### 24. What is gRPC?
 
@@ -575,7 +586,7 @@ service UserService {
 - Requires HTTP/2
 - More complex setup
 
-## 🎯 Quick Reference Summary
+## Quick Reference Summary
 
 ### When to Use What:
 
@@ -596,3 +607,5 @@ service UserService {
 3. **REST** (Good - Multiple endpoints, HTTP/1.1)
 
 This guide covers the essential networking concepts you'll encounter in interviews. Focus on understanding the trade-offs and use cases for each technology rather than memorizing syntax.
+
+**[⬆ Back to Top](#table-of-contents)**

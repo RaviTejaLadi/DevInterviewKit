@@ -1,6 +1,18 @@
 # OWASP Best Practices with JS/HTML/React Examples 🔐
 
-## 🛡️ Input Validation & XSS Prevention
+## Table of Contents
+
+1. [Input Validation & XSS Prevention](#️input-validation-and-xss-prevention)
+2. [Authentication & Session Management](#authentication-and-session-management)
+3. [CSRF Protection](#csrf-protection)
+4. [Content Security Policy (CSP)](#content-security-policy-(csp))
+5. [Secure File Upload](#secure-file-upload)
+6. [Rate Limiting (Client-side)](#rate-limiting-(client-side))
+7. [Secure Local Storage](#secure-local-storage)
+8. [Error Handling](#error-handling)
+9. [Input Sanitization Hook](#input-sanitization-hook)
+
+##  Input Validation and XSS Prevention
 
 **HTML - Escaping User Input:**
 ```html
@@ -38,7 +50,7 @@ function RichComment({ htmlContent }) {
 }
 ```
 
-## 🔑 Authentication & Session Management
+##  Authentication and Session Management
 
 **JavaScript - Secure Cookie Handling:**
 ```javascript
@@ -75,7 +87,7 @@ const LoginComponent = () => {
 };
 ```
 
-## 🚨 CSRF Protection
+##  CSRF Protection
 
 **React - CSRF Token Implementation:**
 ```jsx
@@ -112,7 +124,7 @@ function SecureForm() {
 }
 ```
 
-## 🔒 Content Security Policy (CSP)
+##  Content Security Policy (CSP)
 
 **HTML - CSP Headers:**
 ```html
@@ -138,7 +150,7 @@ function SecureForm() {
 </html>
 ```
 
-## 📁 Secure File Upload
+##  Secure File Upload
 
 **React - File Upload Component:**
 ```jsx
@@ -211,7 +223,7 @@ function SecureFileUpload() {
 }
 ```
 
-## 🚦 Rate Limiting (Client-side)
+##  Rate Limiting (Client-side)
 
 **JavaScript - Client-side Rate Limiting:**
 ```javascript
@@ -262,7 +274,7 @@ function ApiComponent() {
 }
 ```
 
-## 🔐 Secure Local Storage
+## Secure Local Storage
 
 **React - Secure Data Storage:**
 ```jsx
@@ -332,7 +344,7 @@ function UserProfile() {
 }
 ```
 
-## 🛡️ Error Handling
+##  Error Handling
 
 **React - Secure Error Boundaries:**
 ```jsx
@@ -389,7 +401,7 @@ function App() {
 }
 ```
 
-## 🔍 Input Sanitization Hook
+##  Input Sanitization Hook
 
 **React - Custom Security Hook:**
 ```jsx
@@ -444,3 +456,5 @@ function CommentForm() {
 ```
 
 These examples provide practical, client-side security implementations that align with OWASP best practices! 🎯✨
+
+**[⬆ Back to Top](#table-of-contents)**
