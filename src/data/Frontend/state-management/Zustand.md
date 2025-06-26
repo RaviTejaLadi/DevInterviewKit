@@ -1,5 +1,18 @@
 # Zustand: A Simple State Management Solution
 
+## Table of Contents
+
+- [What is Zustand?](#what-is-zustand?)
+- [Key Benefits](#key-benefits:)
+- [Complete Setup Guide](#complete-setup-guide)
+- [Example 1: Basic Counter Store](#example-1:-basic-counter-store)
+- [Example 2: Todo List with Async Actions](#example-2:-todo-list-with-async-actions)
+- [Best Practices](#best-practices)
+- [Error Handling](#error-handling)
+- [Debugging](#debugging)
+- [Easy-to-Remember Summary](#easy-to-remember-summary)
+
+
 ## What is Zustand?
 Zustand (German for "state") is a lightweight state management library for React that provides a simple API to manage global state without the complexity of Redux or Context API.
 
@@ -230,3 +243,5 @@ export function TodoList() {
 7. **Async**: Handle loading/error states
 
 Zustand keeps state management simple while being powerful enough for most applications!
+
+**[⬆ Back to Top](#table-of-contents)**

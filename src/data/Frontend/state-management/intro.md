@@ -1,12 +1,23 @@
 # 🌐 **State Management in React: The Complete Guide** 🧠
 
-## 🤔 **What is State Management?**
+## Table of Contents
+
+- [What is State Management?](#what-is-state-management?)
+- [Why State Management Matters](#why-state-management-matters)
+- [State Management Solutions](#state-management-solutions)
+- [How to Choose? Decision Guide](#how-to-choose-decision-guide)
+- [State Management Patterns](#state-management-patterns)
+- [Pro Tips for State Management](#pro-tips-for-state-management)
+- [The Future of State Management](#the-future-of-state-management)
+
+
+## What is State Management?
 
 State management is how we **store**, **access**, and **update** data across components in a React application. It's like the **brain** of your app that remembers everything! �️
 
 ---
 
-## 🔥 **Why State Management Matters**
+## Why State Management Matters
 
 1. **Avoid Prop Drilling** 🕳️ - Stop passing props through multiple levels
 2. **Global Access** 🌍 - Make state available anywhere in your app
@@ -16,7 +27,7 @@ State management is how we **store**, **access**, and **update** data across com
 
 ---
 
-## 🧰 **State Management Solutions**
+## State Management Solutions
 
 ### 1️⃣ **Built-in React State (useState)**
 ```jsx
@@ -108,7 +119,7 @@ const { data, isLoading } = useQuery('todos', fetchTodos);
 
 ---
 
-## 🏆 **How to Choose? Decision Guide**
+## How to Choose? Decision Guide
 
 | Solution          | Best For                          | Learning Curve | Bundle Size |
 |-------------------|-----------------------------------|----------------|-------------|
@@ -122,7 +133,7 @@ const { data, isLoading } = useQuery('todos', fetchTodos);
 
 ---
 
-## 🛠️ **State Management Patterns**
+## State Management Patterns
 
 ### **1. Lift State Up** ⬆️
 Move shared state to the closest common ancestor
@@ -138,7 +149,7 @@ Manage state transitions explicitly
 
 ---
 
-## 🚀 **Pro Tips for State Management**
+## Pro Tips for State Management
 
 1. **Start simple** - Use `useState` until you need more
 2. **Avoid premature optimization** - Don't add Redux "just in case"
@@ -148,7 +159,7 @@ Manage state transitions explicitly
 
 ---
 
-## 🔮 **The Future of State Management**
+## The Future of State Management
 
 - **Signals** (Solid.js inspired) ⚡
 - **Server Components** (Next.js 13+) 🌐
@@ -160,3 +171,5 @@ Manage state transitions explicitly
 💡 **Golden Rule:** "The best state management solution is the one that solves your problem with the least complexity"  
 
 Happy state managing! 🎛️
+
+**[⬆ Back to Top](#table-of-contents)**

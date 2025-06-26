@@ -39,7 +39,7 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
 
   return (
     <ScrollArea className="container h-screen">
-      <div className=" mx-auto px-2 py-8 lg:px-8 lg:py-12 max-w-4xl">
+      <div className=" mx-auto px-1 py-8 lg:px-8 lg:py-12 max-w-4xl">
         <article className="prose prose-neutral dark:prose-invert max-w-none">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}

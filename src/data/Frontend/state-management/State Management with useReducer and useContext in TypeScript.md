@@ -2,6 +2,15 @@
 
 Here's a complete setup for state management using only React's built-in hooks (`useReducer` and `useContext`) without any external packages. I'll provide 4 small examples with TypeScript typing.
 
+## Table of Contents
+
+- [1. Basic Counter Example](#1.-basic-counter-example)
+- [2. Todo List Example](#2.-todo-list-example)
+- [3. Theme Toggle Example](#3.-theme-toggle-example)
+- [4. Form State Example](#4.-form-state-example)
+- [Combined App Example](#combined-app-example)
+
+
 ## 1. Basic Counter Example
 
 ```tsx
@@ -448,3 +457,5 @@ This setup demonstrates how to use `useReducer` and `useContext` for state manag
 6. Create components that use the state
 
 This pattern provides a clean separation of concerns and makes your state management predictable and type-safe.
+
+**[⬆ Back to Top](#table-of-contents)**
