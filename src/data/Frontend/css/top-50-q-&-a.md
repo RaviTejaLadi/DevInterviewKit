@@ -1,5 +1,18 @@
 # Top 50 Most Asked CSS Interview Questions and Answers
 
+## Table of Contents
+
+1. [Basic CSS Questions](#basic-css-questions)
+2. [Intermediate CSS Questions](#intermediate-css-questions)
+3. [Advanced CSS Questions](#advanced-css-questions)
+4. [Layout and Responsive Design](#layout-and-responsive-design)
+5. [CSS3 Features](#css3-features)
+6. [Flexbox Questions](#flexbox-questions)
+7. [Grid Questions](#grid-questions)
+8. [Performance and Best Practices](#performance-and-best-practices)
+9. [Browser Compatibility](#browser-compatibility)
+10. [Advanced Topics](#advanced-topics)
+
 ## Basic CSS Questions
 
 ### 1. What is CSS?

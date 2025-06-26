@@ -1,10 +1,16 @@
 # 🎨 Introduction to CSS: Answers to Common Questions 🌈
 
-## 🤔 What is CSS?
+## Table of Contents
+- [What is CSS?](#what-is-css?)
+- [Why Use CSS?](#why-use-css?)
+- [How to Use CSS](#how-to-use-css)
+- [Common CSS Questions & Answers](#common-css-questions-and-answers)
+
+##  What is CSS?
 
 **CSS (Cascading Style Sheets) 🖌️** is a stylesheet language used to describe the presentation of HTML documents. It controls how web pages look by styling elements with colors, layouts, fonts, and animations ✨.
 
-## 💡 Why Use CSS?
+## Why Use CSS?
 
 1. **🎭 Separation of Concerns**: Keeps content (HTML) separate from presentation
 2. **💅 Consistent Styling**: Style multiple pages with one stylesheet
@@ -12,7 +18,7 @@
 4. **📱 Responsive Design**: Makes websites adaptable to different devices
 5. **🎨 Creative Control**: Unlimited styling possibilities
 
-## 🛠️ How to Use CSS
+## How to Use CSS
 
 ### 📜 Basic CSS Syntax
 ```css
@@ -44,7 +50,7 @@ selector {
    </head>
    ```
 
-## ❓ Common CSS Questions & Answers
+## Common CSS Questions and Answers
 
 ### Q: What's the "cascade" in CSS? 🌊
 **A:** It's the priority system that determines which styles apply when multiple rules conflict. The order is:
