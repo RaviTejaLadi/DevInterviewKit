@@ -1,6 +1,26 @@
 # 🚀 Introduction to TypeScript - Complete Guide
 
-## 🤔 What is TypeScript?
+## Table of Contents
+
+- [What is TypeScript?](#what-is-typescript?)
+- [Why Use TypeScript?](#why-use-typescript?)
+- [Setting Up TypeScript](#setting-up-typescript)
+- [Basic Types](#basic-types)
+- [Arrays and Objects](#arrays-and-objects)
+- [Functions](#functions)
+- [Interfaces](#interfaces)
+- [Type Aliases](#type-aliases)
+- [Union and Intersection Types](#union-and-intersection-types)
+- [Enums](#enums)
+- [Classes](#classes)
+- [Generics](#generics)
+- [Modules](#modules)
+- [Type Assertions](#type-assertions)
+- [Best Practices](#best-practices)
+- [Next Steps](#next-steps)
+- [Common Pitfalls to Avoid](#common-pitfalls-to-avoid)
+
+##  What is TypeScript?
 
 TypeScript is a **strongly typed programming language** 💪 developed by Microsoft that builds on JavaScript by adding **static type definitions** 📝. It's often called a "superset" of JavaScript, meaning all valid JavaScript code is also valid TypeScript code! 🎯
 
@@ -11,7 +31,7 @@ TypeScript is a **strongly typed programming language** 💪 developed by Micros
 - **🔄 Gradual Adoption**: Can be introduced incrementally to existing JavaScript projects
 - **📦 Compiles to JavaScript**: Runs anywhere JavaScript runs
 
-## 🌟 Why Use TypeScript?
+##  Why Use TypeScript?
 
 ### 🎯 Benefits
 1. **🐛 Early Error Detection**: Find bugs before your code runs
@@ -39,7 +59,7 @@ function greet(name: string): string {
 greet(123); // 🚨 Compile error: Argument of type 'number' is not assignable to parameter of type 'string'
 ```
 
-## ⚙️ Setting Up TypeScript
+##  Setting Up TypeScript
 
 ### 📦 Installation
 ```bash
@@ -87,7 +107,7 @@ tsc app.ts
 tsc --watch
 ```
 
-## 🎨 Basic Types
+##  Basic Types
 
 ### 🧱 Primitive Types
 ```typescript
@@ -131,7 +151,7 @@ function throwError(): never {
 }
 ```
 
-## 📚 Arrays and Objects
+##  Arrays and Objects
 
 ### 📊 Arrays
 ```typescript
@@ -169,7 +189,7 @@ let config: { readonly apiUrl: string; timeout: number } = {
 };
 ```
 
-## ⚡ Functions
+##  Functions
 
 ### 🔧 Function Types
 ```typescript
@@ -209,7 +229,7 @@ let result1 = combine("Hello", "World"); // 📝 string
 let result2 = combine(1, 2); // 🔢 number
 ```
 
-## 🏗️ Interfaces
+##  Interfaces
 
 Interfaces define the structure of objects: 📐
 
@@ -248,7 +268,7 @@ interface Employee extends User {
 }
 ```
 
-## 🏷️ Type Aliases
+##  Type Aliases
 
 Create custom type names: 🎨
 
@@ -270,7 +290,7 @@ type EventHandler = (event: Event) => void;
 type Status = "pending" | "approved" | "rejected";
 ```
 
-## 🤝 Union and Intersection Types
+##  Union and Intersection Types
 
 ### 🔀 Union Types (OR)
 ```typescript
@@ -303,7 +323,7 @@ let person: Person = {
 };
 ```
 
-## 📊 Enums
+##  Enums
 
 Enums allow you to define named constants: 🏷️
 
@@ -336,7 +356,7 @@ enum FileAccess {
 }
 ```
 
-## 🏛️ Classes
+##  Classes
 
 TypeScript enhances JavaScript classes with type annotations: 💪
 
@@ -394,7 +414,7 @@ class Circle extends Shape {
 }
 ```
 
-## 🎁 Generics
+##  Generics
 
 Generics allow you to create reusable components: 🔄
 
@@ -439,7 +459,7 @@ logLength([1, 2, 3]); // ✅ works
 // logLength(123); // ❌ error - number doesn't have length property
 ```
 
-## 📦 Modules
+##  Modules
 
 TypeScript supports ES6 modules: 🔄
 
@@ -465,7 +485,7 @@ console.log(subtract(5, 3)); // 2 ➖
 console.log(multiply(5, 3)); // 15 ✖️
 ```
 
-## 🎭 Type Assertions
+##  Type Assertions
 
 Sometimes you know more about a type than TypeScript: 🧠
 
@@ -482,7 +502,7 @@ let strLength2: number = (someValue2 as string).length;
 let element = document.getElementById("myElement")!; // tells TS it's not null
 ```
 
-## 🌟 Best Practices
+##  Best Practices
 
 1. **🔒 Use strict mode**: Enable strict compiler options
 2. **🏗️ Prefer interfaces over types** for object shapes
@@ -493,7 +513,7 @@ let element = document.getElementById("myElement")!; // tells TS it's not null
 7. **🔒 Use readonly** for immutable data
 8. **🧩 Prefer composition over inheritance**
 
-## 🎯 Next Steps
+##  Next Steps
 
 1. **🏋️‍♂️ Practice with small projects**: Convert existing JavaScript projects
 2. **🚀 Learn advanced types**: Conditional types, mapped types, template literals
@@ -502,7 +522,7 @@ let element = document.getElementById("myElement")!; // tells TS it's not null
 5. **⚙️ Configure tooling**: Set up ESLint, Prettier, and other tools
 6. **📖 Read documentation**: Official TypeScript handbook and release notes
 
-## ⚠️ Common Pitfalls to Avoid
+##  Common Pitfalls to Avoid
 
 - 🚫 Over-using `any` type
 - 👀 Ignoring compiler errors
@@ -512,3 +532,5 @@ let element = document.getElementById("myElement")!; // tells TS it's not null
 - 🤖 Not leveraging type inference
 
 🎉 TypeScript is a powerful tool that makes JavaScript development more robust and maintainable. Start with basic types and gradually work your way up to more advanced features as you become comfortable with the language! 💪✨
+
+**[⬆ Back to Top](#table-of-contents)**

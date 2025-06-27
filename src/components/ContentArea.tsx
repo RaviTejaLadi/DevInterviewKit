@@ -39,7 +39,7 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
 
   return (
     <ScrollArea className="container h-screen">
-      <div className=" mx-auto px-1 py-8 lg:px-8 lg:py-12 max-w-4xl">
+      <div className=" mx-auto px-1 py-8 lg:px-8 lg:py-16 ">
         <article className="prose prose-neutral dark:prose-invert max-w-none">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
@@ -70,54 +70,54 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
               h2: ({ children }) => {
                 const id = String(children).toLowerCase().replace(/\s+/g, '-');
                 return (
-                  <div className="group relative mt-16 mb-6">
-                    <h2 id={id} className="text-3xl lg:text-4xl font-bold text-foreground flex items-center gap-3">
-                      <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
+                  <div className="group relative mt-16 mb-6 flex items-center gap-3">
+                    <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
+                    <h2 id={id} className="text-3xl lg:text-4xl font-bold text-foreground">
                       {children}
-                      <a
-                        href={`#${id}`}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary ml-2"
-                        aria-label="Link to this heading"
-                      >
-                        <Hash className="w-5 h-5" />
-                      </a>
                     </h2>
+                    <a
+                      href={`#${id}`}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary ml-2"
+                      aria-label="Link to this heading"
+                    >
+                      <Hash className="w-5 h-5" />
+                    </a>
                   </div>
                 );
               },
               h3: ({ children }) => {
                 const id = String(children).toLowerCase().replace(/\s+/g, '-');
                 return (
-                  <div className="group relative mt-12 mb-4">
-                    <h3 id={id} className="text-2xl lg:text-3xl font-semibold text-foreground flex items-center gap-2">
-                      <div className="w-0.5 h-6 bg-primary/70 rounded-full"></div>
+                  <div className="group relative mt-12 mb-4 flex items-center gap-2">
+                    <div className="w-0.5 h-6 bg-primary/70 rounded-full"></div>
+                    <h3 id={id} className="text-2xl lg:text-3xl font-semibold text-foreground ">
                       {children}
-                      <a
-                        href={`#${id}`}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary ml-2"
-                        aria-label="Link to this heading"
-                      >
-                        <Hash className="w-4 h-4" />
-                      </a>
                     </h3>
+                    <a
+                      href={`#${id}`}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary ml-2"
+                      aria-label="Link to this heading"
+                    >
+                      <Hash className="w-4 h-4" />
+                    </a>
                   </div>
                 );
               },
               h4: ({ children }) => {
                 const id = String(children).toLowerCase().replace(/\s+/g, '-');
                 return (
-                  <div className="group relative mt-8 mb-3">
-                    <h4 id={id} className="text-xl lg:text-2xl font-semibold text-foreground flex items-center gap-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="group relative mt-8 mb-3 flex items-center gap-2">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <h4 id={id} className="text-xl lg:text-2xl font-semibold text-foreground ">
                       {children}
-                      <a
-                        href={`#${id}`}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary ml-2"
-                        aria-label="Link to this heading"
-                      >
-                        <Hash className="w-3 h-3" />
-                      </a>
                     </h4>
+                    <a
+                      href={`#${id}`}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-muted-foreground hover:text-primary ml-2"
+                      aria-label="Link to this heading"
+                    >
+                      <Hash className="w-3 h-3" />
+                    </a>
                   </div>
                 );
               },
