@@ -1,6 +1,7 @@
 # 🔰 Easy Level Coding Questions (0–2 years experience)
 
-### 🧩 Basic Components & State Management
+
+## 🧩 Basic Components & State Management
 
 1. 🔢 **Counter Component** – Build a simple counter with ➕ / ➖ buttons
 2. 📝 **Todo List** – Add, display, and delete tasks from a list
@@ -15,7 +16,7 @@
 
 ---
 
-### 🧠 Basic Interactions
+## 🧠 Basic Interactions
 
 11. 📂 **Accordion Component** – Expand/collapse content sections
 12. 🗂️ **Tabs Component** – Switch between different tab views

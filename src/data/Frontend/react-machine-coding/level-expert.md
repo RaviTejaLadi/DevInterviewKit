@@ -1,6 +1,6 @@
 # 🧠 Expert Level Coding Questions (Senior/Architect Level)
 
-### 🏗️ Framework & Library Building
+## 🏗️ Framework & Library Building
 
 1. 🧱 **Component Library** – Build a full design system with Storybook
 2. 🧠 **State Management Library** – Create a Redux-like library from scratch
@@ -15,7 +15,7 @@
 
 ---
 
-### 🧱 Advanced System Design
+## 🧱 Advanced System Design
 
 11. 🏢 **Multi-tenant Application** – Build a SaaS platform with tenant isolation
 12. 🎮 **Real-time Multiplayer Game** – Design a complete online multiplayer game system

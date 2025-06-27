@@ -1,4 +1,10 @@
-# React Machine Coding Questions by Difficulty Level
+# **React Machine Coding Questions by Difficulty Level**
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Key Skills to Demonstrate](#key-skills-to-demonstrate)
+- [Interview Tips](#interview-tips)
 
 ## Introduction
 
@@ -114,3 +120,5 @@ Ready to level up your React skills? Let's dive into the questions!
 6. **Time Management**: Prioritize core functionality first
 7. **Testing Mindset**: Consider how you would test your components
 8. **Performance Awareness**: Discuss optimization strategies when relevant
+
+**[⬆ Back to Top](#table-of-contents)**

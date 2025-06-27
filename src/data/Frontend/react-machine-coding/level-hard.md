@@ -1,6 +1,6 @@
 # 🚀 Hard Level Coding Questions (4+ Years Experience)
 
-### 🏗️ Advanced Architecture & Patterns
+## 🏗️ Advanced Architecture & Patterns
 
 1. 🧾 **Code Editor** – Syntax highlighting with basic editing (like VSCode-lite)
 2. 📊 **Spreadsheet** – Excel-like grid with formulas and cell dependencies
@@ -15,7 +15,7 @@
 
 ---
 
-### 🔄 Complex State Management
+## 🔄 Complex State Management
 
 11. 🗨️ **Nested Comments** – Reddit-style threaded discussion system
 12. 🧩 **Drag & Drop Builder** – Component/page builder with reorder, nesting, etc.
@@ -30,7 +30,7 @@
 
 ---
 
-### ⚡ Performance & Optimization
+## ⚡ Performance & Optimization
 
 21. 📋 **Virtual Table** – Handle massive row data efficiently with virtualization
 22. 🧩 **Micro Frontend** – Setup module federation using Webpack 5 or Vite

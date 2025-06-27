@@ -1,6 +1,6 @@
 # 🎯 Medium Level Coding Questions (2–4 Years Experience)
 
-### ⚙️ Advanced State & Effects
+## ⚙️ Advanced State & Effects
 
 1. 🔄 **Infinite Scroll** – Load more content as the user scrolls
 2. 🔍 **Debounced Search** – Search input with API calls and debounce
@@ -15,7 +15,7 @@
 
 ---
 
-### 🧩 Complex UI Patterns
+## 🧩 Complex UI Patterns
 
 11. 🧾 **Data Table** – Sort, filter, paginate, and row actions
 12. 📌 **Kanban Board** – Drag-and-drop task management system
@@ -30,7 +30,7 @@
 
 ---
 
-### 🌐 API Integration & Performance
+## 🌐 API Integration & Performance
 
 21. ✏️ **Auto-complete** – Input suggestions fetched from API
 22. 📰 **News Feed** – Display and paginate recent articles
