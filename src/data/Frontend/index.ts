@@ -497,11 +497,6 @@ export const frontendData = [
         content: vueFilesAndFoldersStructure,
       },
       {
-        id: 'common-next-js-interview-questions',
-        title: 'Common Interview Questions',
-        content: commonNextInterviewQuestions,
-      },
-      {
         id: 'theory-vue-js-interview-questions',
         title: 'Theory Interview Questions',
         content: vueTheoryQuestions,

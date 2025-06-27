@@ -1,6 +1,13 @@
-# Introduction to Vue.js
+# **Introduction to Vue.js**
 
 Vue.js (commonly referred to as Vue) is a progressive JavaScript framework for building user interfaces. Created by Evan You in 2014, Vue has gained tremendous popularity due to its simplicity, flexibility, and performance.
+
+## Table of Contents
+
+- [Key Features of Vue.js](#key-features-of-vue.js)
+- [Basic Concepts](#basic-concepts)
+- [Vue Ecosystem](#vue-ecosystem)
+- [Why Choose Vue.js?](#why-choose-vue.js?)
 
 ## Key Features of Vue.js
 
@@ -102,3 +109,5 @@ const app = new Vue({
 - **Flexibility**: Can be integrated with other libraries or existing projects
 
 Vue.js is an excellent choice for developers who want a framework that's powerful yet approachable, with a gentle learning curve that doesn't sacrifice capability.
+
+**[⬆ Back to Top](#table-of-contents)**

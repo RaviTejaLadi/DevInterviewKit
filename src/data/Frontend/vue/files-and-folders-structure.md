@@ -1,4 +1,10 @@
-# Vue.js Default File Structure Explanation
+# **Vue.js Default File Structure Explanation**
+
+## Table of Contents
+
+1. [Default Folder Structure](#default-folder-structure)
+2. [Key Files and Folders Explained](#key-files-and-folders-explained)
+3. [Additional Notes](#additional-notes)
 
 ## Default Folder Structure
 
@@ -108,3 +114,5 @@ my-vue-project/
    - Files in `src/` are processed by webpack/vite (bundled, optimized)
 
 This structure provides a solid foundation that scales well for small to medium-sized applications while remaining flexible enough to adapt to larger projects.
+
+**[⬆ Back to Top](#table-of-contents)**
