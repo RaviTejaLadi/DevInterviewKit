@@ -1,4 +1,27 @@
-# React Router DOM: A Complete Guide
+# **React Router DOM: A Complete Guide**
+
+## Table of Contents
+
+- [What is React Router DOM?](#what-is-react-router-dom?)
+- [Key Advantages of React Router DOM](#key-advantages-of-react-router-dom)
+- [Complete Setup in TSX](#complete-setup-in-tsx)
+  - [Installation](#1.-installation)
+  - [Basic Setup](#2.-basic-setup)
+- [Different Use Cases](#different-use-cases)
+  - [For Small Applications](#for-small-applications)
+    - [Basic Routing](#1.-basic-routing)
+    - [URL Parameters](#2.-url-parameters)
+  - [For Large Applications](#for-large-applications)
+    - [Route Configuration File](#1.-route-configuration-file)
+    - [Lazy Loading with Code Splitting](#2.-lazy-loading-with-code-splitting)
+    - [Nested Routes with Layouts](#3.-nested-routes-with-layouts)
+    - [Protected Routes (Authentication)](#4.-protected-routes-(authentication))
+- [Advanced Features](#advanced-features)
+  - [Programmatic Navigation](#1.-programmatic-navigation)
+  - [Query Parameters](#2.-query-parameters)
+  - [Route Loaders (Data Fetching)](#3.-route-loaders-(data-fetching))
+- [Best Practices](#best-practices)
+- [Example: Complete Small App Structure](#example:-complete-small-app-structure)
 
 ## What is React Router DOM?
 
@@ -305,7 +328,7 @@ function UserProfile() {
 
 ## Example: Complete Small App Structure
 
-```
+```bash
 /src
   /components
   /pages
@@ -355,3 +378,5 @@ createRoot(document.getElementById('root')!).render(
 ```
 
 React Router DOM provides a flexible and powerful way to handle routing in React applications, from small single-page apps to large enterprise applications with complex routing needs.
+
+**[⬆ Back to Top](#table-of-contents)**

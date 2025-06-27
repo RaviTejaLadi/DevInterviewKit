@@ -1,10 +1,24 @@
-# React Table Hooks Syntax Guide
+# **React Table Hooks Syntax Guide**
 
 Here's a breakdown of the most commonly used React-Table hooks with their syntax and explanations:
 
 ---
 
-### **1. `useReactTable` (Core Hook)**
+## Table of Contents
+
+- [1. useReactTable (Core Hook)](#1.-usereacttable-(core-hook))
+- [2. Row Model Hooks](#2.-row-model-hooks)
+- [3. State Management Hooks](#3.-state-management-hooks)
+- [4. Row Selection Hooks](#4.-row-selection-hooks)
+- [5. Column Visibility](#5.-column-visibility)
+- [6. Expanded Rows](#6.-expanded-rows)
+- [7. Column Ordering (Drag & Drop)](#7.-column-ordering-(drag-and-drop))
+- [8. Global Filtering](#8.-global-filtering)
+- [Key Utility Methods](#key-utility-methods)
+- [Complete Feature Setup Example](#complete-feature-setup-example)
+
+
+### 1. useReactTable (Core Hook)
 The main hook that creates a table instance.
 
 ```tsx
@@ -31,7 +45,7 @@ const table = useReactTable({
 
 ---
 
-### **2. Row Model Hooks**
+### 2. Row Model Hooks
 
 #### **`getCoreRowModel`**
 ```tsx
@@ -64,7 +78,7 @@ getPaginationRowModel: getPaginationRowModel(),
 
 ---
 
-### **3. State Management Hooks**
+### 3. State Management Hooks
 
 #### **Sorting State**
 ```tsx
@@ -116,7 +130,7 @@ onPaginationChange: setPagination,
 
 ---
 
-### **4. Row Selection Hooks**
+### 4. Row Selection Hooks
 ```tsx
 const [rowSelection, setRowSelection] = useState({});
 
@@ -147,7 +161,7 @@ enableRowSelection: true, // or a function
 
 ---
 
-### **5. Column Visibility**
+### 5. Column Visibility
 ```tsx
 const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
@@ -165,7 +179,7 @@ onColumnVisibilityChange: setColumnVisibility,
 
 ---
 
-### **6. Expanded Rows**
+### 6. Expanded Rows
 ```tsx
 const [expanded, setExpanded] = useState<ExpandedState>({});
 
@@ -190,7 +204,7 @@ getSubRows: row => row.subRows, // if you have nested data
 
 ---
 
-### **7. Column Ordering (Drag & Drop)**
+### 7. Column Ordering (Drag and Drop)
 ```tsx
 const [columnOrder, setColumnOrder] = useState<string[]>();
 
@@ -201,7 +215,7 @@ onColumnOrderChange: setColumnOrder,
 
 ---
 
-### **8. Global Filtering**
+### 8. Global Filtering
 ```tsx
 const [globalFilter, setGlobalFilter] = useState('');
 
@@ -221,7 +235,7 @@ onGlobalFilterChange: setGlobalFilter,
 
 ---
 
-### **Key Utility Methods**
+### Key Utility Methods
 Once you have your table instance, you'll use these frequently:
 
 ```tsx
@@ -246,7 +260,7 @@ row.getIsExpanded()
 
 ---
 
-### **Complete Feature Setup Example**
+### Complete Feature Setup Example
 ```tsx
 const table = useReactTable({
   data,
@@ -277,3 +291,5 @@ const table = useReactTable({
 ```
 
 Each hook integrates with the table instance to provide specific functionality while maintaining a clean, composable API. The headless nature means you're responsible for rendering the UI, but you get complete control over the markup and styling.
+
+**[⬆ Back to Top](#table-of-contents)**

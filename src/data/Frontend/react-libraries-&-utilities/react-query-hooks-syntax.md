@@ -1,10 +1,17 @@
-# React Query Hooks Syntax Guide
+# **React Query Hooks Syntax Guide**
 
-Here's a concise syntax reference for the most commonly used React-Query hooks with explanations:
+## Table of Contents
 
----
+  - [1. useQuery - Fetch Data](#1.-usequery---fetch-data)
+  - [2. useMutation - Modify Data](#2.-usemutation---modify-data)
+  - [3. useQueryClient - Access Query Client](#3.-usequeryclient---access-query-client)
+  - [4. useInfiniteQuery - Paginated/Lazy Data](#4.-useinfinitequery---paginatedlazy-data)
+  - [5. useIsFetching - Global Loading Indicator](#5.-useisfetching---global-loading-indicator)
+  - [6. useQueries - Parallel Queries (Dynamic)](#6.-usequeries---parallel-queries-(dynamic))
+  - [Key Patterns](#key-patterns)
+  - [TypeScript Tip](#typescript-tip)
 
-### **1. `useQuery` - Fetch Data**
+## 1. useQuery - Fetch Data
 ```tsx
 const {
   data,         // The successful response data
@@ -34,7 +41,7 @@ Fetching data that you **READ** from the server (GET requests).
 
 ---
 
-### **2. `useMutation` - Modify Data**
+## 2. useMutation - Modify Data
 ```tsx
 const {
   mutate,          // Function to trigger mutation
@@ -66,7 +73,7 @@ Creating, updating, or deleting data (POST/PUT/PATCH/DELETE requests).
 
 ---
 
-### **3. `useQueryClient` - Access Query Client**
+## 3. useQueryClient - Access Query Client
 ```tsx
 const queryClient = useQueryClient();
 
@@ -91,7 +98,7 @@ Managing cache, triggering refetches, or optimistic updates.
 
 ---
 
-### **4. `useInfiniteQuery` - Paginated/Lazy Data**
+## 4. useInfiniteQuery - Paginated/Lazy Data
 ```tsx
 const {
   data,              // Contains pages[] array
@@ -128,7 +135,7 @@ Infinite scroll, pagination, or chunked data loading.
 
 ---
 
-### **5. `useIsFetching` - Global Loading Indicator**
+## 5. useIsFetching - Global Loading Indicator
 ```tsx
 const isFetching = useIsFetching();
 // Returns number of active fetches
@@ -144,7 +151,7 @@ Show a global loading spinner when any queries are fetching.
 
 ---
 
-### **6. `useQueries` - Parallel Queries (Dynamic)**
+## 6. useQueries - Parallel Queries (Dynamic)
 ```tsx
 const results = useQueries({
   queries: [
@@ -160,7 +167,7 @@ When you need to fetch multiple items in parallel with dynamic keys.
 
 ---
 
-## **Key Patterns**
+## Key Patterns
 
 ### **1. Dependent Queries**
 ```tsx
@@ -206,7 +213,7 @@ useMutation({
 
 ---
 
-## **TypeScript Tip**
+## TypeScript Tip
 Always type your hooks for full safety:
 ```tsx
 // For queries
@@ -217,3 +224,5 @@ useMutation<ResponseData, Error, Variables>({...});
 ```
 
 These hooks cover 95% of React-Query use cases. The library handles caching, retries, deduping, and more automatically!
+
+**[⬆ Back to Top](#table-of-contents)**

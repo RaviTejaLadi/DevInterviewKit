@@ -1,6 +1,18 @@
 # The most useful and widely adopted React open-source packages
 
-## 🔧 **Core Utilities & Hooks**
+## Table of Contents
+
+- [Core Utilities and Hooks](#core-utilities-and-hooks)
+- [UI Component Libraries](#ui-component-libraries)
+- [Forms & Validation](#forms-and-validation)
+- [Routing](#routing)
+- [Animations](#animations)
+- [Tables, Charts, and Visualizations](#tables,charts,and-visualizations)
+- [Testing](#testing)
+- [Developer Experience / Build Tools](#developer-experience/build-tools)
+- [Honorable Mentions](#honorable-mentions)
+
+##  Core Utilities and Hooks
 
 1. **[react-use](https://github.com/streamich/react-use)**
    A collection of essential React hooks like `useLocalStorage`, `useDebounce`, `usePrevious`, etc.
@@ -19,7 +31,7 @@
 
 ---
 
-## 💄 **UI Component Libraries**
+##  UI Component Libraries
 
 6. **[shadcn/ui](https://github.com/shadcn/ui)**
    Modern, customizable UI components built with TailwindCSS and Radix UI.
@@ -38,7 +50,7 @@
 
 ---
 
-## 🧩 **Forms & Validation**
+##  Forms and Validation
 
 11. **[react-hook-form](https://react-hook-form.com/)**
     Performance-first form library. Tiny, powerful, dev-friendly.
@@ -54,7 +66,7 @@
 
 ---
 
-## 🌐 **Routing**
+##  Routing
 
 15. **[react-router](https://reactrouter.com/)**
     The standard for routing in React apps (especially SPAs).
@@ -64,7 +76,7 @@
 
 ---
 
-## 🖼️ **Animations**
+##  Animations
 
 17. **[framer-motion](https://github.com/framer/motion)**
     Powerful animation library for React – simple syntax, smooth animations.
@@ -74,7 +86,7 @@
 
 ---
 
-## 📦 **Tables, Charts, and Visualizations**
+##  Tables, Charts, and Visualizations
 
 19. **[tanstack/table](https://tanstack.com/table/latest)**
     Headless UI for tables – fully customizable (used in complex dashboards).
@@ -87,7 +99,7 @@
 
 ---
 
-## 🧪 **Testing**
+##  Testing
 
 22. **[testing-library/react](https://testing-library.com/docs/react-testing-library/intro/)**
     Standard testing framework for writing reliable React component tests.
@@ -97,7 +109,7 @@
 
 ---
 
-## ⚙️ **Developer Experience / Build Tools**
+##  Developer Experience / Build Tools
 
 24. **[vite](https://vitejs.dev/)**
     Blazing fast build tool – replacing CRA in most projects.
@@ -113,10 +125,11 @@
 
 ---
 
-## 🧠 Honorable Mentions
+##  Honorable Mentions
 
 * **classnames** – Utility to conditionally join classNames.
 * **dayjs / date-fns** – Lightweight date libraries.
 * **immer** – Immutability made easy (used internally in Zustand, Redux Toolkit).
 * **react-error-boundary** – Better way to handle error boundaries.
 
+**[⬆ Back to Top](#table-of-contents)**

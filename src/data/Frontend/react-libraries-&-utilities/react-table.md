@@ -1,5 +1,13 @@
 # React-Table: Complete Guide with TypeScript (TSX)
 
+## Table of Contents
+
+- [What is React-Table?](#what-is-react-table?)
+- [Key Advantages of React-Table](#key-advantages-of-react-table)
+- [Complete Setup Guide (TypeScript)](#complete-setup-guide-(typescript))
+- [Tips for Using React-Table](#tips-for-using-react-table)
+
+
 ## What is React-Table?
 
 React-Table is a lightweight, headless utility for building powerful tables and datagrids in React. It's not a table component itself, but rather provides the logic and state management for your table while giving you complete control over the UI rendering.
@@ -318,3 +326,5 @@ function TableWithRowSelection() {
 5. **Server-side Data**: For large datasets, implement server-side pagination/sorting
 
 React-Table's headless approach means you can integrate it with any styling solution (CSS, Tailwind, Material-UI, etc.) and customize the table behavior to your exact needs.
+
+**[⬆ Back to Top](#table-of-contents)**
