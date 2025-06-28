@@ -6,6 +6,7 @@ import contribution from './Welcome/contribution.md?raw';
 import { frontendData } from './Frontend';
 
 import dsaIntro from './DSA/intro.md?raw';
+import dsaRoadMap from './DSA/dsa-roadmap.md?raw';
 import levelOneDsa from './DSA/15-easy.md?raw';
 import levelTwoDsa from './DSA/25-medium.md?raw';
 import levelThreeDsa from './DSA/10-hard.md?raw';
@@ -79,6 +80,11 @@ export const markdownData: Section[] = [
             id: 'dsa-intro',
             title: 'Introduction',
             content: dsaIntro,
+          },
+          {
+            id: 'dsa-roadmap',
+            title: 'Roadmap',
+            content: dsaRoadMap,
           },
           {
             id: 'level-one-dsa-easy',
