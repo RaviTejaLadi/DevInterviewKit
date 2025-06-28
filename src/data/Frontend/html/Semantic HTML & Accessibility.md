@@ -1,4 +1,4 @@
-# Deep dive into “Semantic HTML & Accessibility” —crucial topics for frontend interviews:
+# **Deep dive into “Semantic HTML & Accessibility” —crucial topics for frontend interviews:**
 
 ## Table of Contents
 
