@@ -1,4 +1,4 @@
-# 🎨 Introduction to CSS: Answers to Common Questions 🌈
+# **🎨 Introduction to CSS: Answers to Common Questions 🌈**
 
 ## Table of Contents
 - [What is CSS?](#what-is-css?)
