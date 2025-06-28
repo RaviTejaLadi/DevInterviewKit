@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-1. [Time & Space Complexity](#time--space-complexity)
+1. [Time & Space Complexity](#time-and-space-complexity)
 2. [Array Operations](#array-operations)
 3. [String Operations](#string-operations)
 4. [Array Methods for Algorithms](#array-methods-for-algorithms)
@@ -22,7 +22,7 @@
 18. [Bit Manipulation](#bit-manipulation)
 19. [Heap Operations](#heap-operations)
 
-## Time & Space Complexity
+## Time and Space Complexity
 
 | Notation | Name | Description | Example |
 |----------|------|-------------|---------|
