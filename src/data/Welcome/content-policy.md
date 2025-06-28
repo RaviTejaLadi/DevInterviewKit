@@ -1,4 +1,4 @@
-# Dev Interview Kit - Content Policy
+# **🚀 Dev Interview Kit - Content Policy**
 
 **Last Updated:** June 24, 2025  
 **Effective Date:** June 24, 2025

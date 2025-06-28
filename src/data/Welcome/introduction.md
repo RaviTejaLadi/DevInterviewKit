@@ -1,4 +1,4 @@
-# 🚀 Full-Stack Interview Mastery Hub  
+# **🚀 Full-Stack Interview Mastery Hub**  
 
 A **comprehensive** collection of resources, interactive tools, coding challenges, and best practices to help you prepare for **full-stack developer interviews**. This project covers **frontend, backend, databases, DevOps, and system design**, with hands-on exercises to enhance your problem-solving skills.  
 

@@ -1,4 +1,4 @@
-# 🚀 Contributing Guide  
+# **🚀 Contributing Guide**  
 
 Thank you for your interest in contributing to the **Full-Stack Interview Mastery Hub**! This project thrives on community contributions, and we welcome developers of all levels to help improve this resource.  
 
