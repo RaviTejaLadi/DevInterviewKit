@@ -35,8 +35,9 @@ import Vue from './Vue';
 import Express from './Express';
 import MongoDB from './MongoDB';
 import Sql from './Sql';
-
+import HR from './HR';
 export {
+  HR,
   Sql,
   MongoDB,
   Express,

@@ -15,6 +15,7 @@ import { Dsa } from '@/assets/technologies';
 import { backendData } from './Backend';
 import { databaseData } from './Database';
 import { resourcesData } from './Resources';
+import { humanResourcesData } from './HR Round';
 
 export const markdownData: Section[] = [
   {
@@ -44,6 +45,11 @@ export const markdownData: Section[] = [
         ],
       },
     ],
+  },
+  {
+    id: 'human-resources-round',
+    title: 'Human Resources',
+    categories: humanResourcesData,
   },
   {
     id: 'frontend',
