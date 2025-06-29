@@ -17,6 +17,7 @@ import { backendData } from './Backend';
 import { databaseData } from './Database';
 import { resourcesData } from './Resources';
 import { humanResourcesData } from './HR Round';
+import { cloudServicesData } from './Cloud';
 
 export const markdownData: Section[] = [
   {
@@ -66,6 +67,11 @@ export const markdownData: Section[] = [
     id: 'database',
     title: 'Database',
     categories: databaseData,
+  },
+  {
+    id: 'cloud-services',
+    title: 'Cloud Services',
+    categories: cloudServicesData,
   },
   {
     id: 'algorithms',

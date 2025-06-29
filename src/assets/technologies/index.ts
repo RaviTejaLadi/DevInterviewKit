@@ -36,7 +36,11 @@ import Express from './Express';
 import MongoDB from './MongoDB';
 import Sql from './Sql';
 import HR from './HR';
+import AWS from './AWS';
+import AZURE from './AZURE';
 export {
+  AZURE,
+  AWS,
   HR,
   Sql,
   MongoDB,
