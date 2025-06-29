@@ -38,7 +38,10 @@ import Sql from './Sql';
 import HR from './HR';
 import AWS from './AWS';
 import AZURE from './AZURE';
+import ArrayIcon from './ArrayIcon';
+
 export {
+  ArrayIcon,
   AZURE,
   AWS,
   HR,

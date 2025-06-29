@@ -5,19 +5,13 @@ import contribution from './Welcome/contribution.md?raw';
 
 import { frontendData } from './Frontend';
 
-import dsaIntro from './DSA/intro.md?raw';
-import dsaRoadMap from './DSA/dsa-roadmap.md?raw';
-import levelOneDsa from './DSA/15-easy.md?raw';
-import levelTwoDsa from './DSA/25-medium.md?raw';
-import levelThreeDsa from './DSA/10-hard.md?raw';
-
 import Namaste from '@/assets/Icons/Namaste';
-import { Dsa } from '@/assets/technologies';
 import { backendData } from './Backend';
 import { databaseData } from './Database';
 import { resourcesData } from './Resources';
 import { humanResourcesData } from './HR Round';
 import { cloudServicesData } from './Cloud';
+import { dsaData } from './DSA';
 
 export const markdownData: Section[] = [
   {
@@ -75,41 +69,8 @@ export const markdownData: Section[] = [
   },
   {
     id: 'algorithms',
-    title: 'Algorithms',
-    categories: [
-      {
-        id: 'dsa',
-        title: 'DSA',
-        Icon: Dsa,
-        documents: [
-          {
-            id: 'dsa-intro',
-            title: 'Introduction',
-            content: dsaIntro,
-          },
-          {
-            id: 'dsa-roadmap',
-            title: 'Roadmap',
-            content: dsaRoadMap,
-          },
-          {
-            id: 'level-one-dsa-easy',
-            title: 'Level 1 - Easy',
-            content: levelOneDsa,
-          },
-          {
-            id: 'level-two-dsa-medium',
-            title: 'Level 2 - Medium',
-            content: levelTwoDsa,
-          },
-          {
-            id: 'level-three-dsa-hard',
-            title: 'Level 3 - Hard',
-            content: levelThreeDsa,
-          },
-        ],
-      },
-    ],
+    title: 'Data Structure and Algorithms',
+    categories: dsaData,
   },
   {
     id: 'resources',
