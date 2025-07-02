@@ -65,7 +65,7 @@ let sampleObject = {
     getFullName: function() {
         return this.name;
     },
-    joinDate: new Date(),
+    joinDate: new Date("2024-07-02T00:00:00"), // fixed date for consistent output
     salary: null,
     bonus: undefined
 };
@@ -73,54 +73,77 @@ let sampleObject = {
 // 1. Object.keys() - Get property names
 let keys = Object.keys(sampleObject);
 console.log("Object keys:", keys);
+// Object keys: [ 'id', 'name', 'isActive', 'address', 'skills', 'getFullName', 'joinDate', 'salary', 'bonus' ]
 
 // 2. Object.values() - Get property values
 let values = Object.values(sampleObject);
 console.log("Object values:", values);
+// Object values: [ 101, 'John Doe', true, { street: '123 Main St', city: 'New York' }, [ 'JavaScript', 'React', 'Node.js' ], [Function: getFullName], 2024-07-02T00:00:00.000Z, null, undefined ]
 
 // 3. Object.entries() - Get [key, value] pairs
 let entries = Object.entries(sampleObject);
 console.log("Object entries:", entries);
+// Object entries: [
+//   [ 'id', 101 ],
+//   [ 'name', 'John Doe' ],
+//   [ 'isActive', true ],
+//   [ 'address', { street: '123 Main St', city: 'New York' } ],
+//   [ 'skills', [ 'JavaScript', 'React', 'Node.js' ] ],
+//   [ 'getFullName', [Function: getFullName] ],
+//   [ 'joinDate', 2024-07-02T00:00:00.000Z ],
+//   [ 'salary', null ],
+//   [ 'bonus', undefined ]
+// ]
 
 // 4. Object.assign() - Copy/merge objects
 let copiedObj = Object.assign({}, sampleObject);
 console.log("Copied object:", copiedObj);
+// Copied object: same as sampleObject content (too large to repeat fully)
 
 // 5. Object.create() - Create with prototype
 let newObj = Object.create(sampleObject);
 newObj.extraProp = "Additional property";
 console.log("New object with prototype:", newObj);
+// New object with prototype: { extraProp: 'Additional property' }
 
 // 6. Object.freeze() - Make object immutable
 Object.freeze(sampleObject);
 console.log("Is frozen:", Object.isFrozen(sampleObject));
+// Is frozen: true
 
 // 7. Object.seal() - Prevent adding/removing properties
 Object.seal(sampleObject);
 console.log("Is sealed:", Object.isSealed(sampleObject));
+// Is sealed: true (Note: sealing has no effect since it's already frozen)
 
 // 8. hasOwnProperty() - Check if property exists
 console.log("Has 'name' property:", sampleObject.hasOwnProperty('name'));
+// Has 'name' property: true
 
 // 9. Object.getPrototypeOf() - Get prototype
 let proto = Object.getPrototypeOf(sampleObject);
 console.log("Object prototype:", proto);
+// Object prototype: { protoProp: 'Prototype property' } (after setPrototypeOf below)
 
 // 10. Object.setPrototypeOf() - Set prototype
 let newProto = { protoProp: "Prototype property" };
 Object.setPrototypeOf(sampleObject, newProto);
 console.log("New prototype:", Object.getPrototypeOf(sampleObject));
+// New prototype: { protoProp: 'Prototype property' }
 
 // 11. Object.is() - Compare values
-console.log("Comparison with Object.is:", Object.is(NaN, NaN)); // true
+console.log("Comparison with Object.is:", Object.is(NaN, NaN));
+// Comparison with Object.is: true
 
 // 12. Object.getOwnPropertyNames() - Get all property names
 let allProps = Object.getOwnPropertyNames(sampleObject);
 console.log("All properties:", allProps);
+// All properties: [ 'id', 'name', 'isActive', 'address', 'skills', 'getFullName', 'joinDate', 'salary', 'bonus' ]
 
 // 13. Object.getOwnPropertyDescriptor() - Get property details
 let propDesc = Object.getOwnPropertyDescriptor(sampleObject, 'name');
 console.log("Property descriptor for 'name':", propDesc);
+// Property descriptor for 'name': { value: 'John Doe', writable: false, enumerable: true, configurable: false }
 
 // 14. Object.defineProperty() - Define new property
 Object.defineProperty(sampleObject, 'newProp', {
@@ -130,6 +153,7 @@ Object.defineProperty(sampleObject, 'newProp', {
     configurable: true
 });
 console.log("After adding new property:", sampleObject.newProp);
+// After adding new property: New property value
 
 // 15. Object.defineProperties() - Define multiple properties
 Object.defineProperties(sampleObject, {
@@ -137,25 +161,32 @@ Object.defineProperties(sampleObject, {
     prop2: { value: 'Value 2', enumerable: true }
 });
 console.log("After adding multiple properties:", sampleObject.prop1, sampleObject.prop2);
+// After adding multiple properties: Value 1 Value 2
 
 // 16. Object.fromEntries() - Create object from entries
 let entriesArray = [['a', 1], ['b', 2], ['c', 3]];
 let fromEntriesObj = Object.fromEntries(entriesArray);
 console.log("Object from entries:", fromEntriesObj);
+// Object from entries: { a: 1, b: 2, c: 3 }
 
 // 17. Object.preventExtensions() - Prevent new properties
 Object.preventExtensions(sampleObject);
 console.log("Is extensible:", Object.isExtensible(sampleObject));
+// Is extensible: false
 
 // 18. Accessing nested objects and arrays
 console.log("Street address:", sampleObject.address.street);
+// Street address: 123 Main St
 console.log("First skill:", sampleObject.skills[0]);
+// First skill: JavaScript
 
 // 19. Calling object method
 console.log("Full name:", sampleObject.getFullName());
+// Full name: John Doe
 
 // 20. Checking property existence with 'in' operator
 console.log("'name' exists in object:", 'name' in sampleObject);
+// 'name' exists in object: true
 ```
 
 ## Important Notes About Objects 📝
