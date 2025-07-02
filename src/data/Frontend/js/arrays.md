@@ -71,53 +71,68 @@ let sampleArray = [42, "hello", true, {name: "John", age: 30}, [1, 2, 3], null, 
 // 1. push() - Add element at end
 sampleArray.push("new item");
 console.log("After push:", sampleArray);
+// After push: [ 42, 'hello', true, { name: 'John', age: 30 }, [ 1, 2, 3 ], null, undefined, 'new item' ]
 
 // 2. pop() - Remove last element
 let popped = sampleArray.pop();
 console.log("Popped element:", popped);
+// Popped element: new item
 console.log("After pop:", sampleArray);
+// After pop: [ 42, 'hello', true, { name: 'John', age: 30 }, [ 1, 2, 3 ], null, undefined ]
 
 // 3. unshift() - Add element at beginning
 sampleArray.unshift("first item");
 console.log("After unshift:", sampleArray);
+// After unshift: [ 'first item', 42, 'hello', true, { name: 'John', age: 30 }, [ 1, 2, 3 ], null, undefined ]
 
 // 4. shift() - Remove first element
 let shifted = sampleArray.shift();
 console.log("Shifted element:", shifted);
+// Shifted element: first item
 console.log("After shift:", sampleArray);
+// After shift: [ 42, 'hello', true, { name: 'John', age: 30 }, [ 1, 2, 3 ], null, undefined ]
 
 // 5. concat() - Merge arrays
 let newArray = sampleArray.concat(["a", "b", "c"]);
 console.log("After concat:", newArray);
+// After concat: [ 42, 'hello', true, { name: 'John', age: 30 }, [ 1, 2, 3 ], null, undefined, 'a', 'b', 'c' ]
 
 // 6. join() - Create string from array
 let joined = sampleArray.join(" | ");
 console.log("Joined array:", joined);
+// Joined array: 42 | hello | true | [object Object] | 1,2,3 |  | 
 
 // 7. slice() - Get portion of array
 let sliced = sampleArray.slice(2, 5);
 console.log("Sliced portion:", sliced);
+// Sliced portion: [ true, { name: 'John', age: 30 }, [ 1, 2, 3 ] ]
 
 // 8. splice() - Modify array (insert/remove)
 let removed = sampleArray.splice(3, 1, "replaced item");
 console.log("Removed elements:", removed);
+// Removed elements: [ { name: 'John', age: 30 } ]
 console.log("After splice:", sampleArray);
+// After splice: [ 42, 'hello', true, 'replaced item', [ 1, 2, 3 ], null, undefined ]
 
 // 9. indexOf() - Find element index
 let index = sampleArray.indexOf("hello");
 console.log("Index of 'hello':", index);
+// Index of 'hello': 1
 
 // 10. includes() - Check if element exists
 let hasHello = sampleArray.includes("hello");
 console.log("Includes 'hello':", hasHello);
+// Includes 'hello': true
 
 // 11. find() - Find first matching element
 let found = sampleArray.find(element => typeof element === "object" && element !== null);
 console.log("Found object:", found);
+// Found object: [ 1, 2, 3 ]
 
 // 12. filter() - Filter elements
 let filtered = sampleArray.filter(element => typeof element !== "boolean");
 console.log("Filtered array (no booleans):", filtered);
+// Filtered array (no booleans): [ 42, 'hello', 'replaced item', [ 1, 2, 3 ], null, undefined ]
 
 // 13. map() - Transform elements
 let mapped = sampleArray.map(element => {
@@ -126,56 +141,82 @@ let mapped = sampleArray.map(element => {
     return element;
 });
 console.log("Mapped array:", mapped);
+// Mapped array: [ 84, 'HELLO', true, 'REPLACED ITEM', [ 1, 2, 3 ], null, undefined ]
 
 // 14. reduce() - Reduce to single value
 let numbersOnly = sampleArray.filter(e => typeof e === "number");
 let sum = numbersOnly.reduce((acc, val) => acc + val, 0);
 console.log("Sum of numbers:", sum);
+// Sum of numbers: 42
 
 // 15. forEach() - Execute function for each element
 console.log("Array elements:");
+// Array elements:
 sampleArray.forEach((item, index) => console.log(`${index}: ${item}`));
+// 0: 42
+// 1: hello
+// 2: true
+// 3: replaced item
+// 4: 1,2,3
+// 5: null
+// 6: undefined
 
 // 16. sort() - Sort array
 let sortable = ["banana", "apple", "cherry"];
 sortable.sort();
 console.log("Sorted array:", sortable);
+// Sorted array: [ 'apple', 'banana', 'cherry' ]
 
 // 17. reverse() - Reverse array
 sortable.reverse();
 console.log("Reversed array:", sortable);
+// Reversed array: [ 'cherry', 'banana', 'apple' ]
 
 // 18. flat() - Flatten nested arrays
 let nested = [1, [2, [3, [4]]]];
 let flattened = nested.flat(2);
 console.log("Flattened array:", flattened);
+// Flattened array: [ 1, 2, 3, [ 4 ] ]
 
 // 19. every() - Test all elements
 let allValid = sampleArray.every(e => e !== undefined);
 console.log("All elements defined:", allValid);
+// All elements defined: false
 
 // 20. some() - Test any elements
 let hasString = sampleArray.some(e => typeof e === "string");
 console.log("Has string:", hasString);
+// Has string: true
 
 // 21. entries() - Get key/value pairs
 for (let [index, value] of sampleArray.entries()) {
     console.log(`Entry ${index}:`, value);
 }
+// Entry 0: 42
+// Entry 1: hello
+// Entry 2: true
+// Entry 3: replaced item
+// Entry 4: [ 1, 2, 3 ]
+// Entry 5: null
+// Entry 6: undefined
 
 // 22. fill() - Fill with static value
 let fillExample = new Array(5).fill("default");
 console.log("Filled array:", fillExample);
+// Filled array: [ 'default', 'default', 'default', 'default', 'default' ]
 
 // 23. Array.isArray() - Check if array
 console.log("Is sampleArray an array?", Array.isArray(sampleArray));
+// Is sampleArray an array? true
 
 // 24. toString() - Convert to string
 console.log("Array as string:", sampleArray.toString());
+// Array as string: 42,hello,true,replaced item,1,2,3,, 
 
 // 25. flatMap() - Map then flatten
 let flatMapped = [1, 2, 3].flatMap(x => [x, x * 2]);
 console.log("FlatMapped:", flatMapped);
+// FlatMapped: [ 1, 2, 2, 4, 3, 6 ]
 ```
 
 This demonstrates how to work with arrays containing different data types and how to apply various array methods to manipulate and query the array. 🚀
