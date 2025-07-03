@@ -52,7 +52,7 @@ export function ContentArea({ selectedDocument }: ContentAreaProps) {
                   <div className="group relative mb-8">
                     <h1
                       id={id}
-                      className="text-4xl lg:text-5xl mb-6 pb-6 border-b-2 font-extrabold bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent  border-gradient-to-r from-primary/50 to-transparent relative"
+                      className="text-4xl lg:text-5xl mb-6 pb-6 border-b-2 font-extrabold bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent  border-gradient-to-r relative"
                     >
                       {children}
                       <a
