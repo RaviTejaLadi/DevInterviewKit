@@ -4,9 +4,12 @@ import { cn } from '../lib/utils';
 import { Section, MarkdownDocument } from '@/types/markdown-content-types';
 import { ScrollArea } from './ui/scroll-area';
 import { Input } from './ui/input';
+import { Button } from './ui/button';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from './ui/sheet';
+import { Separator } from './ui/separator';
+import { Card, CardContent } from './ui/card';
 import Logo from './Logo';
 import { useMobileStore } from '@/stores/useMobileStore';
-import { Button } from './ui/button';
 import { highlightText } from '@/utils/highlightText';
 
 interface SidebarProps {
@@ -172,46 +175,51 @@ export function Sidebar({ sections, selectedDocument, onDocumentSelect, classNam
   };
 
   const renderSearchResults = () => (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between px-3 py-2">
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
         <span className="text-sm font-medium text-muted-foreground">
           {searchResults.length} result{searchResults.length !== 1 ? 's' : ''} found
         </span>
-        <Button variant="ghost" size="sm" onClick={clearSearch} className="h-6 px-2 text-xs">
+        <Button variant="outline" size="sm" onClick={clearSearch} className="h-7 px-2 text-xs">
           Clear
         </Button>
       </div>
 
       {searchResults.length === 0 ? (
-        <div className="px-3 py-8 text-center text-muted-foreground">
-          <FileText className="w-8 h-8 mx-auto mb-2 opacity-50" />
-          <p className="text-sm">No documents found</p>
-          <p className="text-xs mt-1">Try adjusting your search terms</p>
-        </div>
+        <Card>
+          <CardContent className="flex flex-col items-center justify-center py-8 text-center">
+            <FileText className="w-8 h-8 mb-2 text-muted-foreground opacity-50" />
+            <p className="text-sm text-muted-foreground">No documents found</p>
+            <p className="text-xs text-muted-foreground mt-1">Try adjusting your search terms</p>
+          </CardContent>
+        </Card>
       ) : (
-        <div className="space-y-1">
+        <div className="space-y-2">
           {searchResults.map(({ document, categoryTitle, sectionTitle }, index) => (
-            <button
-              key={`${document.id}-${index}`}
-              onClick={() => handleDocumentSelect(document)}
-              className={cn(
-                'w-full text-left p-3 text-sm hover:bg-accent rounded-md transition-colors group',
-                selectedDocument?.id === document.id &&
-                  'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10'
-              )}
-            >
-              <div className="flex items-start space-x-2">
-                <FileText className="w-4 h-4 mt-0.5 text-muted-foreground group-hover:text-foreground" />
-                <div className="flex-1 min-w-0">
-                  <div className="font-medium text-foreground truncate">
-                    {highlightText(document?.title, searchQuery)}
+            <Card key={`${document.id}-${index}`} className="overflow-hidden border border-border">
+              <CardContent className="p-0">
+                <Button
+                  variant="ghost"
+                  onClick={() => handleDocumentSelect(document)}
+                  className={cn(
+                    'w-full h-auto p-3 text-left justify-start hover:bg-accent transition-colors group',
+                    selectedDocument?.id === document.id && 'bg-primary/10 border-primary/20 hover:bg-primary/15'
+                  )}
+                >
+                  <div className="flex items-start space-x-3 w-full">
+                    <FileText className="w-4 h-4 mt-0.5 text-muted-foreground group-hover:text-foreground flex-shrink-0" />
+                    <div className="flex-1 min-w-0 text-left">
+                      <div className="font-medium text-foreground truncate">
+                        {highlightText(document?.title, searchQuery)}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-1">
+                        in {sectionTitle} → {categoryTitle}
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1">
-                    in {sectionTitle} → {categoryTitle}
-                  </div>
-                </div>
-              </div>
-            </button>
+                </Button>
+              </CardContent>
+            </Card>
           ))}
         </div>
       )}
@@ -219,16 +227,18 @@ export function Sidebar({ sections, selectedDocument, onDocumentSelect, classNam
   );
 
   const renderSectionView = () => (
-    <div className="space-y-8">
+    <div className="space-y-6 pb-[5rem]">
       {filteredSections.map((section) => (
-        <div key={section.id} className="space-y-2">
+        <div key={section.id} className="space-y-3">
           {/* Section Heading */}
-          <div className="px-2 ">
+          <div className="px-1">
             <p className="text-[0.6rem] font-medium text-muted-foreground uppercase tracking-wide">{section.title}</p>
           </div>
 
+          <Separator className="my-2 h-[0.5px]" />
+
           {/* Categories in this section */}
-          <div className="space-y-2">
+          <div className="space-y-1">
             {section.categories.map((category, index) => {
               const { Icon } = category;
               const isExpanded = expandedCategories.has(category.id);
@@ -236,72 +246,73 @@ export function Sidebar({ sections, selectedDocument, onDocumentSelect, classNam
               const singleDocument = category.document;
 
               return (
-                <div key={category.id} className="space-y-[0.5px]">
+                <div key={category.id} className="space-y-1">
                   {hasMultipleDocuments ? (
                     <>
-                      <button
+                      <Button
+                        variant="ghost"
                         onClick={() => toggleCategory(category.id)}
                         style={{ animationDelay: `${index * 100}ms` }}
                         className={cn(
-                          'group w-full relative flex items-center justify-between py-1 px-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors',
-                          'cursor-pointer transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4'
+                          'group w-full justify-between py-2 px-3 h-auto font-medium hover:bg-accent transition-all duration-300',
+                          'animate-in fade-in-50 slide-in-from-bottom-4',
+                          isExpanded && 'bg-accent/50'
                         )}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
                         <div className="flex items-center space-x-2">
                           {isExpanded && (
-                            <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
+                            <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
                           )}
-                          {Icon ? <Icon className="w-4 h-4 mr-1" /> : ''}
-                          <span>{highlightText(category.title, searchQuery)}</span>
+                          {Icon && <Icon className="w-4 h-4" />}
+                          <span className="text-left">{highlightText(category.title, searchQuery)}</span>
                         </div>
                         {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-
-                        <div className="absolute inset-0 rounded-sm bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
-                      </button>
+                      </Button>
 
                       {isExpanded && (
                         <div className="ml-6 space-y-1">
                           {category?.documents?.map((document) => (
-                            <button
+                            <Button
                               key={document.id}
+                              variant="ghost"
                               onClick={() => handleDocumentSelect(document)}
                               className={cn(
-                                'flex gap-2 items-center justify-start w-full text-left py-1 px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors',
+                                'w-full justify-start py-2 px-3 h-auto text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-colors',
                                 selectedDocument?.id === document.id &&
-                                  'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10 font-medium text-foreground'
+                                  'bg-primary/10 border border-primary/20 font-medium text-foreground hover:bg-primary/15'
                               )}
                             >
-                              {selectedDocument?.id === document.id && (
-                                <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
-                              )}
-                              {highlightText(document.title, searchQuery)}
-                            </button>
+                              <div className="flex items-center gap-2 w-full">
+                                {selectedDocument?.id === document.id && (
+                                  <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
+                                )}
+                                <span className="text-left">{highlightText(document.title, searchQuery)}</span>
+                              </div>
+                            </Button>
                           ))}
                         </div>
                       )}
                     </>
                   ) : singleDocument ? (
-                    <button
+                    <Button
+                      variant="ghost"
                       onClick={() => handleDocumentSelect(singleDocument)}
                       style={{ animationDelay: `${index * 100}ms` }}
                       className={cn(
-                        'group w-full relative flex items-center justify-between py-1 px-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors',
-                        'cursor-pointer transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4',
+                        'group w-full justify-start py-2 px-3 h-auto font-medium hover:bg-accent transition-all duration-300',
+                        'animate-in fade-in-50 slide-in-from-bottom-4',
                         selectedDocument?.id === singleDocument.id &&
-                          'bg-blue-500/20 border-blue-200 border border-border shadow-sm dark:bg-gray-200/10 font-medium text-foreground'
+                          'bg-primary/10 border border-primary/20 hover:bg-primary/15'
                       )}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                      <div className="flex items-center space-x-2">
-                        {Icon ? <Icon className="w-4 h-4 mr-1" /> : ''}
-                        <span>{highlightText(category.title, searchQuery)}</span>
+                      <div className="flex items-center space-x-2 w-full">
+                        {selectedDocument?.id === singleDocument.id && (
+                          <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
+                        )}
+                        {Icon && <Icon className="w-4 h-4" />}
+                        <span className="text-left">{highlightText(category.title, searchQuery)}</span>
                       </div>
-
-                      <div className="absolute inset-0 rounded-sm bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
-                    </button>
+                    </Button>
                   ) : null}
                 </div>
               );
@@ -313,7 +324,7 @@ export function Sidebar({ sections, selectedDocument, onDocumentSelect, classNam
   );
 
   const sidebarContent = (
-    <div className="h-full w-[18rem] flex flex-col">
+    <div className="h-full w-full flex flex-col">
       {/* Search Input */}
       <div className="p-4 border-b border-border">
         <div className="relative">
@@ -323,14 +334,14 @@ export function Sidebar({ sections, selectedDocument, onDocumentSelect, classNam
             placeholder="Search topic..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-9 pr-4"
+            className="pl-9 pr-10"
           />
           {searchQuery && (
             <Button
               variant="ghost"
               size="sm"
               onClick={clearSearch}
-              className="absolute right-1 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0 hover:bg-muted"
+              className="absolute right-1 top-1/2 transform -translate-y-1/2 h-7 w-7 p-0 hover:bg-muted"
             >
               <X className="w-3 h-3" />
             </Button>
@@ -339,43 +350,28 @@ export function Sidebar({ sections, selectedDocument, onDocumentSelect, classNam
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto p-4">
-        {searchQuery.trim() ? renderSearchResults() : renderSectionView()}
-      </nav>
+      <ScrollArea className="flex-1 p-4">{searchQuery.trim() ? renderSearchResults() : renderSectionView()}</ScrollArea>
     </div>
   );
 
   return (
     <>
-      {/* Mobile overlay */}
-      {isMobileOpen && (
-        <div className="lg:hidden fixed inset-0 bg-black/50 z-40" onClick={() => setIsMobileOpen(false)} />
-      )}
-
       {/* Desktop sidebar */}
       <aside className={cn('hidden lg:block w-80 bg-background border-r border-border', className)}>
         <ScrollArea className="h-screen">{sidebarContent}</ScrollArea>
       </aside>
 
-      {/* Mobile sidebar */}
-      <aside
-        className={cn(
-          'lg:hidden fixed left-0 top-0 z-50 w-80 h-full bg-background border-r border-border transform transition-transform duration-200 ease-in-out',
-          isMobileOpen ? 'translate-x-0' : '-translate-x-full'
-        )}
-      >
-        <div className="flex justify-between items-center mx-4">
-          <div className="px-6 py-5">
-            <Logo />
-          </div>
-
-          <Button variant={'outline'} size={'icon'} onClick={() => setIsMobileOpen(false)}>
-            <X className="w-5 h-5" />
-          </Button>
-        </div>
-
-        <ScrollArea className="h-screen">{sidebarContent}</ScrollArea>
-      </aside>
+      {/* Mobile sidebar using Sheet */}
+      <Sheet open={isMobileOpen} onOpenChange={setIsMobileOpen}>
+        <SheetContent side="left" className="w-80 p-0 border border-border">
+          <SheetHeader className="px-4 py-2 border-b border-border">
+            <SheetTitle className="text-left">
+              <Logo />
+            </SheetTitle>
+          </SheetHeader>
+          <ScrollArea className="h-screen">{sidebarContent}</ScrollArea>
+        </SheetContent>
+      </Sheet>
     </>
   );
 }

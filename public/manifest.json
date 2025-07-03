@@ -1,25 +1,25 @@
 {
-    "short_name": "Dev Interview Kit",
-    "name": "Dev Interview Kit",
-    "icons": [
-        {
-            "src": "./favicon-16x16.png",
-            "sizes": "64x64 32x32 24x24 16x16",
-            "type": "image/svg+xml"
-        },
-        {
-            "src": "./android-chrome-192x192.png",
-            "type": "image/svg+xml",
-            "sizes": "192x192"
-        },
-        {
-            "src": "./android-chrome-512x512.png",
-            "type": "image/svg+xml",
-            "sizes": "512x512"
-        }
-    ],
-    "start_url": ".",
-    "display": "standalone",
-    "theme_color": "#4f46e5",
-    "background_color": "#0E131B"
+  "short_name": "Dev Interview Kit",
+  "name": "Dev Interview Kit",
+  "icons": [
+    {
+      "src": "./favicon-16x16.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "./android-chrome-192x192.png",
+      "type": "image/svg+xml",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./android-chrome-512x512.png",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4f46e5",
+  "background_color": "#0E131B"
 }

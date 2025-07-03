@@ -99,7 +99,7 @@ const Navbar = ({
       </nav>
 
       {/* Mobile Menu */}
-      <div className="block lg:hidden py-1 items-center w-full">
+      <div className="lg:hidden py-1 flex justify-between items-center w-full">
         <div className="flex items-center justify-start gap-4">
           {/* Mobile menu button */}
           <Button size={'icon'} variant={'outline'} onClick={toggleMobile}>
@@ -108,6 +108,18 @@ const Navbar = ({
           {/* Logo */}
           <a href="/" className="text-md w-auto">
             <Logo />
+          </a>
+        </div>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <a
+            href="https://github.com/RaviTejaLadi/Frontend-Interview-Prep-Kit"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="ghost" size="icon" accessKey="View source code" aria-label="View source code">
+              <Github className="h-4 w-4" />
+            </Button>
           </a>
         </div>
       </div>
