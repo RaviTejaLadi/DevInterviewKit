@@ -1,6 +1,6 @@
 import { Github, Menu, Search, X } from 'lucide-react';
 import React from 'react';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,11 +8,11 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from './ui/navigation-menu';
-import Logo from './Logo';
-import { ThemeToggle } from './ThemeToggle';
+} from '../ui/navigation-menu';
+import Logo from '../Logo';
+import { ThemeToggle } from '../ThemeToggle';
 import { useMobileStore } from '@/stores/useMobileStore';
-import { Input } from './ui/input';
+import { Input } from '../ui/input';
 
 interface MenuItem {
   title: string;
@@ -31,7 +31,7 @@ interface NavbarProps {
 
 const Navbar = ({
   menu = [
-    // { title: "Get Started", url: "/get-started" },
+    { title: 'Mock Interviews', url: '/mock-interviews' },
     // { title: "Components", url: "/components" },
     // { title: "Blocks", url: "/blocks" },
     // { title: "Colors", url: "/colors" },
@@ -53,7 +53,7 @@ const Navbar = ({
             <a href="/" className="text-md w-auto">
               <Logo />
             </a>
-            <div className="flex items-center">
+            <div className="flex items-center mx-5">
               <NavigationMenu>
                 <NavigationMenuList className="text-muted-foreground">
                   {menu.map((item) => renderMenuItem(item))}
