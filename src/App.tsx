@@ -7,6 +7,8 @@ import RouteErrorElement from './components/Errors/RouteErrorElement';
 import NotFoundScreen from './components/Errors/NotFound';
 import CounterPage from './pages/react-machine-coding/basic/counter/CounterPage';
 import TodoPage from './pages/react-machine-coding/basic/todo/TodoPage';
+import MachineCodingPage from './pages/react-machine-coding';
+import LoginFormPage from './pages/react-machine-coding/basic/loginForm/LoginFormPage';
 
 function App() {
   const router = createBrowserRouter([
@@ -20,16 +22,27 @@ function App() {
           element: <Home />,
         },
         {
-          path: '/counter-examples',
-          element: <CounterPage />,
-        },
-                {
-          path: '/todo-examples',
-          element: <TodoPage />,
-        },
-        {
           path: 'mock-interviews',
           element: <MockInterviews />,
+        },
+        {
+          path: '/machine-coding',
+          element: <MachineCodingPage />,
+          children: [
+            { path: '/machine-coding', element: <Navigate to="/machine-coding/counter" /> },
+            {
+              path: 'counter',
+              element: <CounterPage />,
+            },
+            {
+              path: 'todo',
+              element: <TodoPage />,
+            },
+            {
+              path: 'login-form',
+              element: <LoginFormPage />,
+            },
+          ],
         },
       ],
     },

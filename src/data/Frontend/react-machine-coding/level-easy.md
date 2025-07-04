@@ -1,10 +1,10 @@
 # 🔰 Easy Level Coding Questions (0–2 years experience)
 
 
-## 🧩 Basic Components & State Management
+## 🧩 [Basic Components & State Management](/machine-coding)
 
-1. 🔢 **[Counter Component](/counter-examples)** – Build a simple counter with ➕ / ➖ buttons
-2. 📝 **[Todo List](/todo-examples)** – Add, display, and delete tasks from a list
+1. 🔢 **[Counter Component](/machine-coding/counter-examples)** – Build a simple counter with ➕ / ➖ buttons
+2. 📝 **[Todo List](/machine-coding/todo-examples)** – Add, display, and delete tasks from a list
 3. 🔐 **Login Form** – Form with validation and controlled inputs
 4. 🔄 **Toggle Button** – Switch between different states/themes
 5. 🧮 **Simple Calculator** – Perform basic arithmetic operations
@@ -16,7 +16,7 @@
 
 ---
 
-## 🧠 Basic Interactions
+## 🧠 [Basic Interactions](/machine-coding)
 
 11. 📂 **Accordion Component** – Expand/collapse content sections
 12. 🗂️ **Tabs Component** – Switch between different tab views
