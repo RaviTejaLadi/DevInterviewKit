@@ -15,7 +15,7 @@ const PreviewSheet: React.FC<PreviewSheetProps> = ({ title, component }) => {
       <SheetContent className="w-auto border border-border">
         <SheetHeader>
           <SheetTitle>{title}</SheetTitle>
-          <SheetDescription className="read-only">Machine coding examples</SheetDescription>
+          <SheetDescription className="sr-only">Machine coding examples</SheetDescription>
         </SheetHeader>
         <div className="px-4">{component}</div>
       </SheetContent>
