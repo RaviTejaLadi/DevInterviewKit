@@ -1,4 +1,4 @@
-# Like Button 
+# Like Button
 
 Here's a like button component that toggles state with visual feedback,
 implemented in both JavaScript and TypeScript.

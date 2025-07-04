@@ -1,5 +1,4 @@
 import { MarkdownDocument } from '@/types/markdown-content-types';
-import { ScrollArea } from './ui/scroll-area';
 import MarkdownRenderer from './MarkdownRenderer';
 
 interface ContentAreaProps {
@@ -7,9 +6,5 @@ interface ContentAreaProps {
 }
 
 export function ContentArea({ selectedDocument }: ContentAreaProps) {
-  return (
-    <ScrollArea className="container h-screen">
-      <MarkdownRenderer docContent={selectedDocument} />
-    </ScrollArea>
-  );
+  return <MarkdownRenderer docContent={selectedDocument} />;
 }
