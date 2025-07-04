@@ -1,4 +1,4 @@
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { usePreviewSheetStore } from '@/stores/usePreviewSheetStore';
 import { ReactNode } from 'react';
 
@@ -15,6 +15,7 @@ const PreviewSheet: React.FC<PreviewSheetProps> = ({ title, component }) => {
       <SheetContent className="w-auto border border-border">
         <SheetHeader>
           <SheetTitle>{title}</SheetTitle>
+          <SheetDescription className="read-only">Machine coding examples</SheetDescription>
         </SheetHeader>
         <div className="px-4">{component}</div>
       </SheetContent>

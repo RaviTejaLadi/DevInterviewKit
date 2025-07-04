@@ -1,26 +1,34 @@
 import MachineCodingNav from '@/components/MachineCodingNav';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import PreviewSheet from '@/components/PreviewSheet';
-// import { usePreviewSheetStore } from '@/stores/usePreviewSheetStore';
-// import { Button } from 'kalki-ui';
-// import { cn } from '@/lib/utils';
+import { machineCodingExamplesData } from '@/data/Frontend/react-machine-coding/examples';
+import { usePreviewSheetStore } from '@/stores/usePreviewSheetStore';
+import { Button } from 'kalki-ui';
+import { cn } from '@/lib/utils';
 
 const MachineCodingPage = () => {
-  // const { open, setOpen } = usePreviewSheetStore();
+  const { id } = useParams();
+
+  // Find the matching example data
+  const example = machineCodingExamplesData.find((item) => item.id === id);
+
+  const { open, setOpen } = usePreviewSheetStore();
   return (
     <>
-      {/* <Button
-        variant={'outline'}
-        onClick={() => setOpen(true)}
-        className={cn(open ? '' : 'fixed top-28 right-10 z-[999]')}
-      >
-        Show Preview
-      </Button> */}
+      {example?.component && (
+        <Button
+          variant={'outline'}
+          onClick={() => setOpen(true)}
+          className={cn(open ? '' : 'fixed top-28 right-10 z-[999]')}
+        >
+          Show Preview
+        </Button>
+      )}
       <MachineCodingNav />
       <div className="container pt-4">
         <Outlet />
       </div>
-      <PreviewSheet />
+      <PreviewSheet title={example?.title} component={example?.component} />
     </>
   );
 };
