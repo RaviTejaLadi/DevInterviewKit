@@ -1,6 +1,7 @@
 # Introduction to Node.js 🚀
 
-Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to execute JavaScript code outside of a web browser. 🌐
+Node.js is an open-source, cross-platform JavaScript runtime environment that
+allows developers to execute JavaScript code outside of a web browser. 🌐
 
 ## Table of Contents
 
@@ -10,23 +11,27 @@ Node.js is an open-source, cross-platform JavaScript runtime environment that al
 - [Common Use Cases](#common-use-cases)
 - [Getting Started](#getting-started)
 
+## Key Features of Node.js
 
-## Key Features of Node.js 
+1. **Asynchronous and Event-Driven** ⚡: Node.js uses non-blocking I/O
+   operations, making it lightweight and efficient.
+2. **Single-Threaded but Highly Scalable** 🧵: Uses an event loop with a single
+   main thread but can handle many concurrent connections.
+3. **NPM Ecosystem** 📦: Comes with npm (Node Package Manager), the largest
+   ecosystem of open-source libraries.
+4. **Fast Execution** 🚄: Built on Chrome's V8 JavaScript engine for high
+   performance.
 
-1. **Asynchronous and Event-Driven** ⚡: Node.js uses non-blocking I/O operations, making it lightweight and efficient.
-2. **Single-Threaded but Highly Scalable** 🧵: Uses an event loop with a single main thread but can handle many concurrent connections.
-3. **NPM Ecosystem** 📦: Comes with npm (Node Package Manager), the largest ecosystem of open-source libraries.
-4. **Fast Execution** 🚄: Built on Chrome's V8 JavaScript engine for high performance.
+## Basic Components
 
-## Basic Components 
-
-- **Modules** 📚: Reusable blocks of code (similar to libraries in other languages)
+- **Modules** 📚: Reusable blocks of code (similar to libraries in other
+  languages)
 - **Events** 🎉: Node.js uses an event-driven architecture
 - **Streams** 💧: For handling streaming data
 - **File System** 🗂️: Access to the server's file system
 - **HTTP** 🌍: Built-in module to create web servers
 
-## Simple Node.js Server Example 
+## Simple Node.js Server Example
 
 ```javascript
 // Import the HTTP module
@@ -35,8 +40,8 @@ const http = require('http');
 // Create a server
 const server = http.createServer((req, res) => {
   // Set response header
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+
   // Send response
   res.end('Hello World from Node.js!\n');
 });
@@ -47,7 +52,7 @@ server.listen(3000, () => {
 });
 ```
 
-## Common Use Cases 
+## Common Use Cases
 
 - Building web applications (especially real-time apps) 🌐
 - Creating APIs and microservices 🔗
@@ -55,7 +60,7 @@ server.listen(3000, () => {
 - Building command-line tools 💡
 - Creating desktop applications (with frameworks like Electron) 🖱️
 
-## Getting Started 
+## Getting Started
 
 1. Install Node.js from [nodejs.org](https://nodejs.org/) ⬇️
 2. Verify installation with:
@@ -68,6 +73,8 @@ server.listen(3000, () => {
    node filename.js
    ```
 
-Node.js has revolutionized backend development by allowing developers to use JavaScript on both the frontend and backend, enabling full-stack JavaScript development. 🔄
+Node.js has revolutionized backend development by allowing developers to use
+JavaScript on both the frontend and backend, enabling full-stack JavaScript
+development. 🔄
 
 **[⬆ Back to Top](#table-of-contents)**

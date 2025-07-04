@@ -2,10 +2,11 @@
 
 ## 🧠 1. Definition
 
-ES6 Modules allow you to **split your code into separate files** so that each file has its own scope. You can **export** variables, functions, classes from one file and **import** them into another.
+ES6 Modules allow you to **split your code into separate files** so that each
+file has its own scope. You can **export** variables, functions, classes from
+one file and **import** them into another.
 
-> **Why?**
-> To make code **more maintainable**, **reusable**, and **organized**.
+> **Why?** To make code **more maintainable**, **reusable**, and **organized**.
 
 ---
 
@@ -51,7 +52,7 @@ console.log(add(2, 3)); // 5
 // app.js
 import greet from './greet.js';
 
-console.log(greet("Ravi")); // Hello, Ravi
+console.log(greet('Ravi')); // Hello, Ravi
 ```
 
 #### Import All (Namespace Import):
@@ -69,15 +70,15 @@ console.log(math.add(4, 5)); // 9
 
 ✅ Common Use Cases:
 
-* Organizing utility functions
-* Separating UI components
-* Creating reusable libraries or shared logic
+- Organizing utility functions
+- Separating UI components
+- Creating reusable libraries or shared logic
 
 ✅ Benefits:
 
-* Avoids global namespace pollution
-* Better dependency management
-* Code splitting and lazy loading possible
+- Avoids global namespace pollution
+- Better dependency management
+- Code splitting and lazy loading possible
 
 ---
 
@@ -110,7 +111,7 @@ greet.js ───► exports default ───► main.js ───► uses gre
 
 ```js
 // helpers.js
-export const log = msg => console.log(msg);
+export const log = (msg) => console.log(msg);
 export default function greet(name) {
   return `Hi ${name}`;
 }
@@ -120,17 +121,19 @@ export default function greet(name) {
 // index.js
 import greet, { log } from './helpers.js';
 
-log(greet("Ravi"));
+log(greet('Ravi'));
 ```
 
 ---
 
 ## ⚠️ 6. Notes & Gotchas
 
-* Modules are in **strict mode** by default.
-* Always use **file extension** (e.g., `./math.js`) when importing in ES6 modules.
-* Cannot use `require()` and `module.exports` (that’s for CommonJS).
-* You need to set `"type": "module"` in `package.json` OR use `.mjs` extension for ES6 in Node.js.
+- Modules are in **strict mode** by default.
+- Always use **file extension** (e.g., `./math.js`) when importing in ES6
+  modules.
+- Cannot use `require()` and `module.exports` (that’s for CommonJS).
+- You need to set `"type": "module"` in `package.json` OR use `.mjs` extension
+  for ES6 in Node.js.
 
 ---
 
@@ -154,8 +157,8 @@ console.log(greet('Ravi'));
 ### 🧩 utils/math.js
 
 ```js
-export const square = x => x * x;
-export const cube = x => x * x * x;
+export const square = (x) => x * x;
+export const cube = (x) => x * x * x;
 ```
 
 ### 🧩 app.js
@@ -164,17 +167,17 @@ export const cube = x => x * x * x;
 import { square, cube } from './utils/math.js';
 
 console.log(square(3)); // 9
-console.log(cube(2));   // 8
+console.log(cube(2)); // 8
 ```
 
 ---
 
 ## 🧪 9. Best Practices
 
-* Group related exports
-* Use default export when there’s only one main thing to export
-* Avoid mixing CommonJS (`require`) with ES6 modules
-* Prefer consistent naming and structure
+- Group related exports
+- Use default export when there’s only one main thing to export
+- Avoid mixing CommonJS (`require`) with ES6 modules
+- Prefer consistent naming and structure
 
 ---
 

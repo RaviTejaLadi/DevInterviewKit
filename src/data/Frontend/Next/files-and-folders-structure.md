@@ -32,6 +32,7 @@ my-nextjs-app/
 ## 🏗️ Key Directories Explained
 
 ### 📁 `app/` Directory (App Router)
+
 The heart of your Next.js 13+ application using the new App Router:
 
 ```bash
@@ -57,6 +58,7 @@ app/
 ```
 
 ### 📁 `public/` Directory
+
 Static assets served directly from the root URL:
 
 ```bash
@@ -73,15 +75,15 @@ public/
 
 ## 🎯 Special Files & Their Purposes
 
-| File | Purpose | Icon |
-|------|---------|------|
-| `layout.tsx` | Shared UI that wraps pages | 🏠 |
-| `page.tsx` | Unique UI for a route | 📄 |
-| `loading.tsx` | Loading UI for async operations | ⏳ |
-| `error.tsx` | Error UI boundary | ❌ |
-| `not-found.tsx` | 404 error page | 🔍 |
-| `route.ts` | API endpoint handler | 🔗 |
-| `middleware.ts` | Request/response middleware | ⚙️ |
+| File            | Purpose                         | Icon |
+| --------------- | ------------------------------- | ---- |
+| `layout.tsx`    | Shared UI that wraps pages      | 🏠   |
+| `page.tsx`      | Unique UI for a route           | 📄   |
+| `loading.tsx`   | Loading UI for async operations | ⏳   |
+| `error.tsx`     | Error UI boundary               | ❌   |
+| `not-found.tsx` | 404 error page                  | 🔍   |
+| `route.ts`      | API endpoint handler            | 🔗   |
+| `middleware.ts` | Request/response middleware     | ⚙️   |
 
 ## 🛠️ Configuration Files
 
@@ -98,6 +100,7 @@ Root Level Configs:
 ## 🚀 Routing Examples
 
 ### File-based Routing Structure:
+
 ```bash
 app/
 ├── 📄 page.tsx                    # → /

@@ -1,6 +1,7 @@
 # 📘 JavaScript ES6 Features – Complete Guide
 
-> **ES6** (ECMAScript 2015) introduced significant updates to JavaScript, making it more powerful, readable, and easier to write.
+> **ES6** (ECMAScript 2015) introduced significant updates to JavaScript, making
+> it more powerful, readable, and easier to write.
 
 ---
 
@@ -8,8 +9,8 @@
 
 ### ✅ Definition
 
-* `let`: Declares a block-scoped variable (can be reassigned).
-* `const`: Declares a block-scoped constant (cannot be reassigned).
+- `let`: Declares a block-scoped variable (can be reassigned).
+- `const`: Declares a block-scoped constant (cannot be reassigned).
 
 ### 🔤 Syntax
 
@@ -21,8 +22,8 @@ const constantName = value;
 ### 🧑‍💻 Usage & Example
 
 ```js
-let name = "John";
-name = "Doe"; // allowed
+let name = 'John';
+name = 'Doe'; // allowed
 
 const age = 30;
 // age = 40; ❌ Error: Assignment to constant variable
@@ -67,13 +68,13 @@ String literals allowing embedded expressions and multi-line strings.
 ### 🔤 Syntax
 
 ```js
-`string text ${expression}`
+`string text ${expression}`;
 ```
 
 ### 🧑‍💻 Usage & Example
 
 ```js
-const name = "Ravi";
+const name = 'Ravi';
 const greeting = `Hello, ${name}!`;
 
 console.log(greeting); // Hello, Ravi!
@@ -91,7 +92,7 @@ Extract values from arrays or objects into variables.
 
 ```js
 const [a, b] = array;
-const {x, y} = object;
+const { x, y } = object;
 ```
 
 ### 🧑‍💻 Usage & Example
@@ -102,7 +103,7 @@ const nums = [1, 2];
 const [a, b] = nums;
 
 // Object Destructuring
-const person = { name: "Alice", age: 25 };
+const person = { name: 'Alice', age: 25 };
 const { name, age } = person;
 ```
 
@@ -123,7 +124,7 @@ function func(param = defaultValue) { ... }
 ### 🧑‍💻 Usage & Example
 
 ```js
-function greet(name = "Guest") {
+function greet(name = 'Guest') {
   console.log(`Hello, ${name}`);
 }
 
@@ -141,7 +142,7 @@ Combines multiple arguments into a single array.
 ### 🔤 Syntax
 
 ```js
-function func(...args) { }
+function func(...args) {}
 ```
 
 ### 🧑‍💻 Usage & Example
@@ -165,7 +166,7 @@ Expands arrays or objects into individual elements.
 ### 🔤 Syntax
 
 ```js
-[...array], {...object}
+[...array], { ...object };
 ```
 
 ### 🧑‍💻 Usage & Example
@@ -196,12 +197,12 @@ const user = { name, greet() { ... } };
 ### 🧑‍💻 Usage & Example
 
 ```js
-const name = "Bob";
+const name = 'Bob';
 const user = {
   name,
   greet() {
     return `Hi ${this.name}`;
-  }
+  },
 };
 ```
 
@@ -217,8 +218,8 @@ ES6 introduced class syntax for object-oriented programming.
 
 ```js
 class ClassName {
-  constructor() { }
-  methodName() { }
+  constructor() {}
+  methodName() {}
 }
 ```
 
@@ -235,7 +236,7 @@ class Person {
   }
 }
 
-const p = new Person("Ravi");
+const p = new Person('Ravi');
 p.greet(); // Hello, Ravi
 ```
 
@@ -258,7 +259,7 @@ new Promise((resolve, reject) => { ... });
 ```js
 const fetchData = () =>
   new Promise((resolve, reject) => {
-    setTimeout(() => resolve("Data loaded"), 1000);
+    setTimeout(() => resolve('Data loaded'), 1000);
   });
 
 fetchData().then(console.log); // Data loaded
@@ -276,7 +277,7 @@ ES6 supports modular JavaScript with `import` and `export`.
 
 ```js
 // file.js
-export const name = "Ravi";
+export const name = 'Ravi';
 
 // main.js
 import { name } from './file.js';
@@ -292,7 +293,7 @@ export function greet(name) {
 
 // main.js
 import { greet } from './utils.js';
-console.log(greet("Ravi"));
+console.log(greet('Ravi'));
 ```
 
 ---
@@ -306,7 +307,8 @@ Iterates over iterable objects (arrays, strings, etc.).
 ### 🔤 Syntax
 
 ```js
-for (let value of iterable) { }
+for (let value of iterable) {
+}
 ```
 
 ### 🧑‍💻 Usage & Example
@@ -336,10 +338,10 @@ const sym = Symbol('description');
 ### 🧑‍💻 Usage & Example
 
 ```js
-const id = Symbol("id");
+const id = Symbol('id');
 const user = {
-  name: "Ravi",
-  [id]: 123
+  name: 'Ravi',
+  [id]: 123,
 };
 
 console.log(user[id]); // 123
@@ -351,8 +353,8 @@ console.log(user[id]); // 123
 
 ### ✅ Definition
 
-* **Map**: Key-value pairs with any type of key.
-* **Set**: Collection of unique values.
+- **Map**: Key-value pairs with any type of key.
+- **Set**: Collection of unique values.
 
 ### 🔤 Syntax
 
@@ -365,7 +367,7 @@ const set = new Set();
 
 ```js
 const map = new Map();
-map.set("key", "value");
+map.set('key', 'value');
 
 const set = new Set();
 set.add(1);
@@ -383,7 +385,7 @@ Copies values from source to target object.
 ### 🔤 Syntax
 
 ```js
-Object.assign(target, ...sources)
+Object.assign(target, ...sources);
 ```
 
 ### 🧑‍💻 Usage & Example
@@ -416,4 +418,3 @@ console.log(merged); // { a: 1, b: 2 }
 | Symbol             | Unique identifiers                |
 | `Map`, `Set`       | Data structures                   |
 | `Object.assign()`  | Merge objects                     |
-

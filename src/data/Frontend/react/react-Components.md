@@ -1,6 +1,7 @@
 # React Components and Props - Complete Guide
 
 ## Table of Contents
+
 1. [React Components](#react-components)
 2. [React Props](#react-props)
 3. [Combining Components and Props](#combining-components-and-props)
@@ -11,19 +12,25 @@
 ## React Components
 
 ### Definition
-React Components are reusable, independent pieces of code that return JSX elements to be rendered to the screen. They are the building blocks of React applications, allowing you to split the UI into independent, reusable pieces.
+
+React Components are reusable, independent pieces of code that return JSX
+elements to be rendered to the screen. They are the building blocks of React
+applications, allowing you to split the UI into independent, reusable pieces.
 
 ### Types of Components
 
 #### 1. Functional Components
+
 Modern, preferred approach using JavaScript functions.
 
 #### 2. Class Components
+
 Legacy approach using ES6 classes (still supported but less common).
 
 ### Syntax
 
 #### Functional Component Syntax
+
 ```jsx
 // Basic functional component
 function ComponentName() {
@@ -48,6 +55,7 @@ const ComponentName = () => <h1>Hello, World!</h1>;
 ```
 
 #### Class Component Syntax
+
 ```jsx
 import React, { Component } from 'react';
 
@@ -65,11 +73,13 @@ class ComponentName extends Component {
 ### Usage Guidelines
 
 #### Component Naming
+
 - Always start with a capital letter
 - Use PascalCase naming convention
 - Choose descriptive names
 
 #### Component Structure
+
 - Keep components small and focused
 - One component per file (recommended)
 - Export components for reuse
@@ -77,6 +87,7 @@ class ComponentName extends Component {
 ### Examples
 
 #### Simple Functional Component
+
 ```jsx
 function Welcome() {
   return <h1>Welcome to React!</h1>;
@@ -84,6 +95,7 @@ function Welcome() {
 ```
 
 #### Component with State (Using Hooks)
+
 ```jsx
 import React, { useState } from 'react';
 
@@ -93,15 +105,14 @@ function Counter() {
   return (
     <div>
       <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
     </div>
   );
 }
 ```
 
 #### Component with Multiple Elements
+
 ```jsx
 function UserProfile() {
   return (
@@ -120,24 +131,30 @@ function UserProfile() {
 ## React Props
 
 ### Definition
-Props (short for "properties") are read-only data passed from parent components to child components. They allow components to be dynamic and reusable by accepting different data inputs.
+
+Props (short for "properties") are read-only data passed from parent components
+to child components. They allow components to be dynamic and reusable by
+accepting different data inputs.
 
 ### Key Characteristics
+
 - **Read-only**: Props cannot be modified by the receiving component
 - **Unidirectional**: Data flows from parent to child
-- **Dynamic**: Can pass any JavaScript value (strings, numbers, objects, functions, etc.)
+- **Dynamic**: Can pass any JavaScript value (strings, numbers, objects,
+  functions, etc.)
 
 ### Syntax
 
 #### Passing Props (Parent Component)
+
 ```jsx
 // Passing different types of props
-<ChildComponent 
-  name="John"           // String
-  age={25}              // Number
-  isActive={true}       // Boolean
-  hobbies={['reading', 'coding']}  // Array
-  user={{id: 1, email: 'john@example.com'}}  // Object
+<ChildComponent
+  name="John" // String
+  age={25} // Number
+  isActive={true} // Boolean
+  hobbies={['reading', 'coding']} // Array
+  user={{ id: 1, email: 'john@example.com' }} // Object
   onClick={handleClick} // Function
 />
 ```
@@ -145,6 +162,7 @@ Props (short for "properties") are read-only data passed from parent components 
 #### Receiving Props (Child Component)
 
 ##### Functional Component
+
 ```jsx
 // Method 1: Destructuring in parameters
 function ChildComponent({ name, age, isActive }) {
@@ -170,6 +188,7 @@ function ChildComponent(props) {
 ```
 
 ##### Class Component
+
 ```jsx
 class ChildComponent extends React.Component {
   render() {
@@ -188,26 +207,36 @@ class ChildComponent extends React.Component {
 ### Usage Patterns
 
 #### Default Props
+
 ```jsx
 // Functional component with default props
-function Greeting({ name = "Guest", message = "Welcome!" }) {
-  return <h1>{message} {name}</h1>;
+function Greeting({ name = 'Guest', message = 'Welcome!' }) {
+  return (
+    <h1>
+      {message} {name}
+    </h1>
+  );
 }
 
 // Class component with default props
 class Greeting extends React.Component {
   static defaultProps = {
-    name: "Guest",
-    message: "Welcome!"
+    name: 'Guest',
+    message: 'Welcome!',
   };
 
   render() {
-    return <h1>{this.props.message} {this.props.name}</h1>;
+    return (
+      <h1>
+        {this.props.message} {this.props.name}
+      </h1>
+    );
   }
 }
 ```
 
 #### Props Validation (PropTypes)
+
 ```jsx
 import PropTypes from 'prop-types';
 
@@ -226,24 +255,25 @@ UserCard.propTypes = {
   name: PropTypes.string.isRequired,
   age: PropTypes.number,
   email: PropTypes.string.isRequired,
-  isAdmin: PropTypes.bool
+  isAdmin: PropTypes.bool,
 };
 ```
 
 ### Examples
 
 #### Basic Props Usage
+
 ```jsx
 // Parent Component
 function App() {
   return (
     <div>
-      <PersonCard 
+      <PersonCard
         name="Alice Johnson"
         occupation="Designer"
         location="New York"
       />
-      <PersonCard 
+      <PersonCard
         name="Bob Smith"
         occupation="Developer"
         location="San Francisco"
@@ -265,6 +295,7 @@ function PersonCard({ name, occupation, location }) {
 ```
 
 #### Passing Functions as Props
+
 ```jsx
 // Parent Component
 function TodoApp() {
@@ -275,9 +306,11 @@ function TodoApp() {
   };
 
   const toggleTodo = (id) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
   };
 
   return (
@@ -302,7 +335,7 @@ function TodoForm({ onAddTodo }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input 
+      <input
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Add a todo..."
@@ -315,8 +348,8 @@ function TodoForm({ onAddTodo }) {
 function TodoList({ todos, onToggleTodo }) {
   return (
     <ul>
-      {todos.map(todo => (
-        <TodoItem 
+      {todos.map((todo) => (
+        <TodoItem
           key={todo.id}
           todo={todo}
           onToggle={() => onToggleTodo(todo.id)}
@@ -329,14 +362,12 @@ function TodoList({ todos, onToggleTodo }) {
 function TodoItem({ todo, onToggle }) {
   return (
     <li>
-      <input 
-        type="checkbox"
-        checked={todo.completed}
-        onChange={onToggle}
-      />
-      <span style={{ 
-        textDecoration: todo.completed ? 'line-through' : 'none' 
-      }}>
+      <input type="checkbox" checked={todo.completed} onChange={onToggle} />
+      <span
+        style={{
+          textDecoration: todo.completed ? 'line-through' : 'none',
+        }}
+      >
         {todo.text}
       </span>
     </li>
@@ -345,6 +376,7 @@ function TodoItem({ todo, onToggle }) {
 ```
 
 #### Passing Complex Objects
+
 ```jsx
 // Parent Component
 function Dashboard() {
@@ -352,14 +384,14 @@ function Dashboard() {
     totalPosts: 42,
     followers: 1250,
     following: 180,
-    joinDate: '2023-01-15'
+    joinDate: '2023-01-15',
   };
 
   const userProfile = {
     name: 'Sarah Wilson',
     avatar: 'https://example.com/avatar.jpg',
     bio: 'Full-stack developer passionate about React',
-    location: 'Seattle, WA'
+    location: 'Seattle, WA',
   };
 
   return (
@@ -410,14 +442,16 @@ function StatItem({ label, value }) {
 ## Combining Components and Props
 
 ### Component Composition
-Components can be composed together to build complex UIs while maintaining reusability through props.
+
+Components can be composed together to build complex UIs while maintaining
+reusability through props.
 
 ```jsx
 function App() {
   const products = [
     { id: 1, name: 'Laptop', price: 999, rating: 4.5 },
     { id: 2, name: 'Phone', price: 699, rating: 4.2 },
-    { id: 3, name: 'Tablet', price: 399, rating: 4.0 }
+    { id: 3, name: 'Tablet', price: 399, rating: 4.0 },
   ];
 
   return (
@@ -440,7 +474,7 @@ function Header({ title }) {
 function ProductGrid({ products }) {
   return (
     <div className="product-grid">
-      {products.map(product => (
+      {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
@@ -453,7 +487,10 @@ function ProductCard({ product }) {
       <h3>{product.name}</h3>
       <Price amount={product.price} />
       <Rating value={product.rating} />
-      <Button text="Add to Cart" onClick={() => console.log('Added', product.name)} />
+      <Button
+        text="Add to Cart"
+        onClick={() => console.log('Added', product.name)}
+      />
     </div>
   );
 }
@@ -482,13 +519,14 @@ function Footer() {
 ### Component Best Practices
 
 #### 1. Single Responsibility
+
 Each component should have one clear purpose.
 
 ```jsx
 // Good: Focused component
 function SearchInput({ onSearch, placeholder }) {
   const [query, setQuery] = useState('');
-  
+
   return (
     <input
       type="text"
@@ -507,19 +545,29 @@ function SearchInputWithResultsAndPagination() {
 ```
 
 #### 2. Descriptive Naming
+
 Use clear, descriptive names for components.
 
 ```jsx
 // Good
-function UserProfileCard({ user }) { /* ... */ }
-function ProductSearchFilter({ onFilter }) { /* ... */ }
+function UserProfileCard({ user }) {
+  /* ... */
+}
+function ProductSearchFilter({ onFilter }) {
+  /* ... */
+}
 
 // Avoid
-function Card({ user }) { /* ... */ }
-function Filter({ onFilter }) { /* ... */ }
+function Card({ user }) {
+  /* ... */
+}
+function Filter({ onFilter }) {
+  /* ... */
+}
 ```
 
 #### 3. Keep Components Small
+
 Break down large components into smaller, manageable pieces.
 
 ```jsx
@@ -547,6 +595,7 @@ function PostHeader({ title, author, date }) {
 ### Props Best Practices
 
 #### 1. Destructure Props
+
 Use destructuring for cleaner code.
 
 ```jsx
@@ -576,18 +625,19 @@ function UserCard(props) {
 ```
 
 #### 2. Use Default Props
+
 Provide sensible defaults to make components more robust.
 
 ```jsx
-function Button({ 
-  text = 'Click me', 
-  variant = 'primary', 
+function Button({
+  text = 'Click me',
+  variant = 'primary',
   size = 'medium',
   disabled = false,
-  onClick = () => {} 
+  onClick = () => {},
 }) {
   return (
-    <button 
+    <button
       className={`btn btn-${variant} btn-${size}`}
       disabled={disabled}
       onClick={onClick}
@@ -599,6 +649,7 @@ function Button({
 ```
 
 #### 3. Validate Props
+
 Use PropTypes for runtime type checking in development.
 
 ```jsx
@@ -609,9 +660,7 @@ function ProductCard({ product, onAddToCart }) {
     <div>
       <h3>{product.name}</h3>
       <p>${product.price}</p>
-      <button onClick={() => onAddToCart(product.id)}>
-        Add to Cart
-      </button>
+      <button onClick={() => onAddToCart(product.id)}>Add to Cart</button>
     </div>
   );
 }
@@ -620,14 +669,16 @@ ProductCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired
+    price: PropTypes.number.isRequired,
   }).isRequired,
-  onAddToCart: PropTypes.func.isRequired
+  onAddToCart: PropTypes.func.isRequired,
 };
 ```
 
 #### 4. Avoid Prop Drilling
-For deeply nested components, consider using Context API or state management libraries.
+
+For deeply nested components, consider using Context API or state management
+libraries.
 
 ```jsx
 // Instead of passing props through multiple levels
@@ -665,18 +716,22 @@ function UserMenu() {
 ### Performance Considerations
 
 #### 1. Memoization
+
 Use React.memo for expensive components that don't need frequent re-renders.
 
 ```jsx
-const ExpensiveComponent = React.memo(function ExpensiveComponent({ data, onUpdate }) {
+const ExpensiveComponent = React.memo(function ExpensiveComponent({
+  data,
+  onUpdate,
+}) {
   // Expensive computations here
   const processedData = useMemo(() => {
-    return data.map(item => ({ ...item, processed: true }));
+    return data.map((item) => ({ ...item, processed: true }));
   }, [data]);
 
   return (
     <div>
-      {processedData.map(item => (
+      {processedData.map((item) => (
         <div key={item.id}>{item.name}</div>
       ))}
     </div>
@@ -685,6 +740,7 @@ const ExpensiveComponent = React.memo(function ExpensiveComponent({ data, onUpda
 ```
 
 #### 2. Callback Optimization
+
 Use useCallback to prevent unnecessary re-renders.
 
 ```jsx
@@ -693,23 +749,23 @@ function TodoApp() {
 
   // Memoize callback to prevent child re-renders
   const handleToggle = useCallback((id) => {
-    setTodos(prev => prev.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
   }, []);
 
   return (
     <div>
-      {todos.map(todo => (
-        <TodoItem 
-          key={todo.id}
-          todo={todo}
-          onToggle={handleToggle}
-        />
+      {todos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} onToggle={handleToggle} />
       ))}
     </div>
   );
 }
 ```
 
-This comprehensive guide covers the fundamental concepts of React Components and Props, providing you with the knowledge needed to build effective, reusable React applications.
+This comprehensive guide covers the fundamental concepts of React Components and
+Props, providing you with the knowledge needed to build effective, reusable
+React applications.

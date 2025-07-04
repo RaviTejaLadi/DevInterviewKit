@@ -1,21 +1,22 @@
 # 🔐 What is Web Storage API?
 
-The **Web Storage API** provides a way for web applications to store data in the browser **locally**, **persistently**, and **without involving a server**.
+The **Web Storage API** provides a way for web applications to store data in the
+browser **locally**, **persistently**, and **without involving a server**.
 
 It has two main types:
 
-| Type             | Persists after reload?  | Accessible in all tabs? | Size Limit |
-| ---------------- | ----------------------- | ----------------------- | ---------- |
-| `localStorage`   | ✅ Yes                   | ✅ Yes                   | \~5–10MB   |
-| `sessionStorage` | ❌ No (tab/session only) | ❌ No                    | \~5MB      |
+| Type             | Persists after reload?   | Accessible in all tabs? | Size Limit |
+| ---------------- | ------------------------ | ----------------------- | ---------- |
+| `localStorage`   | ✅ Yes                   | ✅ Yes                  | \~5–10MB   |
+| `sessionStorage` | ❌ No (tab/session only) | ❌ No                   | \~5MB      |
 
 ---
 
 ## 🧰 Why use Web Storage?
 
-* Store small amounts of data (like theme, auth token, user prefs).
-* Avoid unnecessary network requests.
-* Improve performance for single-page applications (SPAs).
+- Store small amounts of data (like theme, auth token, user prefs).
+- Avoid unnecessary network requests.
+- Improve performance for single-page applications (SPAs).
 
 ---
 
@@ -23,8 +24,8 @@ It has two main types:
 
 ### ✅ Key Features:
 
-* Data **never expires** unless you remove it.
-* Stored data is **shared across tabs and windows** of the same origin.
+- Data **never expires** unless you remove it.
+- Stored data is **shared across tabs and windows** of the same origin.
 
 ### 🔧 Usage:
 
@@ -44,9 +45,9 @@ localStorage.clear();
 
 ### ✅ Use Cases:
 
-* Remember login (auth token)
-* User preferences (dark mode, language)
-* Caching API responses (if not sensitive)
+- Remember login (auth token)
+- User preferences (dark mode, language)
+- Caching API responses (if not sensitive)
 
 ---
 
@@ -54,8 +55,8 @@ localStorage.clear();
 
 ### ✅ Key Features:
 
-* Data is cleared **when the tab or window is closed**.
-* Not shared across tabs (even of same origin).
+- Data is cleared **when the tab or window is closed**.
+- Not shared across tabs (even of same origin).
 
 ### 🔧 Usage:
 
@@ -75,9 +76,9 @@ sessionStorage.clear();
 
 ### ✅ Use Cases:
 
-* Temporary form state
-* OTP or auth token for one-time use
-* Tab-specific app state
+- Temporary form state
+- OTP or auth token for one-time use
+- Tab-specific app state
 
 ---
 
@@ -86,7 +87,7 @@ sessionStorage.clear();
 | Feature            | `localStorage`         | `sessionStorage`        |
 | ------------------ | ---------------------- | ----------------------- |
 | Persistence        | Until manually cleared | Until tab/window closes |
-| Tab sharing        | ✅ Yes                  | ❌ No                    |
+| Tab sharing        | ✅ Yes                 | ❌ No                   |
 | Expiration         | Never                  | On tab close            |
 | Use Case           | Auth, preferences      | Temporary form/session  |
 | Capacity (approx.) | \~5–10MB               | \~5MB                   |
@@ -95,9 +96,9 @@ sessionStorage.clear();
 
 ## ⚠️ Limitations of Web Storage
 
-* Not suitable for storing **sensitive data** (not encrypted).
-* **Synchronous API** – can block main thread.
-* Can't store complex objects directly (you need to stringify).
+- Not suitable for storing **sensitive data** (not encrypted).
+- **Synchronous API** – can block main thread.
+- Can't store complex objects directly (you need to stringify).
 
 ```js
 const user = { name: 'Ravi', age: 25 };
@@ -122,7 +123,7 @@ console.log(retrievedUser.name); // 'Ravi'
 
 ## ✅ Best Practices
 
-* Always use `try...catch` when using local/sessionStorage:
+- Always use `try...catch` when using local/sessionStorage:
 
 ```js
 try {
@@ -132,12 +133,12 @@ try {
 }
 ```
 
-* Use `JSON.stringify()`/`JSON.parse()` for complex data.
+- Use `JSON.stringify()`/`JSON.parse()` for complex data.
 
-* Don’t use it for:
+- Don’t use it for:
 
-  * Storing passwords or sensitive info.
-  * Large data storage (use IndexedDB instead).
+  - Storing passwords or sensitive info.
+  - Large data storage (use IndexedDB instead).
 
 ---
 

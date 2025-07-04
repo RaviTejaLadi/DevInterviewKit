@@ -4,8 +4,8 @@
 
 ```js
 function findLongestWord(sentence) {
-  const words = sentence.split(" ");
-  let longest = "";
+  const words = sentence.split(' ');
+  let longest = '';
 
   for (let word of words) {
     if (word.length > longest.length) {
@@ -17,7 +17,7 @@ function findLongestWord(sentence) {
 }
 
 // Example:
-console.log(findLongestWord("I am a frontend developer")); // developer
+console.log(findLongestWord('I am a frontend developer')); // developer
 ```
 
 ---
@@ -26,7 +26,7 @@ console.log(findLongestWord("I am a frontend developer")); // developer
 
 ```js
 function isPalindrome(str) {
-  let reversed = "";
+  let reversed = '';
   for (let i = str.length - 1; i >= 0; i--) {
     reversed += str[i];
   }
@@ -34,8 +34,8 @@ function isPalindrome(str) {
 }
 
 // Example:
-console.log(isPalindrome("madam")); // true
-console.log(isPalindrome("hello")); // false
+console.log(isPalindrome('madam')); // true
+console.log(isPalindrome('hello')); // false
 ```
 
 ---
@@ -57,7 +57,7 @@ console.log(removeDuplicates([1, 2, 2, 3, 4, 4])); // [1,2,3,4]
 
 ```js
 function reverseString(str) {
-  let reversed = "";
+  let reversed = '';
   for (let char of str) {
     reversed = char + reversed;
   }
@@ -65,7 +65,7 @@ function reverseString(str) {
 }
 
 // Example:
-console.log(reverseString("hello")); // "olleh"
+console.log(reverseString('hello')); // "olleh"
 ```
 
 ---
@@ -74,7 +74,8 @@ console.log(reverseString("hello")); // "olleh"
 
 ```js
 function maxConsecutiveOnes(arr) {
-  let max = 0, count = 0;
+  let max = 0,
+    count = 0;
   for (let num of arr) {
     if (num === 1) {
       count++;
@@ -87,7 +88,7 @@ function maxConsecutiveOnes(arr) {
 }
 
 // Example:
-console.log(maxConsecutiveOnes([1,1,0,1,1,1])); // 3
+console.log(maxConsecutiveOnes([1, 1, 0, 1, 1, 1])); // 3
 ```
 
 ---
@@ -117,7 +118,7 @@ function mergeSortedArrays(arr1, arr2) {
 }
 
 // Example:
-console.log(mergeSortedArrays([0,3,4,31], [4,6,30])); // [0,3,4,4,6,30,31]
+console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30])); // [0,3,4,4,6,30,31]
 ```
 
 ---
@@ -128,7 +129,8 @@ console.log(mergeSortedArrays([0,3,4,31], [4,6,30])); // [0,3,4,4,6,30,31]
 function same(arr1, arr2) {
   if (arr1.length !== arr2.length) return false;
 
-  let map1 = {}, map2 = {};
+  let map1 = {},
+    map2 = {};
 
   for (let val of arr1) map1[val] = (map1[val] || 0) + 1;
   for (let val of arr2) map2[val] = (map2[val] || 0) + 1;
@@ -143,8 +145,8 @@ function same(arr1, arr2) {
 }
 
 // Example:
-console.log(same([1,2,3], [1,4,9])); // true
-console.log(same([1,2,3], [1,9]));   // false
+console.log(same([1, 2, 3], [1, 4, 9])); // true
+console.log(same([1, 2, 3], [1, 9])); // false
 ```
 
 ---
@@ -170,7 +172,7 @@ function isAnagram(str1, str2) {
 }
 
 // Example:
-console.log(isAnagram("listen", "silent")); // true
+console.log(isAnagram('listen', 'silent')); // true
 ```
 
 ---
@@ -180,7 +182,7 @@ console.log(isAnagram("listen", "silent")); // true
 ```js
 function getUniqueObjects(arr) {
   const seen = new Set();
-  return arr.filter(item => {
+  return arr.filter((item) => {
     if (seen.has(item.name)) return false;
     seen.add(item.name);
     return true;
@@ -189,11 +191,11 @@ function getUniqueObjects(arr) {
 
 // Example:
 const input = [
-  { name: "sai" },
-  { name: "Nang" },
-  { name: "sai" },
-  { name: "Nang" },
-  { name: "111111" },
+  { name: 'sai' },
+  { name: 'Nang' },
+  { name: 'sai' },
+  { name: 'Nang' },
+  { name: '111111' },
 ];
 
 console.log(getUniqueObjects(input));
@@ -204,7 +206,8 @@ console.log(getUniqueObjects(input));
 
 Would you like me to continue with **11 to 21**?
 
-Great! Let's continue with simple and clean solutions for questions **11 to 21**:
+Great! Let's continue with simple and clean solutions for questions **11 to
+21**:
 
 ---
 
@@ -231,7 +234,7 @@ console.log(findMax([2, 5, 8, 1, 10])); // 10
 
 ```js
 function getEvenNumbers(arr) {
-  return arr.filter(num => num % 2 === 0);
+  return arr.filter((num) => num % 2 === 0);
 }
 
 // Example:
@@ -273,7 +276,13 @@ function findLargestInNestedArray(arr) {
 }
 
 // Example:
-console.log(findLargestInNestedArray([[3, 4, 58], [709, 8, 9, [10, 11]], [111, 2]])); // 709
+console.log(
+  findLargestInNestedArray([
+    [3, 4, 58],
+    [709, 8, 9, [10, 11]],
+    [111, 2],
+  ])
+); // 709
 ```
 
 ---
@@ -307,7 +316,7 @@ function countCharacters(str) {
 }
 
 // Example:
-console.log(countCharacters("hello")); 
+console.log(countCharacters('hello'));
 // { h: 1, e: 1, l: 2, o: 1 }
 ```
 
@@ -343,18 +352,18 @@ console.log(sortDescending([5, 2, 9, 1])); // [9, 5, 2, 1]
 
 ```js
 function reverseWords(sentence) {
-  const words = sentence.split(" ");
+  const words = sentence.split(' ');
   let reversed = [];
 
   for (let i = words.length - 1; i >= 0; i--) {
     reversed.push(words[i]);
   }
 
-  return reversed.join(" ");
+  return reversed.join(' ');
 }
 
 // Example:
-console.log(reverseWords("I am a developer")); // "developer a am I"
+console.log(reverseWords('I am a developer')); // "developer a am I"
 ```
 
 ---
@@ -389,7 +398,7 @@ console.log(flattenArray([1, [2, [3, 4]], 5])); // [1, 2, 3, 4, 5]
 
 ```js
 function stringToObject(path, value) {
-  const keys = path.split(".");
+  const keys = path.split('.');
   const result = {};
   let current = result;
 
@@ -403,6 +412,6 @@ function stringToObject(path, value) {
 }
 
 // Example:
-console.log(stringToObject("a.b.c", "someValue"));
+console.log(stringToObject('a.b.c', 'someValue'));
 // { a: { b: { c: "someValue" } } }
 ```

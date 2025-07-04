@@ -19,9 +19,14 @@
 ## 1. Introduction
 
 ### Definition
-React error handling is a mechanism to catch and manage JavaScript errors that occur during component rendering, lifecycle methods, and constructors. It prevents the entire application from crashing when errors occur in specific components.
+
+React error handling is a mechanism to catch and manage JavaScript errors that
+occur during component rendering, lifecycle methods, and constructors. It
+prevents the entire application from crashing when errors occur in specific
+components.
 
 ### Purpose
+
 - **Graceful Degradation**: Show fallback UI instead of a blank screen
 - **User Experience**: Maintain application functionality when parts fail
 - **Debugging**: Capture error information for development and monitoring
@@ -32,22 +37,31 @@ React error handling is a mechanism to catch and manage JavaScript errors that o
 ## 2. Core Concepts
 
 ### 2.1 Error Propagation
-In React, uncaught errors in components bubble up through the component tree until they reach an error boundary or the root of the application.
+
+In React, uncaught errors in components bubble up through the component tree
+until they reach an error boundary or the root of the application.
 
 ### 2.2 Error Boundaries
-Special React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display fallback UI.
+
+Special React components that catch JavaScript errors anywhere in their child
+component tree, log those errors, and display fallback UI.
 
 ### 2.3 Error Recovery
-The process of handling errors gracefully and potentially allowing users to recover from error states.
+
+The process of handling errors gracefully and potentially allowing users to
+recover from error states.
 
 ---
 
 ## 3. Error Boundaries
 
 ### Definition
-Error boundaries are React components that implement either `componentDidCatch()` or `static getDerivedStateFromError()` lifecycle methods.
+
+Error boundaries are React components that implement either
+`componentDidCatch()` or `static getDerivedStateFromError()` lifecycle methods.
 
 ### Key Characteristics
+
 - Only catch errors in **child components**
 - Do **not** catch errors in:
   - Event handlers
@@ -56,6 +70,7 @@ Error boundaries are React components that implement either `componentDidCatch()
   - Errors thrown in the error boundary itself
 
 ### When to Use
+
 - Wrap entire application sections
 - Protect critical user flows
 - Isolate potentially unstable components
@@ -70,6 +85,7 @@ Error boundaries are React components that implement either `componentDidCatch()
 **Purpose**: Update state to show fallback UI
 
 **Syntax**:
+
 ```javascript
 static getDerivedStateFromError(error) {
   // Update state to show fallback UI
@@ -78,9 +94,11 @@ static getDerivedStateFromError(error) {
 ```
 
 **Parameters**:
+
 - `error`: The error that was thrown
 
-**Returns**: 
+**Returns**:
+
 - State object to update component state
 - `null` if no state update needed
 
@@ -91,6 +109,7 @@ static getDerivedStateFromError(error) {
 **Purpose**: Log error information and perform side effects
 
 **Syntax**:
+
 ```javascript
 componentDidCatch(error, errorInfo) {
   // Log error to error reporting service
@@ -99,6 +118,7 @@ componentDidCatch(error, errorInfo) {
 ```
 
 **Parameters**:
+
 - `error`: The error that was thrown
 - `errorInfo`: Object with `componentStack` property containing stack trace
 
@@ -146,10 +166,10 @@ class ErrorBoundary extends React.Component {
 class EnhancedErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       hasError: false,
       error: null,
-      errorInfo: null
+      errorInfo: null,
     };
   }
 
@@ -160,7 +180,7 @@ class EnhancedErrorBoundary extends React.Component {
   componentDidCatch(error, errorInfo) {
     this.setState({
       error: error,
-      errorInfo: errorInfo
+      errorInfo: errorInfo,
     });
 
     // Log to external service
@@ -172,15 +192,16 @@ class EnhancedErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        this.props.fallback || 
-        <div>
-          <h2>Something went wrong</h2>
-          <details style={{ whiteSpace: 'pre-wrap' }}>
-            {this.state.error && this.state.error.toString()}
-            <br />
-            {this.state.errorInfo.componentStack}
-          </details>
-        </div>
+        this.props.fallback || (
+          <div>
+            <h2>Something went wrong</h2>
+            <details style={{ whiteSpace: 'pre-wrap' }}>
+              {this.state.error && this.state.error.toString()}
+              <br />
+              {this.state.errorInfo.componentStack}
+            </details>
+          </div>
+        )
       );
     }
 
@@ -206,7 +227,7 @@ function FunctionalErrorBoundary({ children, fallback }) {
     // Note: This is a simplified example
     // Functional components can't catch errors the same way
     // Use react-error-boundary library for production
-    
+
     return () => {
       // Cleanup
     };
@@ -225,17 +246,25 @@ function FunctionalErrorBoundary({ children, fallback }) {
 ## 6. Error Types in React
 
 ### 6.1 Render Errors
+
 Errors that occur during component rendering.
 
 ```javascript
 function ProblematicComponent() {
   const data = null;
-  return <div>{data.map(item => <span key={item.id}>{item.name}</span>)}</div>;
+  return (
+    <div>
+      {data.map((item) => (
+        <span key={item.id}>{item.name}</span>
+      ))}
+    </div>
+  );
   // Error: Cannot read property 'map' of null
 }
 ```
 
 ### 6.2 Lifecycle Method Errors
+
 Errors in component lifecycle methods.
 
 ```javascript
@@ -243,7 +272,7 @@ class ComponentWithError extends React.Component {
   componentDidMount() {
     throw new Error('Error in componentDidMount');
   }
-  
+
   render() {
     return <div>This component will error on mount</div>;
   }
@@ -251,6 +280,7 @@ class ComponentWithError extends React.Component {
 ```
 
 ### 6.3 Constructor Errors
+
 Errors in component constructors.
 
 ```javascript
@@ -259,7 +289,7 @@ class ComponentWithConstructorError extends React.Component {
     super(props);
     throw new Error('Constructor error');
   }
-  
+
   render() {
     return <div>Never rendered</div>;
   }
@@ -271,6 +301,7 @@ class ComponentWithConstructorError extends React.Component {
 ## 7. Best Practices
 
 ### 7.1 Error Boundary Placement
+
 - Place at strategic points in component tree
 - Don't wrap every component
 - Consider user experience and recovery options
@@ -293,6 +324,7 @@ function App() {
 ```
 
 ### 7.2 Meaningful Error Messages
+
 Provide context-specific error messages and recovery options.
 
 ```javascript
@@ -303,9 +335,7 @@ function UserProfileErrorBoundary({ children }) {
         <div>
           <h3>Unable to load user profile</h3>
           <p>Please refresh the page or try again later.</p>
-          <button onClick={() => window.location.reload()}>
-            Refresh Page
-          </button>
+          <button onClick={() => window.location.reload()}>Refresh Page</button>
         </div>
       }
     >
@@ -316,6 +346,7 @@ function UserProfileErrorBoundary({ children }) {
 ```
 
 ### 7.3 Error Reporting
+
 Implement proper error logging and reporting.
 
 ```javascript
@@ -324,7 +355,7 @@ function logErrorToService(error, errorInfo) {
   if (process.env.NODE_ENV === 'production') {
     // Example with a hypothetical error service
     errorReportingService.captureException(error, {
-      extra: errorInfo
+      extra: errorInfo,
     });
   }
 }
@@ -346,9 +377,9 @@ class ErrorBoundary extends React.Component {
 class RetryErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      hasError: false, 
-      retryCount: 0 
+    this.state = {
+      hasError: false,
+      retryCount: 0,
     };
   }
 
@@ -361,9 +392,9 @@ class RetryErrorBoundary extends React.Component {
   }
 
   handleRetry = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       hasError: false,
-      retryCount: prevState.retryCount + 1
+      retryCount: prevState.retryCount + 1,
     }));
   };
 
@@ -377,9 +408,7 @@ class RetryErrorBoundary extends React.Component {
               Try Again ({this.state.retryCount}/3)
             </button>
           )}
-          {this.state.retryCount >= 3 && (
-            <p>Please refresh the page</p>
-          )}
+          {this.state.retryCount >= 3 && <p>Please refresh the page</p>}
         </div>
       );
     }
@@ -398,11 +427,11 @@ function ErrorProvider({ children }) {
   const [errors, setErrors] = useState([]);
 
   const addError = (error) => {
-    setErrors(prev => [...prev, { id: Date.now(), error }]);
+    setErrors((prev) => [...prev, { id: Date.now(), error }]);
   };
 
   const removeError = (id) => {
-    setErrors(prev => prev.filter(err => err.id !== id));
+    setErrors((prev) => prev.filter((err) => err.id !== id));
   };
 
   return (
@@ -426,9 +455,12 @@ function AsyncErrorHandler({ children }) {
     };
 
     window.addEventListener('unhandledrejection', handleUnhandledRejection);
-    
+
     return () => {
-      window.removeEventListener('unhandledrejection', handleUnhandledRejection);
+      window.removeEventListener(
+        'unhandledrejection',
+        handleUnhandledRejection
+      );
     };
   }, []);
 
@@ -436,9 +468,7 @@ function AsyncErrorHandler({ children }) {
     return (
       <div>
         <h3>An error occurred</h3>
-        <button onClick={() => setAsyncError(null)}>
-          Dismiss
-        </button>
+        <button onClick={() => setAsyncError(null)}>Dismiss</button>
       </div>
     );
   }
@@ -468,7 +498,7 @@ describe('ErrorBoundary', () => {
   it('catches and displays error', () => {
     // Suppress console.error for this test
     const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
-    
+
     render(
       <ErrorBoundary>
         <ThrowError shouldThrow={true} />
@@ -476,7 +506,7 @@ describe('ErrorBoundary', () => {
     );
 
     expect(screen.getByText(/something went wrong/i)).toBeInTheDocument();
-    
+
     spy.mockRestore();
   });
 });
@@ -514,6 +544,7 @@ it('allows retry after error', () => {
 ## 10. Common Pitfalls
 
 ### 10.1 Error Boundaries Don't Catch All Errors
+
 ```javascript
 // ❌ These are NOT caught by error boundaries:
 function ProblematicComponent() {
@@ -532,6 +563,7 @@ function ProblematicComponent() {
 ```
 
 ### 10.2 Infinite Error Loops
+
 ```javascript
 // ❌ Avoid throwing errors in error boundary render
 class BadErrorBoundary extends React.Component {
@@ -545,6 +577,7 @@ class BadErrorBoundary extends React.Component {
 ```
 
 ### 10.3 Over-wrapping Components
+
 ```javascript
 // ❌ Too granular
 function App() {
@@ -614,7 +647,8 @@ function OptimizedApp() {
 
 ## Summary
 
-React error handling through error boundaries provides a robust way to manage errors in React applications. Key takeaways:
+React error handling through error boundaries provides a robust way to manage
+errors in React applications. Key takeaways:
 
 - Use error boundaries to catch errors in component trees
 - Implement both `getDerivedStateFromError` and `componentDidCatch`
@@ -624,6 +658,8 @@ React error handling through error boundaries provides a robust way to manage er
 - Test error scenarios thoroughly
 - Integrate with error monitoring services in production
 
-Error boundaries are essential for building resilient React applications that gracefully handle failures and maintain good user experience even when things go wrong.
+Error boundaries are essential for building resilient React applications that
+gracefully handle failures and maintain good user experience even when things go
+wrong.
 
 **[⬆ Back to Top](#table-of-contents)**

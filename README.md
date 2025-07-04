@@ -1,89 +1,107 @@
-# 🚀 Full-Stack Interview Mastery Hub  
+# 🚀 Full-Stack Interview Mastery Hub
 
-A **comprehensive** collection of resources, interactive tools, coding challenges, and best practices to help you prepare for **full-stack developer interviews**. This project covers **frontend, backend, databases, DevOps, and system design**, with hands-on exercises to enhance your problem-solving skills.  
+A **comprehensive** collection of resources, interactive tools, coding
+challenges, and best practices to help you prepare for **full-stack developer
+interviews**. This project covers **frontend, backend, databases, DevOps, and
+system design**, with hands-on exercises to enhance your problem-solving skills.
 
-> **Your Ultimate Destination for Full-Stack Interview Success**  
+> **Your Ultimate Destination for Full-Stack Interview Success**
 
----  
+---
 
-## 💡 Why This Exists  
+## 💡 Why This Exists
 
-Landing your dream **full-stack role** requires mastering both **frontend and backend** concepts. Whether you're a **new graduate**, a **self-taught developer**, or an **experienced engineer** aiming for senior roles, this hub provides structured learning to **ace technical interviews**.  
+Landing your dream **full-stack role** requires mastering both **frontend and
+backend** concepts. Whether you're a **new graduate**, a **self-taught
+developer**, or an **experienced engineer** aiming for senior roles, this hub
+provides structured learning to **ace technical interviews**.
 
-## � What You'll Find Here  
+## � What You'll Find Here
 
-This is a **carefully curated, battle-tested resource** covering everything from **fundamentals to advanced topics** asked by top tech companies.  
+This is a **carefully curated, battle-tested resource** covering everything from
+**fundamentals to advanced topics** asked by top tech companies.
 
-### 📚 Core Areas Covered  
+### 📚 Core Areas Covered
 
-#### **🌐 Frontend Development**  
-- **JavaScript (ES6+)** – Async/Await, Closures, Prototypes  
-- **HTML5 & CSS3** – Semantic HTML, Flexbox, Grid, Animations  
-- **Frontend Frameworks** – React, Vue, Angular  
-- **State Management** – Redux, Context API, Zustand  
-- **Web Performance** – Lazy Loading, Code Splitting, Caching  
-- **Testing** – Jest, Cypress, React Testing Library  
+#### **🌐 Frontend Development**
 
-#### **🔙 Backend Development**  
-- **Node.js & Express** – REST APIs, Middleware, Error Handling  
-- **Python (Django/Flask)** – ORM, Authentication, Routing  
-- **Java (Spring Boot)** – Dependency Injection, Microservices  
-- **API Design** – GraphQL, REST, WebSockets  
-- **Authentication** – JWT, OAuth, Session Management  
+- **JavaScript (ES6+)** – Async/Await, Closures, Prototypes
+- **HTML5 & CSS3** – Semantic HTML, Flexbox, Grid, Animations
+- **Frontend Frameworks** – React, Vue, Angular
+- **State Management** – Redux, Context API, Zustand
+- **Web Performance** – Lazy Loading, Code Splitting, Caching
+- **Testing** – Jest, Cypress, React Testing Library
 
-#### **🗃️ Databases**  
-- **SQL (PostgreSQL, MySQL)** – Indexing, Transactions, Joins  
-- **NoSQL (MongoDB, Firebase)** – Schemaless Design, Aggregation  
-- **ORM/ODM** – Sequelize, Mongoose, Prisma  
-- **Caching** – Redis, Memcached  
+#### **🔙 Backend Development**
 
-#### **🛠️ DevOps & Cloud**  
-- **Docker & Kubernetes** – Containers, Orchestration  
-- **CI/CD Pipelines** – GitHub Actions, Jenkins  
-- **Cloud Platforms** – AWS, GCP, Azure  
-- **Serverless** – AWS Lambda, Firebase Functions  
+- **Node.js & Express** – REST APIs, Middleware, Error Handling
+- **Python (Django/Flask)** – ORM, Authentication, Routing
+- **Java (Spring Boot)** – Dependency Injection, Microservices
+- **API Design** – GraphQL, REST, WebSockets
+- **Authentication** – JWT, OAuth, Session Management
 
-#### **📐 System Design**  
-- **Scalability** – Load Balancing, Sharding, Caching  
-- **Microservices vs. Monoliths**  
-- **Design Patterns** – Singleton, Observer, Factory  
-- **Real-World Case Studies** – Design Twitter, Uber, Netflix  
+#### **🗃️ Databases**
 
-#### **⚙️ Coding & Problem Solving**  
-- **LeetCode-Style Challenges** – Arrays, Trees, Graphs, DP  
-- **Behavioral Interviews** – STAR Method, Leadership Stories  
-- **Whiteboarding Tips** – How to Think Aloud  
+- **SQL (PostgreSQL, MySQL)** – Indexing, Transactions, Joins
+- **NoSQL (MongoDB, Firebase)** – Schemaless Design, Aggregation
+- **ORM/ODM** – Sequelize, Mongoose, Prisma
+- **Caching** – Redis, Memcached
 
----  
+#### **🛠️ DevOps & Cloud**
 
-## 🎨 How This Resource Works  
+- **Docker & Kubernetes** – Containers, Orchestration
+- **CI/CD Pipelines** – GitHub Actions, Jenkins
+- **Cloud Platforms** – AWS, GCP, Azure
+- **Serverless** – AWS Lambda, Firebase Functions
 
-### 📖 **Study Phase**  
-- **Deep dives** into each topic with **real-world examples**.  
-- **Best practices** from industry experts.  
+#### **📐 System Design**
 
-### 🧠 **Practice Phase**  
-- **Hands-on coding challenges** (Frontend, Backend, DSA).  
-- **Mock interviews** with detailed feedback.  
+- **Scalability** – Load Balancing, Sharding, Caching
+- **Microservices vs. Monoliths**
+- **Design Patterns** – Singleton, Observer, Factory
+- **Real-World Case Studies** – Design Twitter, Uber, Netflix
 
-### 💬 **Interview Phase**  
-- **Common questions** with **structured answers**.  
-- **Communication strategies** for technical discussions.  
+#### **⚙️ Coding & Problem Solving**
 
----  
+- **LeetCode-Style Challenges** – Arrays, Trees, Graphs, DP
+- **Behavioral Interviews** – STAR Method, Leadership Stories
+- **Whiteboarding Tips** – How to Think Aloud
 
-## 🚀 Ready to Begin?  
+---
 
-### Quick Start Options:  
-- **👶 Beginner?** → Start with [JavaScript & Python Fundamentals]  
-- **⏳ Interview Soon?** → Jump to [Coding Interview Crash Course]  
-- **🏢 FAANG Target?** → Explore [Advanced System Design]  
-- **🔄 Switching Careers?** → Follow [Full-Stack Roadmap]  
+## 🎨 How This Resource Works
 
----  
+### 📖 **Study Phase**
 
-**Remember:** Every expert was once a beginner. Every pro was once an amateur. Every icon was once an unknown.  
+- **Deep dives** into each topic with **real-world examples**.
+- **Best practices** from industry experts.
 
---- 
+### 🧠 **Practice Phase**
 
-*Happy coding, and best of luck with your interviews! 🎉*  
+- **Hands-on coding challenges** (Frontend, Backend, DSA).
+- **Mock interviews** with detailed feedback.
+
+### 💬 **Interview Phase**
+
+- **Common questions** with **structured answers**.
+- **Communication strategies** for technical discussions.
+
+---
+
+## 🚀 Ready to Begin?
+
+### Quick Start Options:
+
+- **👶 Beginner?** → Start with [JavaScript & Python Fundamentals]
+- **⏳ Interview Soon?** → Jump to [Coding Interview Crash Course]
+- **🏢 FAANG Target?** → Explore [Advanced System Design]
+- **🔄 Switching Careers?** → Follow [Full-Stack Roadmap]
+
+---
+
+**Remember:** Every expert was once a beginner. Every pro was once an amateur.
+Every icon was once an unknown.
+
+---
+
+_Happy coding, and best of luck with your interviews! 🎉_

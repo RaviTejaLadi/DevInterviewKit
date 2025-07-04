@@ -1,6 +1,8 @@
 # Redux Toolkit: Simplified Guide
 
-Redux Toolkit (RTK) is the official, opinionated, batteries-included toolset for efficient Redux development. It simplifies most Redux tasks, prevents common mistakes, and makes your Redux code simpler and easier to maintain.
+Redux Toolkit (RTK) is the official, opinionated, batteries-included toolset for
+efficient Redux development. It simplifies most Redux tasks, prevents common
+mistakes, and makes your Redux code simpler and easier to maintain.
 
 ## Table of Contents
 
@@ -12,7 +14,6 @@ Redux Toolkit (RTK) is the official, opinionated, batteries-included toolset for
 - [Error Handling](#error-handling)
 - [Debugging](#debugging)
 - [Easy-to-Remember Summary](#easy-to-remember-summary)
-
 
 ## Why Redux Toolkit?
 
@@ -98,7 +99,8 @@ export const counterSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, reset } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount, reset } =
+  counterSlice.actions;
 
 // Selectors
 export const selectCount = (state) => state.counter.value;
@@ -122,7 +124,9 @@ const initialState = {
 
 // Async thunk for fetching users
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
-  const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+  const response = await axios.get(
+    'https://jsonplaceholder.typicode.com/users'
+  );
   return response.data;
 });
 
@@ -134,7 +138,7 @@ const userSlice = createSlice({
       state.users.push(action.payload);
     },
     removeUser: (state, action) => {
-      state.users = state.users.filter(user => user.id !== action.payload);
+      state.users = state.users.filter((user) => user.id !== action.payload);
     },
     resetUsers: (state) => {
       state.users = [];
@@ -229,7 +233,7 @@ export function UsersList() {
   if (status === 'loading') {
     content = <div>Loading...</div>;
   } else if (status === 'succeeded') {
-    content = users.map(user => (
+    content = users.map((user) => (
       <div key={user.id}>
         <h3>{user.name}</h3>
         <p>{user.email}</p>
@@ -250,11 +254,14 @@ export function UsersList() {
 
 ## Best Practices
 
-1. **Organize by Feature**: Keep all Redux logic for a feature in a single file (the "slice" pattern).
+1. **Organize by Feature**: Keep all Redux logic for a feature in a single file
+   (the "slice" pattern).
 
-2. **Use createSlice**: Always use `createSlice` to generate reducers and actions.
+2. **Use createSlice**: Always use `createSlice` to generate reducers and
+   actions.
 
-3. **Immutable Updates**: Write "mutating" logic in reducers (it's converted to immutable updates internally).
+3. **Immutable Updates**: Write "mutating" logic in reducers (it's converted to
+   immutable updates internally).
 
 4. **Normalize Data**: Keep state normalized (flattened) for better performance.
 
@@ -267,6 +274,7 @@ export function UsersList() {
 ## Error Handling
 
 1. **In Async Thunks**:
+
    - Use the `rejected` case in `extraReducers`
    - Store error messages in state
    - Display meaningful error messages to users
@@ -285,11 +293,13 @@ if (status === 'failed') {
 ## Debugging
 
 1. **Redux DevTools**:
+
    - Included automatically with Redux Toolkit
    - Access via browser extension
    - View action history, state diffs, and dispatch actions manually
 
 2. **Logging Middleware**:
+
    ```javascript
    const store = configureStore({
      reducer: rootReducer,
@@ -307,18 +317,22 @@ if (status === 'failed') {
 ## Easy-to-Remember Summary
 
 1. **Setup**:
+
    - `configureStore` for store
    - `Provider` at top level
 
 2. **Slices**:
+
    - `createSlice` for reducers + actions
    - `createAsyncThunk` for async
 
 3. **Components**:
+
    - `useSelector` to read state
    - `useDispatch` to send actions
 
 4. **Best Practices**:
+
    - Feature organization
    - Selector functions
    - Status tracking
@@ -327,6 +341,7 @@ if (status === 'failed') {
    - DevTools extension
    - Action/state logging
 
-Redux Toolkit simplifies Redux by providing these utilities while enforcing best practices, making your Redux code more maintainable and less error-prone.
+Redux Toolkit simplifies Redux by providing these utilities while enforcing best
+practices, making your Redux code more maintainable and less error-prone.
 
 **[⬆ Back to Top](#table-of-contents)**

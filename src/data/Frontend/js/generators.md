@@ -4,9 +4,12 @@
 
 ## 🧠 1. Definition
 
-A **Generator** is a special type of function in JavaScript that can be paused and resumed. It returns an **iterator**, allowing you to control the function execution step-by-step.
+A **Generator** is a special type of function in JavaScript that can be paused
+and resumed. It returns an **iterator**, allowing you to control the function
+execution step-by-step.
 
-> Generator functions use the `function*` syntax and `yield` keyword to pause execution.
+> Generator functions use the `function*` syntax and `yield` keyword to pause
+> execution.
 
 ---
 
@@ -20,9 +23,9 @@ function* generatorFunction() {
 }
 ```
 
-* `function*` declares a generator function.
-* `yield` pauses the function and returns a value.
-* `.next()` resumes the function from where it was paused.
+- `function*` declares a generator function.
+- `yield` pauses the function and returns a value.
+- `.next()` resumes the function from where it was paused.
 
 ---
 
@@ -30,8 +33,8 @@ function* generatorFunction() {
 
 ```javascript
 function* simpleGenerator() {
-  yield "Hello";
-  yield "World";
+  yield 'Hello';
+  yield 'World';
 }
 
 const gen = simpleGenerator();
@@ -104,18 +107,18 @@ function* interactGenerator() {
 }
 
 const gen = interactGenerator();
-console.log(gen.next().value);        // "What's your name?"
-console.log(gen.next("Ravi").value);  // "Hello, Ravi"
+console.log(gen.next().value); // "What's your name?"
+console.log(gen.next('Ravi').value); // "Hello, Ravi"
 ```
 
 ---
 
 ## 🛑 8. Generator Completion
 
-* A generator is done when:
+- A generator is done when:
 
-  * It finishes execution
-  * Or it hits a `return` statement
+  - It finishes execution
+  - Or it hits a `return` statement
 
 ```javascript
 function* doneExample() {
@@ -139,13 +142,13 @@ function* errorGen() {
   try {
     yield 1;
   } catch (e) {
-    console.log("Caught:", e);
+    console.log('Caught:', e);
   }
 }
 
 const gen = errorGen();
 gen.next();
-gen.throw(new Error("Something went wrong")); // Caught: Error
+gen.throw(new Error('Something went wrong')); // Caught: Error
 ```
 
 ---
@@ -154,8 +157,8 @@ gen.throw(new Error("Something went wrong")); // Caught: Error
 
 ```javascript
 function* subGenerator() {
-  yield "A";
-  yield "B";
+  yield 'A';
+  yield 'B';
 }
 
 function* mainGenerator() {

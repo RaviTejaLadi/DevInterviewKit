@@ -17,19 +17,29 @@
 
 ## Introduction
 
-React components are the building blocks of React applications. There are two primary ways to define components: functional components and class components. While both serve the same purpose, they differ in syntax, capabilities, and modern usage patterns.
+React components are the building blocks of React applications. There are two
+primary ways to define components: functional components and class components.
+While both serve the same purpose, they differ in syntax, capabilities, and
+modern usage patterns.
 
 ## Definitions
 
 ### Functional Components
-Functional components are JavaScript functions that return JSX. They are simpler, more concise, and have become the preferred approach in modern React development, especially after the introduction of React Hooks.
+
+Functional components are JavaScript functions that return JSX. They are
+simpler, more concise, and have become the preferred approach in modern React
+development, especially after the introduction of React Hooks.
 
 ### Class Components
-Class components are ES6 classes that extend `React.Component`. They were the primary way to create stateful components before hooks were introduced and provide access to lifecycle methods and state management through class methods.
+
+Class components are ES6 classes that extend `React.Component`. They were the
+primary way to create stateful components before hooks were introduced and
+provide access to lifecycle methods and state management through class methods.
 
 ## Basic Syntax Comparison
 
 ### Functional Component Syntax
+
 ```jsx
 import React from 'react';
 
@@ -46,6 +56,7 @@ export default Welcome;
 ```
 
 ### Class Component Syntax
+
 ```jsx
 import React, { Component } from 'react';
 
@@ -61,6 +72,7 @@ export default Welcome;
 ## Component Lifecycle
 
 ### Functional Components with Hooks
+
 ```jsx
 import React, { useState, useEffect } from 'react';
 
@@ -106,6 +118,7 @@ function UserProfile({ userId }) {
 ```
 
 ### Class Components with Lifecycle Methods
+
 ```jsx
 import React, { Component } from 'react';
 
@@ -114,7 +127,7 @@ class UserProfile extends Component {
     super(props);
     this.state = {
       user: null,
-      loading: true
+      loading: true,
     };
   }
 
@@ -146,7 +159,7 @@ class UserProfile extends Component {
 
   render() {
     const { user, loading } = this.state;
-    
+
     if (loading) return <div>Loading...</div>;
     if (!user) return <div>User not found</div>;
 
@@ -163,6 +176,7 @@ class UserProfile extends Component {
 ## State Management
 
 ### Functional Components with useState Hook
+
 ```jsx
 import React, { useState } from 'react';
 
@@ -193,6 +207,7 @@ function Counter() {
 ```
 
 ### Class Components with this.state
+
 ```jsx
 import React, { Component } from 'react';
 
@@ -201,7 +216,7 @@ class Counter extends Component {
     super(props);
     this.state = {
       count: 0,
-      name: ''
+      name: '',
     };
   }
 
@@ -223,7 +238,7 @@ class Counter extends Component {
 
   render() {
     const { count, name } = this.state;
-    
+
     return (
       <div>
         <input
@@ -246,6 +261,7 @@ class Counter extends Component {
 ## Props Handling
 
 ### Functional Components
+
 ```jsx
 // Simple props
 function Greeting({ name, age, isVip = false }) {
@@ -261,31 +277,30 @@ function Greeting({ name, age, isVip = false }) {
 // Props with destructuring and default values
 function ProductCard({ product, onAddToCart, showPrice = true }) {
   const { name, price, image, description } = product;
-  
+
   return (
     <div className="product-card">
       <img src={image} alt={name} />
       <h3>{name}</h3>
       <p>{description}</p>
       {showPrice && <span className="price">${price}</span>}
-      <button onClick={() => onAddToCart(product)}>
-        Add to Cart
-      </button>
+      <button onClick={() => onAddToCart(product)}>Add to Cart</button>
     </div>
   );
 }
 ```
 
 ### Class Components
+
 ```jsx
 class Greeting extends Component {
   static defaultProps = {
-    isVip: false
+    isVip: false,
   };
 
   render() {
     const { name, age, isVip } = this.props;
-    
+
     return (
       <div>
         <h2>Hello, {name}!</h2>
@@ -298,22 +313,20 @@ class Greeting extends Component {
 
 class ProductCard extends Component {
   static defaultProps = {
-    showPrice: true
+    showPrice: true,
   };
 
   render() {
     const { product, onAddToCart, showPrice } = this.props;
     const { name, price, image, description } = product;
-    
+
     return (
       <div className="product-card">
         <img src={image} alt={name} />
         <h3>{name}</h3>
         <p>{description}</p>
         {showPrice && <span className="price">${price}</span>}
-        <button onClick={() => onAddToCart(product)}>
-          Add to Cart
-        </button>
+        <button onClick={() => onAddToCart(product)}>Add to Cart</button>
       </div>
     );
   }
@@ -323,18 +336,19 @@ class ProductCard extends Component {
 ## Event Handling
 
 ### Functional Components
+
 ```jsx
 function LoginForm() {
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -364,27 +378,30 @@ function LoginForm() {
         placeholder="Password"
       />
       <button type="submit">Login</button>
-      <button type="button" onClick={handleReset}>Reset</button>
+      <button type="button" onClick={handleReset}>
+        Reset
+      </button>
     </form>
   );
 }
 ```
 
 ### Class Components
+
 ```jsx
 class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
     };
   }
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -399,7 +416,7 @@ class LoginForm extends Component {
 
   render() {
     const { email, password } = this.state;
-    
+
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -417,7 +434,9 @@ class LoginForm extends Component {
           placeholder="Password"
         />
         <button type="submit">Login</button>
-        <button type="button" onClick={this.handleReset}>Reset</button>
+        <button type="button" onClick={this.handleReset}>
+          Reset
+        </button>
       </form>
     );
   }
@@ -427,27 +446,31 @@ class LoginForm extends Component {
 ## Performance Considerations
 
 ### Functional Components Optimization
+
 ```jsx
 import React, { memo, useMemo, useCallback } from 'react';
 
 const ExpensiveList = memo(function ExpensiveList({ items, onItemClick }) {
   // Memoize expensive calculations
   const processedItems = useMemo(() => {
-    return items.map(item => ({
+    return items.map((item) => ({
       ...item,
       displayName: item.name.toUpperCase(),
-      isExpensive: item.price > 100
+      isExpensive: item.price > 100,
     }));
   }, [items]);
 
   // Memoize callback functions
-  const handleItemClick = useCallback((itemId) => {
-    onItemClick(itemId);
-  }, [onItemClick]);
+  const handleItemClick = useCallback(
+    (itemId) => {
+      onItemClick(itemId);
+    },
+    [onItemClick]
+  );
 
   return (
     <ul>
-      {processedItems.map(item => (
+      {processedItems.map((item) => (
         <li key={item.id} onClick={() => handleItemClick(item.id)}>
           {item.displayName} - ${item.price}
           {item.isExpensive && <span> 💎</span>}
@@ -459,15 +482,16 @@ const ExpensiveList = memo(function ExpensiveList({ items, onItemClick }) {
 ```
 
 ### Class Components Optimization
+
 ```jsx
 import React, { Component, PureComponent } from 'react';
 
 class ExpensiveList extends PureComponent {
   processItems = (items) => {
-    return items.map(item => ({
+    return items.map((item) => ({
       ...item,
       displayName: item.name.toUpperCase(),
-      isExpensive: item.price > 100
+      isExpensive: item.price > 100,
     }));
   };
 
@@ -481,7 +505,7 @@ class ExpensiveList extends PureComponent {
 
     return (
       <ul>
-        {processedItems.map(item => (
+        {processedItems.map((item) => (
           <li key={item.id} onClick={() => this.handleItemClick(item.id)}>
             {item.displayName} - ${item.price}
             {item.isExpensive && <span> 💎</span>}
@@ -496,6 +520,7 @@ class ExpensiveList extends PureComponent {
 ## Modern Usage Patterns
 
 ### Custom Hooks (Functional Components)
+
 ```jsx
 import { useState, useEffect } from 'react';
 
@@ -534,7 +559,7 @@ function UserList() {
 
   return (
     <ul>
-      {users?.map(user => (
+      {users?.map((user) => (
         <li key={user.id}>{user.name}</li>
       ))}
     </ul>
@@ -543,6 +568,7 @@ function UserList() {
 ```
 
 ### Higher-Order Components (Class Components)
+
 ```jsx
 // HOC for loading state
 function withLoading(WrappedComponent) {
@@ -578,6 +604,7 @@ const UserProfileWithLoading = withLoading(UserProfile);
 ### Converting Class to Functional Component
 
 **Before (Class Component):**
+
 ```jsx
 class Timer extends Component {
   constructor(props) {
@@ -602,13 +629,14 @@ class Timer extends Component {
 ```
 
 **After (Functional Component):**
+
 ```jsx
 function Timer() {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds(prev => prev + 1);
+      setSeconds((prev) => prev + 1);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -621,6 +649,7 @@ function Timer() {
 ## Best Practices
 
 ### Functional Components Best Practices
+
 - Use functional components for new development
 - Leverage custom hooks for reusable logic
 - Use `useCallback` and `useMemo` for performance optimization
@@ -628,6 +657,7 @@ function Timer() {
 - Use TypeScript for better type safety
 
 ### Class Components Best Practices
+
 - Use `PureComponent` or implement `shouldComponentUpdate` for optimization
 - Bind methods in constructor or use arrow functions
 - Avoid direct state mutation
@@ -635,15 +665,22 @@ function Timer() {
 - Consider migration to functional components for new features
 
 ### General Best Practices
+
 ```jsx
 // Good: Descriptive component names
-function UserProfileCard({ user }) { /* ... */ }
+function UserProfileCard({ user }) {
+  /* ... */
+}
 
 // Good: Props destructuring
-function Button({ variant, size, children, onClick }) { /* ... */ }
+function Button({ variant, size, children, onClick }) {
+  /* ... */
+}
 
 // Good: Default props
-function Avatar({ src, alt, size = 'medium' }) { /* ... */ }
+function Avatar({ src, alt, size = 'medium' }) {
+  /* ... */
+}
 
 // Good: PropTypes or TypeScript for type checking
 import PropTypes from 'prop-types';
@@ -652,15 +689,20 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'secondary']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 ```
 
 ## Conclusion
 
-Functional components with hooks have become the modern standard for React development due to their simplicity, reusability, and performance benefits. While class components are still supported and valid, new projects should favor functional components. Understanding both patterns is essential for maintaining existing codebases and making informed architectural decisions.
+Functional components with hooks have become the modern standard for React
+development due to their simplicity, reusability, and performance benefits.
+While class components are still supported and valid, new projects should favor
+functional components. Understanding both patterns is essential for maintaining
+existing codebases and making informed architectural decisions.
 
 **Key Takeaways:**
+
 - Functional components are simpler and more concise
 - Hooks provide powerful state and lifecycle management
 - Class components are still valid but considered legacy

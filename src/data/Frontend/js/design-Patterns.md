@@ -4,7 +4,8 @@
 
 ### ✅ Definition:
 
-Used to create objects with the same properties and methods using a constructor function.
+Used to create objects with the same properties and methods using a constructor
+function.
 
 ### 🧩 Syntax:
 
@@ -34,7 +35,7 @@ function Car(brand, model) {
   };
 }
 
-const car1 = new Car("Toyota", "Camry");
+const car1 = new Car('Toyota', 'Camry');
 car1.display(); // Toyota Camry
 ```
 
@@ -44,13 +45,14 @@ car1.display(); // Toyota Camry
 
 ### ✅ Definition:
 
-Encapsulates related functions and variables into a single scope, exposing only public API.
+Encapsulates related functions and variables into a single scope, exposing only
+public API.
 
 ### 🧩 Syntax:
 
 ```js
 const Module = (function () {
-  let privateVar = "secret";
+  let privateVar = 'secret';
 
   function privateMethod() {
     return privateVar;
@@ -81,7 +83,7 @@ const Counter = (function () {
     },
     reset: function () {
       count = 0;
-    }
+    },
   };
 })();
 
@@ -114,7 +116,7 @@ const Singleton = (function () {
         instance = createInstance();
       }
       return instance;
-    }
+    },
   };
 })();
 ```
@@ -138,7 +140,8 @@ console.log(obj1 === obj2); // true
 
 ### ✅ Definition:
 
-Defines an interface for creating objects, allowing subclasses to alter the type of objects that will be created.
+Defines an interface for creating objects, allowing subclasses to alter the type
+of objects that will be created.
 
 ### 🧩 Syntax:
 
@@ -147,9 +150,9 @@ function CarFactory() {
   this.createCar = function (type) {
     let car;
 
-    if (type === "sedan") {
+    if (type === 'sedan') {
       car = new Sedan();
-    } else if (type === "suv") {
+    } else if (type === 'suv') {
       car = new SUV();
     }
 
@@ -167,14 +170,14 @@ When object creation is complex or needs to be abstracted.
 
 ```js
 function Sedan() {
-  this.name = "Sedan";
+  this.name = 'Sedan';
 }
 function SUV() {
-  this.name = "SUV";
+  this.name = 'SUV';
 }
 
 const factory = new CarFactory();
-const myCar = factory.createCar("suv");
+const myCar = factory.createCar('suv');
 console.log(myCar.name); // SUV
 ```
 
@@ -184,7 +187,8 @@ console.log(myCar.name); // SUV
 
 ### ✅ Definition:
 
-A subject maintains a list of observers and notifies them automatically of state changes.
+A subject maintains a list of observers and notifies them automatically of state
+changes.
 
 ### 🧩 Syntax:
 
@@ -197,7 +201,7 @@ function Subject() {
   };
 
   this.notify = function (data) {
-    this.observers.forEach(fn => fn(data));
+    this.observers.forEach((fn) => fn(data));
   };
 }
 ```
@@ -212,16 +216,16 @@ Event systems, real-time data updates, pub-sub systems.
 const news = new Subject();
 
 function subscriber1(data) {
-  console.log("Subscriber 1:", data);
+  console.log('Subscriber 1:', data);
 }
 function subscriber2(data) {
-  console.log("Subscriber 2:", data);
+  console.log('Subscriber 2:', data);
 }
 
 news.subscribe(subscriber1);
 news.subscribe(subscriber2);
 
-news.notify("Breaking News!"); 
+news.notify('Breaking News!');
 // Subscriber 1: Breaking News!
 // Subscriber 2: Breaking News!
 ```
@@ -253,7 +257,7 @@ Memory-efficient method sharing across instances.
 ### 📦 Example:
 
 ```js
-const dog = new Animal("Dog");
+const dog = new Animal('Dog');
 console.log(dog.speak()); // Dog makes a sound.
 ```
 
@@ -263,7 +267,8 @@ console.log(dog.speak()); // Dog makes a sound.
 
 ### ✅ Definition:
 
-Encapsulates a request as an object, separating the command from the object that executes it.
+Encapsulates a request as an object, separating the command from the object that
+executes it.
 
 ### 🧩 Syntax:
 
@@ -289,10 +294,13 @@ function subtract(x, y) {
   return x - y;
 }
 
-const addCommand = new Command(() => add(5, 2), () => subtract(7, 2));
+const addCommand = new Command(
+  () => add(5, 2),
+  () => subtract(7, 2)
+);
 
 console.log(addCommand.execute()); // 7
-console.log(addCommand.undo());    // 5
+console.log(addCommand.undo()); // 5
 ```
 
 ---
@@ -321,8 +329,12 @@ Switch between multiple behaviors at runtime.
 ### 📦 Example:
 
 ```js
-function add(a, b) { return a + b; }
-function multiply(a, b) { return a * b; }
+function add(a, b) {
+  return a + b;
+}
+function multiply(a, b) {
+  return a * b;
+}
 
 const context = new Context(add);
 console.log(context.executeStrategy(3, 4)); // 7
@@ -345,8 +357,8 @@ Adds new behavior to existing objects dynamically.
 function baseComponent() {
   return {
     operation: function () {
-      return "Base";
-    }
+      return 'Base';
+    },
   };
 }
 
@@ -387,7 +399,7 @@ const handler = {
   get: function (target, prop) {
     console.log(`Getting ${prop}`);
     return target[prop];
-  }
+  },
 };
 
 const proxy = new Proxy(targetObj, handler);
@@ -401,15 +413,15 @@ Lazy loading, logging, access control, validation.
 
 ```js
 const user = {
-  name: "Ravi",
-  age: 25
+  name: 'Ravi',
+  age: 25,
 };
 
 const proxy = new Proxy(user, {
   get(target, key) {
     console.log(`Accessed: ${key}`);
     return target[key];
-  }
+  },
 });
 
 console.log(proxy.name); // Accessed: name -> Ravi

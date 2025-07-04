@@ -4,20 +4,23 @@
 
 - [What is React-Table?](#what-is-react-table?)
 - [Key Advantages of React-Table](#key-advantages-of-react-table)
-- [Complete Setup Guide (TypeScript)](#complete-setup-guide-(typescript))
+- [Complete Setup Guide (TypeScript)](<#complete-setup-guide-(typescript)>)
 - [Tips for Using React-Table](#tips-for-using-react-table)
-
 
 ## What is React-Table?
 
-React-Table is a lightweight, headless utility for building powerful tables and datagrids in React. It's not a table component itself, but rather provides the logic and state management for your table while giving you complete control over the UI rendering.
+React-Table is a lightweight, headless utility for building powerful tables and
+datagrids in React. It's not a table component itself, but rather provides the
+logic and state management for your table while giving you complete control over
+the UI rendering.
 
 ## Key Advantages of React-Table
 
 1. **Headless Design**: You control 100% of the markup and styles
 2. **Lightweight**: Only ~11-14kb depending on features used
 3. **Flexible**: Works with any styling solution or UI framework
-4. **Feature-Rich**: Sorting, filtering, pagination, grouping, row selection, etc.
+4. **Feature-Rich**: Sorting, filtering, pagination, grouping, row selection,
+   etc.
 5. **TypeScript Support**: First-class TypeScript support
 6. **Hooks-based**: Uses React hooks for composition
 7. **Server-side or Client-side**: Works with both approaches
@@ -158,11 +161,13 @@ function EnhancedDataTable() {
         <input
           placeholder="Filter by name..."
           value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-          onChange={(e) => table.getColumn('name')?.setFilterValue(e.target.value)}
+          onChange={(e) =>
+            table.getColumn('name')?.setFilterValue(e.target.value)
+          }
           className="p-2 border"
         />
       </div>
-      
+
       <table className="border">
         {/* Header */}
         <thead>
@@ -188,7 +193,7 @@ function EnhancedDataTable() {
             </tr>
           ))}
         </thead>
-        
+
         {/* Body */}
         <tbody>
           {table.getRowModel().rows.map((row) => (
@@ -202,7 +207,7 @@ function EnhancedDataTable() {
           ))}
         </tbody>
       </table>
-      
+
       {/* Pagination */}
       <div className="flex items-center gap-2 mt-4">
         <button
@@ -271,12 +276,18 @@ React-Table supports many advanced features:
 Here's an example of row selection:
 
 ```tsx
-import { getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
+import {
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from '@tanstack/react-table';
 import { useState } from 'react';
 
 function TableWithRowSelection() {
   const [rowSelection, setRowSelection] = useState({});
-  
+
   const table = useReactTable({
     data,
     columns,
@@ -312,7 +323,7 @@ function TableWithRowSelection() {
     },
     ...columns,
   ];
-  
+
   // Then use columnsWithSelection in your table config
 }
 ```
@@ -323,8 +334,11 @@ function TableWithRowSelection() {
 2. **Memoize Data**: For performance, memoize your data and columns
 3. **Type Safety**: Leverage TypeScript to ensure type safety throughout
 4. **Plugin System**: Combine different plugins for needed features
-5. **Server-side Data**: For large datasets, implement server-side pagination/sorting
+5. **Server-side Data**: For large datasets, implement server-side
+   pagination/sorting
 
-React-Table's headless approach means you can integrate it with any styling solution (CSS, Tailwind, Material-UI, etc.) and customize the table behavior to your exact needs.
+React-Table's headless approach means you can integrate it with any styling
+solution (CSS, Tailwind, Material-UI, etc.) and customize the table behavior to
+your exact needs.
 
 **[⬆ Back to Top](#table-of-contents)**

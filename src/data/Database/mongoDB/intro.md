@@ -1,10 +1,13 @@
 # Introduction to MongoDB
 
-MongoDB is a popular NoSQL database that provides high performance, high availability, and easy scalability. Unlike traditional relational databases that use tables and rows, MongoDB uses a flexible, document-based data model.
+MongoDB is a popular NoSQL database that provides high performance, high
+availability, and easy scalability. Unlike traditional relational databases that
+use tables and rows, MongoDB uses a flexible, document-based data model.
 
 ## Key Features of MongoDB
 
-1. **Document-Oriented**: Stores data in flexible JSON-like documents (BSON format)
+1. **Document-Oriented**: Stores data in flexible JSON-like documents (BSON
+   format)
 2. **Schema-less**: Each document can have a different structure
 3. **Scalability**: Horizontal scaling through sharding
 4. **High Performance**: Indexing and rich queries
@@ -38,15 +41,17 @@ MongoDB is a popular NoSQL database that provides high performance, high availab
 ## Basic MongoDB Operations
 
 ### Create/Insert
+
 ```javascript
 db.users.insertOne({
-  name: "Alice",
+  name: 'Alice',
   age: 25,
-  email: "alice@example.com"
+  email: 'alice@example.com',
 });
 ```
 
 ### Read/Query
+
 ```javascript
 // Find all documents
 db.users.find();
@@ -56,16 +61,15 @@ db.users.find({ age: { $gt: 25 } });
 ```
 
 ### Update
+
 ```javascript
-db.users.updateOne(
-  { name: "Alice" },
-  { $set: { age: 26 } }
-);
+db.users.updateOne({ name: 'Alice' }, { $set: { age: 26 } });
 ```
 
 ### Delete
+
 ```javascript
-db.users.deleteOne({ name: "Alice" });
+db.users.deleteOne({ name: 'Alice' });
 ```
 
 ## When to Use MongoDB
@@ -76,4 +80,5 @@ db.users.deleteOne({ name: "Alice" });
 - For high write loads
 - For geographic distribution of data
 
-MongoDB is widely used in modern web applications, mobile apps, content management systems, and big data applications.
+MongoDB is widely used in modern web applications, mobile apps, content
+management systems, and big data applications.

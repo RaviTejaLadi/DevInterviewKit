@@ -65,9 +65,7 @@ Create `tsconfig.json` in the root directory:
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
 ```
 
@@ -79,7 +77,7 @@ Create `.babelrc` in the root directory:
 {
   "presets": [
     "@babel/preset-env",
-    ["@babel/preset-react", {"runtime": "automatic"}],
+    ["@babel/preset-react", { "runtime": "automatic" }],
     "@babel/preset-typescript"
   ]
 }
@@ -148,14 +146,14 @@ Create `src/index.html`:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>React TypeScript App</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="root"></div>
-</body>
+  </body>
 </html>
 ```
 
@@ -195,12 +193,8 @@ const App: React.FC = () => {
       <header className="app-header">
         <h1>React TypeScript App</h1>
         <p>Count: {count}</p>
-        <button onClick={() => setCount(count + 1)}>
-          Increment
-        </button>
-        <button onClick={() => setCount(count - 1)}>
-          Decrement
-        </button>
+        <button onClick={() => setCount(count + 1)}>Increment</button>
+        <button onClick={() => setCount(count - 1)}>Decrement</button>
       </header>
     </div>
   );
@@ -268,7 +262,8 @@ Start the development server:
 npm start
 ```
 
-Your React TypeScript application should now be running at `http://localhost:3000`.
+Your React TypeScript application should now be running at
+`http://localhost:3000`.
 
 ## Step 14: Build for Production
 
@@ -360,4 +355,5 @@ my-react-app/
 └── webpack.config.js
 ```
 
-You now have a fully functional React TypeScript application set up from scratch without using any scaffolding tools!
+You now have a fully functional React TypeScript application set up from scratch
+without using any scaffolding tools!

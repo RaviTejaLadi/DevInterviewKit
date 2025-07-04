@@ -4,7 +4,9 @@
 
 ## 📘 1. Definition
 
-**Hoisting** is JavaScript's default behavior of moving **declarations** (not initializations) **to the top of the current scope** (script or function) **before code execution**.
+**Hoisting** is JavaScript's default behavior of moving **declarations** (not
+initializations) **to the top of the current scope** (script or function)
+**before code execution**.
 
 ---
 
@@ -29,11 +31,11 @@ x = 10;
 
 | Type                  | Hoisted? | Initialized? | Notes                                       |
 | --------------------- | -------- | ------------ | ------------------------------------------- |
-| `var` declarations    | ✅ Yes    | ❌ No         | Initialized with `undefined`                |
-| `let` and `const`     | ✅ Yes    | ❌ No         | Hoisted but in **Temporal Dead Zone (TDZ)** |
-| Function Declarations | ✅ Yes    | ✅ Yes        | Fully hoisted (code + body)                 |
-| Function Expressions  | ❌ No     | ❌ No         | Not hoisted if assigned to variable         |
-| Class Declarations    | ✅ Yes    | ❌ No         | Also in TDZ like `let` and `const`          |
+| `var` declarations    | ✅ Yes   | ❌ No        | Initialized with `undefined`                |
+| `let` and `const`     | ✅ Yes   | ❌ No        | Hoisted but in **Temporal Dead Zone (TDZ)** |
+| Function Declarations | ✅ Yes   | ✅ Yes       | Fully hoisted (code + body)                 |
+| Function Expressions  | ❌ No    | ❌ No        | Not hoisted if assigned to variable         |
+| Class Declarations    | ✅ Yes   | ❌ No        | Also in TDZ like `let` and `const`          |
 
 ---
 
@@ -63,8 +65,8 @@ console.log(b); // ❌ ReferenceError: Cannot access 'b' before initialization
 let b = 10;
 ```
 
-**Why?**
-Because `let`/`const` are hoisted but placed in **Temporal Dead Zone (TDZ)** until their declaration line.
+**Why?** Because `let`/`const` are hoisted but placed in **Temporal Dead Zone
+(TDZ)** until their declaration line.
 
 ---
 
@@ -74,7 +76,7 @@ Because `let`/`const` are hoisted but placed in **Temporal Dead Zone (TDZ)** unt
 sayHello(); // ✅ "Hello World"
 
 function sayHello() {
-  console.log("Hello World");
+  console.log('Hello World');
 }
 ```
 
@@ -88,7 +90,7 @@ function sayHello() {
 sayHi(); // ❌ TypeError: sayHi is not a function
 
 var sayHi = function () {
-  console.log("Hi");
+  console.log('Hi');
 };
 ```
 
@@ -96,9 +98,9 @@ var sayHi = function () {
 
 ```js
 var sayHi; // hoisted
-sayHi();   // ❌ TypeError
+sayHi(); // ❌ TypeError
 sayHi = function () {
-  console.log("Hi");
+  console.log('Hi');
 };
 ```
 
@@ -125,10 +127,10 @@ Code executes line by line using the above memory context.
 
 ## 🧱 6. Best Practices
 
-✅ Always **declare variables at the top** of their scope.
-✅ Prefer `let` and `const` over `var` to avoid hoisting-related bugs.
-✅ Define functions before calling them (even though declarations are hoisted).
-❌ Avoid using undeclared variables.
+✅ Always **declare variables at the top** of their scope. ✅ Prefer `let` and
+`const` over `var` to avoid hoisting-related bugs. ✅ Define functions before
+calling them (even though declarations are hoisted). ❌ Avoid using undeclared
+variables.
 
 ---
 
@@ -170,23 +172,24 @@ function test() {
 test();
 ```
 
-🧠 Why?
-Because `var` is function-scoped and hoisted to the top of `test()`.
+🧠 Why? Because `var` is function-scoped and hoisted to the top of `test()`.
 
 ---
 
 ## 🧾 9. Summary Table
 
-| Keyword              | Hoisted | Initial Value | Scope           | TDZ Exists |
-| -------------------- | ------- | ------------- | --------------- | ---------- |
-| `var`                | ✅ Yes   | `undefined`   | Function/Global | ❌ No       |
-| `let`                | ✅ Yes   | ❌ Error (TDZ) | Block           | ✅ Yes      |
-| `const`              | ✅ Yes   | ❌ Error (TDZ) | Block           | ✅ Yes      |
-| Function Declaration | ✅ Yes   | \[Function]   | Function/Global | ❌ No       |
-| Function Expression  | ❌ No    | ❌ Error       | Block           | ✅ Yes      |
+| Keyword              | Hoisted | Initial Value  | Scope           | TDZ Exists |
+| -------------------- | ------- | -------------- | --------------- | ---------- |
+| `var`                | ✅ Yes  | `undefined`    | Function/Global | ❌ No      |
+| `let`                | ✅ Yes  | ❌ Error (TDZ) | Block           | ✅ Yes     |
+| `const`              | ✅ Yes  | ❌ Error (TDZ) | Block           | ✅ Yes     |
+| Function Declaration | ✅ Yes  | \[Function]    | Function/Global | ❌ No      |
+| Function Expression  | ❌ No   | ❌ Error       | Block           | ✅ Yes     |
 
 ---
 
 ## 📚 10. Real-World Tip
 
-If you're debugging weird `undefined` values, check for **`var` hoisting** or misplaced declarations. Use **ESLint** rules like `no-use-before-define` to catch issues early.
+If you're debugging weird `undefined` values, check for **`var` hoisting** or
+misplaced declarations. Use **ESLint** rules like `no-use-before-define` to
+catch issues early.

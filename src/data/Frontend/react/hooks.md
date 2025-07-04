@@ -1,19 +1,26 @@
-# React Hooks Guide  
+# React Hooks Guide
 
-## Introduction to Hooks  
-Hooks are like "magic functions" that let you "hook into" React features (like state & lifecycle) from function components. They make React code cleaner and easier to reuse.  
+## Introduction to Hooks
+
+Hooks are like "magic functions" that let you "hook into" React features (like
+state & lifecycle) from function components. They make React code cleaner and
+easier to reuse.
 
 ---
 
-## Basic Hooks  
+## Basic Hooks
 
-### `useState`  
+### `useState`
+
 **Definition:** Lets you add state to functional components.  
-**Syntax:**  
+**Syntax:**
+
 ```js
 const [state, setState] = useState(initialValue);
-```  
-**Example (Counter):**  
+```
+
+**Example (Counter):**
+
 ```jsx
 import { useState } from 'react';
 
@@ -27,17 +34,23 @@ function Counter() {
     </div>
   );
 }
-```  
+```
 
 ---
 
-### `useEffect`  
+### `useEffect`
+
 **Definition:** Runs side effects (like API calls, timers) after render.  
-**Syntax:**  
+**Syntax:**
+
 ```js
-useEffect(() => { /* effect */ }, [dependencies]);
-```  
-**Example (Fetch Data):**  
+useEffect(() => {
+  /* effect */
+}, [dependencies]);
+```
+
+**Example (Fetch Data):**
+
 ```jsx
 import { useState, useEffect } from 'react';
 
@@ -46,23 +59,27 @@ function FetchData() {
 
   useEffect(() => {
     fetch('https://api.example.com/data')
-      .then(res => res.json())
-      .then(data => setData(data));
+      .then((res) => res.json())
+      .then((data) => setData(data));
   }, []); // Empty array = runs once
 
   return <div>{data ? data.message : 'Loading...'}</div>;
 }
-```  
+```
 
 ---
 
-### `useContext`  
+### `useContext`
+
 **Definition:** Lets you use React Context (global state) without nesting.  
-**Syntax:**  
+**Syntax:**
+
 ```js
 const value = useContext(MyContext);
-```  
-**Example (Theme Toggler):**  
+```
+
+**Example (Theme Toggler):**
+
 ```jsx
 import { useContext, createContext, useState } from 'react';
 
@@ -85,19 +102,23 @@ function Toolbar() {
     </button>
   );
 }
-```  
+```
 
 ---
 
-## Advanced Hooks  
+## Advanced Hooks
 
-### `useReducer`  
+### `useReducer`
+
 **Definition:** Like `useState` but for complex state logic (like Redux).  
-**Syntax:**  
+**Syntax:**
+
 ```js
 const [state, dispatch] = useReducer(reducer, initialState);
-```  
-**Example (Todo List):**  
+```
+
+**Example (Todo List):**
+
 ```jsx
 import { useReducer } from 'react';
 
@@ -119,42 +140,54 @@ function TodoList() {
         Add Todo
       </button>
       <ul>
-        {todos.map((todo, i) => <li key={i}>{todo.text}</li>)}
+        {todos.map((todo, i) => (
+          <li key={i}>{todo.text}</li>
+        ))}
       </ul>
     </div>
   );
 }
-```  
+```
 
 ---
 
-### `useCallback`  
+### `useCallback`
+
 **Definition:** Memoizes a function to prevent unnecessary re-renders.  
-**Syntax:**  
+**Syntax:**
+
 ```js
-const memoizedFn = useCallback(() => { /* function */ }, [deps]);
-```  
-**Example (Optimized Button):**  
+const memoizedFn = useCallback(() => {
+  /* function */
+}, [deps]);
+```
+
+**Example (Optimized Button):**
+
 ```jsx
 import { useCallback, useState } from 'react';
 
 function App() {
   const [count, setCount] = useState(0);
-  const increment = useCallback(() => setCount(c => c + 1), []);
-  
+  const increment = useCallback(() => setCount((c) => c + 1), []);
+
   return <button onClick={increment}>Count: {count}</button>;
 }
-```  
+```
 
 ---
 
-### `useMemo`  
+### `useMemo`
+
 **Definition:** Memoizes a value to avoid expensive calculations.  
-**Syntax:**  
+**Syntax:**
+
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
-```  
-**Example (Expensive Calculation):**  
+```
+
+**Example (Expensive Calculation):**
+
 ```jsx
 import { useMemo, useState } from 'react';
 
@@ -166,17 +199,21 @@ function ExpensiveComponent({ a, b }) {
 
   return <div>Result: {result}</div>;
 }
-```  
+```
 
 ---
 
-### `useRef`  
+### `useRef`
+
 **Definition:** Keeps a mutable ref object (like `document.getElementById`).  
-**Syntax:**  
+**Syntax:**
+
 ```js
 const ref = useRef(initialValue);
-```  
-**Example (Focus Input):**  
+```
+
+**Example (Focus Input):**
+
 ```jsx
 import { useRef } from 'react';
 
@@ -190,23 +227,27 @@ function FocusInput() {
     </div>
   );
 }
-```  
+```
 
 ---
 
-### `useImperativeHandle`  
+### `useImperativeHandle`
+
 **Definition:** Customizes what a parent component sees in `ref`.  
-**Syntax:**  
+**Syntax:**
+
 ```js
 useImperativeHandle(ref, () => ({ method: () => {} }), [deps]);
-```  
-**Example (Exposing Child Methods):**  
+```
+
+**Example (Exposing Child Methods):**
+
 ```jsx
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 
 const Child = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
-    sayHello: () => alert('Hello from Child!')
+    sayHello: () => alert('Hello from Child!'),
   }));
   return <div>Child Component</div>;
 });
@@ -220,17 +261,23 @@ function Parent() {
     </div>
   );
 }
-```  
+```
 
 ---
 
-### `useLayoutEffect`  
+### `useLayoutEffect`
+
 **Definition:** Like `useEffect` but runs synchronously after DOM updates.  
-**Syntax:**  
+**Syntax:**
+
 ```js
-useLayoutEffect(() => { /* effect */ }, [deps]);
-```  
-**Example (Measure DOM Element):**  
+useLayoutEffect(() => {
+  /* effect */
+}, [deps]);
+```
+
+**Example (Measure DOM Element):**
+
 ```jsx
 import { useLayoutEffect, useRef, useState } from 'react';
 
@@ -244,17 +291,21 @@ function MeasureDiv() {
 
   return <div ref={divRef}>Width: {width}px</div>;
 }
-```  
+```
 
 ---
 
-### `useDebugValue`  
+### `useDebugValue`
+
 **Definition:** Adds a label to custom hooks in React DevTools.  
-**Syntax:**  
+**Syntax:**
+
 ```js
 useDebugValue(value);
-```  
-**Example (Debug Custom Hook):**  
+```
+
+**Example (Debug Custom Hook):**
+
 ```jsx
 import { useDebugValue, useState } from 'react';
 
@@ -268,4 +319,4 @@ function App() {
   const [count] = useCounter();
   return <div>Count: {count}</div>;
 }
-```  
+```

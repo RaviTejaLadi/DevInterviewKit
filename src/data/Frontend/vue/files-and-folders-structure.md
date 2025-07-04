@@ -32,12 +32,15 @@ my-vue-project/
 ## Key Files and Folders Explained
 
 ### 1. `public/` Directory
-- **index.html**: The single HTML page that serves as the entry point. Contains a `<div id="app">` where Vue mounts.
+
+- **index.html**: The single HTML page that serves as the entry point. Contains
+  a `<div id="app">` where Vue mounts.
 - **favicon.ico**: The website icon displayed in browser tabs.
 
 ### 2. `src/` Directory (Core of your application)
 
 #### `main.js`
+
 - The JavaScript entry point that:
   - Creates the Vue application instance
   - Imports the root App component
@@ -45,12 +48,14 @@ my-vue-project/
   - Includes global plugins (router, store, etc.)
 
 #### `App.vue`
+
 - The root Vue component that contains:
   - Common layout structure
   - Router-view for displaying pages
   - Global styles or components
 
 #### `components/`
+
 - Contains reusable Vue components (`.vue` files)
 - Typically includes:
   - Buttons, cards, modals, forms
@@ -58,22 +63,26 @@ my-vue-project/
   - Other UI elements used across the app
 
 #### `views/` or `pages/`
+
 - Contains page-level components
 - Each represents a full page/route
 - Examples: Home.vue, About.vue, Contact.vue
 
 #### `router/`
+
 - Contains Vue Router configuration
 - Defines all application routes and their components
 - May include route guards for authentication
 
 #### `store/`
+
 - Contains Vuex state management files
 - Includes:
   - `index.js` (main store configuration)
   - Modules for organizing state (optional)
 
 #### `assets/`
+
 - Contains static assets like:
   - Images
   - Fonts
@@ -83,6 +92,7 @@ my-vue-project/
 ### 3. Configuration Files
 
 #### `package.json`
+
 - Lists all project dependencies and scripts
 - Contains:
   - `dependencies` (runtime required)
@@ -90,21 +100,26 @@ my-vue-project/
   - Scripts like `serve`, `build`, `test`
 
 #### `babel.config.js`
+
 - Configures Babel for transpiling modern JavaScript
 - Ensures compatibility with older browsers
 
 #### `.gitignore`
+
 - Specifies files/folders not to track in version control
 - Typically excludes node_modules, dist, etc.
 
 ## Additional Notes
 
-1. **Single File Components (`.vue` files)**: Each typically contains three sections:
+1. **Single File Components (`.vue` files)**: Each typically contains three
+   sections:
+
    - `<template>` (HTML markup)
    - `<script>` (JavaScript logic)
    - `<style>` (CSS/scoped CSS)
 
 2. **Modern Variations**:
+
    - Vue 3 projects may use `src/composables/` for composition API functions
    - Some projects use `src/api/` for API service files
    - Larger projects might have `src/utils/` for helper functions
@@ -113,6 +128,8 @@ my-vue-project/
    - Files in `public/` are copied directly to the build output
    - Files in `src/` are processed by webpack/vite (bundled, optimized)
 
-This structure provides a solid foundation that scales well for small to medium-sized applications while remaining flexible enough to adapt to larger projects.
+This structure provides a solid foundation that scales well for small to
+medium-sized applications while remaining flexible enough to adapt to larger
+projects.
 
 **[⬆ Back to Top](#table-of-contents)**

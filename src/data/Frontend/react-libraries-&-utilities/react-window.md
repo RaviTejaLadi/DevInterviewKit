@@ -15,7 +15,7 @@
 - [Key Advantages of React-Window](#key-advantages-of-react-window)
 - [Real-world Use Cases](#real-world-use-cases)
 - [Alternatives to React-Window](#alternatives-to-react-window)
-  - [1. react-virtualized (by the same author)](#1.-react-virtualized-(by-the-same-author))
+  - [1. react-virtualized (by the same author)](<#1.-react-virtualized-(by-the-same-author)>)
   - [2. react-virtuoso](#2.-react-virtuoso)
   - [3. react-tiny-virtual-list](#3.-react-tiny-virtual-list)
   - [4. react-infinite-scroller](#4.-react-infinite-scroller)
@@ -29,17 +29,23 @@
 
 ## Introduction to React-Window
 
-React-Window is a popular library for efficiently rendering large lists and tabular data in React applications. It addresses the performance issues that arise when rendering thousands of items by only rendering the items that are currently visible in the viewport (a technique called "windowing" or "virtualization").
+React-Window is a popular library for efficiently rendering large lists and
+tabular data in React applications. It addresses the performance issues that
+arise when rendering thousands of items by only rendering the items that are
+currently visible in the viewport (a technique called "windowing" or
+"virtualization").
 
 ### Why React-Window?
 
 When working with large datasets:
+
 - Rendering all items at once can cause significant performance degradation
 - The DOM becomes bloated with elements that aren't visible
 - Scrolling becomes laggy and unresponsive
 - Memory usage increases unnecessarily
 
 React-Window solves these problems by:
+
 - Only rendering what's visible plus a small buffer
 - Recycling DOM nodes as you scroll
 - Maintaining smooth performance regardless of dataset size
@@ -67,17 +73,10 @@ import { FixedSizeList } from 'react-window';
 ```jsx
 import { FixedSizeList } from 'react-window';
 
-const Row = ({ index, style }) => (
-  <div style={style}>Row {index}</div>
-);
+const Row = ({ index, style }) => <div style={style}>Row {index}</div>;
 
 const ExampleList = () => (
-  <FixedSizeList
-    height={500}
-    width={300}
-    itemCount={1000}
-    itemSize={35}
-  >
+  <FixedSizeList height={500} width={300} itemCount={1000} itemSize={35}>
     {Row}
   </FixedSizeList>
 );
@@ -88,11 +87,13 @@ const ExampleList = () => (
 ```jsx
 import { FixedSizeList } from 'react-window';
 
-const data = Array(1000).fill().map((_, i) => ({
-  id: i,
-  name: `Item ${i}`,
-  price: Math.random() * 100
-}));
+const data = Array(1000)
+  .fill()
+  .map((_, i) => ({
+    id: i,
+    name: `Item ${i}`,
+    price: Math.random() * 100,
+  }));
 
 const Row = ({ index, style }) => (
   <div style={style}>
@@ -148,7 +149,9 @@ const rowHeights = new Array(1000)
   .map(() => 25 + Math.round(Math.random() * 50));
 
 const Row = ({ index, style }) => (
-  <div style={style}>Row {index} (height: {rowHeights[index]}px)</div>
+  <div style={style}>
+    Row {index} (height: {rowHeights[index]}px)
+  </div>
 );
 
 const VariableList = () => (
@@ -156,7 +159,7 @@ const VariableList = () => (
     height={500}
     width={300}
     itemCount={1000}
-    itemSize={index => rowHeights[index]}
+    itemSize={(index) => rowHeights[index]}
   >
     {Row}
   </VariableSizeList>
@@ -183,21 +186,25 @@ const VariableList = () => (
 ## Alternatives to React-Window
 
 ### 1. react-virtualized (by the same author)
+
 - More feature-rich but larger bundle size (~30kB)
 - Supports more complex layouts and features
 - Good for: Complex virtualization needs, masonry layouts
 
 ### 2. react-virtuoso
+
 - Modern alternative with simpler API
 - Better TypeScript support
 - Good for: Dynamic content, chat applications
 
 ### 3. react-tiny-virtual-list
+
 - Very lightweight (~2kB)
 - Simpler API but fewer features
 - Good for: Simple lists when bundle size is critical
 
 ### 4. react-infinite-scroller
+
 - Implements infinite scrolling rather than windowing
 - Good for: Infinite scroll with simpler implementation
 
@@ -206,12 +213,14 @@ const VariableList = () => (
 Here's a real-time comparison of rendering 10,000 items:
 
 **Without virtualization:**
+
 - DOM nodes: 10,000+
 - Initial render time: ~1500ms
 - Memory usage: High
 - Scrolling: Laggy
 
 **With React-Window:**
+
 - DOM nodes: ~20 (only what's visible)
 - Initial render time: ~50ms
 - Memory usage: Low
@@ -224,7 +233,7 @@ Here's a real-time comparison of rendering 10,000 items:
 ```jsx
 const Row = ({ index, style }) => {
   const [loaded, setLoaded] = useState(false);
-  
+
   return (
     <div style={style}>
       {!loaded && <div className="placeholder" />}
@@ -242,12 +251,21 @@ const Row = ({ index, style }) => {
 
 ```jsx
 const Example = () => {
-  const [items, setItems] = useState(Array(50).fill().map((_, i) => i));
-  
+  const [items, setItems] = useState(
+    Array(50)
+      .fill()
+      .map((_, i) => i)
+  );
+
   const loadMore = () => {
-    setItems(prev => [...prev, ...Array(50).fill().map((_, i) => i + prev.length)]);
+    setItems((prev) => [
+      ...prev,
+      ...Array(50)
+        .fill()
+        .map((_, i) => i + prev.length),
+    ]);
   };
-  
+
   return (
     <FixedSizeList
       height={500}
@@ -260,7 +278,7 @@ const Example = () => {
         }
       }}
     >
-      {({ index, style }) => 
+      {({ index, style }) =>
         index < items.length ? (
           <div style={style}>Item {items[index]}</div>
         ) : (
@@ -278,7 +296,7 @@ const Example = () => {
 const StickyList = () => {
   const outerRef = useRef();
   const innerRef = useRef();
-  
+
   return (
     <FixedSizeList
       outerRef={outerRef}
@@ -313,8 +331,14 @@ const StickyList = () => {
 
 ## Conclusion
 
-React-Window is an essential tool for any React developer working with large datasets. Its simple API and excellent performance characteristics make it the go-to solution for virtualized lists and grids. While alternatives exist, React-Window strikes an excellent balance between features, performance, and bundle size.
+React-Window is an essential tool for any React developer working with large
+datasets. Its simple API and excellent performance characteristics make it the
+go-to solution for virtualized lists and grids. While alternatives exist,
+React-Window strikes an excellent balance between features, performance, and
+bundle size.
 
-For most applications with large scrollable content, implementing React-Window will lead to immediate and noticeable performance improvements, creating a much better user experience.
+For most applications with large scrollable content, implementing React-Window
+will lead to immediate and noticeable performance improvements, creating a much
+better user experience.
 
 **[⬆ Back to Top](#table-of-contents)**

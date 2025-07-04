@@ -12,11 +12,14 @@
 - [Debugging](#debugging)
 - [Easy-to-Remember Summary](#easy-to-remember-summary)
 
-
 ## What is Zustand?
-Zustand (German for "state") is a lightweight state management library for React that provides a simple API to manage global state without the complexity of Redux or Context API.
+
+Zustand (German for "state") is a lightweight state management library for React
+that provides a simple API to manage global state without the complexity of
+Redux or Context API.
 
 ## Key Benefits:
+
 - Minimal boilerplate
 - No providers needed (unlike Context API)
 - Can be used outside React components
@@ -26,6 +29,7 @@ Zustand (German for "state") is a lightweight state management library for React
 ## Complete Setup Guide
 
 ### 1. Install Zustand
+
 ```bash
 npm install zustand
 # or
@@ -57,7 +61,7 @@ import { useCounterStore } from '../stores/counterStore';
 
 export function Counter() {
   const { count, increment, decrement, reset } = useCounterStore();
-  
+
   return (
     <div>
       <h2>Count: {count}</h2>
@@ -94,7 +98,7 @@ export const useTodoStore = create<TodoState>((set) => ({
   todos: [],
   loading: false,
   error: null,
-  addTodo: (text) => 
+  addTodo: (text) =>
     set((state) => ({
       todos: [...state.todos, { id: Date.now(), text, completed: false }],
     })),
@@ -107,7 +111,9 @@ export const useTodoStore = create<TodoState>((set) => ({
   fetchTodos: async () => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+      const response = await fetch(
+        'https://jsonplaceholder.typicode.com/todos'
+      );
       const data = await response.json();
       set({ todos: data.slice(0, 5), loading: false });
     } catch (err) {
@@ -121,8 +127,9 @@ import { useEffect } from 'react';
 import { useTodoStore } from '../stores/todoStore';
 
 export function TodoList() {
-  const { todos, loading, error, addTodo, toggleTodo, fetchTodos } = useTodoStore();
-  
+  const { todos, loading, error, addTodo, toggleTodo, fetchTodos } =
+    useTodoStore();
+
   useEffect(() => {
     fetchTodos();
   }, [fetchTodos]);
@@ -141,7 +148,11 @@ export function TodoList() {
               checked={todo.completed}
               onChange={() => toggleTodo(todo.id)}
             />
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+            <span
+              style={{
+                textDecoration: todo.completed ? 'line-through' : 'none',
+              }}
+            >
               {todo.text}
             </span>
           </li>
@@ -157,17 +168,21 @@ export function TodoList() {
 
 ## Best Practices
 
-1. **Organize Stores**: Keep each store in its own file under a `stores` directory
+1. **Organize Stores**: Keep each store in its own file under a `stores`
+   directory
 2. **Type Safety**: Always define interfaces for your state
 3. **Selective State**: Use selectors to prevent unnecessary re-renders
+
    ```tsx
    // Instead of:
    const { count } = useCounterStore();
-   
+
    // Better:
    const count = useCounterStore((state) => state.count);
    ```
+
 4. **Derived State**: Compute derived values in the store
+
    ```tsx
    // In your store:
    totalTodos: (state) => state.todos.length,
@@ -175,10 +190,11 @@ export function TodoList() {
    ```
 
 5. **Middleware**: Use middleware for logging, persistence, etc.
+
    ```tsx
    import { create } from 'zustand';
    import { persist } from 'zustand/middleware';
-   
+
    export const useStore = create(persist(
      (set) => ({ ... }),
      { name: 'store-name' }
@@ -188,6 +204,7 @@ export function TodoList() {
 ## Error Handling
 
 1. **Async Actions**: Always handle errors in async operations
+
    ```tsx
    fetchTodos: async () => {
      set({ loading: true, error: null });
@@ -213,21 +230,23 @@ export function TodoList() {
 ## Debugging
 
 1. **Log State Changes**:
+
    ```tsx
    import { devtools } from 'zustand/middleware';
-   
+
    export const useStore = create(devtools(store));
    ```
 
 2. **React DevTools**: Inspect the Zustand store in React DevTools
 
 3. **Console Logging**:
+
    ```tsx
    // Subscribe to store changes
-   const unsubscribe = useStore.subscribe(
-     (state) => console.log('State changed:', state)
+   const unsubscribe = useStore.subscribe((state) =>
+     console.log('State changed:', state)
    );
-   
+
    // Remember to unsubscribe in useEffect cleanup
    useEffect(() => () => unsubscribe(), []);
    ```
@@ -242,6 +261,7 @@ export function TodoList() {
 6. **Debug**: Use devtools middleware
 7. **Async**: Handle loading/error states
 
-Zustand keeps state management simple while being powerful enough for most applications!
+Zustand keeps state management simple while being powerful enough for most
+applications!
 
 **[⬆ Back to Top](#table-of-contents)**

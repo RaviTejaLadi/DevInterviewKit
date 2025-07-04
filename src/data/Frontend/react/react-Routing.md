@@ -1,8 +1,11 @@
 # React Router: Comprehensive Guide
 
-React Router is the standard routing library for React applications, enabling navigation between different components while maintaining a single-page application (SPA) architecture.
+React Router is the standard routing library for React applications, enabling
+navigation between different components while maintaining a single-page
+application (SPA) architecture.
 
 ## Table of Contents
+
 1. [Core Concepts](#core-concepts)
 2. [Installation](#installation)
 3. [Basic Routing](#basic-routing)
@@ -19,20 +22,27 @@ React Router is the standard routing library for React applications, enabling na
 ## Core Concepts
 
 ### 1. Router
-The top-level component that wraps your entire application and enables routing functionality.
+
+The top-level component that wraps your entire application and enables routing
+functionality.
 
 **Types:**
+
 - `BrowserRouter`: Uses HTML5 history API (recommended for most apps)
 - `HashRouter`: Uses URL hash (good for static sites)
 - `MemoryRouter`: Keeps history in memory (useful for testing)
 
 ### 2. Routes
-A container for Route components that determines which component to render based on the current URL.
+
+A container for Route components that determines which component to render based
+on the current URL.
 
 ### 3. Route
+
 Defines a mapping between a URL path and a React component.
 
 ### 4. Link
+
 A component for creating navigation links that don't trigger page reloads.
 
 ---
@@ -50,6 +60,7 @@ yarn add react-router-dom
 ## Basic Routing
 
 ### Syntax
+
 ```jsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -67,6 +78,7 @@ function App() {
 ```
 
 ### Explanation
+
 - `Router`: Wraps the entire application
 - `Routes`: Container for all Route definitions
 - `Route`: Maps a path to a component
@@ -78,14 +90,17 @@ function App() {
 ## Route Parameters
 
 ### Dynamic Segments
+
 Extract values from the URL.
 
 #### Syntax
+
 ```jsx
 <Route path="/users/:userId" element={<UserProfile />} />
 ```
 
 #### Accessing Parameters
+
 ```jsx
 import { useParams } from 'react-router-dom';
 
@@ -96,6 +111,7 @@ function UserProfile() {
 ```
 
 ### Optional Parameters
+
 ```jsx
 <Route path="/products/:category?/:id?" element={<Products />} />
 ```
@@ -105,6 +121,7 @@ function UserProfile() {
 ## Nested Routes
 
 ### Parent Route Setup
+
 ```jsx
 <Route path="/dashboard" element={<Dashboard />}>
   <Route path="profile" element={<Profile />} />
@@ -113,6 +130,7 @@ function UserProfile() {
 ```
 
 ### Outlet Component
+
 Parent component must render an `<Outlet />` where nested routes should appear.
 
 ```jsx
@@ -134,6 +152,7 @@ function Dashboard() {
 ## Navigation
 
 ### Link Component
+
 Creates navigation links that don't reload the page.
 
 ```jsx
@@ -151,11 +170,12 @@ function Navbar() {
 ```
 
 ### NavLink Component
+
 Special Link that adds styling attributes when active.
 
 ```jsx
-<NavLink 
-  to="/about" 
+<NavLink
+  to="/about"
   style={({ isActive }) => ({ color: isActive ? 'red' : 'blue' })}
 >
   About
@@ -167,6 +187,7 @@ Special Link that adds styling attributes when active.
 ## Programmatic Navigation
 
 ### useNavigate Hook
+
 ```jsx
 import { useNavigate } from 'react-router-dom';
 
@@ -183,6 +204,7 @@ function LoginButton() {
 ```
 
 ### Navigation Options
+
 ```jsx
 // Navigate with state
 navigate('/dashboard', { state: { from: 'login' } });
@@ -199,6 +221,7 @@ navigate(-1);
 ## Protected Routes
 
 ### Authentication Wrapper
+
 ```jsx
 function PrivateRoute({ children }) {
   const { user } = useAuth(); // Your authentication logic
@@ -213,6 +236,7 @@ function PrivateRoute({ children }) {
 ```
 
 ### Usage
+
 ```jsx
 <Route
   path="/dashboard"
@@ -229,11 +253,13 @@ function PrivateRoute({ children }) {
 ## 404 Handling
 
 ### Catch-all Route
+
 ```jsx
 <Route path="*" element={<NotFound />} />
 ```
 
 ### Example Component
+
 ```jsx
 function NotFound() {
   return (
@@ -251,23 +277,27 @@ function NotFound() {
 ## Advanced Features
 
 ### Lazy Loading with React.lazy
+
 ```jsx
 const About = React.lazy(() => import('./About'));
 
-<Route 
-  path="/about" 
+<Route
+  path="/about"
   element={
     <React.Suspense fallback={<div>Loading...</div>}>
       <About />
     </React.Suspense>
-  } 
-/>
+  }
+/>;
 ```
 
 ### Location State
+
 ```jsx
 // Sending state
-<Link to="/dashboard" state={{ from: 'home' }}>Dashboard</Link>
+<Link to="/dashboard" state={{ from: 'home' }}>
+  Dashboard
+</Link>;
 
 // Accessing state
 const location = useLocation();
@@ -275,13 +305,14 @@ console.log(location.state.from); // 'home'
 ```
 
 ### Query Parameters
+
 ```jsx
 import { useSearchParams } from 'react-router-dom';
 
 function SearchResults() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q');
-  
+
   return <div>Search Query: {query}</div>;
 }
 
@@ -293,14 +324,14 @@ function SearchResults() {
 ## Complete Example
 
 ```jsx
-import { 
+import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link,
   useParams,
   useNavigate,
-  Outlet
+  Outlet,
 } from 'react-router-dom';
 
 function App() {
@@ -311,16 +342,16 @@ function App() {
         <Link to="/about">About</Link>
         <Link to="/users">Users</Link>
       </nav>
-      
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        
+
         <Route path="/users" element={<UsersLayout />}>
           <Route index element={<UserList />} />
           <Route path=":userId" element={<UserProfile />} />
         </Route>
-        
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
@@ -347,14 +378,12 @@ function UsersLayout() {
 function UserList() {
   const users = ['alice', 'bob', 'charlie'];
   const navigate = useNavigate();
-  
+
   return (
     <ul>
-      {users.map(user => (
+      {users.map((user) => (
         <li key={user}>
-          <button onClick={() => navigate(`/users/${user}`)}>
-            {user}
-          </button>
+          <button onClick={() => navigate(`/users/${user}`)}>{user}</button>
         </li>
       ))}
     </ul>
@@ -371,4 +400,5 @@ function NotFound() {
 }
 ```
 
-This comprehensive guide covers all the essential aspects of React Router with clear definitions, syntax examples, and practical usage patterns.
+This comprehensive guide covers all the essential aspects of React Router with
+clear definitions, syntax examples, and practical usage patterns.

@@ -20,47 +20,69 @@
 
 ## Introduction
 
-React Testing is the practice of verifying that React components and applications behave correctly under various conditions. It ensures code reliability, prevents regressions, and improves code quality through automated verification.
+React Testing is the practice of verifying that React components and
+applications behave correctly under various conditions. It ensures code
+reliability, prevents regressions, and improves code quality through automated
+verification.
 
 ## Core Definitions
 
 ### Test
-A test is a piece of code that verifies whether a specific functionality works as expected.
+
+A test is a piece of code that verifies whether a specific functionality works
+as expected.
 
 ### Test Suite
-A collection of related tests grouped together, typically for a specific component or feature.
+
+A collection of related tests grouped together, typically for a specific
+component or feature.
 
 ### Assertion
+
 A statement that checks if a condition is true. If false, the test fails.
 
 ### Test Runner
+
 Software that executes tests and reports results (e.g., Jest).
 
 ### Render
-The process of creating a virtual representation of a component for testing purposes.
+
+The process of creating a virtual representation of a component for testing
+purposes.
 
 ### Query
+
 Methods used to find elements in the rendered component.
 
 ### Mock
+
 A fake implementation of a function or module used in testing.
 
 ### Spy
+
 A function that records information about how it was called.
 
 ## Testing Libraries and Tools
 
 ### Jest
-JavaScript testing framework that provides test runners, assertions, and mocking capabilities.
+
+JavaScript testing framework that provides test runners, assertions, and mocking
+capabilities.
 
 ### React Testing Library (RTL)
-A testing utility that encourages testing components the way users interact with them.
+
+A testing utility that encourages testing components the way users interact with
+them.
 
 ### Enzyme (Legacy)
-A JavaScript testing utility for React that makes it easier to test component output and behavior.
+
+A JavaScript testing utility for React that makes it easier to test component
+output and behavior.
 
 ### Vitest
-A fast testing framework that's an alternative to Jest, especially for Vite projects.
+
+A fast testing framework that's an alternative to Jest, especially for Vite
+projects.
 
 ## Basic Syntax and Setup
 
@@ -96,12 +118,9 @@ module.exports = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
   moduleNameMapping: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy'
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
-  collectCoverageFrom: [
-    'src/**/*.{js,jsx}',
-    '!src/index.js'
-  ]
+  collectCoverageFrom: ['src/**/*.{js,jsx}', '!src/index.js'],
 };
 ```
 
@@ -129,10 +148,10 @@ test('adds 1 + 2 to equal 3', () => {
   // Arrange
   const a = 1;
   const b = 2;
-  
+
   // Act
   const result = a + b;
-  
+
   // Assert
   expect(result).toBe(3);
 });
@@ -143,7 +162,7 @@ test('adds 1 + 2 to equal 3', () => {
 ```javascript
 // Equality
 expect(value).toBe(4); // Strict equality
-expect(value).toEqual({name: 'John'}); // Deep equality
+expect(value).toEqual({ name: 'John' }); // Deep equality
 
 // Truthiness
 expect(value).toBeTruthy();
@@ -190,10 +209,7 @@ test('renders button with text', () => {
 ```javascript
 // Button.js
 const Button = ({ variant, children, disabled }) => (
-  <button 
-    className={`btn btn-${variant}`} 
-    disabled={disabled}
-  >
+  <button className={`btn btn-${variant}`} disabled={disabled}>
     {children}
   </button>
 );
@@ -258,13 +274,11 @@ test('handles click events', async () => {
 // Counter.js
 const Counter = () => {
   const [count, setCount] = useState(0);
-  
+
   return (
     <div>
       <span data-testid="count">{count}</span>
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
     </div>
   );
 };
@@ -273,12 +287,12 @@ const Counter = () => {
 test('increments count on button click', async () => {
   const user = userEvent.setup();
   render(<Counter />);
-  
+
   const button = screen.getByText('Increment');
   const countDisplay = screen.getByTestId('count');
-  
+
   expect(countDisplay).toHaveTextContent('0');
-  
+
   await user.click(button);
   expect(countDisplay).toHaveTextContent('1');
 });
@@ -291,12 +305,12 @@ test('increments count on button click', async () => {
 const LoginForm = ({ onSubmit }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ email, password });
   };
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -320,20 +334,20 @@ const LoginForm = ({ onSubmit }) => {
 test('submits form with correct data', async () => {
   const user = userEvent.setup();
   const mockSubmit = jest.fn();
-  
+
   render(<LoginForm onSubmit={mockSubmit} />);
-  
+
   const emailInput = screen.getByPlaceholderText('Email');
   const passwordInput = screen.getByPlaceholderText('Password');
   const submitButton = screen.getByText('Login');
-  
+
   await user.type(emailInput, 'test@example.com');
   await user.type(passwordInput, 'password123');
   await user.click(submitButton);
-  
+
   expect(mockSubmit).toHaveBeenCalledWith({
     email: 'test@example.com',
-    password: 'password123'
+    password: 'password123',
   });
 });
 ```
@@ -344,12 +358,12 @@ test('submits form with correct data', async () => {
 test('handles keyboard navigation', async () => {
   const user = userEvent.setup();
   render(<SearchInput />);
-  
+
   const input = screen.getByRole('textbox');
-  
+
   await user.type(input, 'test query');
   await user.keyboard('{Enter}');
-  
+
   expect(mockSearch).toHaveBeenCalledWith('test query');
 });
 ```
@@ -363,7 +377,7 @@ test('handles keyboard navigation', async () => {
 const DataFetcher = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
-  
+
   const fetchData = async () => {
     setLoading(true);
     try {
@@ -374,7 +388,7 @@ const DataFetcher = () => {
       setLoading(false);
     }
   };
-  
+
   return (
     <div>
       <button onClick={fetchData}>Fetch Data</button>
@@ -387,24 +401,24 @@ const DataFetcher = () => {
 // DataFetcher.test.js
 test('fetches and displays data', async () => {
   const user = userEvent.setup();
-  
+
   // Mock fetch
   global.fetch = jest.fn(() =>
     Promise.resolve({
-      json: () => Promise.resolve({ message: 'Hello World' })
+      json: () => Promise.resolve({ message: 'Hello World' }),
     })
   );
-  
+
   render(<DataFetcher />);
-  
+
   const button = screen.getByText('Fetch Data');
   await user.click(button);
-  
+
   expect(screen.getByText('Loading...')).toBeInTheDocument();
-  
+
   const data = await screen.findByTestId('data');
   expect(data).toHaveTextContent('Hello World');
-  
+
   expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
 });
 ```
@@ -416,7 +430,7 @@ import { waitFor } from '@testing-library/react';
 
 test('waits for element to appear', async () => {
   render(<AsyncComponent />);
-  
+
   await waitFor(() => {
     expect(screen.getByText('Loaded')).toBeInTheDocument();
   });
@@ -424,7 +438,7 @@ test('waits for element to appear', async () => {
 
 test('waits for element to disappear', async () => {
   render(<ComponentWithLoader />);
-  
+
   await waitFor(() => {
     expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
   });
@@ -437,33 +451,33 @@ test('waits for element to disappear', async () => {
 // Timer.js
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds(s => s + 1);
+      setSeconds((s) => s + 1);
     }, 1000);
-    
+
     return () => clearInterval(interval);
   }, []);
-  
+
   return <div data-testid="timer">{seconds}</div>;
 };
 
 // Timer.test.js
 test('increments timer every second', () => {
   jest.useFakeTimers();
-  
+
   render(<Timer />);
-  
+
   const timer = screen.getByTestId('timer');
   expect(timer).toHaveTextContent('0');
-  
+
   jest.advanceTimersByTime(1000);
   expect(timer).toHaveTextContent('1');
-  
+
   jest.advanceTimersByTime(2000);
   expect(timer).toHaveTextContent('3');
-  
+
   jest.useRealTimers();
 });
 ```
@@ -481,11 +495,11 @@ const Button = ({ onClick, children }) => (
 test('calls onClick prop when clicked', async () => {
   const user = userEvent.setup();
   const mockClick = jest.fn();
-  
+
   render(<Button onClick={mockClick}>Click me</Button>);
-  
+
   await user.click(screen.getByText('Click me'));
-  
+
   expect(mockClick).toHaveBeenCalledTimes(1);
 });
 ```
@@ -500,9 +514,9 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 test('fetches data with axios', async () => {
   const data = { users: [{ id: 1, name: 'John' }] };
   mockedAxios.get.mockResolvedValue({ data });
-  
+
   render(<UserList />);
-  
+
   await screen.findByText('John');
   expect(mockedAxios.get).toHaveBeenCalledWith('/api/users');
 });
@@ -522,9 +536,9 @@ test('shows login when not authenticated', () => {
     login: jest.fn(),
     logout: jest.fn()
   });
-  
+
   render(<ProtectedRoute />);
-  
+
   expect(screen.getByText('Please log in')).toBeInTheDocument();
 });
 ```
@@ -540,7 +554,7 @@ test('renders correct page for route', () => {
       <App />
     </MemoryRouter>
   );
-  
+
   expect(screen.getByText('About Page')).toBeInTheDocument();
 });
 ```
@@ -554,20 +568,20 @@ test('renders correct page for route', () => {
 test('adds and removes todos', async () => {
   const user = userEvent.setup();
   render(<TodoApp />);
-  
+
   const input = screen.getByPlaceholderText('Add todo...');
   const addButton = screen.getByText('Add');
-  
+
   // Add todo
   await user.type(input, 'Learn React Testing');
   await user.click(addButton);
-  
+
   expect(screen.getByText('Learn React Testing')).toBeInTheDocument();
-  
+
   // Remove todo
   const deleteButton = screen.getByRole('button', { name: /delete/i });
   await user.click(deleteButton);
-  
+
   expect(screen.queryByText('Learn React Testing')).not.toBeInTheDocument();
 });
 ```
@@ -577,16 +591,12 @@ test('adds and removes todos', async () => {
 ```javascript
 // Custom render with context
 const renderWithTheme = (component) => {
-  return render(
-    <ThemeProvider theme={lightTheme}>
-      {component}
-    </ThemeProvider>
-  );
+  return render(<ThemeProvider theme={lightTheme}>{component}</ThemeProvider>);
 };
 
 test('applies theme styles', () => {
   renderWithTheme(<ThemedButton>Click me</ThemedButton>);
-  
+
   const button = screen.getByRole('button');
   expect(button).toHaveStyle('background-color: #007bff');
 });
@@ -604,17 +614,17 @@ const renderWithRedux = (
 ) => {
   return {
     ...render(<Provider store={store}>{component}</Provider>),
-    store
+    store,
   };
 };
 
 test('displays user name from store', () => {
   const initialState = {
-    user: { name: 'John Doe', id: 1 }
+    user: { name: 'John Doe', id: 1 },
   };
-  
+
   renderWithRedux(<UserProfile />, { initialState });
-  
+
   expect(screen.getByText('John Doe')).toBeInTheDocument();
 });
 ```
@@ -635,9 +645,9 @@ test('sets loading state to true', () => {
 test('shows loading indicator when fetching data', async () => {
   const user = userEvent.setup();
   render(<DataComponent />);
-  
+
   await user.click(screen.getByText('Load Data'));
-  
+
   expect(screen.getByText('Loading...')).toBeInTheDocument();
 });
 ```
@@ -692,9 +702,7 @@ const AllTheProviders = ({ children }) => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <AuthProvider>{children}</AuthProvider>
       </ThemeProvider>
     </BrowserRouter>
   );
@@ -715,19 +723,19 @@ class LoginPage {
   constructor(screen) {
     this.screen = screen;
   }
-  
+
   get emailInput() {
     return this.screen.getByLabelText('Email');
   }
-  
+
   get passwordInput() {
     return this.screen.getByLabelText('Password');
   }
-  
+
   get submitButton() {
     return this.screen.getByRole('button', { name: /login/i });
   }
-  
+
   async login(email, password) {
     const user = userEvent.setup();
     await user.type(this.emailInput, email);
@@ -740,9 +748,9 @@ class LoginPage {
 test('successful login', async () => {
   render(<LoginForm />);
   const loginPage = new LoginPage(screen);
-  
+
   await loginPage.login('user@example.com', 'password');
-  
+
   expect(screen.getByText('Welcome!')).toBeInTheDocument();
 });
 ```
@@ -756,14 +764,14 @@ export const createUser = (overrides = {}) => ({
   name: 'John Doe',
   email: 'john@example.com',
   role: 'user',
-  ...overrides
+  ...overrides,
 });
 
 // Usage
 test('renders admin features for admin user', () => {
   const adminUser = createUser({ role: 'admin' });
   render(<UserProfile user={adminUser} />);
-  
+
   expect(screen.getByText('Admin Panel')).toBeInTheDocument();
 });
 ```
@@ -785,7 +793,7 @@ test('updates state', () => {
 test('updates state', async () => {
   const user = userEvent.setup();
   render(<Counter />);
-  
+
   await user.click(screen.getByText('Increment'));
   // State updates are wrapped in act() automatically
 });
@@ -812,13 +820,13 @@ test('loads data', async () => {
 ```javascript
 test('debug example', () => {
   render(<MyComponent />);
-  
+
   // See what's rendered
   screen.debug();
-  
+
   // See specific element
   screen.debug(screen.getByRole('button'));
-  
+
   // Check available queries
   screen.logTestingPlaygroundURL();
 });
@@ -831,13 +839,13 @@ import { renderHook, act } from '@testing-library/react';
 
 test('useCounter hook', () => {
   const { result } = renderHook(() => useCounter());
-  
+
   expect(result.current.count).toBe(0);
-  
+
   act(() => {
     result.current.increment();
   });
-  
+
   expect(result.current.count).toBe(1);
 });
 ```
@@ -847,12 +855,15 @@ test('useCounter hook', () => {
 ```javascript
 // Monitor render performance
 test('renders large list efficiently', () => {
-  const items = Array.from({ length: 10000 }, (_, i) => ({ id: i, name: `Item ${i}` }));
-  
+  const items = Array.from({ length: 10000 }, (_, i) => ({
+    id: i,
+    name: `Item ${i}`,
+  }));
+
   const start = performance.now();
   render(<LargeList items={items} />);
   const end = performance.now();
-  
+
   expect(end - start).toBeLessThan(100); // Should render in under 100ms
 });
 ```
@@ -871,6 +882,8 @@ test('should not have accessibility violations', async () => {
 });
 ```
 
-This comprehensive guide covers the essential aspects of React testing, from basic concepts to advanced patterns. Each section provides practical examples that you can adapt to your specific testing needs.
+This comprehensive guide covers the essential aspects of React testing, from
+basic concepts to advanced patterns. Each section provides practical examples
+that you can adapt to your specific testing needs.
 
 **[⬆ Back to Top](#table-of-contents)**

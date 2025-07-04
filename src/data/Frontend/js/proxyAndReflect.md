@@ -2,11 +2,14 @@
 
 ## 📘 1. What is `Proxy` in JavaScript?
 
-A `Proxy` is an object that wraps another object and **intercepts** operations performed on it (like reading, writing, deleting properties).
+A `Proxy` is an object that wraps another object and **intercepts** operations
+performed on it (like reading, writing, deleting properties).
 
 ### 🔑 Definition:
 
-> `Proxy` lets you **customize** the behavior of fundamental operations on objects (like property lookup, assignment, enumeration, function invocation, etc.)
+> `Proxy` lets you **customize** the behavior of fundamental operations on
+> objects (like property lookup, assignment, enumeration, function invocation,
+> etc.)
 
 ---
 
@@ -16,8 +19,8 @@ A `Proxy` is an object that wraps another object and **intercepts** operations p
 const proxy = new Proxy(target, handler);
 ```
 
-* `target`: The original object you want to wrap.
-* `handler`: An object with **trap methods** that intercept operations.
+- `target`: The original object you want to wrap.
+- `handler`: An object with **trap methods** that intercept operations.
 
 ---
 
@@ -27,18 +30,18 @@ const proxy = new Proxy(target, handler);
 
 ```js
 const user = {
-  name: "Ravi",
-  role: "Developer"
+  name: 'Ravi',
+  role: 'Developer',
 };
 
 const proxy = new Proxy(user, {
   get(target, prop) {
-    return prop in target ? target[prop] : "Not Found";
-  }
+    return prop in target ? target[prop] : 'Not Found';
+  },
 });
 
-console.log(proxy.name);     // Ravi
-console.log(proxy.age);      // Not Found
+console.log(proxy.name); // Ravi
+console.log(proxy.age); // Not Found
 ```
 
 ---
@@ -64,34 +67,36 @@ const user = {};
 
 const proxy = new Proxy(user, {
   set(target, prop, value) {
-    if (typeof value === "string") {
+    if (typeof value === 'string') {
       target[prop] = value;
       return true;
     } else {
-      console.log("Only strings are allowed");
+      console.log('Only strings are allowed');
       return false;
     }
   },
   deleteProperty(target, prop) {
     console.log(`Deleting ${prop}`);
     return delete target[prop];
-  }
+  },
 });
 
-proxy.name = "Ravi";        // OK
-proxy.age = 25;             // Only strings are allowed
-delete proxy.name;          // Deleting name
+proxy.name = 'Ravi'; // OK
+proxy.age = 25; // Only strings are allowed
+delete proxy.name; // Deleting name
 ```
 
 ---
 
 ## 📘 6. What is `Reflect` in JavaScript?
 
-`Reflect` is a built-in object that provides methods for **interacting with object internals**, mirroring the default behavior of `Proxy` traps.
+`Reflect` is a built-in object that provides methods for **interacting with
+object internals**, mirroring the default behavior of `Proxy` traps.
 
 ### 🔑 Definition:
 
-> `Reflect` provides **default behavior methods** that correspond to the same operations that Proxy traps can intercept.
+> `Reflect` provides **default behavior methods** that correspond to the same
+> operations that Proxy traps can intercept.
 
 ---
 
@@ -127,7 +132,7 @@ Using `Reflect` inside proxy traps ensures **default behavior is preserved**.
 ### ✅ Example:
 
 ```js
-const user = { name: "Ravi" };
+const user = { name: 'Ravi' };
 
 const proxy = new Proxy(user, {
   get(target, prop) {
@@ -137,10 +142,10 @@ const proxy = new Proxy(user, {
   set(target, prop, value) {
     console.log(`Setting ${prop} = ${value}`);
     return Reflect.set(target, prop, value);
-  }
+  },
 });
 
-proxy.name = "Amit";     // Setting name = Amit
+proxy.name = 'Amit'; // Setting name = Amit
 console.log(proxy.name); // Getting name → Amit
 ```
 
@@ -163,11 +168,11 @@ const loggerProxy = new Proxy(data, {
   deleteProperty(target, prop) {
     console.log(`Deleted: ${prop}`);
     return Reflect.deleteProperty(target, prop);
-  }
+  },
 });
 
-loggerProxy.count;        // Accessed: count
-loggerProxy.count = 10;   // Changed: count = 10
+loggerProxy.count; // Accessed: count
+loggerProxy.count = 10; // Changed: count = 10
 delete loggerProxy.count; // Deleted: count
 ```
 
@@ -177,17 +182,17 @@ delete loggerProxy.count; // Deleted: count
 
 ```js
 const privateData = {
-  secret: "1234",
-  public: "Hello"
+  secret: '1234',
+  public: 'Hello',
 };
 
 const secureProxy = new Proxy(privateData, {
   get(target, prop) {
-    if (prop.startsWith("_") || prop === "secret") {
-      throw new Error("Access denied");
+    if (prop.startsWith('_') || prop === 'secret') {
+      throw new Error('Access denied');
     }
     return Reflect.get(target, prop);
-  }
+  },
 });
 
 console.log(secureProxy.public); // Hello

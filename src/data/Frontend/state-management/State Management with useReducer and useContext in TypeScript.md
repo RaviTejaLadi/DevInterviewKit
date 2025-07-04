@@ -1,6 +1,8 @@
 # State Management with useReducer and useContext in TypeScript
 
-Here's a complete setup for state management using only React's built-in hooks (`useReducer` and `useContext`) without any external packages. I'll provide 4 small examples with TypeScript typing.
+Here's a complete setup for state management using only React's built-in hooks
+(`useReducer` and `useContext`) without any external packages. I'll provide 4
+small examples with TypeScript typing.
 
 ## Table of Contents
 
@@ -9,7 +11,6 @@ Here's a complete setup for state management using only React's built-in hooks (
 - [3. Theme Toggle Example](#3.-theme-toggle-example)
 - [4. Form State Example](#4.-form-state-example)
 - [Combined App Example](#combined-app-example)
-
 
 ## 1. Basic Counter Example
 
@@ -21,19 +22,25 @@ type CounterState = {
   count: number;
 };
 
-type CounterAction = 
+type CounterAction =
   | { type: 'increment' }
   | { type: 'decrement' }
   | { type: 'reset' };
 
 // 2. Create context
-const CounterContext = createContext<{
-  state: CounterState;
-  dispatch: Dispatch<CounterAction>;
-} | undefined>(undefined);
+const CounterContext = createContext<
+  | {
+      state: CounterState;
+      dispatch: Dispatch<CounterAction>;
+    }
+  | undefined
+>(undefined);
 
 // 3. Create reducer
-function counterReducer(state: CounterState, action: CounterAction): CounterState {
+function counterReducer(
+  state: CounterState,
+  action: CounterAction
+): CounterState {
   switch (action.type) {
     case 'increment':
       return { count: state.count + 1 };
@@ -47,7 +54,9 @@ function counterReducer(state: CounterState, action: CounterAction): CounterStat
 }
 
 // 4. Create provider component
-const CounterProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const CounterProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(counterReducer, { count: 0 });
 
   return (
@@ -111,10 +120,13 @@ type TodoAction =
   | { type: 'toggle'; id: number }
   | { type: 'delete'; id: number };
 
-const TodoContext = createContext<{
-  state: TodoState;
-  dispatch: Dispatch<TodoAction>;
-} | undefined>(undefined);
+const TodoContext = createContext<
+  | {
+      state: TodoState;
+      dispatch: Dispatch<TodoAction>;
+    }
+  | undefined
+>(undefined);
 
 function todoReducer(state: TodoState, action: TodoAction): TodoState {
   switch (action.type) {
@@ -131,20 +143,22 @@ function todoReducer(state: TodoState, action: TodoAction): TodoState {
       };
     case 'toggle':
       return {
-        todos: state.todos.map(todo =>
+        todos: state.todos.map((todo) =>
           todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
         ),
       };
     case 'delete':
       return {
-        todos: state.todos.filter(todo => todo.id !== action.id),
+        todos: state.todos.filter((todo) => todo.id !== action.id),
       };
     default:
       throw new Error('Unknown action type');
   }
 }
 
-const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const TodoProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(todoReducer, { todos: [] });
 
   return (
@@ -179,16 +193,18 @@ const TodoList: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <input
           value={input}
-          onChange={e => setInput(e.target.value)}
+          onChange={(e) => setInput(e.target.value)}
           placeholder="Add a todo"
         />
         <button type="submit">Add</button>
       </form>
       <ul>
-        {state.todos.map(todo => (
+        {state.todos.map((todo) => (
           <li key={todo.id}>
             <span
-              style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+              style={{
+                textDecoration: todo.completed ? 'line-through' : 'none',
+              }}
               onClick={() => dispatch({ type: 'toggle', id: todo.id })}
             >
               {todo.text}
@@ -219,10 +235,13 @@ type ThemeState = {
 
 type ThemeAction = { type: 'toggle' };
 
-const ThemeContext = createContext<{
-  state: ThemeState;
-  dispatch: Dispatch<ThemeAction>;
-} | undefined>(undefined);
+const ThemeContext = createContext<
+  | {
+      state: ThemeState;
+      dispatch: Dispatch<ThemeAction>;
+    }
+  | undefined
+>(undefined);
 
 function themeReducer(state: ThemeState, action: ThemeAction): ThemeState {
   switch (action.type) {
@@ -235,7 +254,9 @@ function themeReducer(state: ThemeState, action: ThemeAction): ThemeState {
   }
 }
 
-const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(themeReducer, { theme: 'light' });
 
   return (
@@ -257,16 +278,16 @@ const ThemeToggle: React.FC = () => {
   const { state, dispatch } = useTheme();
 
   return (
-    <div style={{
-      background: state.theme === 'light' ? '#fff' : '#333',
-      color: state.theme === 'light' ? '#000' : '#fff',
-      padding: '20px',
-      minHeight: '100vh'
-    }}>
+    <div
+      style={{
+        background: state.theme === 'light' ? '#fff' : '#333',
+        color: state.theme === 'light' ? '#000' : '#fff',
+        padding: '20px',
+        minHeight: '100vh',
+      }}
+    >
       <h2>Current Theme: {state.theme}</h2>
-      <button onClick={() => dispatch({ type: 'toggle' })}>
-        Toggle Theme
-      </button>
+      <button onClick={() => dispatch({ type: 'toggle' })}>Toggle Theme</button>
     </div>
   );
 };
@@ -297,10 +318,13 @@ type FormAction =
   | { type: 'validate' }
   | { type: 'reset' };
 
-const FormContext = createContext<{
-  state: FormState;
-  dispatch: Dispatch<FormAction>;
-} | undefined>(undefined);
+const FormContext = createContext<
+  | {
+      state: FormState;
+      dispatch: Dispatch<FormAction>;
+    }
+  | undefined
+>(undefined);
 
 function formReducer(state: FormState, action: FormAction): FormState {
   switch (action.type) {
@@ -331,7 +355,9 @@ function formReducer(state: FormState, action: FormAction): FormState {
   }
 }
 
-const FormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const FormProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(formReducer, {
     firstName: '',
     lastName: '',
@@ -360,9 +386,9 @@ const FormComponent: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch({ type: 'validate' });
-    
+
     // Check if there are no errors
-    if (Object.values(state.errors).every(error => !error)) {
+    if (Object.values(state.errors).every((error) => !error)) {
       alert(`Form submitted: ${JSON.stringify(state, null, 2)}`);
     }
   };
@@ -373,31 +399,49 @@ const FormComponent: React.FC = () => {
         <label>First Name:</label>
         <input
           value={state.firstName}
-          onChange={e =>
-            dispatch({ type: 'updateField', field: 'firstName', value: e.target.value })
+          onChange={(e) =>
+            dispatch({
+              type: 'updateField',
+              field: 'firstName',
+              value: e.target.value,
+            })
           }
         />
-        {state.errors.firstName && <span style={{ color: 'red' }}>{state.errors.firstName}</span>}
+        {state.errors.firstName && (
+          <span style={{ color: 'red' }}>{state.errors.firstName}</span>
+        )}
       </div>
       <div>
         <label>Last Name:</label>
         <input
           value={state.lastName}
-          onChange={e =>
-            dispatch({ type: 'updateField', field: 'lastName', value: e.target.value })
+          onChange={(e) =>
+            dispatch({
+              type: 'updateField',
+              field: 'lastName',
+              value: e.target.value,
+            })
           }
         />
-        {state.errors.lastName && <span style={{ color: 'red' }}>{state.errors.lastName}</span>}
+        {state.errors.lastName && (
+          <span style={{ color: 'red' }}>{state.errors.lastName}</span>
+        )}
       </div>
       <div>
         <label>Email:</label>
         <input
           value={state.email}
-          onChange={e =>
-            dispatch({ type: 'updateField', field: 'email', value: e.target.value })
+          onChange={(e) =>
+            dispatch({
+              type: 'updateField',
+              field: 'email',
+              value: e.target.value,
+            })
           }
         />
-        {state.errors.email && <span style={{ color: 'red' }}>{state.errors.email}</span>}
+        {state.errors.email && (
+          <span style={{ color: 'red' }}>{state.errors.email}</span>
+        )}
       </div>
       <button type="submit">Submit</button>
       <button type="button" onClick={() => dispatch({ type: 'reset' })}>
@@ -447,7 +491,8 @@ const App: React.FC = () => {
 export default App;
 ```
 
-This setup demonstrates how to use `useReducer` and `useContext` for state management in React with TypeScript. Each example follows the same pattern:
+This setup demonstrates how to use `useReducer` and `useContext` for state
+management in React with TypeScript. Each example follows the same pattern:
 
 1. Define state and action types
 2. Create a context
@@ -456,6 +501,7 @@ This setup demonstrates how to use `useReducer` and `useContext` for state manag
 5. Create a custom hook for consuming the context
 6. Create components that use the state
 
-This pattern provides a clean separation of concerns and makes your state management predictable and type-safe.
+This pattern provides a clean separation of concerns and makes your state
+management predictable and type-safe.
 
 **[⬆ Back to Top](#table-of-contents)**

@@ -2,15 +2,15 @@
 
 ## 1. Definition 🧠
 
-In JavaScript, the `this` keyword refers to the **object it belongs to**.
-Its value is determined **by how a function is called**, not where it is defined.
+In JavaScript, the `this` keyword refers to the **object it belongs to**. Its
+value is determined **by how a function is called**, not where it is defined.
 
 ---
 
 ## 2. Syntax 🧾
 
 ```javascript
-this
+this;
 ```
 
 It is used within functions, methods, constructors, or globally.
@@ -77,7 +77,8 @@ const person = {
 person.greet(); // undefined
 ```
 
-> ⚠️ Arrow functions **do not have their own `this`**. They inherit `this` from the surrounding lexical context.
+> ⚠️ Arrow functions **do not have their own `this`**. They inherit `this` from
+> the surrounding lexical context.
 
 ---
 
@@ -125,7 +126,7 @@ const person = {
     setTimeout(function () {
       console.log(this.name);
     }, 1000);
-  }
+  },
 };
 
 person.greet(); // undefined
@@ -140,7 +141,7 @@ const person = {
     setTimeout(() => {
       console.log(this.name);
     }, 1000);
-  }
+  },
 };
 
 person.greet(); // Ravi
@@ -214,14 +215,14 @@ btn.addEventListener('click', () => {
 
 ## 5. Best Practices ✅
 
-* Avoid using `this` in arrow functions if context is important.
-* Use `bind`, `call`, or `apply` when passing methods as callbacks.
-* Prefer class fields with arrow functions for auto-binding in React:
+- Avoid using `this` in arrow functions if context is important.
+- Use `bind`, `call`, or `apply` when passing methods as callbacks.
+- Prefer class fields with arrow functions for auto-binding in React:
 
   ```js
   class App {
     handleClick = () => {
       console.log(this); // always bound to App
-    }
+    };
   }
   ```

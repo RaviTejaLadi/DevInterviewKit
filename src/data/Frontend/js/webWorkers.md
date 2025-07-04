@@ -2,9 +2,12 @@
 
 ## 🧠 Definition
 
-A **Web Worker** is a JavaScript feature that allows you to run scripts in **background threads**. This prevents blocking the main thread (UI thread), enhancing performance and responsiveness—especially for CPU-intensive tasks.
+A **Web Worker** is a JavaScript feature that allows you to run scripts in
+**background threads**. This prevents blocking the main thread (UI thread),
+enhancing performance and responsiveness—especially for CPU-intensive tasks.
 
-> **Key Purpose**: Offload heavy or long-running computations away from the main thread.
+> **Key Purpose**: Offload heavy or long-running computations away from the main
+> thread.
 
 ---
 
@@ -17,7 +20,7 @@ const worker = new Worker('worker.js');
 
 worker.postMessage('Hello from main thread');
 
-worker.onmessage = function(event) {
+worker.onmessage = function (event) {
   console.log('Message from worker:', event.data);
 };
 ```
@@ -25,7 +28,7 @@ worker.onmessage = function(event) {
 ### Worker Thread (worker.js)
 
 ```js
-onmessage = function(event) {
+onmessage = function (event) {
   console.log('Message from main thread:', event.data);
   postMessage('Hello from worker');
 };
@@ -37,14 +40,14 @@ onmessage = function(event) {
 
 ### ✅ When to Use
 
-* Complex computations (e.g. image processing, large data parsing)
-* Real-time data processing (e.g. games, simulations)
-* Keeping UI responsive while background tasks run
+- Complex computations (e.g. image processing, large data parsing)
+- Real-time data processing (e.g. games, simulations)
+- Keeping UI responsive while background tasks run
 
 ### ❌ When Not to Use
 
-* For simple tasks
-* Tasks that require DOM access (not allowed in workers)
+- For simple tasks
+- Tasks that require DOM access (not allowed in workers)
 
 ---
 
@@ -62,7 +65,7 @@ worker.js
 
 ```js
 // Heavy computation logic
-onmessage = function(e) {
+onmessage = function (e) {
   const n = e.data;
   function fib(n) {
     return n < 2 ? n : fib(n - 1) + fib(n - 2);
@@ -79,11 +82,11 @@ const worker = new Worker('worker.js');
 
 worker.postMessage(40); // Large Fibonacci number
 
-worker.onmessage = function(e) {
+worker.onmessage = function (e) {
   console.log('Fibonacci Result:', e.data);
 };
 
-worker.onerror = function(e) {
+worker.onerror = function (e) {
   console.error('Worker Error:', e);
 };
 ```
@@ -93,10 +96,12 @@ worker.onerror = function(e) {
 ```html
 <!DOCTYPE html>
 <html>
-<head><title>Web Worker Demo</title></head>
-<body>
-  <script src="main.js"></script>
-</body>
+  <head>
+    <title>Web Worker Demo</title>
+  </head>
+  <body>
+    <script src="main.js"></script>
+  </body>
 </html>
 ```
 
@@ -115,15 +120,16 @@ worker.onerror = function(e) {
 
 ## 🚫 Limitations
 
-* ❌ Cannot access DOM
-* ❌ Limited access to `window`, `document`, or `alert()`
-* ✅ Can use `XMLHttpRequest`, `fetch`, `WebSockets`, and ES6 features
+- ❌ Cannot access DOM
+- ❌ Limited access to `window`, `document`, or `alert()`
+- ✅ Can use `XMLHttpRequest`, `fetch`, `WebSockets`, and ES6 features
 
 ---
 
 ## 🔐 Security
 
-Web workers follow the **same-origin policy** and have **sandboxed environments**, making them safe for parallel operations.
+Web workers follow the **same-origin policy** and have **sandboxed
+environments**, making them safe for parallel operations.
 
 ---
 
@@ -147,10 +153,10 @@ worker.terminate(); // Immediately stops the worker
 
 ## 📚 Real Use Cases
 
-* Background sync in PWAs
-* Parsing large JSON or CSV files
-* Real-time chart updates
-* Video/Audio processing
+- Background sync in PWAs
+- Parsing large JSON or CSV files
+- Real-time chart updates
+- Video/Audio processing
 
 ---
 
@@ -168,9 +174,10 @@ Main Thread               Web Worker
 
 ## 🧼 Cleanup & Best Practices
 
-* Always terminate workers when done (`worker.terminate()`)
-* Handle errors with `worker.onerror`
-* Use transferable objects (`ArrayBuffer`) for performance when passing large data
+- Always terminate workers when done (`worker.terminate()`)
+- Handle errors with `worker.onerror`
+- Use transferable objects (`ArrayBuffer`) for performance when passing large
+  data
 
 ---
 

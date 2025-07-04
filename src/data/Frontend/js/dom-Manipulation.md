@@ -1,6 +1,8 @@
 # 🧠 JavaScript DOM Manipulation
 
-The **DOM (Document Object Model)** is a programming interface for HTML and XML documents. It represents the page structure as a tree of objects. JavaScript uses the DOM to interact with and modify web pages dynamically.
+The **DOM (Document Object Model)** is a programming interface for HTML and XML
+documents. It represents the page structure as a tree of objects. JavaScript
+uses the DOM to interact with and modify web pages dynamically.
 
 ---
 
@@ -8,11 +10,13 @@ The **DOM (Document Object Model)** is a programming interface for HTML and XML 
 
 ### ✅ Definition
 
-The **DOM** is a **tree-like structure** where each node is an object representing a part of the document (element, text, attribute, etc.).
+The **DOM** is a **tree-like structure** where each node is an object
+representing a part of the document (element, text, attribute, etc.).
 
 ### ✅ Usage
 
-Used to **access**, **modify**, or **delete** elements dynamically in the HTML document.
+Used to **access**, **modify**, or **delete** elements dynamically in the HTML
+document.
 
 ---
 
@@ -21,11 +25,11 @@ Used to **access**, **modify**, or **delete** elements dynamically in the HTML d
 ### ✅ Methods
 
 ```js
-document.getElementById("id")
-document.getElementsByClassName("class")
-document.getElementsByTagName("tag")
-document.querySelector("selector")
-document.querySelectorAll("selector")
+document.getElementById('id');
+document.getElementsByClassName('class');
+document.getElementsByTagName('tag');
+document.querySelector('selector');
+document.querySelectorAll('selector');
 ```
 
 ### ✅ Example
@@ -33,7 +37,7 @@ document.querySelectorAll("selector")
 ```html
 <p id="myText">Hello</p>
 <script>
-  const para = document.getElementById("myText");
+  const para = document.getElementById('myText');
   console.log(para.textContent); // Hello
 </script>
 ```
@@ -45,8 +49,8 @@ document.querySelectorAll("selector")
 ### ✅ Syntax
 
 ```js
-element.textContent = "new text";
-element.innerHTML = "<b>bold text</b>";
+element.textContent = 'new text';
+element.innerHTML = '<b>bold text</b>';
 ```
 
 ### ✅ Example
@@ -54,7 +58,7 @@ element.innerHTML = "<b>bold text</b>";
 ```html
 <div id="demo">Old Content</div>
 <script>
-  document.getElementById("demo").textContent = "New Content";
+  document.getElementById('demo').textContent = 'New Content';
 </script>
 ```
 
@@ -65,18 +69,18 @@ element.innerHTML = "<b>bold text</b>";
 ### ✅ Syntax
 
 ```js
-element.setAttribute("attribute", "value");
-element.getAttribute("attribute");
-element.removeAttribute("attribute");
+element.setAttribute('attribute', 'value');
+element.getAttribute('attribute');
+element.removeAttribute('attribute');
 ```
 
 ### ✅ Example
 
 ```html
-<img id="myImg" src="old.png">
+<img id="myImg" src="old.png" />
 <script>
-  const img = document.getElementById("myImg");
-  img.setAttribute("src", "new.png");
+  const img = document.getElementById('myImg');
+  img.setAttribute('src', 'new.png');
 </script>
 ```
 
@@ -87,7 +91,7 @@ element.removeAttribute("attribute");
 ### ✅ Syntax
 
 ```js
-element.style.property = "value";
+element.style.property = 'value';
 ```
 
 ### ✅ Example
@@ -95,9 +99,9 @@ element.style.property = "value";
 ```html
 <p id="styleMe">Style me!</p>
 <script>
-  const el = document.getElementById("styleMe");
-  el.style.color = "red";
-  el.style.fontWeight = "bold";
+  const el = document.getElementById('styleMe');
+  el.style.color = 'red';
+  el.style.fontWeight = 'bold';
 </script>
 ```
 
@@ -108,14 +112,14 @@ element.style.property = "value";
 ### ✅ Syntax
 
 ```js
-document.createElement("tag");
+document.createElement('tag');
 ```
 
 ### ✅ Example
 
 ```js
-const newPara = document.createElement("p");
-newPara.textContent = "This is new!";
+const newPara = document.createElement('p');
+newPara.textContent = 'This is new!';
 ```
 
 ---
@@ -132,9 +136,9 @@ parent.append(...children); // Modern
 ### ✅ Example
 
 ```js
-const div = document.getElementById("container");
-const newItem = document.createElement("li");
-newItem.textContent = "Item 4";
+const div = document.getElementById('container');
+const newItem = document.createElement('li');
+newItem.textContent = 'Item 4';
 div.appendChild(newItem);
 ```
 
@@ -152,7 +156,7 @@ parent.removeChild(child); // Traditional
 ### ✅ Example
 
 ```js
-const item = document.getElementById("itemToRemove");
+const item = document.getElementById('itemToRemove');
 item.remove(); // removes it from the DOM
 ```
 
@@ -163,15 +167,15 @@ item.remove(); // removes it from the DOM
 ### ✅ Syntax
 
 ```js
-element.addEventListener("event", callback);
+element.addEventListener('event', callback);
 ```
 
 ### ✅ Example
 
 ```js
-const btn = document.getElementById("clickBtn");
-btn.addEventListener("click", function () {
-  alert("Button clicked!");
+const btn = document.getElementById('clickBtn');
+btn.addEventListener('click', function () {
+  alert('Button clicked!');
 });
 ```
 
@@ -182,18 +186,18 @@ btn.addEventListener("click", function () {
 ### ✅ Syntax
 
 ```js
-element.parentNode
-element.children
-element.firstElementChild
-element.lastElementChild
-element.nextElementSibling
-element.previousElementSibling
+element.parentNode;
+element.children;
+element.firstElementChild;
+element.lastElementChild;
+element.nextElementSibling;
+element.previousElementSibling;
 ```
 
 ### ✅ Example
 
 ```js
-const list = document.getElementById("myList");
+const list = document.getElementById('myList');
 console.log(list.children); // HTMLCollection of <li> elements
 ```
 
@@ -201,7 +205,7 @@ console.log(list.children); // HTMLCollection of <li> elements
 
 ## 🧪 Bonus Tips
 
-* `innerHTML` parses HTML — use carefully to avoid XSS attacks.
-* Use `textContent` if you're setting plain text.
-* Prefer `querySelector()` for CSS-like flexibility.
-* Always check for `null` before accessing properties (`if (el)`).
+- `innerHTML` parses HTML — use carefully to avoid XSS attacks.
+- Use `textContent` if you're setting plain text.
+- Prefer `querySelector()` for CSS-like flexibility.
+- Always check for `null` before accessing properties (`if (el)`).

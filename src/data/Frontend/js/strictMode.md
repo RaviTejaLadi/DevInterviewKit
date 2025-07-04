@@ -2,9 +2,12 @@
 
 ## 📘 Definition
 
-**Strict Mode** is a feature in JavaScript that enforces stricter parsing and error handling on your code. It helps catch common coding mistakes and makes the language behave more consistently.
+**Strict Mode** is a feature in JavaScript that enforces stricter parsing and
+error handling on your code. It helps catch common coding mistakes and makes the
+language behave more consistently.
 
-> Introduced in ECMAScript 5 (ES5), `'use strict'` can be applied to entire scripts or individual functions.
+> Introduced in ECMAScript 5 (ES5), `'use strict'` can be applied to entire
+> scripts or individual functions.
 
 ---
 
@@ -37,11 +40,11 @@ function myFunction() {
 
 ## 🎯 Why Use Strict Mode?
 
-* Makes debugging easier (throws more errors)
-* Prevents the use of undeclared variables
-* Eliminates `this` coercion to `window` (in functions)
-* Disallows duplicate parameter names
-* Prepares your code for future JavaScript versions
+- Makes debugging easier (throws more errors)
+- Prevents the use of undeclared variables
+- Eliminates `this` coercion to `window` (in functions)
+- Disallows duplicate parameter names
+- Prepares your code for future JavaScript versions
 
 ---
 
@@ -126,9 +129,10 @@ delete x; // ❌ SyntaxError
 
 ## 🧠 Best Practices
 
-* Always use `'use strict';` at the top of your JavaScript files.
-* Modern JavaScript modules (`import/export`) and classes are **always in strict mode**.
-* Helps enforce **clean code** and avoid **sloppy mistakes**.
+- Always use `'use strict';` at the top of your JavaScript files.
+- Modern JavaScript modules (`import/export`) and classes are **always in strict
+  mode**.
+- Helps enforce **clean code** and avoid **sloppy mistakes**.
 
 ---
 
@@ -159,5 +163,5 @@ export function test() {
 
 Use strict mode to:
 
-* Write **cleaner**, more **secure**, and **predictable** JavaScript.
-* Help your code prepare for the **future of ECMAScript**.
+- Write **cleaner**, more **secure**, and **predictable** JavaScript.
+- Help your code prepare for the **future of ECMAScript**.

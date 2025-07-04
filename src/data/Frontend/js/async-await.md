@@ -1,6 +1,8 @@
 # JavaScript Async/Await - Complete Guide
 
-Async/await is JavaScript's way of making asynchronous code look and behave like synchronous code. It's built on top of Promises but makes them much easier to read and write.
+Async/await is JavaScript's way of making asynchronous code look and behave like
+synchronous code. It's built on top of Promises but makes them much easier to
+read and write.
 
 ## The Problem: Callback Hell & Promise Chains
 
@@ -18,10 +20,10 @@ getUserData(userId, (user) => {
 
 // Promise Chains 😐
 getUserData(userId)
-  .then(user => getPosts(user.id))
-  .then(posts => getComments(posts[0].id))
-  .then(comments => displayUserProfile(user, posts, comments))
-  .catch(error => console.error(error));
+  .then((user) => getPosts(user.id))
+  .then((posts) => getComments(posts[0].id))
+  .then((comments) => displayUserProfile(user, posts, comments))
+  .catch((error) => console.error(error));
 ```
 
 **With async/await 😍:**
@@ -46,27 +48,28 @@ async function loadUserProfile(userId) {
 ```javascript
 // Regular function
 function regularFunction() {
-  return "Hello";
+  return 'Hello';
 }
 
 // Async function - automatically wraps return value in a Promise
 async function asyncFunction() {
-  return "Hello"; // This becomes Promise.resolve("Hello")
+  return 'Hello'; // This becomes Promise.resolve("Hello")
 }
 
 // Both of these work the same way:
-asyncFunction().then(result => console.log(result)); // "Hello"
+asyncFunction().then((result) => console.log(result)); // "Hello"
 ```
 
 **Key points about `async` functions:**
+
 - Always return a Promise
 - If you return a value, it's wrapped in `Promise.resolve()`
 - If you throw an error, it becomes `Promise.reject()`
 
 ```javascript
 async function examples() {
-  return 42;           // Returns Promise.resolve(42)
-  throw new Error();   // Returns Promise.reject(Error)
+  return 42; // Returns Promise.resolve(42)
+  throw new Error(); // Returns Promise.reject(Error)
 }
 ```
 
@@ -76,19 +79,20 @@ async function examples() {
 
 ```javascript
 async function fetchUserData() {
-  console.log("Starting fetch...");
-  
+  console.log('Starting fetch...');
+
   const response = await fetch('/api/user'); // Waits here
-  console.log("Got response!");
-  
+  console.log('Got response!');
+
   const userData = await response.json(); // Waits here too
-  console.log("Parsed JSON!");
-  
+  console.log('Parsed JSON!');
+
   return userData;
 }
 ```
 
 **Important `await` rules:**
+
 - Can only be used inside `async` functions
 - Pauses the function execution (but doesn't block other code)
 - Unwraps the Promise value
@@ -102,18 +106,18 @@ async function fetchUserData() {
 async function robustDataFetch() {
   try {
     const response = await fetch('/api/data');
-    
+
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
-    
+
     const data = await response.json();
     return data;
-    
+
   } catch (networkError) {
     console.error('Network request failed:', networkError);
     throw networkError; // Re-throw if you want caller to handle it
-    
+
   } catch (parseError) {
     console.error('JSON parsing failed:', parseError);
     return null; // Or provide a default value
@@ -136,34 +140,36 @@ async function useData() {
 ### 1. Sequential vs Parallel Execution
 
 **Sequential (one after another):**
+
 ```javascript
 async function sequential() {
   console.time('sequential');
-  
-  const user = await fetchUser();      // Wait 1 second
-  const posts = await fetchPosts();    // Wait another 1 second
+
+  const user = await fetchUser(); // Wait 1 second
+  const posts = await fetchPosts(); // Wait another 1 second
   const comments = await fetchComments(); // Wait another 1 second
-  
+
   console.timeEnd('sequential'); // ~3 seconds total
   return { user, posts, comments };
 }
 ```
 
 **Parallel (all at once):**
+
 ```javascript
 async function parallel() {
   console.time('parallel');
-  
+
   // Start all requests simultaneously
   const userPromise = fetchUser();
   const postsPromise = fetchPosts();
   const commentsPromise = fetchComments();
-  
+
   // Wait for all to complete
-  const user = await userPromise;        // ~1 second total
-  const posts = await postsPromise;      // (already done)
+  const user = await userPromise; // ~1 second total
+  const posts = await postsPromise; // (already done)
   const comments = await commentsPromise; // (already done)
-  
+
   console.timeEnd('parallel'); // ~1 second total
   return { user, posts, comments };
 }
@@ -173,9 +179,9 @@ async function parallelBetter() {
   const [user, posts, comments] = await Promise.all([
     fetchUser(),
     fetchPosts(),
-    fetchComments()
+    fetchComments(),
   ]);
-  
+
   return { user, posts, comments };
 }
 ```
@@ -185,24 +191,24 @@ async function parallelBetter() {
 ```javascript
 async function smartDataLoader(userId, options = {}) {
   const user = await fetchUser(userId);
-  
+
   let posts = [];
   if (options.includePosts) {
     posts = await fetchUserPosts(userId);
   }
-  
+
   let friends = [];
   if (user.privacy === 'public' && options.includeFriends) {
     friends = await fetchUserFriends(userId);
   }
-  
+
   return { user, posts, friends };
 }
 
 // Usage
-const publicProfile = await smartDataLoader('123', { 
-  includePosts: true, 
-  includeFriends: true 
+const publicProfile = await smartDataLoader('123', {
+  includePosts: true,
+  includeFriends: true,
 });
 ```
 
@@ -214,22 +220,23 @@ async function fetchWithRetry(url, maxRetries = 3) {
     try {
       console.log(`Attempt ${attempt}/${maxRetries}`);
       const response = await fetch(url);
-      
+
       if (response.ok) {
         return await response.json();
       }
-      
+
       throw new Error(`HTTP ${response.status}`);
-      
     } catch (error) {
       console.log(`Attempt ${attempt} failed:`, error.message);
-      
+
       if (attempt === maxRetries) {
-        throw new Error(`Failed after ${maxRetries} attempts: ${error.message}`);
+        throw new Error(
+          `Failed after ${maxRetries} attempts: ${error.message}`
+        );
       }
-      
+
       // Wait before retrying (exponential backoff)
-      await new Promise(resolve => setTimeout(resolve, attempt * 1000));
+      await new Promise((resolve) => setTimeout(resolve, attempt * 1000));
     }
   }
 }
@@ -246,49 +253,52 @@ try {
 ### 4. Processing Arrays with Async/Await
 
 **Processing items one by one (sequential):**
+
 ```javascript
 async function processUsersSequentially(userIds) {
   const results = [];
-  
+
   for (const userId of userIds) {
     const userData = await fetchUser(userId);
     const processedData = await processUser(userData);
     results.push(processedData);
   }
-  
+
   return results;
 }
 ```
 
 **Processing all items at once (parallel):**
+
 ```javascript
 async function processUsersParallel(userIds) {
   const promises = userIds.map(async (userId) => {
     const userData = await fetchUser(userId);
     return await processUser(userData);
   });
-  
+
   return await Promise.all(promises);
 }
 ```
 
 **Processing with concurrency limit:**
+
 ```javascript
 async function processUsersBatched(userIds, batchSize = 3) {
   const results = [];
-  
+
   for (let i = 0; i < userIds.length; i += batchSize) {
     const batch = userIds.slice(i, i + batchSize);
-    const batchPromises = batch.map(userId => 
+    const batchPromises = batch.map((userId) =>
       fetchUser(userId).then(processUser)
     );
-    
+
     const batchResults = await Promise.all(batchPromises);
     results.push(...batchResults);
-    
-    console.log(`Processed batch ${Math.floor(i/batchSize) + 1}`);
+
+    console.log(`Processed batch ${Math.floor(i / batchSize) + 1}`);
   }
-  
+
   return results;
 }
 ```
@@ -303,60 +313,58 @@ class DataService {
     this.loading = false;
     this.cache = new Map();
   }
-  
+
   async fetchUserProfile(userId) {
     // Check cache first
     if (this.cache.has(userId)) {
       return this.cache.get(userId);
     }
-    
+
     this.loading = true;
     updateUI({ loading: true });
-    
+
     try {
       // Fetch basic user info
       const user = await this.fetchUser(userId);
-      
+
       // Fetch additional data in parallel
       const [posts, followers, following] = await Promise.all([
         this.fetchUserPosts(userId),
         this.fetchUserFollowers(userId),
-        this.fetchUserFollowing(userId)
+        this.fetchUserFollowing(userId),
       ]);
-      
+
       const profile = { user, posts, followers, following };
-      
+
       // Cache the result
       this.cache.set(userId, profile);
-      
+
       return profile;
-      
     } catch (error) {
       console.error('Failed to fetch user profile:', error);
       throw error;
-      
     } finally {
       this.loading = false;
       updateUI({ loading: false });
     }
   }
-  
+
   async fetchUser(userId) {
     const response = await fetch(`/api/users/${userId}`);
     if (!response.ok) throw new Error('User not found');
     return response.json();
   }
-  
+
   async fetchUserPosts(userId) {
     const response = await fetch(`/api/users/${userId}/posts`);
     return response.ok ? response.json() : [];
   }
-  
+
   async fetchUserFollowers(userId) {
     const response = await fetch(`/api/users/${userId}/followers`);
     return response.ok ? response.json() : [];
   }
-  
+
   async fetchUserFollowing(userId) {
     const response = await fetch(`/api/users/${userId}/following`);
     return response.ok ? response.json() : [];
@@ -382,17 +390,17 @@ async function displayProfile(userId) {
 async function uploadFileWithProgress(file, onProgress) {
   const formData = new FormData();
   formData.append('file', file);
-  
+
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
-    
+
     xhr.upload.onprogress = (event) => {
       if (event.lengthComputable) {
         const progress = (event.loaded / event.total) * 100;
         onProgress(Math.round(progress));
       }
     };
-    
+
     xhr.onload = () => {
       if (xhr.status === 200) {
         resolve(JSON.parse(xhr.responseText));
@@ -400,9 +408,9 @@ async function uploadFileWithProgress(file, onProgress) {
         reject(new Error(`Upload failed: ${xhr.statusText}`));
       }
     };
-    
+
     xhr.onerror = () => reject(new Error('Network error'));
-    
+
     xhr.open('POST', '/api/upload');
     xhr.send(formData);
   });
@@ -411,18 +419,17 @@ async function uploadFileWithProgress(file, onProgress) {
 async function handleFileUpload(file) {
   const progressBar = document.getElementById('progress');
   const statusDiv = document.getElementById('status');
-  
+
   try {
     statusDiv.textContent = 'Uploading...';
-    
+
     const result = await uploadFileWithProgress(file, (progress) => {
       progressBar.style.width = `${progress}%`;
       progressBar.textContent = `${progress}%`;
     });
-    
+
     statusDiv.textContent = 'Upload successful!';
     console.log('File uploaded:', result);
-    
   } catch (error) {
     statusDiv.textContent = `Upload failed: ${error.message}`;
     console.error('Upload error:', error);
@@ -436,28 +443,30 @@ async function handleFileUpload(file) {
 class UserService {
   async createUserWithProfile(userData, profileData) {
     const transaction = await db.beginTransaction();
-    
+
     try {
       // Create user record
       const user = await this.createUser(userData, transaction);
-      
+
       // Create profile record
-      const profile = await this.createProfile({
-        ...profileData,
-        userId: user.id
-      }, transaction);
-      
+      const profile = await this.createProfile(
+        {
+          ...profileData,
+          userId: user.id,
+        },
+        transaction
+      );
+
       // Create default settings
       const settings = await this.createDefaultSettings(user.id, transaction);
-      
+
       // Send welcome email
       await this.sendWelcomeEmail(user.email);
-      
+
       // Commit transaction
       await transaction.commit();
-      
+
       return { user, profile, settings };
-      
     } catch (error) {
       // Rollback transaction on any error
       await transaction.rollback();
@@ -465,52 +474,54 @@ class UserService {
       throw error;
     }
   }
-  
+
   async createUser(userData, transaction) {
     const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
     const result = await transaction.execute(query, [
       userData.name,
       userData.email,
-      await this.hashPassword(userData.password)
+      await this.hashPassword(userData.password),
     ]);
-    
+
     return { id: result.insertId, ...userData };
   }
-  
+
   async createProfile(profileData, transaction) {
-    const query = 'INSERT INTO profiles (user_id, bio, avatar) VALUES (?, ?, ?)';
+    const query =
+      'INSERT INTO profiles (user_id, bio, avatar) VALUES (?, ?, ?)';
     await transaction.execute(query, [
       profileData.userId,
       profileData.bio,
-      profileData.avatar
+      profileData.avatar,
     ]);
-    
+
     return profileData;
   }
-  
+
   async createDefaultSettings(userId, transaction) {
     const defaultSettings = {
       userId,
       theme: 'light',
       notifications: true,
-      privacy: 'public'
+      privacy: 'public',
     };
-    
-    const query = 'INSERT INTO settings (user_id, theme, notifications, privacy) VALUES (?, ?, ?, ?)';
+
+    const query =
+      'INSERT INTO settings (user_id, theme, notifications, privacy) VALUES (?, ?, ?, ?)';
     await transaction.execute(query, Object.values(defaultSettings));
-    
+
     return defaultSettings;
   }
-  
+
   async sendWelcomeEmail(email) {
     const emailService = new EmailService();
     return await emailService.send({
       to: email,
       subject: 'Welcome to our platform!',
-      template: 'welcome'
+      template: 'welcome',
     });
   }
-  
+
   async hashPassword(password) {
     const bcrypt = require('bcrypt');
     return await bcrypt.hash(password, 10);
@@ -579,7 +590,7 @@ function simpler() {
 // ❌ Slow - runs sequentially (3 seconds total)
 async function slow() {
   const a = await fetchA(); // 1 second
-  const b = await fetchB(); // 1 second  
+  const b = await fetchB(); // 1 second
   const c = await fetchC(); // 1 second
   return [a, b, c];
 }
@@ -589,7 +600,7 @@ async function fast() {
   const [a, b, c] = await Promise.all([
     fetchA(), // All start simultaneously
     fetchB(),
-    fetchC()
+    fetchC(),
   ]);
   return [a, b, c];
 }
@@ -603,4 +614,6 @@ async function fast() {
 - **Sequential** = One thing after another (slower)
 - **Parallel** = All things at once (faster)
 
-Async/await makes asynchronous JavaScript feel synchronous while keeping all the benefits of non-blocking code. It's the modern way to handle Promises and makes your code much more readable and maintainable!
+Async/await makes asynchronous JavaScript feel synchronous while keeping all the
+benefits of non-blocking code. It's the modern way to handle Promises and makes
+your code much more readable and maintainable!

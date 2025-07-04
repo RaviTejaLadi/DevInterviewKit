@@ -29,7 +29,7 @@
 27. [Sum of beauty of all substrings (count of chars between min/max freq)](#sum-of-beauty-of-all-substrings-count-of-chars-between-minmax-freq)
 28. [Max subarray sum after K concatenations](#max-subarray-sum-after-k-concatenations)
 29. [Number of subarrays with median K](#number-of-subarrays-with-median-k)
-30. [Count reverse pairs (i<j, nums[i]>2*nums[j])](#count-reverse-pairs-ij-numsi2numsj)
+30. [Count reverse pairs (i<j, nums[i]>2\*nums[j])](#count-reverse-pairs-ij-numsi2numsj)
 31. [Max sum of non-adjacent elements](#max-sum-of-non-adjacent-elements)
 32. [Number of quadruplets summing to zero (4Sum Count)](#number-of-quadruplets-summing-to-zero-4sum-count)
 33. [Min swaps to group all 1s together](#min-swaps-to-group-all-1s-together)

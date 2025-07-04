@@ -1,6 +1,7 @@
 # JavaScript `call`, `apply`, and `bind`
 
-These three methods are used to **control the context (`this`)** inside functions and to **invoke functions** in a flexible way.
+These three methods are used to **control the context (`this`)** inside
+functions and to **invoke functions** in a flexible way.
 
 ---
 
@@ -8,7 +9,8 @@ These three methods are used to **control the context (`this`)** inside function
 
 ### ✅ Definition:
 
-The `call()` method calls a function with a given `this` value and **arguments provided individually**.
+The `call()` method calls a function with a given `this` value and **arguments
+provided individually**.
 
 ---
 
@@ -18,15 +20,15 @@ The `call()` method calls a function with a given `this` value and **arguments p
 functionName.call(thisArg, arg1, arg2, ...);
 ```
 
-* `thisArg`: The value to use as `this` when calling the function.
-* `arg1, arg2, ...`: Arguments passed **individually** to the function.
+- `thisArg`: The value to use as `this` when calling the function.
+- `arg1, arg2, ...`: Arguments passed **individually** to the function.
 
 ---
 
 ### 🔧 Usage:
 
-* To **borrow a method** from another object.
-* To **set `this` explicitly**.
+- To **borrow a method** from another object.
+- To **set `this` explicitly**.
 
 ---
 
@@ -49,7 +51,8 @@ greet.call(person, 'Hello', '!');
 
 ### ✅ Definition:
 
-The `apply()` method calls a function with a given `this` value and **arguments provided as an array (or array-like object)**.
+The `apply()` method calls a function with a given `this` value and **arguments
+provided as an array (or array-like object)**.
 
 ---
 
@@ -59,14 +62,14 @@ The `apply()` method calls a function with a given `this` value and **arguments 
 functionName.apply(thisArg, [arg1, arg2, ...]);
 ```
 
-* `thisArg`: The value to use as `this`.
-* `[arg1, arg2, ...]`: Arguments passed **as an array**.
+- `thisArg`: The value to use as `this`.
+- `[arg1, arg2, ...]`: Arguments passed **as an array**.
 
 ---
 
 ### 🔧 Usage:
 
-* Similar to `call()`, but when arguments are **already in an array**.
+- Similar to `call()`, but when arguments are **already in an array**.
 
 ---
 
@@ -89,7 +92,8 @@ greet.apply(person, ['Hi', '.']);
 
 ### ✅ Definition:
 
-The `bind()` method returns a **new function**, with `this` bound to the provided value. It **does not invoke** the function immediately.
+The `bind()` method returns a **new function**, with `this` bound to the
+provided value. It **does not invoke** the function immediately.
 
 ---
 
@@ -99,15 +103,16 @@ The `bind()` method returns a **new function**, with `this` bound to the provide
 const newFunc = functionName.bind(thisArg, arg1, arg2, ...);
 ```
 
-* `thisArg`: The value to use as `this`.
-* `arg1, arg2, ...`: Arguments optionally pre-filled (partial application).
+- `thisArg`: The value to use as `this`.
+- `arg1, arg2, ...`: Arguments optionally pre-filled (partial application).
 
 ---
 
 ### 🔧 Usage:
 
-* Useful when **passing a method as a callback** and you want to preserve `this`.
-* Used for **partial function application**.
+- Useful when **passing a method as a callback** and you want to preserve
+  `this`.
+- Used for **partial function application**.
 
 ---
 
@@ -129,12 +134,12 @@ greetPerson('?');
 
 ## 🆚 Comparison Table
 
-| Feature            | `call()`        | `apply()`        | `bind()`                       |
-| ------------------ | --------------- | ---------------- | ------------------------------ |
-| Executes function? | ✅ Yes           | ✅ Yes            | ❌ No (returns new function)    |
-| Arguments format   | List (`a, b`)   | Array (`[a, b]`) | List or partial (`a, b`)       |
-| Changes `this`?    | ✅ Yes           | ✅ Yes            | ✅ Yes (permanently for new fn) |
-| Returns value?     | Function result | Function result  | New bound function             |
+| Feature            | `call()`        | `apply()`        | `bind()`                        |
+| ------------------ | --------------- | ---------------- | ------------------------------- |
+| Executes function? | ✅ Yes          | ✅ Yes           | ❌ No (returns new function)    |
+| Arguments format   | List (`a, b`)   | Array (`[a, b]`) | List or partial (`a, b`)        |
+| Changes `this`?    | ✅ Yes          | ✅ Yes           | ✅ Yes (permanently for new fn) |
+| Returns value?     | Function result | Function result  | New bound function              |
 
 ---
 
@@ -145,18 +150,18 @@ const person1 = {
   name: 'Alice',
   greet() {
     console.log(`Hello, I'm ${this.name}`);
-  }
+  },
 };
 
 const person2 = { name: 'Bob' };
 
-person1.greet.call(person2);  // Output: Hello, I'm Bob
+person1.greet.call(person2); // Output: Hello, I'm Bob
 ```
 
 ---
 
 ## 🧠 Summary
 
-* Use **`call()`** when you have arguments individually.
-* Use **`apply()`** when arguments are in an array.
-* Use **`bind()`** when you need a new function with a bound `this`.
+- Use **`call()`** when you have arguments individually.
+- Use **`apply()`** when arguments are in an array.
+- Use **`bind()`** when you need a new function with a bound `this`.

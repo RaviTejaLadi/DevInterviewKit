@@ -4,8 +4,9 @@
 
 ## 📌 1. What is Error Handling?
 
-**Definition:**
-Error handling in JavaScript is a **mechanism** to gracefully handle runtime errors (e.g., undefined variables, network issues) **without crashing** the program.
+**Definition:** Error handling in JavaScript is a **mechanism** to gracefully
+handle runtime errors (e.g., undefined variables, network issues) **without
+crashing** the program.
 
 > It helps in maintaining the **flow of code** even when something goes wrong.
 
@@ -82,9 +83,9 @@ try {
 ```js
 try {
   const result = 10 / 0;
-  console.log("Result:", result);
+  console.log('Result:', result);
 } catch (error) {
-  console.log("An error occurred:", error.message);
+  console.log('An error occurred:', error.message);
 }
 ```
 
@@ -100,7 +101,7 @@ Try again with a real error:
 try {
   const data = undefinedVariable; // ReferenceError
 } catch (error) {
-  console.log("Caught:", error.message);
+  console.log('Caught:', error.message);
 }
 ```
 
@@ -116,12 +117,12 @@ Caught: undefinedVariable is not defined
 
 ```js
 try {
-  console.log("Trying...");
-  throw new Error("Something broke!");
+  console.log('Trying...');
+  throw new Error('Something broke!');
 } catch (error) {
-  console.log("Caught:", error.message);
+  console.log('Caught:', error.message);
 } finally {
-  console.log("Cleanup done!");
+  console.log('Cleanup done!');
 }
 ```
 
@@ -140,7 +141,7 @@ Cleanup done!
 ```js
 function validateAge(age) {
   if (age < 18) {
-    throw new Error("Age must be 18 or above");
+    throw new Error('Age must be 18 or above');
   }
   return true;
 }
@@ -148,7 +149,7 @@ function validateAge(age) {
 try {
   validateAge(16);
 } catch (err) {
-  console.log("Validation Error:", err.message);
+  console.log('Validation Error:', err.message);
 }
 ```
 
@@ -164,11 +165,11 @@ try {
 
 ```js
 try {
-  throw new TypeError("Wrong type!");
+  throw new TypeError('Wrong type!');
 } catch (err) {
-  console.log(err.name);    // TypeError
+  console.log(err.name); // TypeError
   console.log(err.message); // Wrong type!
-  console.log(err.stack);   // Call stack trace
+  console.log(err.stack); // Call stack trace
 }
 ```
 
@@ -180,14 +181,14 @@ try {
 class ValidationError extends Error {
   constructor(message) {
     super(message);
-    this.name = "ValidationError";
+    this.name = 'ValidationError';
   }
 }
 
 try {
-  throw new ValidationError("Invalid email format");
+  throw new ValidationError('Invalid email format');
 } catch (err) {
-  console.log(err.name);    // ValidationError
+  console.log(err.name); // ValidationError
   console.log(err.message); // Invalid email format
 }
 ```
@@ -196,12 +197,10 @@ try {
 
 ## 🧠 10. Best Practices
 
-✅ Always handle errors where they might occur
-✅ Avoid silent failures (`catch {}` with empty body)
-✅ Log meaningful error messages
-✅ Use custom error types when needed
-✅ Don’t catch errors you can’t handle
-✅ Use `finally` for resource cleanup
+✅ Always handle errors where they might occur ✅ Avoid silent failures
+(`catch {}` with empty body) ✅ Log meaningful error messages ✅ Use custom
+error types when needed ✅ Don’t catch errors you can’t handle ✅ Use `finally`
+for resource cleanup
 
 ---
 
@@ -210,11 +209,11 @@ try {
 ```js
 async function fetchData() {
   try {
-    const res = await fetch("https://invalid-url.com");
+    const res = await fetch('https://invalid-url.com');
     const data = await res.json();
     console.log(data);
   } catch (error) {
-    console.error("Fetch Error:", error.message);
+    console.error('Fetch Error:', error.message);
   }
 }
 ```

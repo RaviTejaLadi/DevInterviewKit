@@ -1,6 +1,8 @@
 # Introduction to Express.js
 
-Express.js is a fast, unopinionated, and minimalist web framework for Node.js. It's one of the most popular frameworks for building web applications and APIs in the Node.js ecosystem.
+Express.js is a fast, unopinionated, and minimalist web framework for Node.js.
+It's one of the most popular frameworks for building web applications and APIs
+in the Node.js ecosystem.
 
 ## Table of Contents
 
@@ -10,14 +12,16 @@ Express.js is a fast, unopinionated, and minimalist web framework for Node.js. I
 - [Common Use Cases](#common-use-cases)
 - [Advantages](#advantages)
 
-
 ## Key Features
 
-1. **Minimalist**: Express provides a thin layer of fundamental web application features without obscuring Node.js features.
+1. **Minimalist**: Express provides a thin layer of fundamental web application
+   features without obscuring Node.js features.
 2. **Middleware**: Uses a middleware approach to handle requests and responses.
-3. **Routing**: Offers a robust routing system to handle different HTTP requests.
+3. **Routing**: Offers a robust routing system to handle different HTTP
+   requests.
 4. **Fast**: Lightweight and performs well for web applications.
-5. **Flexible**: Can be used for full web applications (server-side rendered) or just as an API backend.
+5. **Flexible**: Can be used for full web applications (server-side rendered) or
+   just as an API backend.
 
 ## Basic Setup
 
@@ -45,7 +49,9 @@ app.listen(PORT, () => {
 ## Core Concepts
 
 ### Middleware
-Middleware functions have access to the request object (`req`), the response object (`res`), and the next middleware function in the cycle.
+
+Middleware functions have access to the request object (`req`), the response
+object (`res`), and the next middleware function in the cycle.
 
 ```javascript
 app.use((req, res, next) => {
@@ -55,7 +61,9 @@ app.use((req, res, next) => {
 ```
 
 ### Routing
-Express provides methods that correspond to HTTP methods (`get`, `post`, `put`, `delete`, etc.)
+
+Express provides methods that correspond to HTTP methods (`get`, `post`, `put`,
+`delete`, etc.)
 
 ```javascript
 app.get('/about', (req, res) => {
@@ -68,7 +76,9 @@ app.post('/users', (req, res) => {
 ```
 
 ### Request and Response Objects
-- `req`: Contains information about the HTTP request (parameters, query strings, headers, etc.)
+
+- `req`: Contains information about the HTTP request (parameters, query strings,
+  headers, etc.)
 - `res`: Used to send the HTTP response
 
 ```javascript
@@ -93,6 +103,8 @@ app.get('/users/:userId', (req, res) => {
 - Great for both small and large applications
 - Active community support
 
-Express provides just the core features you need while allowing you to add other libraries as needed (for databases, authentication, etc.), making it extremely flexible for various use cases.
+Express provides just the core features you need while allowing you to add other
+libraries as needed (for databases, authentication, etc.), making it extremely
+flexible for various use cases.
 
 **[⬆ Back to Top](#table-of-contents)**

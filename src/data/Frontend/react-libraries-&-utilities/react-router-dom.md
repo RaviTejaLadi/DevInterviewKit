@@ -15,22 +15,26 @@
     - [Route Configuration File](#1.-route-configuration-file)
     - [Lazy Loading with Code Splitting](#2.-lazy-loading-with-code-splitting)
     - [Nested Routes with Layouts](#3.-nested-routes-with-layouts)
-    - [Protected Routes (Authentication)](#4.-protected-routes-(authentication))
+    - [Protected Routes (Authentication)](<#4.-protected-routes-(authentication)>)
 - [Advanced Features](#advanced-features)
   - [Programmatic Navigation](#1.-programmatic-navigation)
   - [Query Parameters](#2.-query-parameters)
-  - [Route Loaders (Data Fetching)](#3.-route-loaders-(data-fetching))
+  - [Route Loaders (Data Fetching)](<#3.-route-loaders-(data-fetching)>)
 - [Best Practices](#best-practices)
 - [Example: Complete Small App Structure](#example:-complete-small-app-structure)
 
 ## What is React Router DOM?
 
-React Router DOM is the most popular routing library for React applications. It enables navigation between views (components) in a React application, allows the browser URL to be changed, and keeps the UI in sync with the URL.
+React Router DOM is the most popular routing library for React applications. It
+enables navigation between views (components) in a React application, allows the
+browser URL to be changed, and keeps the UI in sync with the URL.
 
 ## Key Advantages of React Router DOM
 
-1. **Declarative routing**: Define routes in a declarative way similar to React components
-2. **Dynamic routing**: Routes can be loaded dynamically based on the app's needs
+1. **Declarative routing**: Define routes in a declarative way similar to React
+   components
+2. **Dynamic routing**: Routes can be loaded dynamically based on the app's
+   needs
 3. **Nested routes**: Supports complex nested route structures
 4. **Navigation**: Provides easy-to-use navigation components
 5. **URL parameters**: Supports URL parameters and query strings
@@ -55,10 +59,7 @@ yarn add react-router-dom
 // main.tsx or App.tsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // Import your components
 import Home from './pages/Home';
@@ -67,12 +68,12 @@ import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "about",
+    path: 'about',
     element: <About />,
   },
 ]);
@@ -101,7 +102,7 @@ function App() {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
       </nav>
-      
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -118,7 +119,7 @@ function App() {
 // App.tsx
 <Routes>
   <Route path="/users/:userId" element={<UserProfile />} />
-</Routes>
+</Routes>;
 
 // UserProfile.tsx
 import { useParams } from 'react-router-dom';
@@ -377,6 +378,8 @@ createRoot(document.getElementById('root')!).render(
 );
 ```
 
-React Router DOM provides a flexible and powerful way to handle routing in React applications, from small single-page apps to large enterprise applications with complex routing needs.
+React Router DOM provides a flexible and powerful way to handle routing in React
+applications, from small single-page apps to large enterprise applications with
+complex routing needs.
 
 **[⬆ Back to Top](#table-of-contents)**

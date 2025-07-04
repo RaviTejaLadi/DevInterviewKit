@@ -1,6 +1,7 @@
 # React State Management - Complete Guide
 
 ## Table of Contents
+
 1. [Introduction to State](#introduction-to-state)
 2. [useState Hook](#usestate-hook)
 3. [useReducer Hook](#usereducer-hook)
@@ -15,36 +16,46 @@
 ## Introduction to State
 
 ### Definition
-State in React represents data that can change over time and affects what gets rendered on the screen. When state changes, React automatically re-renders the component to reflect the new state.
+
+State in React represents data that can change over time and affects what gets
+rendered on the screen. When state changes, React automatically re-renders the
+component to reflect the new state.
 
 ### Key Characteristics
+
 - **Mutable**: State can be updated during the component's lifecycle
 - **Local**: Each component instance has its own state
 - **Reactive**: Changes trigger re-renders automatically
 - **Preserved**: State persists between re-renders
 
 ### Types of State
+
 1. **Local State**: Managed within a single component
 2. **Shared State**: Shared between multiple components
 3. **Global State**: Available throughout the entire application
 4. **Server State**: Data fetched from external sources
 
 ### State vs Props
-| State | Props |
-|-------|-------|
-| Mutable | Immutable |
-| Owned by component | Passed from parent |
-| Can be changed | Read-only |
-| Internal to component | External input |
+
+| State                 | Props              |
+| --------------------- | ------------------ |
+| Mutable               | Immutable          |
+| Owned by component    | Passed from parent |
+| Can be changed        | Read-only          |
+| Internal to component | External input     |
 
 ---
 
 ## useState Hook
 
 ### Definition
-`useState` is a React Hook that allows functional components to have local state. It returns an array with the current state value and a function to update it.
+
+`useState` is a React Hook that allows functional components to have local
+state. It returns an array with the current state value and a function to update
+it.
 
 ### Syntax
+
 ```jsx
 const [state, setState] = useState(initialValue);
 ```
@@ -52,6 +63,7 @@ const [state, setState] = useState(initialValue);
 ### Basic Usage
 
 #### Simple State
+
 ```jsx
 import React, { useState } from 'react';
 
@@ -61,21 +73,16 @@ function Counter() {
   return (
     <div>
       <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
-      <button onClick={() => setCount(count - 1)}>
-        Decrement
-      </button>
-      <button onClick={() => setCount(0)}>
-        Reset
-      </button>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+      <button onClick={() => setCount(0)}>Reset</button>
     </div>
   );
 }
 ```
 
 #### Multiple State Variables
+
 ```jsx
 function UserForm() {
   const [name, setName] = useState('');
@@ -119,6 +126,7 @@ function UserForm() {
 ### Advanced useState Patterns
 
 #### Object State
+
 ```jsx
 function UserProfile() {
   const [user, setUser] = useState({
@@ -126,24 +134,24 @@ function UserProfile() {
     email: '',
     preferences: {
       theme: 'light',
-      notifications: true
-    }
+      notifications: true,
+    },
   });
 
   const updateUser = (field, value) => {
-    setUser(prevUser => ({
+    setUser((prevUser) => ({
       ...prevUser,
-      [field]: value
+      [field]: value,
     }));
   };
 
   const updatePreference = (preference, value) => {
-    setUser(prevUser => ({
+    setUser((prevUser) => ({
       ...prevUser,
       preferences: {
         ...prevUser.preferences,
-        [preference]: value
-      }
+        [preference]: value,
+      },
     }));
   };
 
@@ -182,6 +190,7 @@ function UserProfile() {
 ```
 
 #### Array State
+
 ```jsx
 function TodoList() {
   const [todos, setTodos] = useState([]);
@@ -189,28 +198,26 @@ function TodoList() {
 
   const addTodo = () => {
     if (inputValue.trim()) {
-      setTodos(prevTodos => [
+      setTodos((prevTodos) => [
         ...prevTodos,
         {
           id: Date.now(),
           text: inputValue,
-          completed: false
-        }
+          completed: false,
+        },
       ]);
       setInputValue('');
     }
   };
 
   const removeTodo = (id) => {
-    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   const toggleTodo = (id) => {
-    setTodos(prevTodos =>
-      prevTodos.map(todo =>
-        todo.id === id
-          ? { ...todo, completed: !todo.completed }
-          : todo
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
   };
@@ -227,16 +234,18 @@ function TodoList() {
         <button onClick={addTodo}>Add</button>
       </div>
       <ul>
-        {todos.map(todo => (
+        {todos.map((todo) => (
           <li key={todo.id}>
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={() => toggleTodo(todo.id)}
             />
-            <span style={{
-              textDecoration: todo.completed ? 'line-through' : 'none'
-            }}>
+            <span
+              style={{
+                textDecoration: todo.completed ? 'line-through' : 'none',
+              }}
+            >
               {todo.text}
             </span>
             <button onClick={() => removeTodo(todo.id)}>Remove</button>
@@ -249,24 +258,25 @@ function TodoList() {
 ```
 
 #### Functional State Updates
+
 ```jsx
 function Calculator() {
   const [result, setResult] = useState(0);
   const [history, setHistory] = useState([]);
 
   const performOperation = (operation, value) => {
-    setResult(prevResult => {
+    setResult((prevResult) => {
       const newResult = operation(prevResult, value);
-      
+
       // Update history using functional update
-      setHistory(prevHistory => [
+      setHistory((prevHistory) => [
         ...prevHistory,
         {
           operation: `${prevResult} → ${newResult}`,
-          timestamp: new Date().toLocaleTimeString()
-        }
+          timestamp: new Date().toLocaleTimeString(),
+        },
       ]);
-      
+
       return newResult;
     });
   };
@@ -305,6 +315,7 @@ function Calculator() {
 ```
 
 #### Lazy Initial State
+
 ```jsx
 function ExpensiveComponent() {
   // Expensive computation only runs once
@@ -312,15 +323,15 @@ function ExpensiveComponent() {
     console.log('Computing initial state...');
     return Array.from({ length: 1000 }, (_, i) => ({
       id: i,
-      value: Math.random()
+      value: Math.random(),
     }));
   });
 
   const refreshData = () => {
-    setData(prevData =>
-      prevData.map(item => ({
+    setData((prevData) =>
+      prevData.map((item) => ({
         ...item,
-        value: Math.random()
+        value: Math.random(),
       }))
     );
   };
@@ -339,9 +350,13 @@ function ExpensiveComponent() {
 ## useReducer Hook
 
 ### Definition
-`useReducer` is a React Hook that provides an alternative to `useState` for managing complex state logic. It's particularly useful when state transitions depend on the previous state or when managing multiple related state variables.
+
+`useReducer` is a React Hook that provides an alternative to `useState` for
+managing complex state logic. It's particularly useful when state transitions
+depend on the previous state or when managing multiple related state variables.
 
 ### Syntax
+
 ```jsx
 const [state, dispatch] = useReducer(reducer, initialState);
 ```
@@ -349,6 +364,7 @@ const [state, dispatch] = useReducer(reducer, initialState);
 ### Basic Usage
 
 #### Simple Counter with useReducer
+
 ```jsx
 import React, { useReducer } from 'react';
 
@@ -374,15 +390,9 @@ function Counter() {
   return (
     <div>
       <p>Count: {state.count}</p>
-      <button onClick={() => dispatch({ type: 'INCREMENT' })}>
-        +1
-      </button>
-      <button onClick={() => dispatch({ type: 'DECREMENT' })}>
-        -1
-      </button>
-      <button onClick={() => dispatch({ type: 'RESET' })}>
-        Reset
-      </button>
+      <button onClick={() => dispatch({ type: 'INCREMENT' })}>+1</button>
+      <button onClick={() => dispatch({ type: 'DECREMENT' })}>-1</button>
+      <button onClick={() => dispatch({ type: 'RESET' })}>Reset</button>
       <button onClick={() => dispatch({ type: 'SET', payload: 10 })}>
         Set to 10
       </button>
@@ -394,6 +404,7 @@ function Counter() {
 ### Complex State Management
 
 #### Todo Application with useReducer
+
 ```jsx
 function todoReducer(state, action) {
   switch (action.type) {
@@ -405,47 +416,47 @@ function todoReducer(state, action) {
           {
             id: Date.now(),
             text: action.payload,
-            completed: false
-          }
-        ]
+            completed: false,
+          },
+        ],
       };
 
     case 'REMOVE_TODO':
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.id !== action.payload)
+        todos: state.todos.filter((todo) => todo.id !== action.payload),
       };
 
     case 'TOGGLE_TODO':
       return {
         ...state,
-        todos: state.todos.map(todo =>
+        todos: state.todos.map((todo) =>
           todo.id === action.payload
             ? { ...todo, completed: !todo.completed }
             : todo
-        )
+        ),
       };
 
     case 'EDIT_TODO':
       return {
         ...state,
-        todos: state.todos.map(todo =>
+        todos: state.todos.map((todo) =>
           todo.id === action.payload.id
             ? { ...todo, text: action.payload.text }
             : todo
-        )
+        ),
       };
 
     case 'SET_FILTER':
       return {
         ...state,
-        filter: action.payload
+        filter: action.payload,
       };
 
     case 'CLEAR_COMPLETED':
       return {
         ...state,
-        todos: state.todos.filter(todo => !todo.completed)
+        todos: state.todos.filter((todo) => !todo.completed),
       };
 
     default:
@@ -456,7 +467,7 @@ function todoReducer(state, action) {
 function TodoApp() {
   const [state, dispatch] = useReducer(todoReducer, {
     todos: [],
-    filter: 'all'
+    filter: 'all',
   });
 
   const [inputValue, setInputValue] = useState('');
@@ -468,7 +479,7 @@ function TodoApp() {
     }
   };
 
-  const filteredTodos = state.todos.filter(todo => {
+  const filteredTodos = state.todos.filter((todo) => {
     if (state.filter === 'active') return !todo.completed;
     if (state.filter === 'completed') return todo.completed;
     return true;
@@ -501,7 +512,9 @@ function TodoApp() {
         </button>
         <button
           onClick={() => dispatch({ type: 'SET_FILTER', payload: 'completed' })}
-          style={{ fontWeight: state.filter === 'completed' ? 'bold' : 'normal' }}
+          style={{
+            fontWeight: state.filter === 'completed' ? 'bold' : 'normal',
+          }}
         >
           Completed
         </button>
@@ -511,16 +524,18 @@ function TodoApp() {
       </div>
 
       <ul>
-        {filteredTodos.map(todo => (
+        {filteredTodos.map((todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
             onToggle={() => dispatch({ type: 'TOGGLE_TODO', payload: todo.id })}
             onRemove={() => dispatch({ type: 'REMOVE_TODO', payload: todo.id })}
-            onEdit={(text) => dispatch({
-              type: 'EDIT_TODO',
-              payload: { id: todo.id, text }
-            })}
+            onEdit={(text) =>
+              dispatch({
+                type: 'EDIT_TODO',
+                payload: { id: todo.id, text },
+              })
+            }
           />
         ))}
       </ul>
@@ -539,11 +554,7 @@ function TodoItem({ todo, onToggle, onRemove, onEdit }) {
 
   return (
     <li>
-      <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={onToggle}
-      />
+      <input type="checkbox" checked={todo.completed} onChange={onToggle} />
       {isEditing ? (
         <div>
           <input
@@ -556,9 +567,11 @@ function TodoItem({ todo, onToggle, onRemove, onEdit }) {
         </div>
       ) : (
         <div>
-          <span style={{
-            textDecoration: todo.completed ? 'line-through' : 'none'
-          }}>
+          <span
+            style={{
+              textDecoration: todo.completed ? 'line-through' : 'none',
+            }}
+          >
             {todo.text}
           </span>
           <button onClick={() => setIsEditing(true)}>Edit</button>
@@ -571,6 +584,7 @@ function TodoItem({ todo, onToggle, onRemove, onEdit }) {
 ```
 
 #### Form State Management
+
 ```jsx
 function formReducer(state, action) {
   switch (action.type) {
@@ -579,12 +593,12 @@ function formReducer(state, action) {
         ...state,
         values: {
           ...state.values,
-          [action.field]: action.value
+          [action.field]: action.value,
         },
         errors: {
           ...state.errors,
-          [action.field]: ''
-        }
+          [action.field]: '',
+        },
       };
 
     case 'SET_ERROR':
@@ -592,21 +606,21 @@ function formReducer(state, action) {
         ...state,
         errors: {
           ...state.errors,
-          [action.field]: action.error
-        }
+          [action.field]: action.error,
+        },
       };
 
     case 'SET_LOADING':
       return {
         ...state,
-        isLoading: action.payload
+        isLoading: action.payload,
       };
 
     case 'RESET_FORM':
       return {
         values: { name: '', email: '', password: '' },
         errors: {},
-        isLoading: false
+        isLoading: false,
       };
 
     default:
@@ -618,12 +632,12 @@ function RegistrationForm() {
   const [state, dispatch] = useReducer(formReducer, {
     values: { name: '', email: '', password: '' },
     errors: {},
-    isLoading: false
+    isLoading: false,
   });
 
   const validateField = (field, value) => {
     let error = '';
-    
+
     switch (field) {
       case 'name':
         if (!value.trim()) error = 'Name is required';
@@ -635,14 +649,15 @@ function RegistrationForm() {
         break;
       case 'password':
         if (!value) error = 'Password is required';
-        else if (value.length < 6) error = 'Password must be at least 6 characters';
+        else if (value.length < 6)
+          error = 'Password must be at least 6 characters';
         break;
     }
 
     if (error) {
       dispatch({ type: 'SET_ERROR', field, error });
     }
-    
+
     return !error;
   };
 
@@ -656,17 +671,17 @@ function RegistrationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const isValid = Object.keys(state.values).every(field =>
+
+    const isValid = Object.keys(state.values).every((field) =>
       validateField(field, state.values[field])
     );
 
     if (isValid) {
       dispatch({ type: 'SET_LOADING', payload: true });
-      
+
       try {
         // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
         console.log('Form submitted:', state.values);
         dispatch({ type: 'RESET_FORM' });
       } catch (error) {
@@ -687,7 +702,9 @@ function RegistrationForm() {
           onChange={(e) => handleChange('name', e.target.value)}
           onBlur={() => handleBlur('name')}
         />
-        {state.errors.name && <span className="error">{state.errors.name}</span>}
+        {state.errors.name && (
+          <span className="error">{state.errors.name}</span>
+        )}
       </div>
 
       <div>
@@ -698,7 +715,9 @@ function RegistrationForm() {
           onChange={(e) => handleChange('email', e.target.value)}
           onBlur={() => handleBlur('email')}
         />
-        {state.errors.email && <span className="error">{state.errors.email}</span>}
+        {state.errors.email && (
+          <span className="error">{state.errors.email}</span>
+        )}
       </div>
 
       <div>
@@ -709,7 +728,9 @@ function RegistrationForm() {
           onChange={(e) => handleChange('password', e.target.value)}
           onBlur={() => handleBlur('password')}
         />
-        {state.errors.password && <span className="error">{state.errors.password}</span>}
+        {state.errors.password && (
+          <span className="error">{state.errors.password}</span>
+        )}
       </div>
 
       <button type="submit" disabled={state.isLoading}>
@@ -725,11 +746,15 @@ function RegistrationForm() {
 ## Context API
 
 ### Definition
-The Context API provides a way to share data between components without having to pass props down manually at every level. It's designed for sharing data that can be considered "global" for a tree of React components.
+
+The Context API provides a way to share data between components without having
+to pass props down manually at every level. It's designed for sharing data that
+can be considered "global" for a tree of React components.
 
 ### Basic Context Setup
 
 #### Creating and Using Context
+
 ```jsx
 import React, { createContext, useContext, useState } from 'react';
 
@@ -739,20 +764,18 @@ const ThemeContext = createContext();
 // Provider Component
 function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('light');
-  
+
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   const value = {
     theme,
-    toggleTheme
+    toggleTheme,
   };
 
   return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
 
@@ -778,12 +801,14 @@ function App() {
 
 function Header() {
   const { theme, toggleTheme } = useTheme();
-  
+
   return (
-    <header style={{
-      backgroundColor: theme === 'light' ? '#fff' : '#333',
-      color: theme === 'light' ? '#333' : '#fff'
-    }}>
+    <header
+      style={{
+        backgroundColor: theme === 'light' ? '#fff' : '#333',
+        color: theme === 'light' ? '#333' : '#fff',
+      }}
+    >
       <h1>My App</h1>
       <button onClick={toggleTheme}>
         Switch to {theme === 'light' ? 'dark' : 'light'} theme
@@ -794,13 +819,15 @@ function Header() {
 
 function MainContent() {
   const { theme } = useTheme();
-  
+
   return (
-    <main style={{
-      backgroundColor: theme === 'light' ? '#f5f5f5' : '#222',
-      color: theme === 'light' ? '#333' : '#fff',
-      minHeight: '400px'
-    }}>
+    <main
+      style={{
+        backgroundColor: theme === 'light' ? '#f5f5f5' : '#222',
+        color: theme === 'light' ? '#333' : '#fff',
+        minHeight: '400px',
+      }}
+    >
       <p>This is the main content area.</p>
       <UserProfile />
     </main>
@@ -809,13 +836,15 @@ function MainContent() {
 
 function UserProfile() {
   const { theme } = useTheme();
-  
+
   return (
-    <div style={{
-      border: `1px solid ${theme === 'light' ? '#ccc' : '#555'}`,
-      padding: '10px',
-      margin: '10px'
-    }}>
+    <div
+      style={{
+        border: `1px solid ${theme === 'light' ? '#ccc' : '#555'}`,
+        padding: '10px',
+        margin: '10px',
+      }}
+    >
       <h3>User Profile</h3>
       <p>Theme: {theme}</p>
     </div>
@@ -824,14 +853,16 @@ function UserProfile() {
 
 function Footer() {
   const { theme } = useTheme();
-  
+
   return (
-    <footer style={{
-      backgroundColor: theme === 'light' ? '#e9e9e9' : '#111',
-      color: theme === 'light' ? '#333' : '#fff',
-      padding: '20px',
-      textAlign: 'center'
-    }}>
+    <footer
+      style={{
+        backgroundColor: theme === 'light' ? '#e9e9e9' : '#111',
+        color: theme === 'light' ? '#333' : '#fff',
+        padding: '20px',
+        textAlign: 'center',
+      }}
+    >
       <p>&copy; 2024 My App</p>
     </footer>
   );
@@ -841,6 +872,7 @@ function Footer() {
 ### Complex Context with useReducer
 
 #### Authentication Context
+
 ```jsx
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
@@ -854,41 +886,41 @@ function authReducer(state, action) {
       return {
         ...state,
         isLoading: true,
-        error: null
+        error: null,
       };
-    
+
     case 'LOGIN_SUCCESS':
       return {
         ...state,
         isLoading: false,
         isAuthenticated: true,
         user: action.payload,
-        error: null
+        error: null,
       };
-    
+
     case 'LOGIN_FAILURE':
       return {
         ...state,
         isLoading: false,
         isAuthenticated: false,
         user: null,
-        error: action.payload
+        error: action.payload,
       };
-    
+
     case 'LOGOUT':
       return {
         ...state,
         isAuthenticated: false,
         user: null,
-        error: null
+        error: null,
       };
-    
+
     case 'UPDATE_USER':
       return {
         ...state,
-        user: { ...state.user, ...action.payload }
+        user: { ...state.user, ...action.payload },
       };
-    
+
     default:
       return state;
   }
@@ -900,7 +932,7 @@ function AuthProvider({ children }) {
     isAuthenticated: false,
     user: null,
     isLoading: false,
-    error: null
+    error: null,
   });
 
   // Check for existing session on mount
@@ -917,9 +949,9 @@ function AuthProvider({ children }) {
     try {
       // Simulate API call
       const response = await fetch('/api/verify-token', {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       });
-      
+
       if (response.ok) {
         const user = await response.json();
         dispatch({ type: 'LOGIN_SUCCESS', payload: user });
@@ -936,16 +968,19 @@ function AuthProvider({ children }) {
     dispatch({ type: 'LOGIN_START' });
     try {
       // Simulate login API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      if (credentials.email === 'user@example.com' && credentials.password === 'password') {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      if (
+        credentials.email === 'user@example.com' &&
+        credentials.password === 'password'
+      ) {
         const user = {
           id: 1,
           email: credentials.email,
-          name: 'John Doe'
+          name: 'John Doe',
         };
         const token = 'fake-jwt-token';
-        
+
         localStorage.setItem('token', token);
         dispatch({ type: 'LOGIN_SUCCESS', payload: user });
       } else {
@@ -969,14 +1004,10 @@ function AuthProvider({ children }) {
     ...state,
     login,
     logout,
-    updateUser
+    updateUser,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 // Custom hook
@@ -1005,10 +1036,12 @@ function LoginForm() {
           type="email"
           placeholder="Email"
           value={credentials.email}
-          onChange={(e) => setCredentials(prev => ({
-            ...prev,
-            email: e.target.value
-          }))}
+          onChange={(e) =>
+            setCredentials((prev) => ({
+              ...prev,
+              email: e.target.value,
+            }))
+          }
           required
         />
       </div>
@@ -1017,10 +1050,12 @@ function LoginForm() {
           type="password"
           placeholder="Password"
           value={credentials.password}
-          onChange={(e) => setCredentials(prev => ({
-            ...prev,
-            password: e.target.value
-          }))}
+          onChange={(e) =>
+            setCredentials((prev) => ({
+              ...prev,
+              password: e.target.value,
+            }))
+          }
           required
         />
       </div>
@@ -1060,7 +1095,7 @@ function Dashboard() {
       <div>
         <p>Welcome, {user?.name}!</p>
         <p>Email: {user?.email}</p>
-        
+
         {isEditing ? (
           <div>
             <input
@@ -1074,7 +1109,7 @@ function Dashboard() {
         ) : (
           <button onClick={() => setIsEditing(true)}>Edit Name</button>
         )}
-        
+
         <button onClick={logout}>Logout</button>
       </div>
     </div>
@@ -1094,6 +1129,7 @@ function App() {
 ```
 
 ### Multiple Contexts
+
 ```jsx
 // Multiple context providers
 function AppProviders({ children }) {
@@ -1101,9 +1137,7 @@ function AppProviders({ children }) {
     <AuthProvider>
       <ThemeProvider>
         <NotificationProvider>
-          <SettingsProvider>
-            {children}
-          </SettingsProvider>
+          <SettingsProvider>{children}</SettingsProvider>
         </NotificationProvider>
       </ThemeProvider>
     </AuthProvider>
@@ -1137,9 +1171,13 @@ function Header() {
 ## State Lifting
 
 ### Definition
-State lifting is the process of moving state up to the closest common ancestor of components that need to share that state. This allows multiple child components to access and modify the same state.
+
+State lifting is the process of moving state up to the closest common ancestor
+of components that need to share that state. This allows multiple child
+components to access and modify the same state.
 
 ### Basic State Lifting Example
+
 ```jsx
 // Parent component manages shared state
 function TemperatureApp() {
@@ -1157,7 +1195,8 @@ function TemperatureApp() {
   };
 
   const celsius = scale === 'fahrenheit' ? toCelsius(temperature) : temperature;
-  const fahrenheit = scale === 'celsius' ? toFahrenheit(temperature) : temperature;
+  const fahrenheit =
+    scale === 'celsius' ? toFahrenheit(temperature) : temperature;
 
   return (
     <div>
@@ -1180,7 +1219,7 @@ function TemperatureApp() {
 function TemperatureInput({ scale, temperature, onTemperatureChange }) {
   const scaleNames = {
     celsius: 'Celsius',
-    fahrenheit: 'Fahrenheit'
+    fahrenheit: 'Fahrenheit',
   };
 
   return (
@@ -1203,35 +1242,38 @@ function BoilingVerdict({ celsius }) {
 
 // Utility functions
 function toCelsius(fahrenheit) {
-  return (fahrenheit - 32) * 5 / 9;
+  return ((fahrenheit - 32) * 5) / 9;
 }
 
 function toFahrenheit(celsius) {
-  return (celsius * 9 / 5) + 32;
+  return (celsius * 9) / 5 + 32;
 }
 ```
 
 ### Complex State Lifting Example
+
 ```jsx
 // Shopping Cart Application
 function ShoppingApp() {
   const [products] = useState([
     { id: 1, name: 'Laptop', price: 999, stock: 5 },
     { id: 2, name: 'Phone', price: 699, stock: 10 },
-    { id: 3, name: 'Tablet', price: 399, stock: 8 }
+    { id: 3, name: 'Tablet', price: 399, stock: 8 },
   ]);
 
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState({ name: 'John Doe', balance: 2000 });
 
   const addToCart = (productId, quantity = 1) => {
-    const product = products.find(p => p.id === productId);
+    const product = products.find((p) => p.id === productId);
     if (!product || product.stock < quantity) return;
 
-    setCart(prevCart => {
-      const existingItem = prevCart.find(item => item.productId === productId);
+    setCart((prevCart) => {
+      const existingItem = prevCart.find(
+        (item) => item.productId === productId
+      );
       if (existingItem) {
-        return prevCart.map(item =>
+        return prevCart.map((item) =>
           item.productId === productId
             ? { ...item, quantity: item.quantity + quantity }
             : item
@@ -1242,7 +1284,9 @@ function ShoppingApp() {
   };
 
   const removeFromCart = (productId) => {
-    setCart(prevCart => prevCart.filter(item => item.productId !== productId));
+    setCart((prevCart) =>
+      prevCart.filter((item) => item.productId !== productId)
+    );
   };
 
   const updateQuantity = (productId, quantity) => {
@@ -1251,11 +1295,9 @@ function ShoppingApp() {
       return;
     }
 
-    setCart(prevCart =>
-      prevCart.map(item =>
-        item.productId === productId
-          ? { ...item, quantity }
-          : item
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.productId === productId ? { ...item, quantity } : item
       )
     );
   };
@@ -1263,7 +1305,10 @@ function ShoppingApp() {
   const checkout = () => {
     const total = getCartTotal();
     if (user.balance >= total) {
-      setUser(prevUser => ({ ...prevUser, balance: prevUser.balance - total }));
+      setUser((prevUser) => ({
+        ...prevUser,
+        balance: prevUser.balance - total,
+      }));
       setCart([]);
       alert('Purchase successful!');
     } else {
@@ -1272,7 +1317,7 @@ function ShoppingApp() {
   };
 
   const getCartTotal = () => {
-    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
   const getCartItemsCount = () => {
@@ -1281,14 +1326,8 @@ function ShoppingApp() {
 
   return (
     <div>
-      <Header 
-        user={user} 
-        cartItemsCount={getCartItemsCount()} 
-      />
-      <ProductList 
-        products={products} 
-        onAddToCart={addToCart} 
-      />
+      <Header user={user} cartItemsCount={getCartItemsCount()} />
+      <ProductList products={products} onAddToCart={addToCart} />
       <Cart
         cart={cart}
         products={products}
@@ -1319,7 +1358,7 @@ function ProductList({ products, onAddToCart }) {
   return (
     <div>
       <h2>Products</h2>
-      {products.map(product => (
+      {products.map((product) => (
         <ProductItem
           key={product.id}
           product={product}
@@ -1336,7 +1375,7 @@ function ProductItem({ product, onAddToCart }) {
       <h3>{product.name}</h3>
       <p>Price: ${product.price}</p>
       <p>Stock: {product.stock}</p>
-      <button 
+      <button
         onClick={() => onAddToCart(product.id)}
         disabled={product.stock === 0}
       >
@@ -1346,7 +1385,15 @@ function ProductItem({ product, onAddToCart }) {
   );
 }
 
-function Cart({ cart, products, onUpdateQuantity, onRemoveFromCart, onCheckout, total, userBalance }) {
+function Cart({
+  cart,
+  products,
+  onUpdateQuantity,
+  onRemoveFromCart,
+  onCheckout,
+  total,
+  userBalance,
+}) {
   if (cart.length === 0) {
     return <div>Your cart is empty</div>;
   }
@@ -1354,8 +1401,8 @@ function Cart({ cart, products, onUpdateQuantity, onRemoveFromCart, onCheckout, 
   return (
     <div>
       <h2>Shopping Cart</h2>
-      {cart.map(item => {
-        const product = products.find(p => p.id === item.productId);
+      {cart.map((item) => {
+        const product = products.find((p) => p.id === item.productId);
         return (
           <CartItem
             key={item.productId}
@@ -1368,10 +1415,7 @@ function Cart({ cart, products, onUpdateQuantity, onRemoveFromCart, onCheckout, 
       })}
       <div>
         <h3>Total: ${total}</h3>
-        <button 
-          onClick={onCheckout}
-          disabled={userBalance < total}
-        >
+        <button onClick={onCheckout} disabled={userBalance < total}>
           Checkout
         </button>
       </div>
@@ -1385,11 +1429,15 @@ function CartItem({ item, product, onUpdateQuantity, onRemove }) {
       <h4>{product.name}</h4>
       <p>Price: ${item.price}</p>
       <div>
-        <button onClick={() => onUpdateQuantity(item.productId, item.quantity - 1)}>
+        <button
+          onClick={() => onUpdateQuantity(item.productId, item.quantity - 1)}
+        >
           -
         </button>
         <span>Quantity: {item.quantity}</span>
-        <button onClick={() => onUpdateQuantity(item.productId, item.quantity + 1)}>
+        <button
+          onClick={() => onUpdateQuantity(item.productId, item.quantity + 1)}
+        >
           +
         </button>
       </div>
@@ -1405,15 +1453,18 @@ function CartItem({ item, product, onUpdateQuantity, onRemove }) {
 ## Local vs Global State
 
 ### Local State
+
 State that belongs to a single component and doesn't need to be shared.
 
 #### When to Use Local State
+
 - Form input values
 - UI state (modals, dropdowns, toggles)
 - Component-specific data
 - Temporary state
 
 #### Examples of Local State
+
 ```jsx
 // Modal component with local state
 function Modal({ isOpen, onClose, children }) {
@@ -1428,7 +1479,7 @@ function Modal({ isOpen, onClose, children }) {
   if (!isOpen && !isAnimating) return null;
 
   return (
-    <div 
+    <div
       className={`modal ${isAnimating ? 'modal-open' : ''}`}
       onClick={onClose}
     >
@@ -1454,7 +1505,7 @@ function SearchComponent({ onSearch }) {
         setSuggestions([
           `${query} suggestion 1`,
           `${query} suggestion 2`,
-          `${query} suggestion 3`
+          `${query} suggestion 3`,
         ]);
         setIsLoading(false);
       }, 300);
@@ -1475,7 +1526,7 @@ function SearchComponent({ onSearch }) {
       {suggestions.length > 0 && (
         <ul className="suggestions">
           {suggestions.map((suggestion, index) => (
-            <li 
+            <li
               key={index}
               onClick={() => {
                 setQuery(suggestion);
@@ -1494,9 +1545,11 @@ function SearchComponent({ onSearch }) {
 ```
 
 ### Global State
+
 State that needs to be accessed by multiple components across the application.
 
 #### When to Use Global State
+
 - User authentication
 - Application theme
 - Language/localization
@@ -1505,6 +1558,7 @@ State that needs to be accessed by multiple components across the application.
 - App-wide settings
 
 #### Global State Implementation
+
 ```jsx
 // Global App State using Context + useReducer
 const AppStateContext = createContext();
@@ -1513,31 +1567,33 @@ function appStateReducer(state, action) {
   switch (action.type) {
     case 'SET_USER':
       return { ...state, user: action.payload };
-    
+
     case 'SET_THEME':
       return { ...state, theme: action.payload };
-    
+
     case 'ADD_NOTIFICATION':
       return {
         ...state,
-        notifications: [...state.notifications, action.payload]
+        notifications: [...state.notifications, action.payload],
       };
-    
+
     case 'REMOVE_NOTIFICATION':
       return {
         ...state,
-        notifications: state.notifications.filter(n => n.id !== action.payload)
+        notifications: state.notifications.filter(
+          (n) => n.id !== action.payload
+        ),
       };
-    
+
     case 'SET_LANGUAGE':
       return { ...state, language: action.payload };
-    
+
     case 'UPDATE_SETTINGS':
       return {
         ...state,
-        settings: { ...state.settings, ...action.payload }
+        settings: { ...state.settings, ...action.payload },
       };
-    
+
     default:
       return state;
   }
@@ -1552,8 +1608,8 @@ function AppStateProvider({ children }) {
     settings: {
       emailNotifications: true,
       pushNotifications: false,
-      autoSave: true
-    }
+      autoSave: true,
+    },
   });
 
   // Actions
@@ -1571,10 +1627,10 @@ function AppStateProvider({ children }) {
       id: Date.now(),
       message,
       type,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
     dispatch({ type: 'ADD_NOTIFICATION', payload: notification });
-    
+
     // Auto-remove after 5 seconds
     setTimeout(() => {
       dispatch({ type: 'REMOVE_NOTIFICATION', payload: notification.id });
@@ -1601,7 +1657,7 @@ function AppStateProvider({ children }) {
     addNotification,
     removeNotification,
     setLanguage,
-    updateSettings
+    updateSettings,
   };
 
   return (
@@ -1632,9 +1688,7 @@ function Navbar() {
   return (
     <nav className={`navbar ${theme}`}>
       <div>Welcome, {user?.name || 'Guest'}</div>
-      <button onClick={toggleTheme}>
-        {theme === 'light' ? '🌙' : '☀️'}
-      </button>
+      <button onClick={toggleTheme}>{theme === 'light' ? '🌙' : '☀️'}</button>
     </nav>
   );
 }
@@ -1644,15 +1698,13 @@ function NotificationCenter() {
 
   return (
     <div className="notification-center">
-      {notifications.map(notification => (
-        <div 
+      {notifications.map((notification) => (
+        <div
           key={notification.id}
           className={`notification ${notification.type}`}
         >
           <span>{notification.message}</span>
-          <button onClick={() => removeNotification(notification.id)}>
-            ×
-          </button>
+          <button onClick={() => removeNotification(notification.id)}>×</button>
         </div>
       ))}
     </div>
@@ -1665,6 +1717,7 @@ function NotificationCenter() {
 ## Advanced State Patterns
 
 ### Custom Hooks for State Logic
+
 ```jsx
 // Custom hook for form state management
 function useForm(initialValues, validationSchema) {
@@ -1674,25 +1727,25 @@ function useForm(initialValues, validationSchema) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const setValue = (name, value) => {
-    setValues(prev => ({ ...prev, [name]: value }));
-    
+    setValues((prev) => ({ ...prev, [name]: value }));
+
     // Clear error when user starts typing
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: '' }));
     }
   };
 
   const setTouched = (name) => {
-    setTouched(prev => ({ ...prev, [name]: true }));
+    setTouched((prev) => ({ ...prev, [name]: true }));
   };
 
   const validate = () => {
     const newErrors = {};
-    
-    Object.keys(validationSchema).forEach(field => {
+
+    Object.keys(validationSchema).forEach((field) => {
       const rules = validationSchema[field];
       const value = values[field];
-      
+
       for (const rule of rules) {
         if (!rule.test(value)) {
           newErrors[field] = rule.message;
@@ -1700,21 +1753,21 @@ function useForm(initialValues, validationSchema) {
         }
       }
     });
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (onSubmit) => {
     setIsSubmitting(true);
-    
+
     // Mark all fields as touched
     const allTouched = Object.keys(initialValues).reduce((acc, key) => {
       acc[key] = true;
       return acc;
     }, {});
     setTouched(allTouched);
-    
+
     if (validate()) {
       try {
         await onSubmit(values);
@@ -1722,7 +1775,7 @@ function useForm(initialValues, validationSchema) {
         console.error('Form submission error:', error);
       }
     }
-    
+
     setIsSubmitting(false);
   };
 
@@ -1742,7 +1795,7 @@ function useForm(initialValues, validationSchema) {
     setTouched,
     handleSubmit,
     reset,
-    isValid: Object.keys(errors).length === 0
+    isValid: Object.keys(errors).length === 0,
   };
 }
 
@@ -1750,36 +1803,53 @@ function useForm(initialValues, validationSchema) {
 function ContactForm() {
   const validationSchema = {
     name: [
-      { test: (value) => value && value.trim().length > 0, message: 'Name is required' },
-      { test: (value) => value && value.length >= 2, message: 'Name must be at least 2 characters' }
+      {
+        test: (value) => value && value.trim().length > 0,
+        message: 'Name is required',
+      },
+      {
+        test: (value) => value && value.length >= 2,
+        message: 'Name must be at least 2 characters',
+      },
     ],
     email: [
-      { test: (value) => value && value.trim().length > 0, message: 'Email is required' },
-      { test: (value) => /\S+@\S+\.\S+/.test(value), message: 'Email is invalid' }
+      {
+        test: (value) => value && value.trim().length > 0,
+        message: 'Email is required',
+      },
+      {
+        test: (value) => /\S+@\S+\.\S+/.test(value),
+        message: 'Email is invalid',
+      },
     ],
     message: [
-      { test: (value) => value && value.trim().length > 0, message: 'Message is required' },
-      { test: (value) => value && value.length >= 10, message: 'Message must be at least 10 characters' }
-    ]
+      {
+        test: (value) => value && value.trim().length > 0,
+        message: 'Message is required',
+      },
+      {
+        test: (value) => value && value.length >= 10,
+        message: 'Message must be at least 10 characters',
+      },
+    ],
   };
 
-  const form = useForm(
-    { name: '', email: '', message: '' },
-    validationSchema
-  );
+  const form = useForm({ name: '', email: '', message: '' }, validationSchema);
 
   const onSubmit = async (values) => {
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log('Form submitted:', values);
     form.reset();
   };
 
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      form.handleSubmit(onSubmit);
-    }}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        form.handleSubmit(onSubmit);
+      }}
+    >
       <div>
         <input
           type="text"
@@ -1827,18 +1897,19 @@ function ContactForm() {
 ```
 
 ### State Machine Pattern
+
 ```jsx
 // Simple state machine for data fetching
 function useAsyncState() {
   const [state, setState] = useState({
     status: 'idle', // idle | loading | success | error
     data: null,
-    error: null
+    error: null,
   });
 
   const execute = async (asyncFunction) => {
     setState({ status: 'loading', data: null, error: null });
-    
+
     try {
       const data = await asyncFunction();
       setState({ status: 'success', data, error: null });
@@ -1860,7 +1931,7 @@ function useAsyncState() {
     isIdle: state.status === 'idle',
     isLoading: state.status === 'loading',
     isSuccess: state.status === 'success',
-    isError: state.status === 'error'
+    isError: state.status === 'error',
   };
 }
 
@@ -1920,17 +1991,18 @@ function UserProfile({ userId }) {
 ### State Structure Best Practices
 
 #### 1. Keep State Flat
+
 ```jsx
 // Good: Flat state structure
 const [user, setUser] = useState({
   id: 1,
   name: 'John',
-  email: 'john@example.com'
+  email: 'john@example.com',
 });
 
 const [preferences, setPreferences] = useState({
   theme: 'light',
-  notifications: true
+  notifications: true,
 });
 
 // Avoid: Deeply nested state
@@ -1939,20 +2011,21 @@ const [appState, setAppState] = useState({
     profile: {
       personal: {
         name: 'John',
-        email: 'john@example.com'
-      }
-    }
-  }
+        email: 'john@example.com',
+      },
+    },
+  },
 });
 ```
 
 #### 2. Group Related State
+
 ```jsx
 // Good: Related state grouped together
 const [formState, setFormState] = useState({
   values: { name: '', email: '' },
   errors: {},
-  isSubmitting: false
+  isSubmitting: false,
 });
 
 // Less ideal: Separate state for related data
@@ -1962,15 +2035,16 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 ```
 
 #### 3. Use Proper State Updates
+
 ```jsx
 // Good: Functional updates for state that depends on previous state
 const increment = () => {
-  setCount(prevCount => prevCount + 1);
+  setCount((prevCount) => prevCount + 1);
 };
 
 // Good: Spread operator for object updates
 const updateUser = (newData) => {
-  setUser(prevUser => ({ ...prevUser, ...newData }));
+  setUser((prevUser) => ({ ...prevUser, ...newData }));
 };
 
 // Avoid: Direct state mutation
@@ -1983,9 +2057,13 @@ const badUpdate = () => {
 ### Performance Optimization
 
 #### 1. Minimize Re-renders
+
 ```jsx
 // Use React.memo for expensive components
-const ExpensiveComponent = React.memo(function ExpensiveComponent({ data, onUpdate }) {
+const ExpensiveComponent = React.memo(function ExpensiveComponent({
+  data,
+  onUpdate,
+}) {
   // Expensive rendering logic
   return <div>{/* Rendered content */}</div>;
 });
@@ -1993,18 +2071,16 @@ const ExpensiveComponent = React.memo(function ExpensiveComponent({ data, onUpda
 // Use useCallback for event handlers
 function ParentComponent() {
   const [items, setItems] = useState([]);
-  
+
   const handleItemUpdate = useCallback((id, newData) => {
-    setItems(prevItems =>
-      prevItems.map(item =>
-        item.id === id ? { ...item, ...newData } : item
-      )
+    setItems((prevItems) =>
+      prevItems.map((item) => (item.id === id ? { ...item, ...newData } : item))
     );
   }, []);
 
   return (
     <div>
-      {items.map(item => (
+      {items.map((item) => (
         <ExpensiveComponent
           key={item.id}
           data={item}
@@ -2017,6 +2093,7 @@ function ParentComponent() {
 ```
 
 #### 2. Optimize Context Usage
+
 ```jsx
 // Split contexts to prevent unnecessary re-renders
 const UserContext = createContext();
@@ -2028,19 +2105,18 @@ const AppContext = createContext();
 ```
 
 #### 3. Use Local State When Possible
+
 ```jsx
 // Good: Keep UI state local
 function Dropdown({ options, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <div>
-      <button onClick={() => setIsOpen(!isOpen)}>
-        Toggle Dropdown
-      </button>
+      <button onClick={() => setIsOpen(!isOpen)}>Toggle Dropdown</button>
       {isOpen && (
         <ul>
-          {options.map(option => (
+          {options.map((option) => (
             <li key={option.id} onClick={() => onSelect(option)}>
               {option.label}
             </li>
@@ -2055,12 +2131,14 @@ function Dropdown({ options, onSelect }) {
 ### State Management Guidelines
 
 #### 1. Choose the Right Tool
+
 - **useState**: Simple local state
 - **useReducer**: Complex state logic with multiple related values
 - **Context**: Avoiding prop drilling for global state
 - **External libraries**: Very complex global state management
 
 #### 2. Error Boundaries for State Errors
+
 ```jsx
 class StateErrorBoundary extends React.Component {
   constructor(props) {
@@ -2087,15 +2165,16 @@ class StateErrorBoundary extends React.Component {
 ```
 
 #### 3. Testing State Logic
+
 ```jsx
 // Custom hook for testing
 function useCounter(initialValue = 0) {
   const [count, setCount] = useState(initialValue);
-  
-  const increment = () => setCount(prev => prev + 1);
-  const decrement = () => setCount(prev => prev - 1);
+
+  const increment = () => setCount((prev) => prev + 1);
+  const decrement = () => setCount((prev) => prev - 1);
   const reset = () => setCount(initialValue);
-  
+
   return { count, increment, decrement, reset };
 }
 
@@ -2104,13 +2183,16 @@ import { renderHook, act } from '@testing-library/react';
 
 test('useCounter should increment count', () => {
   const { result } = renderHook(() => useCounter(0));
-  
+
   act(() => {
     result.current.increment();
   });
-  
+
   expect(result.current.count).toBe(1);
 });
 ```
 
-This comprehensive guide covers all aspects of React State Management, from basic useState to complex patterns with Context API and custom hooks. Each section provides practical examples and best practices to help you effectively manage state in your React applications.
+This comprehensive guide covers all aspects of React State Management, from
+basic useState to complex patterns with Context API and custom hooks. Each
+section provides practical examples and best practices to help you effectively
+manage state in your React applications.

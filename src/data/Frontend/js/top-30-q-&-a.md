@@ -50,7 +50,7 @@ function factorial(n) {
 const fib = (n, memo = {}) => {
   if (n <= 1) return n;
   if (memo[n]) return memo[n];
-  return memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
+  return (memo[n] = fib(n - 1, memo) + fib(n - 2, memo));
 };
 ```
 
@@ -116,7 +116,7 @@ function charCount(str) {
 function firstUniqueChar(str) {
   const map = {};
   for (let char of str) map[char] = (map[char] || 0) + 1;
-  return [...str].find(c => map[c] === 1) || null;
+  return [...str].find((c) => map[c] === 1) || null;
 }
 ```
 
@@ -126,7 +126,9 @@ function firstUniqueChar(str) {
 
 ```js
 function mergeSorted(arr1, arr2) {
-  let i = 0, j = 0, result = [];
+  let i = 0,
+    j = 0,
+    result = [];
   while (i < arr1.length && j < arr2.length) {
     result.push(arr1[i] < arr2[j] ? arr1[i++] : arr2[j++]);
   }
@@ -140,11 +142,12 @@ function mergeSorted(arr1, arr2) {
 
 ```js
 function binarySearch(arr, target) {
-  let left = 0, right = arr.length - 1;
+  let left = 0,
+    right = arr.length - 1;
   while (left <= right) {
     const mid = Math.floor((left + right) / 2);
     if (arr[mid] === target) return mid;
-    arr[mid] < target ? left = mid + 1 : right = mid - 1;
+    arr[mid] < target ? (left = mid + 1) : (right = mid - 1);
   }
   return -1;
 }
@@ -183,7 +186,8 @@ function moveZeroes(arr) {
 
 ```js
 function isValid(s) {
-  const stack = [], map = { '(': ')', '{': '}', '[': ']' };
+  const stack = [],
+    map = { '(': ')', '{': '}', '[': ']' };
   for (let c of s) {
     if (map[c]) stack.push(map[c]);
     else if (stack.pop() !== c) return false;
@@ -218,10 +222,18 @@ function deepClone(obj) {
 
 ```js
 class Queue {
-  constructor() { this.q = []; }
-  enqueue(val) { this.q.push(val); }
-  dequeue() { return this.q.shift(); }
-  peek() { return this.q[0]; }
+  constructor() {
+    this.q = [];
+  }
+  enqueue(val) {
+    this.q.push(val);
+  }
+  dequeue() {
+    return this.q.shift();
+  }
+  peek() {
+    return this.q[0];
+  }
 }
 ```
 
@@ -231,10 +243,18 @@ class Queue {
 
 ```js
 class Stack {
-  constructor() { this.s = []; }
-  push(val) { this.s.push(val); }
-  pop() { return this.s.pop(); }
-  peek() { return this.s[this.s.length - 1]; }
+  constructor() {
+    this.s = [];
+  }
+  push(val) {
+    this.s.push(val);
+  }
+  pop() {
+    return this.s.pop();
+  }
+  peek() {
+    return this.s[this.s.length - 1];
+  }
 }
 ```
 
@@ -255,7 +275,7 @@ function rotate(arr, k) {
 
 ```js
 function intersection(a, b) {
-  return [...new Set(a)].filter(x => new Set(b).has(x));
+  return [...new Set(a)].filter((x) => new Set(b).has(x));
 }
 ```
 
@@ -265,7 +285,7 @@ function intersection(a, b) {
 
 ```js
 function longestWord(str) {
-  return str.split(' ').reduce((a, b) => a.length > b.length ? a : b);
+  return str.split(' ').reduce((a, b) => (a.length > b.length ? a : b));
 }
 ```
 
@@ -322,10 +342,11 @@ function isSorted(arr) {
 
 ```js
 function romanToInt(s) {
-  const map = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
+  const map = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
   let total = 0;
   for (let i = 0; i < s.length; i++) {
-    const curr = map[s[i]], next = map[s[i + 1]];
+    const curr = map[s[i]],
+      next = map[s[i + 1]];
     total += curr < next ? -curr : curr;
   }
   return total;
@@ -361,7 +382,8 @@ class LRU {
   }
   put(key, val) {
     if (this.map.has(key)) this.map.delete(key);
-    else if (this.map.size === this.capacity) this.map.delete(this.map.keys().next().value);
+    else if (this.map.size === this.capacity)
+      this.map.delete(this.map.keys().next().value);
     this.map.set(key, val);
   }
 }

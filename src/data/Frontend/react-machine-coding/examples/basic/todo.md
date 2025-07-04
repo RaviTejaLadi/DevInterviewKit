@@ -1,6 +1,7 @@
 # Simple TODO Component with useState and useReducer
 
-Here are implementations of a TODO component using both `useState` and `useReducer` in JavaScript and TypeScript.
+Here are implementations of a TODO component using both `useState` and
+`useReducer` in JavaScript and TypeScript.
 
 ## JavaScript Versions
 
@@ -22,14 +23,14 @@ const TodoUseState = () => {
 
   const toggleTodo = (id) => {
     setTodos(
-      todos.map(todo =>
+      todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
   };
 
   const deleteTodo = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
@@ -44,17 +45,24 @@ const TodoUseState = () => {
       />
       <button onClick={addTodo}>Add</button>
       <ul style={{ listStyle: 'none', padding: 0 }}>
-        {todos.map(todo => (
+        {todos.map((todo) => (
           <li key={todo.id} style={{ margin: '10px 0' }}>
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={() => toggleTodo(todo.id)}
             />
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+            <span
+              style={{
+                textDecoration: todo.completed ? 'line-through' : 'none',
+              }}
+            >
               {todo.text}
             </span>
-            <button onClick={() => deleteTodo(todo.id)} style={{ marginLeft: '10px' }}>
+            <button
+              onClick={() => deleteTodo(todo.id)}
+              style={{ marginLeft: '10px' }}
+            >
               Delete
             </button>
           </li>
@@ -74,7 +82,7 @@ import React, { useReducer } from 'react';
 
 const initialState = {
   todos: [],
-  input: ''
+  input: '',
 };
 
 const reducer = (state, action) => {
@@ -84,20 +92,25 @@ const reducer = (state, action) => {
     case 'ADD_TODO':
       return {
         ...state,
-        todos: [...state.todos, { id: Date.now(), text: state.input, completed: false }],
-        input: ''
+        todos: [
+          ...state.todos,
+          { id: Date.now(), text: state.input, completed: false },
+        ],
+        input: '',
       };
     case 'TOGGLE_TODO':
       return {
         ...state,
-        todos: state.todos.map(todo =>
-          todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo
-        )
+        todos: state.todos.map((todo) =>
+          todo.id === action.payload
+            ? { ...todo, completed: !todo.completed }
+            : todo
+        ),
       };
     case 'DELETE_TODO':
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.id !== action.payload)
+        todos: state.todos.filter((todo) => todo.id !== action.payload),
       };
     default:
       return state;
@@ -119,24 +132,34 @@ const TodoUseReducer = () => {
       <input
         type="text"
         value={state.input}
-        onChange={(e) => dispatch({ type: 'SET_INPUT', payload: e.target.value })}
+        onChange={(e) =>
+          dispatch({ type: 'SET_INPUT', payload: e.target.value })
+        }
         onKeyPress={(e) => e.key === 'Enter' && addTodo()}
         placeholder="Add a new todo"
       />
       <button onClick={addTodo}>Add</button>
       <ul style={{ listStyle: 'none', padding: 0 }}>
-        {state.todos.map(todo => (
+        {state.todos.map((todo) => (
           <li key={todo.id} style={{ margin: '10px 0' }}>
             <input
               type="checkbox"
               checked={todo.completed}
-              onChange={() => dispatch({ type: 'TOGGLE_TODO', payload: todo.id })}
+              onChange={() =>
+                dispatch({ type: 'TOGGLE_TODO', payload: todo.id })
+              }
             />
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+            <span
+              style={{
+                textDecoration: todo.completed ? 'line-through' : 'none',
+              }}
+            >
               {todo.text}
             </span>
-            <button 
-              onClick={() => dispatch({ type: 'DELETE_TODO', payload: todo.id })} 
+            <button
+              onClick={() =>
+                dispatch({ type: 'DELETE_TODO', payload: todo.id })
+              }
               style={{ marginLeft: '10px' }}
             >
               Delete
@@ -177,14 +200,14 @@ const TodoUseState: React.FC = () => {
 
   const toggleTodo = (id: number): void => {
     setTodos(
-      todos.map(todo =>
+      todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
   };
 
   const deleteTodo = (id: number): void => {
-    setTodos(todos.filter(todo => todo.id !== id));
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
@@ -193,23 +216,32 @@ const TodoUseState: React.FC = () => {
       <input
         type="text"
         value={input}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setInput(e.target.value)
+        }
         onKeyPress={(e: React.KeyboardEvent) => e.key === 'Enter' && addTodo()}
         placeholder="Add a new todo"
       />
       <button onClick={addTodo}>Add</button>
       <ul style={{ listStyle: 'none', padding: 0 }}>
-        {todos.map(todo => (
+        {todos.map((todo) => (
           <li key={todo.id} style={{ margin: '10px 0' }}>
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={() => toggleTodo(todo.id)}
             />
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+            <span
+              style={{
+                textDecoration: todo.completed ? 'line-through' : 'none',
+              }}
+            >
               {todo.text}
             </span>
-            <button onClick={() => deleteTodo(todo.id)} style={{ marginLeft: '10px' }}>
+            <button
+              onClick={() => deleteTodo(todo.id)}
+              style={{ marginLeft: '10px' }}
+            >
               Delete
             </button>
           </li>
@@ -246,7 +278,7 @@ type Action =
 
 const initialState: State = {
   todos: [],
-  input: ''
+  input: '',
 };
 
 const reducer = (state: State, action: Action): State => {
@@ -256,20 +288,25 @@ const reducer = (state: State, action: Action): State => {
     case 'ADD_TODO':
       return {
         ...state,
-        todos: [...state.todos, { id: Date.now(), text: state.input, completed: false }],
-        input: ''
+        todos: [
+          ...state.todos,
+          { id: Date.now(), text: state.input, completed: false },
+        ],
+        input: '',
       };
     case 'TOGGLE_TODO':
       return {
         ...state,
-        todos: state.todos.map(todo =>
-          todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo
-        )
+        todos: state.todos.map((todo) =>
+          todo.id === action.payload
+            ? { ...todo, completed: !todo.completed }
+            : todo
+        ),
       };
     case 'DELETE_TODO':
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.id !== action.payload)
+        todos: state.todos.filter((todo) => todo.id !== action.payload),
       };
     default:
       return state;
@@ -291,7 +328,7 @@ const TodoUseReducer: React.FC = () => {
       <input
         type="text"
         value={state.input}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           dispatch({ type: 'SET_INPUT', payload: e.target.value })
         }
         onKeyPress={(e: React.KeyboardEvent) => e.key === 'Enter' && addTodo()}
@@ -299,18 +336,26 @@ const TodoUseReducer: React.FC = () => {
       />
       <button onClick={addTodo}>Add</button>
       <ul style={{ listStyle: 'none', padding: 0 }}>
-        {state.todos.map(todo => (
+        {state.todos.map((todo) => (
           <li key={todo.id} style={{ margin: '10px 0' }}>
             <input
               type="checkbox"
               checked={todo.completed}
-              onChange={() => dispatch({ type: 'TOGGLE_TODO', payload: todo.id })}
+              onChange={() =>
+                dispatch({ type: 'TOGGLE_TODO', payload: todo.id })
+              }
             />
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+            <span
+              style={{
+                textDecoration: todo.completed ? 'line-through' : 'none',
+              }}
+            >
               {todo.text}
             </span>
-            <button 
-              onClick={() => dispatch({ type: 'DELETE_TODO', payload: todo.id })} 
+            <button
+              onClick={() =>
+                dispatch({ type: 'DELETE_TODO', payload: todo.id })
+              }
               style={{ marginLeft: '10px' }}
             >
               Delete
@@ -326,6 +371,7 @@ export default TodoUseReducer;
 ```
 
 ### Key Differences in TypeScript Versions:
+
 1. Added interfaces for Todo items and State
 2. Defined Action types for useReducer
 3. Added type annotations for all function parameters and return values
@@ -333,9 +379,11 @@ export default TodoUseReducer;
 5. Type-safe state management with generics in useState and useReducer
 
 Both implementations provide the same functionality:
+
 - Add new todos
 - Toggle completion status
 - Delete todos
 - Input validation to prevent empty todos
 
-The useReducer version is more suitable for complex state logic, while useState is simpler for basic cases.
+The useReducer version is more suitable for complex state logic, while useState
+is simpler for basic cases.

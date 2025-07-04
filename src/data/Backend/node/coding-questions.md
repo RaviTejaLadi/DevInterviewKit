@@ -26,14 +26,13 @@
 - [23. Create a CLI application](#23.-create-a-cli-application)
 - [24. Implement real-time notifications](#24.-implement-real-time-notifications)
 
-
 ## 1. Write a simple HTTP server
 
 ```javascript
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Hello World!');
 });
 
@@ -88,17 +87,17 @@ class CustomEventEmitter {
   constructor() {
     this.events = {};
   }
-  
+
   on(event, listener) {
     if (!this.events[event]) {
       this.events[event] = [];
     }
     this.events[event].push(listener);
   }
-  
+
   emit(event, ...args) {
     if (this.events[event]) {
-      this.events[event].forEach(listener => listener(...args));
+      this.events[event].forEach((listener) => listener(...args));
     }
   }
 }
@@ -144,7 +143,7 @@ class NumberStream extends Readable {
     this.current = 0;
     this.max = 10;
   }
-  
+
   _read() {
     if (this.current < this.max) {
       this.push(`Number: ${this.current}\n`);
@@ -156,7 +155,7 @@ class NumberStream extends Readable {
 }
 
 const numberStream = new NumberStream();
-numberStream.on('data', chunk => console.log(chunk.toString()));
+numberStream.on('data', (chunk) => console.log(chunk.toString()));
 numberStream.on('end', () => console.log('Stream ended'));
 ```
 
@@ -173,22 +172,24 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
-  }
+  },
 });
 
-const upload = multer({ 
+const upload = multer({
   storage: storage,
   limits: { fileSize: 1024 * 1024 * 5 }, // 5MB limit
   fileFilter: (req, file, cb) => {
     const allowedTypes = /jpeg|jpg|png|gif/;
-    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+    const extname = allowedTypes.test(
+      path.extname(file.originalname).toLowerCase()
+    );
     const mimetype = allowedTypes.test(file.mimetype);
-    
+
     if (mimetype && extname) {
       return cb(null, true);
     }
     cb(new Error('Only image files allowed'));
-  }
+  },
 });
 
 const app = express();
@@ -209,14 +210,14 @@ const mongoose = require('mongoose');
 // Connection
 mongoose.connect('mongodb://localhost:27017/myapp', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 // Schema
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  age: { type: Number, min: 0 }
+  age: { type: Number, min: 0 },
 });
 
 const User = mongoose.model('User', userSchema);
@@ -267,16 +268,16 @@ function verifyToken(token) {
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
-  
+
   if (!token) {
     return res.sendStatus(401);
   }
-  
+
   const decoded = verifyToken(token);
   if (!decoded) {
     return res.sendStatus(403);
   }
-  
+
   req.user = decoded;
   next();
 }
@@ -301,7 +302,7 @@ const rateLimit = require('express-rate-limit');
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
-  message: 'Too many requests, please try again later'
+  message: 'Too many requests, please try again later',
 });
 
 // Custom rate limiter implementation
@@ -311,20 +312,20 @@ class RateLimiter {
     this.windowMs = windowMs;
     this.requests = new Map();
   }
-  
+
   isAllowed(ip) {
     const now = Date.now();
     const userRequests = this.requests.get(ip) || [];
-    
+
     // Remove old requests outside the window
     const validRequests = userRequests.filter(
-      timestamp => now - timestamp < this.windowMs
+      (timestamp) => now - timestamp < this.windowMs
     );
-    
+
     if (validRequests.length >= this.maxRequests) {
       return false;
     }
-    
+
     validRequests.push(now);
     this.requests.set(ip, validRequests);
     return true;
@@ -358,22 +359,22 @@ async function connectRedis() {
 function cache(duration = 300) {
   return async (req, res, next) => {
     const key = req.originalUrl;
-    
+
     try {
       const cachedData = await client.get(key);
       if (cachedData) {
         return res.json(JSON.parse(cachedData));
       }
-      
+
       // Store original send function
       const originalSend = res.json;
-      res.json = function(data) {
+      res.json = function (data) {
         // Cache the response
         client.setEx(key, duration, JSON.stringify(data));
         // Call original send
         originalSend.call(this, data);
       };
-      
+
       next();
     } catch (error) {
       next();
@@ -398,10 +399,10 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws, req) => {
   console.log('New client connected');
-  
+
   ws.on('message', (message) => {
     console.log('Received:', message.toString());
-    
+
     // Broadcast to all clients
     wss.clients.forEach((client) => {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
@@ -409,11 +410,11 @@ wss.on('connection', (ws, req) => {
       }
     });
   });
-  
+
   ws.on('close', () => {
     console.log('Client disconnected');
   });
-  
+
   // Send welcome message
   ws.send(JSON.stringify({ type: 'welcome', message: 'Connected to server' }));
 });
@@ -429,23 +430,26 @@ server.listen(8080, () => {
 // Global error handler
 function errorHandler(err, req, res, next) {
   console.error(err.stack);
-  
+
   if (err.name === 'ValidationError') {
     return res.status(400).json({
       error: 'Validation Error',
-      details: err.message
+      details: err.message,
     });
   }
-  
+
   if (err.name === 'CastError') {
     return res.status(400).json({
-      error: 'Invalid ID format'
+      error: 'Invalid ID format',
     });
   }
-  
+
   res.status(500).json({
     error: 'Internal Server Error',
-    message: process.env.NODE_ENV === 'production' ? 'Something went wrong' : err.message
+    message:
+      process.env.NODE_ENV === 'production'
+        ? 'Something went wrong'
+        : err.message,
   });
 }
 
@@ -462,19 +466,22 @@ class AppError extends Error {
     super(message);
     this.statusCode = statusCode;
     this.isOperational = true;
-    
+
     Error.captureStackTrace(this, this.constructor);
   }
 }
 
 // Usage
-app.get('/users/:id', asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id);
-  if (!user) {
-    throw new AppError('User not found', 404);
-  }
-  res.json(user);
-}));
+app.get(
+  '/users/:id',
+  asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      throw new AppError('User not found', 404);
+    }
+    res.json(user);
+  })
+);
 
 app.use(errorHandler);
 ```
@@ -482,7 +489,12 @@ app.use(errorHandler);
 ## 13. Create a worker thread pool
 
 ```javascript
-const { Worker, isMainThread, parentPort, workerData } = require('worker_threads');
+const {
+  Worker,
+  isMainThread,
+  parentPort,
+  workerData,
+} = require('worker_threads');
 const os = require('os');
 
 if (isMainThread) {
@@ -493,13 +505,13 @@ if (isMainThread) {
       this.workers = [];
       this.queue = [];
     }
-    
+
     async execute(data) {
       return new Promise((resolve, reject) => {
         const worker = this.getWorker();
-        
+
         worker.postMessage(data);
-        
+
         worker.once('message', (result) => {
           if (result.error) {
             reject(new Error(result.error));
@@ -508,26 +520,26 @@ if (isMainThread) {
           }
           this.releaseWorker(worker);
         });
-        
+
         worker.once('error', reject);
       });
     }
-    
+
     getWorker() {
       if (this.workers.length > 0) {
         return this.workers.pop();
       }
-      
+
       return new Worker(__filename);
     }
-    
+
     releaseWorker(worker) {
       this.workers.push(worker);
     }
   }
-  
+
   const pool = new WorkerPool(4);
-  
+
   // Example usage
   async function processData() {
     try {
@@ -537,7 +549,6 @@ if (isMainThread) {
       console.error('Error:', error.message);
     }
   }
-  
 } else {
   // Worker thread
   parentPort.on('message', (data) => {
@@ -545,7 +556,7 @@ if (isMainThread) {
       // Simulate CPU-intensive task
       const sum = data.numbers.reduce((acc, num) => acc + num, 0);
       const result = sum * 2;
-      
+
       parentPort.postMessage({ data: result });
     } catch (error) {
       parentPort.postMessage({ error: error.message });
@@ -572,16 +583,18 @@ function watchDirectory(dirPath) {
 function watchWithChokidar(dirPath) {
   const watcher = chokidar.watch(dirPath, {
     ignored: /(^|[\/\\])\../, // ignore dotfiles
-    persistent: true
+    persistent: true,
   });
-  
+
   watcher
-    .on('add', path => console.log(`File ${path} has been added`))
-    .on('change', path => console.log(`File ${path} has been changed`))
-    .on('unlink', path => console.log(`File ${path} has been removed`))
-    .on('addDir', path => console.log(`Directory ${path} has been added`))
-    .on('unlinkDir', path => console.log(`Directory ${path} has been removed`))
-    .on('error', error => console.log(`Watcher error: ${error}`))
+    .on('add', (path) => console.log(`File ${path} has been added`))
+    .on('change', (path) => console.log(`File ${path} has been changed`))
+    .on('unlink', (path) => console.log(`File ${path} has been removed`))
+    .on('addDir', (path) => console.log(`Directory ${path} has been added`))
+    .on('unlinkDir', (path) =>
+      console.log(`Directory ${path} has been removed`)
+    )
+    .on('error', (error) => console.log(`Watcher error: ${error}`))
     .on('ready', () => console.log('Initial scan complete. Ready for changes'));
 }
 
@@ -591,19 +604,22 @@ class FileWatcher {
     this.debounceMs = debounceMs;
     this.timeouts = new Map();
   }
-  
+
   watch(filePath, callback) {
     fs.watchFile(filePath, (curr, prev) => {
       const key = filePath;
-      
+
       if (this.timeouts.has(key)) {
         clearTimeout(this.timeouts.get(key));
       }
-      
-      this.timeouts.set(key, setTimeout(() => {
-        callback(curr, prev);
-        this.timeouts.delete(key);
-      }, this.debounceMs));
+
+      this.timeouts.set(
+        key,
+        setTimeout(() => {
+          callback(curr, prev);
+          this.timeouts.delete(key);
+        }, this.debounceMs)
+      );
     });
   }
 }
@@ -620,7 +636,7 @@ app.use(express.json());
 // In-memory storage (use database in production)
 let users = [
   { id: 1, name: 'John Doe', email: 'john@example.com' },
-  { id: 2, name: 'Jane Smith', email: 'jane@example.com' }
+  { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
 ];
 let nextId = 3;
 
@@ -628,31 +644,32 @@ let nextId = 3;
 app.get('/api/users', (req, res) => {
   const { page = 1, limit = 10, search } = req.query;
   let filteredUsers = users;
-  
+
   if (search) {
-    filteredUsers = users.filter(user => 
-      user.name.toLowerCase().includes(search.toLowerCase()) ||
-      user.email.toLowerCase().includes(search.toLowerCase())
+    filteredUsers = users.filter(
+      (user) =>
+        user.name.toLowerCase().includes(search.toLowerCase()) ||
+        user.email.toLowerCase().includes(search.toLowerCase())
     );
   }
-  
+
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
   const paginatedUsers = filteredUsers.slice(startIndex, endIndex);
-  
+
   res.json({
     users: paginatedUsers,
     pagination: {
       currentPage: parseInt(page),
       totalPages: Math.ceil(filteredUsers.length / limit),
-      total: filteredUsers.length
-    }
+      total: filteredUsers.length,
+    },
   });
 });
 
 // GET user by ID
 app.get('/api/users/:id', (req, res) => {
-  const user = users.find(u => u.id === parseInt(req.params.id));
+  const user = users.find((u) => u.id === parseInt(req.params.id));
   if (!user) {
     return res.status(404).json({ error: 'User not found' });
   }
@@ -662,16 +679,16 @@ app.get('/api/users/:id', (req, res) => {
 // CREATE new user
 app.post('/api/users', (req, res) => {
   const { name, email } = req.body;
-  
+
   if (!name || !email) {
     return res.status(400).json({ error: 'Name and email are required' });
   }
-  
-  const existingUser = users.find(u => u.email === email);
+
+  const existingUser = users.find((u) => u.email === email);
   if (existingUser) {
     return res.status(409).json({ error: 'Email already exists' });
   }
-  
+
   const newUser = { id: nextId++, name, email };
   users.push(newUser);
   res.status(201).json(newUser);
@@ -679,25 +696,25 @@ app.post('/api/users', (req, res) => {
 
 // UPDATE user
 app.put('/api/users/:id', (req, res) => {
-  const userIndex = users.findIndex(u => u.id === parseInt(req.params.id));
+  const userIndex = users.findIndex((u) => u.id === parseInt(req.params.id));
   if (userIndex === -1) {
     return res.status(404).json({ error: 'User not found' });
   }
-  
+
   const { name, email } = req.body;
   if (name) users[userIndex].name = name;
   if (email) users[userIndex].email = email;
-  
+
   res.json(users[userIndex]);
 });
 
 // DELETE user
 app.delete('/api/users/:id', (req, res) => {
-  const userIndex = users.findIndex(u => u.id === parseInt(req.params.id));
+  const userIndex = users.findIndex((u) => u.id === parseInt(req.params.id));
   if (userIndex === -1) {
     return res.status(404).json({ error: 'User not found' });
   }
-  
+
   users.splice(userIndex, 1);
   res.status(204).send();
 });
@@ -714,7 +731,10 @@ const userSchema = Joi.object({
   name: Joi.string().min(2).max(50).required(),
   email: Joi.string().email().required(),
   age: Joi.number().integer().min(0).max(120),
-  password: Joi.string().min(8).pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])')).required()
+  password: Joi.string()
+    .min(8)
+    .pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])'))
+    .required(),
 });
 
 function validateUser(req, res, next) {
@@ -722,7 +742,7 @@ function validateUser(req, res, next) {
   if (error) {
     return res.status(400).json({
       error: 'Validation failed',
-      details: error.details.map(detail => detail.message)
+      details: error.details.map((detail) => detail.message),
     });
   }
   next();
@@ -731,12 +751,21 @@ function validateUser(req, res, next) {
 // Using express-validator
 const userValidationRules = () => {
   return [
-    body('name').isLength({ min: 2, max: 50 }).withMessage('Name must be 2-50 characters'),
+    body('name')
+      .isLength({ min: 2, max: 50 })
+      .withMessage('Name must be 2-50 characters'),
     body('email').isEmail().withMessage('Must be a valid email'),
-    body('age').optional().isInt({ min: 0, max: 120 }).withMessage('Age must be 0-120'),
-    body('password').isLength({ min: 8 }).withMessage('Password must be at least 8 characters')
+    body('age')
+      .optional()
+      .isInt({ min: 0, max: 120 })
+      .withMessage('Age must be 0-120'),
+    body('password')
+      .isLength({ min: 8 })
+      .withMessage('Password must be at least 8 characters')
       .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/)
-      .withMessage('Password must contain uppercase, lowercase, number and special character')
+      .withMessage(
+        'Password must contain uppercase, lowercase, number and special character'
+      ),
   ];
 };
 
@@ -745,7 +774,7 @@ function validate(req, res, next) {
   if (!errors.isEmpty()) {
     return res.status(400).json({
       error: 'Validation failed',
-      details: errors.array()
+      details: errors.array(),
     });
   }
   next();
@@ -777,22 +806,22 @@ const transporter = nodemailer.createTransporter({
   service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
+    pass: process.env.EMAIL_PASS,
+  },
 });
 
 // Process email jobs
 emailQueue.process(async (job) => {
   const { to, subject, text } = job.data;
-  
+
   try {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to,
       subject,
-      text
+      text,
     });
-    
+
     console.log(`Email sent to ${to}`);
     return { success: true };
   } catch (error) {
@@ -804,11 +833,11 @@ emailQueue.process(async (job) => {
 // Process image jobs
 imageQueue.process(async (job) => {
   const { imagePath, operations } = job.data;
-  
+
   // Simulate image processing
   console.log(`Processing image: ${imagePath}`);
-  await new Promise(resolve => setTimeout(resolve, 2000));
-  
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+
   return { processedPath: `processed_${imagePath}` };
 });
 
@@ -819,19 +848,19 @@ async function sendEmail(emailData) {
     delay: 2000,
     backoff: {
       type: 'exponential',
-      delay: 2000
-    }
+      delay: 2000,
+    },
   });
-  
+
   return job.id;
 }
 
 async function processImage(imageData) {
   const job = await imageQueue.add('process-image', imageData, {
     priority: 10,
-    delay: 1000
+    delay: 1000,
   });
-  
+
   return job.id;
 }
 
@@ -871,7 +900,7 @@ const mysqlPool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0,
   acquireTimeout: 60000,
-  reconnect: true
+  reconnect: true,
 });
 
 // PostgreSQL connection pool
@@ -883,7 +912,7 @@ const pgPool = new Pool({
   port: 5432,
   max: 20,
   idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000
+  connectionTimeoutMillis: 2000,
 });
 
 // Database wrapper class
@@ -892,7 +921,7 @@ class Database {
     this.pool = pool;
     this.type = type;
   }
-  
+
   async query(sql, params = []) {
     try {
       if (this.type === 'mysql') {
@@ -907,19 +936,19 @@ class Database {
       throw error;
     }
   }
-  
+
   async transaction(queries) {
     const connection = await this.pool.getConnection();
-    
+
     try {
       await connection.beginTransaction();
-      
+
       const results = [];
       for (const { sql, params } of queries) {
         const result = await connection.execute(sql, params);
         results.push(result);
       }
-      
+
       await connection.commit();
       return results;
     } catch (error) {
@@ -929,7 +958,7 @@ class Database {
       connection.release();
     }
   }
-  
+
   async close() {
     await this.pool.end();
   }
@@ -957,13 +986,13 @@ const express = require('express');
 // Sample data
 let users = [
   { id: '1', name: 'John Doe', email: 'john@example.com', posts: ['1', '2'] },
-  { id: '2', name: 'Jane Smith', email: 'jane@example.com', posts: ['3'] }
+  { id: '2', name: 'Jane Smith', email: 'jane@example.com', posts: ['3'] },
 ];
 
 let posts = [
   { id: '1', title: 'Hello World', content: 'First post', authorId: '1' },
   { id: '2', title: 'GraphQL', content: 'Learning GraphQL', authorId: '1' },
-  { id: '3', title: 'Node.js', content: 'Node.js tips', authorId: '2' }
+  { id: '3', title: 'Node.js', content: 'Node.js tips', authorId: '2' },
 ];
 
 // GraphQL schema
@@ -974,28 +1003,28 @@ const typeDefs = gql`
     email: String!
     posts: [Post!]!
   }
-  
+
   type Post {
     id: ID!
     title: String!
     content: String!
     author: User!
   }
-  
+
   type Query {
     users: [User!]!
     user(id: ID!): User
     posts: [Post!]!
     post(id: ID!): Post
   }
-  
+
   type Mutation {
     createUser(name: String!, email: String!): User!
     createPost(title: String!, content: String!, authorId: ID!): Post!
     updateUser(id: ID!, name: String, email: String): User
     deleteUser(id: ID!): Boolean!
   }
-  
+
   type Subscription {
     userAdded: User!
     postAdded: Post!
@@ -1006,83 +1035,83 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     users: () => users,
-    user: (_, { id }) => users.find(user => user.id === id),
+    user: (_, { id }) => users.find((user) => user.id === id),
     posts: () => posts,
-    post: (_, { id }) => posts.find(post => post.id === id)
+    post: (_, { id }) => posts.find((post) => post.id === id),
   },
-  
+
   Mutation: {
     createUser: (_, { name, email }) => {
       const newUser = {
         id: String(users.length + 1),
         name,
         email,
-        posts: []
+        posts: [],
       };
       users.push(newUser);
       return newUser;
     },
-    
+
     createPost: (_, { title, content, authorId }) => {
       const newPost = {
         id: String(posts.length + 1),
         title,
         content,
-        authorId
+        authorId,
       };
       posts.push(newPost);
-      
+
       // Update user's posts
-      const user = users.find(u => u.id === authorId);
+      const user = users.find((u) => u.id === authorId);
       if (user) {
         user.posts.push(newPost.id);
       }
-      
+
       return newPost;
     },
-    
+
     updateUser: (_, { id, name, email }) => {
-      const user = users.find(u => u.id === id);
+      const user = users.find((u) => u.id === id);
       if (!user) return null;
-      
+
       if (name) user.name = name;
       if (email) user.email = email;
-      
+
       return user;
     },
-    
+
     deleteUser: (_, { id }) => {
-      const index = users.findIndex(u => u.id === id);
+      const index = users.findIndex((u) => u.id === id);
       if (index === -1) return false;
-      
+
       users.splice(index, 1);
       return true;
-    }
+    },
   },
-  
+
   User: {
-    posts: (user) => posts.filter(post => user.posts.includes(post.id))
+    posts: (user) => posts.filter((post) => user.posts.includes(post.id)),
   },
-  
+
   Post: {
-    author: (post) => users.find(user => user.id === post.authorId)
-  }
+    author: (post) => users.find((user) => user.id === post.authorId),
+  },
 };
 
 async function startServer() {
   const app = express();
-  
+
   const server = new ApolloServer({
     typeDefs,
     resolvers,
     context: ({ req }) => ({
-      user: req.user // Add authentication context
-    })
+      user: req.user, // Add authentication context
+    }),
   });
-  
+
   await server.start();
   server.applyMiddleware({ app });
-  
+
   app.listen(4000, () => {
     console.log(`Server ready at http://localhost:4000${server.graphqlPath}`);
   });
@@ -1104,41 +1133,45 @@ const app = express();
 // Redis session store
 const redisClient = redis.createClient({
   host: 'localhost',
-  port: 6379
+  port: 6379,
 });
 
 // Session configuration with Redis
-app.use(session({
-  store: new RedisStore({ client: redisClient }),
-  secret: 'your-secret-key',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: false, // Set to true in production with HTTPS
-    httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24 // 24 hours
-  }
-}));
+app.use(
+  session({
+    store: new RedisStore({ client: redisClient }),
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false, // Set to true in production with HTTPS
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24, // 24 hours
+    },
+  })
+);
 
 // Session configuration with MongoDB
-app.use(session({
-  store: MongoStore.create({
-    mongoUrl: 'mongodb://localhost:27017/sessions'
-  }),
-  secret: 'your-secret-key',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 24
-  }
-}));
+app.use(
+  session({
+    store: MongoStore.create({
+      mongoUrl: 'mongodb://localhost:27017/sessions',
+    }),
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24,
+    },
+  })
+);
 
 // Custom session manager
 class SessionManager {
   constructor() {
     this.sessions = new Map();
   }
-  
+
   create(userId, data = {}) {
     const sessionId = this.generateSessionId();
     const session = {
@@ -1146,13 +1179,13 @@ class SessionManager {
       userId,
       data,
       createdAt: new Date(),
-      lastAccessed: new Date()
+      lastAccessed: new Date(),
     };
-    
+
     this.sessions.set(sessionId, session);
     return sessionId;
   }
-  
+
   get(sessionId) {
     const session = this.sessions.get(sessionId);
     if (session) {
@@ -1161,7 +1194,7 @@ class SessionManager {
     }
     return null;
   }
-  
+
   update(sessionId, data) {
     const session = this.sessions.get(sessionId);
     if (session) {
@@ -1171,11 +1204,11 @@ class SessionManager {
     }
     return null;
   }
-  
+
   destroy(sessionId) {
     return this.sessions.delete(sessionId);
   }
-  
+
   cleanup(maxAge = 24 * 60 * 60 * 1000) {
     const now = new Date();
     for (const [sessionId, session] of this.sessions) {
@@ -1184,7 +1217,7 @@ class SessionManager {
       }
     }
   }
-  
+
   generateSessionId() {
     return require('crypto').randomBytes(32).toString('hex');
   }
@@ -1203,14 +1236,17 @@ function requireAuth(req, res, next) {
 // Login route
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
-  
+
   // Verify credentials (implement your logic)
   const user = await authenticateUser(email, password);
-  
+
   if (user) {
     req.session.userId = user.id;
     req.session.email = user.email;
-    res.json({ message: 'Login successful', user: { id: user.id, email: user.email } });
+    res.json({
+      message: 'Login successful',
+      user: { id: user.id, email: user.email },
+    });
   } else {
     res.status(401).json({ error: 'Invalid credentials' });
   }
@@ -1231,7 +1267,7 @@ app.post('/logout', (req, res) => {
 app.get('/profile', requireAuth, (req, res) => {
   res.json({
     userId: req.session.userId,
-    email: req.session.email
+    email: req.session.email,
   });
 });
 ```
@@ -1251,7 +1287,7 @@ const apiProxy = httpProxy.createProxyMiddleware({
   target: 'http://localhost:3001',
   changeOrigin: true,
   pathRewrite: {
-    '^/api': '' // Remove /api prefix
+    '^/api': '', // Remove /api prefix
   },
   onProxyReq: (proxyReq, req, res) => {
     console.log(`Proxying ${req.method} ${req.url}`);
@@ -1259,7 +1295,7 @@ const apiProxy = httpProxy.createProxyMiddleware({
   onError: (err, req, res) => {
     console.error('Proxy error:', err);
     res.status(500).json({ error: 'Proxy error' });
-  }
+  },
 });
 
 app.use('/api', apiProxy);
@@ -1270,13 +1306,13 @@ class LoadBalancer {
     this.servers = servers;
     this.currentIndex = 0;
   }
-  
+
   getNextServer() {
     const server = this.servers[this.currentIndex];
     this.currentIndex = (this.currentIndex + 1) % this.servers.length;
     return server;
   }
-  
+
   createProxy() {
     return (req, res) => {
       const target = this.getNextServer();
@@ -1289,12 +1325,12 @@ class LoadBalancer {
           const nextTarget = this.getNextServer();
           const retryProxy = httpProxy.createProxyMiddleware({
             target: nextTarget,
-            changeOrigin: true
+            changeOrigin: true,
           });
           retryProxy(req, res);
-        }
+        },
       });
-      
+
       proxy(req, res);
     };
   }
@@ -1303,7 +1339,7 @@ class LoadBalancer {
 const loadBalancer = new LoadBalancer([
   'http://localhost:3001',
   'http://localhost:3002',
-  'http://localhost:3003'
+  'http://localhost:3003',
 ]);
 
 app.use('/balanced', loadBalancer.createProxy());
@@ -1312,25 +1348,25 @@ app.use('/balanced', loadBalancer.createProxy());
 function createCustomProxy(target) {
   return (req, res) => {
     const url = new URL(target);
-    
+
     const options = {
       hostname: url.hostname,
       port: url.port,
       path: req.url,
       method: req.method,
-      headers: req.headers
+      headers: req.headers,
     };
-    
+
     const proxyReq = http.request(options, (proxyRes) => {
       res.writeHead(proxyRes.statusCode, proxyRes.headers);
       proxyRes.pipe(res);
     });
-    
+
     proxyReq.on('error', (err) => {
       console.error('Proxy request error:', err);
       res.status(500).json({ error: 'Proxy error' });
     });
-    
+
     req.pipe(proxyReq);
   };
 }
@@ -1352,7 +1388,7 @@ function compressFile(inputPath, outputPath) {
     const gzip = zlib.createGzip();
     const source = fs.createReadStream(inputPath);
     const destination = fs.createWriteStream(outputPath);
-    
+
     pipeline(source, gzip, destination, (err) => {
       if (err) {
         reject(err);
@@ -1369,7 +1405,7 @@ function decompressFile(inputPath, outputPath) {
     const gunzip = zlib.createGunzip();
     const source = fs.createReadStream(inputPath);
     const destination = fs.createWriteStream(outputPath);
-    
+
     pipeline(source, gunzip, destination, (err) => {
       if (err) {
         reject(err);
@@ -1383,26 +1419,28 @@ function decompressFile(inputPath, outputPath) {
 // Express middleware for response compression
 const compression = require('compression');
 
-app.use(compression({
-  level: 6,
-  threshold: 1024,
-  filter: (req, res) => {
-    if (req.headers['x-no-compression']) {
-      return false;
-    }
-    return compression.filter(req, res);
-  }
-}));
+app.use(
+  compression({
+    level: 6,
+    threshold: 1024,
+    filter: (req, res) => {
+      if (req.headers['x-no-compression']) {
+        return false;
+      }
+      return compression.filter(req, res);
+    },
+  })
+);
 
 // Custom compression middleware
 function customCompressionMiddleware(req, res, next) {
   const acceptEncoding = req.headers['accept-encoding'] || '';
-  
+
   if (acceptEncoding.includes('gzip')) {
     res.setHeader('Content-Encoding', 'gzip');
-    
+
     const originalSend = res.send;
-    res.send = function(data) {
+    res.send = function (data) {
       if (typeof data === 'string' && data.length > 1024) {
         zlib.gzip(data, (err, compressed) => {
           if (err) {
@@ -1416,7 +1454,7 @@ function customCompressionMiddleware(req, res, next) {
       }
     };
   }
-  
+
   next();
 }
 
@@ -1427,25 +1465,25 @@ function createZipArchive(files, outputPath) {
   return new Promise((resolve, reject) => {
     const output = fs.createWriteStream(outputPath);
     const archive = archiver('zip', { zlib: { level: 9 } });
-    
+
     output.on('close', () => {
       resolve(outputPath);
     });
-    
+
     archive.on('error', (err) => {
       reject(err);
     });
-    
+
     archive.pipe(output);
-    
-    files.forEach(file => {
+
+    files.forEach((file) => {
       if (fs.statSync(file.path).isDirectory()) {
         archive.directory(file.path, file.name);
       } else {
         archive.file(file.path, { name: file.name });
       }
     });
-    
+
     archive.finalize();
   });
 }
@@ -1476,10 +1514,7 @@ const path = require('path');
 const program = new Command();
 
 // CLI configuration
-program
-  .name('myapp')
-  .description('A sample CLI application')
-  .version('1.0.0');
+program.name('myapp').description('A sample CLI application').version('1.0.0');
 
 // File operations command
 program
@@ -1512,22 +1547,22 @@ program
         type: 'input',
         name: 'projectName',
         message: 'Project name:',
-        validate: (input) => input.length > 0 || 'Project name is required'
+        validate: (input) => input.length > 0 || 'Project name is required',
       },
       {
         type: 'list',
         name: 'template',
         message: 'Choose a template:',
-        choices: ['basic', 'express', 'react', 'vue']
+        choices: ['basic', 'express', 'react', 'vue'],
       },
       {
         type: 'confirm',
         name: 'git',
         message: 'Initialize git repository?',
-        default: true
-      }
+        default: true,
+      },
     ]);
-    
+
     await initProject(answers);
   });
 
@@ -1541,14 +1576,14 @@ program
       complete: '=',
       incomplete: ' ',
       width: 40,
-      total: files.length
+      total: files.length,
     });
-    
+
     for (const file of files) {
       await processFile(file);
       bar.tick();
     }
-    
+
     console.log(chalk.green('\nAll files processed!'));
   });
 
@@ -1561,7 +1596,7 @@ program
   .option('--list', 'List all configuration')
   .action(async (options) => {
     const configPath = path.join(require('os').homedir(), '.myapp-config.json');
-    
+
     if (options.set) {
       const [key, value] = options.set.split('=');
       await setConfig(configPath, key, value);
@@ -1578,13 +1613,13 @@ program
 // Helper functions
 async function createFile(name, template) {
   let content = '';
-  
+
   if (template === 'js') {
     content = `// ${name}\nconsole.log('Hello from ${name}');\n`;
   } else if (template === 'json') {
     content = JSON.stringify({ name }, null, 2);
   }
-  
+
   await fs.writeFile(name, content);
 }
 
@@ -1594,26 +1629,26 @@ async function createDirectory(name) {
 
 async function initProject(config) {
   const { projectName, template, git } = config;
-  
+
   console.log(chalk.blue(`Creating project: ${projectName}`));
-  
+
   await fs.mkdir(projectName, { recursive: true });
-  
+
   const packageJson = {
     name: projectName,
     version: '1.0.0',
     description: '',
     main: 'index.js',
     scripts: {
-      start: 'node index.js'
-    }
+      start: 'node index.js',
+    },
   };
-  
+
   await fs.writeFile(
     path.join(projectName, 'package.json'),
     JSON.stringify(packageJson, null, 2)
   );
-  
+
   if (template === 'express') {
     const expressApp = `const express = require('express');
 const app = express();
@@ -1625,21 +1660,21 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
   console.log('Server running on port 3000');
 });`;
-    
+
     await fs.writeFile(path.join(projectName, 'index.js'), expressApp);
   }
-  
+
   if (git) {
     const { execSync } = require('child_process');
     execSync('git init', { cwd: projectName });
   }
-  
+
   console.log(chalk.green(`✓ Project ${projectName} created successfully`));
 }
 
 async function processFile(file) {
   // Simulate file processing
-  return new Promise(resolve => setTimeout(resolve, 1000));
+  return new Promise((resolve) => setTimeout(resolve, 1000));
 }
 
 async function setConfig(configPath, key, value) {
@@ -1650,7 +1685,7 @@ async function setConfig(configPath, key, value) {
   } catch (error) {
     // File doesn't exist or is invalid
   }
-  
+
   config[key] = value;
   await fs.writeFile(configPath, JSON.stringify(config, null, 2));
 }
@@ -1696,9 +1731,9 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
-  }
+    origin: '*',
+    methods: ['GET', 'POST'],
+  },
 });
 
 const redis = new Redis();
@@ -1710,7 +1745,7 @@ const NOTIFICATION_TYPES = {
   MESSAGE: 'message',
   ALERT: 'alert',
   UPDATE: 'update',
-  SYSTEM: 'system'
+  SYSTEM: 'system',
 };
 
 // Notification manager
@@ -1719,18 +1754,18 @@ class NotificationManager {
     this.subscribers = new Map();
     this.setupRedisSubscription();
   }
-  
+
   subscribe(userId, socket) {
     if (!this.subscribers.has(userId)) {
       this.subscribers.set(userId, new Set());
     }
     this.subscribers.get(userId).add(socket);
-    
+
     socket.on('disconnect', () => {
       this.unsubscribe(userId, socket);
     });
   }
-  
+
   unsubscribe(userId, socket) {
     if (this.subscribers.has(userId)) {
       this.subscribers.get(userId).delete(socket);
@@ -1739,34 +1774,37 @@ class NotificationManager {
       }
     }
   }
-  
+
   async sendNotification(userId, notification) {
     // Store in database/cache
     await this.storeNotification(userId, notification);
-    
+
     // Send via WebSocket if user is online
     if (this.subscribers.has(userId)) {
-      this.subscribers.get(userId).forEach(socket => {
+      this.subscribers.get(userId).forEach((socket) => {
         socket.emit('notification', notification);
       });
     }
-    
+
     // Publish to Redis for other server instances
-    await pub.publish('notifications', JSON.stringify({
-      userId,
-      notification
-    }));
-    
+    await pub.publish(
+      'notifications',
+      JSON.stringify({
+        userId,
+        notification,
+      })
+    );
+
     // Send push notification if user is offline
     if (!this.subscribers.has(userId)) {
       await this.sendPushNotification(userId, notification);
     }
   }
-  
+
   async sendBroadcast(notification) {
     // Send to all connected users
     io.emit('broadcast', notification);
-    
+
     // Store as system notification
     await redis.setex(
       `broadcast:${Date.now()}`,
@@ -1774,53 +1812,50 @@ class NotificationManager {
       JSON.stringify(notification)
     );
   }
-  
+
   async getUserNotifications(userId, page = 1, limit = 20) {
     const start = (page - 1) * limit;
     const end = start + limit - 1;
-    
+
     const notifications = await redis.lrange(
       `notifications:${userId}`,
       start,
       end
     );
-    
-    return notifications.map(n => JSON.parse(n));
+
+    return notifications.map((n) => JSON.parse(n));
   }
-  
+
   async markAsRead(userId, notificationId) {
     await redis.sadd(`read:${userId}`, notificationId);
   }
-  
+
   async storeNotification(userId, notification) {
     notification.id = `${Date.now()}_${Math.random()}`;
     notification.timestamp = new Date().toISOString();
     notification.read = false;
-    
-    await redis.lpush(
-      `notifications:${userId}`,
-      JSON.stringify(notification)
-    );
-    
+
+    await redis.lpush(`notifications:${userId}`, JSON.stringify(notification));
+
     // Keep only last 100 notifications
     await redis.ltrim(`notifications:${userId}`, 0, 99);
   }
-  
+
   setupRedisSubscription() {
     sub.subscribe('notifications');
     sub.on('message', (channel, message) => {
       if (channel === 'notifications') {
         const { userId, notification } = JSON.parse(message);
-        
+
         if (this.subscribers.has(userId)) {
-          this.subscribers.get(userId).forEach(socket => {
+          this.subscribers.get(userId).forEach((socket) => {
             socket.emit('notification', notification);
           });
         }
       }
     });
   }
-  
+
   async sendPushNotification(userId, notification) {
     // Implement push notification logic
     // Using services like FCM, APNS, etc.
@@ -1833,29 +1868,31 @@ const notificationManager = new NotificationManager();
 // Socket.IO connection handling
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
-  
+
   socket.on('authenticate', async (data) => {
     const { userId, token } = data;
-    
+
     // Verify token (implement your auth logic)
     if (await verifyToken(token)) {
       socket.userId = userId;
       notificationManager.subscribe(userId, socket);
-      
+
       // Send unread notifications
-      const notifications = await notificationManager.getUserNotifications(userId);
+      const notifications = await notificationManager.getUserNotifications(
+        userId
+      );
       socket.emit('notifications', notifications);
     } else {
       socket.emit('auth_error', { message: 'Invalid token' });
     }
   });
-  
+
   socket.on('mark_read', async (notificationId) => {
     if (socket.userId) {
       await notificationManager.markAsRead(socket.userId, notificationId);
     }
   });
-  
+
   socket.on('disconnect', () => {
     console.log('User disconnected:', socket.id);
   });
@@ -1867,14 +1904,14 @@ app.use(express.json());
 app.post('/api/notifications/send', async (req, res) => {
   try {
     const { userId, type, title, message, data } = req.body;
-    
+
     const notification = {
       type,
       title,
       message,
-      data: data || {}
+      data: data || {},
     };
-    
+
     await notificationManager.sendNotification(userId, notification);
     res.json({ success: true });
   } catch (error) {
@@ -1885,14 +1922,14 @@ app.post('/api/notifications/send', async (req, res) => {
 app.post('/api/notifications/broadcast', async (req, res) => {
   try {
     const { type, title, message } = req.body;
-    
+
     const notification = {
       type,
       title,
       message,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
-    
+
     await notificationManager.sendBroadcast(notification);
     res.json({ success: true });
   } catch (error) {
@@ -1904,13 +1941,13 @@ app.get('/api/notifications/:userId', async (req, res) => {
   try {
     const { userId } = req.params;
     const { page = 1, limit = 20 } = req.query;
-    
+
     const notifications = await notificationManager.getUserNotifications(
       userId,
       parseInt(page),
       parseInt(limit)
     );
-    
+
     res.json(notifications);
   } catch (error) {
     res.status(500).json({ error: error.message });

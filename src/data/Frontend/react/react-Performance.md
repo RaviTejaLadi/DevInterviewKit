@@ -3,10 +3,10 @@
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [React.memo()](#react.memo())
+2. [React.memo()](<#react.memo()>)
 3. [useMemo Hook](#usememo-hook)
 4. [useCallback Hook](#usecallback-hook)
-5. [Code Splitting with React.lazy()](#code-splitting-with-react.lazy())
+5. [Code Splitting with React.lazy()](<#code-splitting-with-react.lazy()>)
 6. [Virtual Scrolling](#virtual-scrolling)
 7. [Bundle Analysis](#bundle-analysis)
 8. [Image Optimization](#image-optimization)
@@ -19,9 +19,13 @@
 
 ## Introduction
 
-React Performance Optimization involves techniques and strategies to improve the speed, responsiveness, and efficiency of React applications. The goal is to minimize unnecessary re-renders, reduce bundle sizes, and optimize resource loading to provide a smooth user experience.
+React Performance Optimization involves techniques and strategies to improve the
+speed, responsiveness, and efficiency of React applications. The goal is to
+minimize unnecessary re-renders, reduce bundle sizes, and optimize resource
+loading to provide a smooth user experience.
 
 ### Key Performance Metrics
+
 - **First Contentful Paint (FCP)**: Time until first content appears
 - **Largest Contentful Paint (LCP)**: Time until main content loads
 - **Time to Interactive (TTI)**: Time until page becomes interactive
@@ -32,19 +36,26 @@ React Performance Optimization involves techniques and strategies to improve the
 ## React.memo()
 
 ### Definition
-React.memo is a higher-order component that memoizes the result of a component. It only re-renders when its props change, preventing unnecessary re-renders when parent components update.
+
+React.memo is a higher-order component that memoizes the result of a component.
+It only re-renders when its props change, preventing unnecessary re-renders when
+parent components update.
 
 ### Syntax
+
 ```javascript
 const MemoizedComponent = React.memo(Component, areEqual?)
 ```
 
 ### Parameters
+
 - `Component`: The component to memoize
 - `areEqual` (optional): Custom comparison function
 
 ### Usage
+
 Use React.memo for:
+
 - Components that render often with the same props
 - Expensive components that don't need frequent updates
 - Child components in lists or grids
@@ -52,6 +63,7 @@ Use React.memo for:
 ### Examples
 
 #### Basic React.memo
+
 ```javascript
 import React from 'react';
 
@@ -93,19 +105,25 @@ const App = () => {
 ```
 
 #### React.memo with Custom Comparison
+
 ```javascript
-const UserCard = React.memo(({ user, theme }) => {
-  return (
-    <div className={`card ${theme}`}>
-      <h3>{user.name}</h3>
-      <p>{user.email}</p>
-    </div>
-  );
-}, (prevProps, nextProps) => {
-  // Custom comparison - only re-render if user data or theme changes
-  return prevProps.user.id === nextProps.user.id && 
-         prevProps.theme === nextProps.theme;
-});
+const UserCard = React.memo(
+  ({ user, theme }) => {
+    return (
+      <div className={`card ${theme}`}>
+        <h3>{user.name}</h3>
+        <p>{user.email}</p>
+      </div>
+    );
+  },
+  (prevProps, nextProps) => {
+    // Custom comparison - only re-render if user data or theme changes
+    return (
+      prevProps.user.id === nextProps.user.id &&
+      prevProps.theme === nextProps.theme
+    );
+  }
+);
 ```
 
 ---
@@ -113,19 +131,25 @@ const UserCard = React.memo(({ user, theme }) => {
 ## useMemo Hook
 
 ### Definition
-useMemo is a React Hook that memoizes expensive calculations between re-renders. It only recalculates when its dependencies change.
+
+useMemo is a React Hook that memoizes expensive calculations between re-renders.
+It only recalculates when its dependencies change.
 
 ### Syntax
+
 ```javascript
 const memoizedValue = useMemo(() => expensiveCalculation(a, b), [a, b]);
 ```
 
 ### Parameters
+
 - `calculateValue`: Function that returns the value to memoize
 - `dependencies`: Array of dependencies that trigger recalculation
 
 ### Usage
+
 Use useMemo for:
+
 - Expensive calculations or data transformations
 - Creating objects or arrays that are passed as props
 - Filtering or sorting large datasets
@@ -133,20 +157,21 @@ Use useMemo for:
 ### Examples
 
 #### Basic useMemo
+
 ```javascript
 import React, { useMemo, useState } from 'react';
 
 const ExpensiveCalculationComponent = ({ items, filter }) => {
   // Without useMemo - calculation runs on every render
   const expensiveValue = items
-    .filter(item => item.category === filter)
+    .filter((item) => item.category === filter)
     .reduce((sum, item) => sum + item.price, 0);
 
   // With useMemo - calculation only runs when items or filter change
   const memoizedExpensiveValue = useMemo(() => {
     console.log('Calculating expensive value...');
     return items
-      .filter(item => item.category === filter)
+      .filter((item) => item.category === filter)
       .reduce((sum, item) => sum + item.price, 0);
   }, [items, filter]);
 
@@ -159,21 +184,23 @@ const ExpensiveCalculationComponent = ({ items, filter }) => {
 ```
 
 #### useMemo for Object Creation
+
 ```javascript
 const UserProfile = ({ userId, userData }) => {
   // Without useMemo - new object created on every render
   const userStats = {
     totalPosts: userData.posts?.length || 0,
     totalLikes: userData.posts?.reduce((sum, post) => sum + post.likes, 0) || 0,
-    joinDate: new Date(userData.createdAt).toLocaleDateString()
+    joinDate: new Date(userData.createdAt).toLocaleDateString(),
   };
 
   // With useMemo - object only recreated when userData changes
   const memoizedUserStats = useMemo(() => {
     return {
       totalPosts: userData.posts?.length || 0,
-      totalLikes: userData.posts?.reduce((sum, post) => sum + post.likes, 0) || 0,
-      joinDate: new Date(userData.createdAt).toLocaleDateString()
+      totalLikes:
+        userData.posts?.reduce((sum, post) => sum + post.likes, 0) || 0,
+      joinDate: new Date(userData.createdAt).toLocaleDateString(),
     };
   }, [userData]);
 
@@ -193,9 +220,12 @@ const UserProfile = ({ userId, userData }) => {
 ## useCallback Hook
 
 ### Definition
-useCallback is a React Hook that memoizes callback functions between re-renders. It returns the same function instance when dependencies haven't changed.
+
+useCallback is a React Hook that memoizes callback functions between re-renders.
+It returns the same function instance when dependencies haven't changed.
 
 ### Syntax
+
 ```javascript
 const memoizedCallback = useCallback(() => {
   // callback logic
@@ -203,11 +233,14 @@ const memoizedCallback = useCallback(() => {
 ```
 
 ### Parameters
+
 - `fn`: The callback function to memoize
 - `dependencies`: Array of dependencies that trigger function recreation
 
 ### Usage
+
 Use useCallback for:
+
 - Functions passed as props to memoized components
 - Event handlers in child components
 - Functions used as dependencies in other hooks
@@ -215,6 +248,7 @@ Use useCallback for:
 ### Examples
 
 #### Basic useCallback
+
 ```javascript
 import React, { useCallback, useState } from 'react';
 
@@ -222,7 +256,9 @@ const TodoItem = React.memo(({ todo, onToggle, onDelete }) => {
   console.log(`TodoItem ${todo.id} rendered`);
   return (
     <div>
-      <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+      <span
+        style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+      >
         {todo.text}
       </span>
       <button onClick={() => onToggle(todo.id)}>Toggle</button>
@@ -234,33 +270,43 @@ const TodoItem = React.memo(({ todo, onToggle, onDelete }) => {
 const TodoList = () => {
   const [todos, setTodos] = useState([
     { id: 1, text: 'Learn React', completed: false },
-    { id: 2, text: 'Build an app', completed: false }
+    { id: 2, text: 'Build an app', completed: false },
   ]);
 
   // Without useCallback - new function created on every render
   const handleToggle = (id) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
   };
 
   // With useCallback - function only recreated when todos change
-  const memoizedHandleToggle = useCallback((id) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
-  }, [todos]);
+  const memoizedHandleToggle = useCallback(
+    (id) => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        )
+      );
+    },
+    [todos]
+  );
 
-  const memoizedHandleDelete = useCallback((id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
-  }, [todos]);
+  const memoizedHandleDelete = useCallback(
+    (id) => {
+      setTodos(todos.filter((todo) => todo.id !== id));
+    },
+    [todos]
+  );
 
   return (
     <div>
-      {todos.map(todo => (
-        <TodoItem 
-          key={todo.id} 
-          todo={todo} 
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
           onToggle={memoizedHandleToggle}
           onDelete={memoizedHandleDelete}
         />
@@ -271,6 +317,7 @@ const TodoList = () => {
 ```
 
 #### useCallback with Custom Hooks
+
 ```javascript
 const useSearch = (initialQuery = '') => {
   const [query, setQuery] = useState(initialQuery);
@@ -290,10 +337,7 @@ const useSearch = (initialQuery = '') => {
     }
   }, []);
 
-  const debouncedSearch = useCallback(
-    debounce(search, 300),
-    [search]
-  );
+  const debouncedSearch = useCallback(debounce(search, 300), [search]);
 
   return { query, setQuery, results, loading, search: debouncedSearch };
 };
@@ -304,15 +348,21 @@ const useSearch = (initialQuery = '') => {
 ## Code Splitting with React.lazy()
 
 ### Definition
-Code splitting is a technique that splits your bundle into smaller chunks, loading only the necessary code for the current view. React.lazy() enables dynamic imports for components.
+
+Code splitting is a technique that splits your bundle into smaller chunks,
+loading only the necessary code for the current view. React.lazy() enables
+dynamic imports for components.
 
 ### Syntax
+
 ```javascript
 const LazyComponent = React.lazy(() => import('./Component'));
 ```
 
 ### Usage
+
 Use code splitting for:
+
 - Route-based splitting
 - Large components or libraries
 - Features that aren't immediately needed
@@ -320,6 +370,7 @@ Use code splitting for:
 ### Examples
 
 #### Route-based Code Splitting
+
 ```javascript
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -346,7 +397,7 @@ const App = () => {
           <Link to="/contact">Contact</Link>
           <Link to="/dashboard">Dashboard</Link>
         </nav>
-        
+
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -362,6 +413,7 @@ const App = () => {
 ```
 
 #### Component-based Code Splitting
+
 ```javascript
 import React, { useState, Suspense } from 'react';
 
@@ -374,19 +426,19 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <div className="tabs">
-        <button 
+        <button
           onClick={() => setActiveTab('overview')}
           className={activeTab === 'overview' ? 'active' : ''}
         >
           Overview
         </button>
-        <button 
+        <button
           onClick={() => setActiveTab('charts')}
           className={activeTab === 'charts' ? 'active' : ''}
         >
           Charts
         </button>
-        <button 
+        <button
           onClick={() => setActiveTab('data')}
           className={activeTab === 'data' ? 'active' : ''}
         >
@@ -401,13 +453,13 @@ const Dashboard = () => {
             <p>Quick statistics and summary...</p>
           </div>
         )}
-        
+
         {activeTab === 'charts' && (
           <Suspense fallback={<div>Loading charts...</div>}>
             <HeavyChart />
           </Suspense>
         )}
-        
+
         {activeTab === 'data' && (
           <Suspense fallback={<div>Loading data table...</div>}>
             <HeavyDataTable />
@@ -424,10 +476,15 @@ const Dashboard = () => {
 ## Virtual Scrolling
 
 ### Definition
-Virtual scrolling is a technique that renders only visible items in a large list, significantly improving performance for large datasets by reducing DOM nodes.
+
+Virtual scrolling is a technique that renders only visible items in a large
+list, significantly improving performance for large datasets by reducing DOM
+nodes.
 
 ### Usage
+
 Use virtual scrolling for:
+
 - Lists with thousands of items
 - Data tables with many rows
 - Chat messages or feeds
@@ -436,6 +493,7 @@ Use virtual scrolling for:
 ### Examples
 
 #### Basic Virtual Scrolling Implementation
+
 ```javascript
 import React, { useState, useEffect, useRef } from 'react';
 
@@ -461,7 +519,7 @@ const VirtualList = ({ items, itemHeight = 50, containerHeight = 400 }) => {
       style={{
         height: containerHeight,
         overflow: 'auto',
-        border: '1px solid #ccc'
+        border: '1px solid #ccc',
       }}
       onScroll={handleScroll}
     >
@@ -472,7 +530,7 @@ const VirtualList = ({ items, itemHeight = 50, containerHeight = 400 }) => {
             position: 'absolute',
             top: 0,
             left: 0,
-            right: 0
+            right: 0,
           }}
         >
           {visibleItems.map((item, index) => (
@@ -483,7 +541,7 @@ const VirtualList = ({ items, itemHeight = 50, containerHeight = 400 }) => {
                 padding: '10px',
                 borderBottom: '1px solid #eee',
                 display: 'flex',
-                alignItems: 'center'
+                alignItems: 'center',
               }}
             >
               <strong>Item {startIndex + index}:</strong> {item.name}
@@ -497,11 +555,11 @@ const VirtualList = ({ items, itemHeight = 50, containerHeight = 400 }) => {
 
 // Usage example
 const App = () => {
-  const [items] = useState(() => 
+  const [items] = useState(() =>
     Array.from({ length: 10000 }, (_, i) => ({
       id: i,
       name: `Item ${i}`,
-      value: Math.random() * 100
+      value: Math.random() * 100,
     }))
   );
 
@@ -516,14 +574,15 @@ const App = () => {
 ```
 
 #### Advanced Virtual Grid
+
 ```javascript
-const VirtualGrid = ({ 
-  items, 
-  itemWidth = 200, 
-  itemHeight = 150, 
+const VirtualGrid = ({
+  items,
+  itemWidth = 200,
+  itemHeight = 150,
   containerWidth = 800,
   containerHeight = 600,
-  gap = 10 
+  gap = 10,
 }) => {
   const [scrollTop, setScrollTop] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -546,7 +605,7 @@ const VirtualGrid = ({
           ...items[index],
           x: col * (itemWidth + gap),
           y: row * (itemHeight + gap),
-          index
+          index,
         });
       }
     }
@@ -558,7 +617,7 @@ const VirtualGrid = ({
         width: containerWidth,
         height: containerHeight,
         overflow: 'auto',
-        border: '1px solid #ccc'
+        border: '1px solid #ccc',
       }}
       onScroll={(e) => {
         setScrollTop(e.target.scrollTop);
@@ -569,10 +628,10 @@ const VirtualGrid = ({
         style={{
           width: itemsPerRow * (itemWidth + gap),
           height: totalRows * (itemHeight + gap),
-          position: 'relative'
+          position: 'relative',
         }}
       >
-        {visibleItems.map(item => (
+        {visibleItems.map((item) => (
           <div
             key={item.index}
             style={{
@@ -585,7 +644,7 @@ const VirtualGrid = ({
               border: '1px solid #ddd',
               borderRadius: '4px',
               padding: '10px',
-              boxSizing: 'border-box'
+              boxSizing: 'border-box',
             }}
           >
             <h4>{item.title}</h4>
@@ -603,15 +662,20 @@ const VirtualGrid = ({
 ## Bundle Analysis
 
 ### Definition
-Bundle analysis involves examining your application's JavaScript bundles to identify optimization opportunities, unused code, and large dependencies.
+
+Bundle analysis involves examining your application's JavaScript bundles to
+identify optimization opportunities, unused code, and large dependencies.
 
 ### Tools
+
 - **webpack-bundle-analyzer**: Visual analysis of webpack bundles
 - **source-map-explorer**: Analyze bundles using source maps
 - **bundlephobia**: Check npm package sizes
 
 ### Usage
+
 Use bundle analysis to:
+
 - Identify large dependencies
 - Find unused code
 - Optimize import strategies
@@ -620,6 +684,7 @@ Use bundle analysis to:
 ### Examples
 
 #### Setting up webpack-bundle-analyzer
+
 ```bash
 # Install the analyzer
 npm install --save-dev webpack-bundle-analyzer
@@ -636,6 +701,7 @@ npm run analyze
 ```
 
 #### Tree Shaking Optimization
+
 ```javascript
 // ❌ Bad - imports entire library
 import _ from 'lodash';
@@ -657,6 +723,7 @@ const processData = (data) => {
 ```
 
 #### Dynamic Imports for Large Libraries
+
 ```javascript
 // ❌ Bad - large library loaded upfront
 import { Chart } from 'chart.js';
@@ -685,12 +752,8 @@ const Dashboard = () => {
 
   return (
     <div>
-      <button onClick={() => setChartData(mockData)}>
-        Load Chart
-      </button>
-      {Chart && chartData && (
-        <ChartComponent Chart={Chart} data={chartData} />
-      )}
+      <button onClick={() => setChartData(mockData)}>Load Chart</button>
+      {Chart && chartData && <ChartComponent Chart={Chart} data={chartData} />}
     </div>
   );
 };
@@ -701,9 +764,12 @@ const Dashboard = () => {
 ## Image Optimization
 
 ### Definition
-Image optimization involves reducing image file sizes, implementing lazy loading, and using appropriate formats to improve loading performance.
+
+Image optimization involves reducing image file sizes, implementing lazy
+loading, and using appropriate formats to improve loading performance.
 
 ### Techniques
+
 - **Lazy loading**: Load images when they're about to be visible
 - **WebP format**: Modern image format with better compression
 - **Responsive images**: Serve different sizes based on screen size
@@ -712,6 +778,7 @@ Image optimization involves reducing image file sizes, implementing lazy loading
 ### Examples
 
 #### Lazy Loading Images
+
 ```javascript
 import React, { useState, useRef, useEffect } from 'react';
 
@@ -747,14 +814,12 @@ const LazyImage = ({ src, alt, placeholder, className }) => {
           onLoad={() => setIsLoaded(true)}
           style={{
             opacity: isLoaded ? 1 : 0,
-            transition: 'opacity 0.3s ease-in-out'
+            transition: 'opacity 0.3s ease-in-out',
           }}
         />
       )}
       {!isLoaded && isInView && (
-        <div className="image-placeholder">
-          {placeholder || 'Loading...'}
-        </div>
+        <div className="image-placeholder">{placeholder || 'Loading...'}</div>
       )}
     </div>
   );
@@ -780,7 +845,7 @@ const ProgressiveImage = ({ src, placeholder, alt }) => {
       alt={alt}
       style={{
         filter: loading ? 'blur(5px)' : 'none',
-        transition: 'filter 0.3s ease-in-out'
+        transition: 'filter 0.3s ease-in-out',
       }}
     />
   );
@@ -788,24 +853,18 @@ const ProgressiveImage = ({ src, placeholder, alt }) => {
 ```
 
 #### Responsive Image Component
+
 ```javascript
-const ResponsiveImage = ({ 
-  src, 
-  alt, 
-  sizes = [400, 800, 1200], 
-  className 
-}) => {
+const ResponsiveImage = ({ src, alt, sizes = [400, 800, 1200], className }) => {
   const generateSrcSet = () => {
-    return sizes
-      .map(size => `${src}?w=${size} ${size}w`)
-      .join(', ');
+    return sizes.map((size) => `${src}?w=${size} ${size}w`).join(', ');
   };
 
   const generateSizes = () => {
     return [
       '(max-width: 480px) 400px',
       '(max-width: 768px) 800px',
-      '1200px'
+      '1200px',
     ].join(', ');
   };
 
@@ -827,9 +886,13 @@ const ResponsiveImage = ({
 ## State Management Optimization
 
 ### Definition
-State management optimization involves structuring and managing state efficiently to minimize unnecessary re-renders and improve application performance.
+
+State management optimization involves structuring and managing state
+efficiently to minimize unnecessary re-renders and improve application
+performance.
 
 ### Techniques
+
 - **State colocation**: Keep state close to where it's used
 - **State normalization**: Flatten nested state structures
 - **Selective subscriptions**: Subscribe only to needed state slices
@@ -838,6 +901,7 @@ State management optimization involves structuring and managing state efficientl
 ### Examples
 
 #### State Colocation
+
 ```javascript
 // ❌ Bad - state lifted too high
 const App = () => {
@@ -849,12 +913,9 @@ const App = () => {
   return (
     <div>
       <Header notifications={notifications} />
-      <UserProfile 
-        profile={userProfile} 
-        onUpdate={setUserProfile} 
-      />
-      <PostsList 
-        posts={posts} 
+      <UserProfile profile={userProfile} onUpdate={setUserProfile} />
+      <PostsList
+        posts={posts}
         comments={comments}
         onPostUpdate={setPosts}
         onCommentUpdate={setComments}
@@ -876,13 +937,14 @@ const App = () => {
 
 const Header = () => {
   const [notifications, setNotifications] = useState([]);
-  
+
   // Header-specific logic
   return <header>{/* ... */}</header>;
 };
 ```
 
 #### State Normalization
+
 ```javascript
 // ❌ Bad - nested state structure
 const [state, setState] = useState({
@@ -891,34 +953,32 @@ const [state, setState] = useState({
       id: 1,
       title: 'Post 1',
       author: { id: 1, name: 'John' },
-      comments: [
-        { id: 1, text: 'Comment 1', author: { id: 2, name: 'Jane' } }
-      ]
-    }
-  ]
+      comments: [{ id: 1, text: 'Comment 1', author: { id: 2, name: 'Jane' } }],
+    },
+  ],
 });
 
 // ✅ Good - normalized state structure
 const [state, setState] = useState({
   posts: {
     byId: {
-      1: { id: 1, title: 'Post 1', authorId: 1, commentIds: [1] }
+      1: { id: 1, title: 'Post 1', authorId: 1, commentIds: [1] },
     },
-    allIds: [1]
+    allIds: [1],
   },
   users: {
     byId: {
       1: { id: 1, name: 'John' },
-      2: { id: 2, name: 'Jane' }
+      2: { id: 2, name: 'Jane' },
     },
-    allIds: [1, 2]
+    allIds: [1, 2],
   },
   comments: {
     byId: {
-      1: { id: 1, text: 'Comment 1', authorId: 2 }
+      1: { id: 1, text: 'Comment 1', authorId: 2 },
     },
-    allIds: [1]
-  }
+    allIds: [1],
+  },
 });
 
 // Selectors for accessing normalized data
@@ -929,11 +989,12 @@ const getPostAuthor = (state, postId) => {
 };
 const getPostComments = (state, postId) => {
   const post = getPost(state, postId);
-  return post.commentIds.map(id => state.comments.byId[id]);
+  return post.commentIds.map((id) => state.comments.byId[id]);
 };
 ```
 
 #### State Splitting for Performance
+
 ```javascript
 // ❌ Bad - single state causing unnecessary re-renders
 const Dashboard = () => {
@@ -941,12 +1002,12 @@ const Dashboard = () => {
     user: { name: 'John', email: 'john@example.com' },
     posts: [],
     notifications: [],
-    settings: { theme: 'dark', language: 'en' }
+    settings: { theme: 'dark', language: 'en' },
   });
 
   // Any state update re-renders entire component
   const updateNotifications = (newNotifications) => {
-    setState(prev => ({ ...prev, notifications: newNotifications }));
+    setState((prev) => ({ ...prev, notifications: newNotifications }));
   };
 
   return (
@@ -970,9 +1031,9 @@ const Dashboard = () => {
     <div>
       <UserInfo user={user} onUpdate={setUser} />
       <PostsList posts={posts} onUpdate={setPosts} />
-      <NotificationBell 
-        notifications={notifications} 
-        onUpdate={setNotifications} 
+      <NotificationBell
+        notifications={notifications}
+        onUpdate={setNotifications}
       />
       <Settings settings={settings} onUpdate={setSettings} />
     </div>
@@ -985,9 +1046,12 @@ const Dashboard = () => {
 ## Avoiding Unnecessary Re-renders
 
 ### Definition
-Preventing unnecessary re-renders involves identifying and eliminating renders that don't result in actual DOM changes or user-visible updates.
+
+Preventing unnecessary re-renders involves identifying and eliminating renders
+that don't result in actual DOM changes or user-visible updates.
 
 ### Common Causes
+
 - Creating objects/arrays in render
 - Passing new function references as props
 - Unnecessary state updates
@@ -996,18 +1060,19 @@ Preventing unnecessary re-renders involves identifying and eliminating renders t
 ### Examples
 
 #### Avoiding Object Creation in Render
+
 ```javascript
 // ❌ Bad - new objects created on every render
 const UserCard = ({ user }) => {
   const cardStyle = {
     padding: '16px',
     border: '1px solid #ccc',
-    borderRadius: '8px'
+    borderRadius: '8px',
   };
 
   const buttonProps = {
     type: 'button',
-    className: 'btn-primary'
+    className: 'btn-primary',
   };
 
   return (
@@ -1022,12 +1087,12 @@ const UserCard = ({ user }) => {
 const cardStyle = {
   padding: '16px',
   border: '1px solid #ccc',
-  borderRadius: '8px'
+  borderRadius: '8px',
 };
 
 const buttonProps = {
   type: 'button',
-  className: 'btn-primary'
+  className: 'btn-primary',
 };
 
 const UserCard = ({ user }) => {
@@ -1041,10 +1106,11 @@ const UserCard = ({ user }) => {
 ```
 
 #### Conditional Rendering Optimization
+
 ```javascript
 // ❌ Bad - creates new array on every render
 const TodoList = ({ todos, filter }) => {
-  const filteredTodos = todos.filter(todo => {
+  const filteredTodos = todos.filter((todo) => {
     if (filter === 'completed') return todo.completed;
     if (filter === 'active') return !todo.completed;
     return true;
@@ -1052,7 +1118,7 @@ const TodoList = ({ todos, filter }) => {
 
   return (
     <ul>
-      {filteredTodos.map(todo => (
+      {filteredTodos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
     </ul>
@@ -1062,7 +1128,7 @@ const TodoList = ({ todos, filter }) => {
 // ✅ Good - memoized filtering
 const TodoList = ({ todos, filter }) => {
   const filteredTodos = useMemo(() => {
-    return todos.filter(todo => {
+    return todos.filter((todo) => {
       if (filter === 'completed') return todo.completed;
       if (filter === 'active') return !todo.completed;
       return true;
@@ -1071,7 +1137,7 @@ const TodoList = ({ todos, filter }) => {
 
   return (
     <ul>
-      {filteredTodos.map(todo => (
+      {filteredTodos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
     </ul>
@@ -1080,6 +1146,7 @@ const TodoList = ({ todos, filter }) => {
 ```
 
 #### Optimizing Context Usage
+
 ```javascript
 // ❌ Bad - entire context value recreated on every render
 const AppProvider = ({ children }) => {
@@ -1094,13 +1161,11 @@ const AppProvider = ({ children }) => {
     theme,
     setTheme,
     notifications,
-    setNotifications
+    setNotifications,
   };
 
   return (
-    <AppContext.Provider value={contextValue}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 };
 
@@ -1110,44 +1175,39 @@ const AppProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
   const [notifications, setNotifications] = useState([]);
 
-  const contextValue = useMemo(() => ({
-    user,
-    setUser,
-    theme,
-    setTheme,
-    notifications,
-    setNotifications
-  }), [user, theme, notifications]);
+  const contextValue = useMemo(
+    () => ({
+      user,
+      setUser,
+      theme,
+      setTheme,
+      notifications,
+      setNotifications,
+    }),
+    [user, theme, notifications]
+  );
 
   return (
-    <AppContext.Provider value={contextValue}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 };
 
 // ✅ Even better - split contexts by update frequency
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  
+
   const value = useMemo(() => ({ user, setUser }), [user]);
-  
-  return (
-    <UserContext.Provider value={value}>
-      {children}
-    </UserContext.Provider>
-  );
+
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
-  
+
   const value = useMemo(() => ({ theme, setTheme }), [theme]);
-  
+
   return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };
 ```
@@ -1157,14 +1217,18 @@ const ThemeProvider = ({ children }) => {
 ## Performance Monitoring Tools
 
 ### Definition
-Performance monitoring tools help identify performance bottlenecks, measure rendering times, and track optimization improvements in React applications.
+
+Performance monitoring tools help identify performance bottlenecks, measure
+rendering times, and track optimization improvements in React applications.
 
 ### Built-in React Tools
+
 - **React DevTools Profiler**: Analyze component render times
 - **React.StrictMode**: Detect side effects and unsafe practices
 - **Performance API**: Measure custom metrics
 
 ### Third-party Tools
+
 - **Lighthouse**: Overall performance auditing
 - **Web Vitals**: Core web performance metrics
 - **React Query DevTools**: API call optimization
@@ -1172,18 +1236,26 @@ Performance monitoring tools help identify performance bottlenecks, measure rend
 ### Examples
 
 #### Using React DevTools Profiler
+
 ```javascript
 // Wrap components to profile performance
 import { Profiler } from 'react';
 
-const onRenderCallback = (id, phase, actualDuration, baseDuration, startTime, commitTime) => {
+const onRenderCallback = (
+  id,
+  phase,
+  actualDuration,
+  baseDuration,
+  startTime,
+  commitTime
+) => {
   console.log('Profiler:', {
     id,
     phase, // 'mount' or 'update'
     actualDuration, // Time spent rendering
     baseDuration, // Estimated time without memoization
     startTime,
-    commitTime
+    commitTime,
   });
 };
 
@@ -1201,34 +1273,33 @@ const App = () => {
 const ExpensiveComponent = () => {
   return (
     <Profiler id="ExpensiveComponent" onRender={onRenderCallback}>
-      <div>
-        {/* Expensive rendering logic */}
-      </div>
+      <div>{/* Expensive rendering logic */}</div>
     </Profiler>
   );
 };
 ```
 
 #### Custom Performance Monitoring
+
 ```javascript
 // Performance monitoring hook
 const usePerformanceMonitor = (componentName) => {
   const startTimeRef = useRef();
-  
+
   useEffect(() => {
     startTimeRef.current = performance.now();
-    
+
     return () => {
       const endTime = performance.now();
       const duration = endTime - startTimeRef.current;
-      
+
       console.log(`${componentName} render time: ${duration.toFixed(2)}ms`);
-      
+
       // Send to analytics service
       if (duration > 100) {
         analytics.track('slow_component_render', {
           component: componentName,
-          duration
+          duration,
         });
       }
     };
@@ -1238,12 +1309,13 @@ const usePerformanceMonitor = (componentName) => {
 // Usage in components
 const SlowComponent = () => {
   usePerformanceMonitor('SlowComponent');
-  
+
   return <div>{/* Component content */}</div>;
 };
 ```
 
 #### Web Vitals Monitoring
+
 ```javascript
 import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
 
@@ -1264,7 +1336,12 @@ const useWebVitals = () => {
       analytics.track('web_vital', {
         name: 'CLS',
         value: metric.value,
-        rating: metric.value > 0.25 ? 'poor' : metric.value > 0.1 ? 'needs-improvement' : 'good'
+        rating:
+          metric.value > 0.25
+            ? 'poor'
+            : metric.value > 0.1
+            ? 'needs-improvement'
+            : 'good',
       });
     };
 
@@ -1273,7 +1350,12 @@ const useWebVitals = () => {
       analytics.track('web_vital', {
         name: 'LCP',
         value: metric.value,
-        rating: metric.value > 4000 ? 'poor' : metric.value > 2500 ? 'needs-improvement' : 'good'
+        rating:
+          metric.value > 4000
+            ? 'poor'
+            : metric.value > 2500
+            ? 'needs-improvement'
+            : 'good',
       });
     };
 
@@ -1290,6 +1372,7 @@ const useWebVitals = () => {
 ### Performance Optimization Checklist
 
 #### Component Optimization
+
 - ✅ Use React.memo for expensive components
 - ✅ Implement useMemo for expensive calculations
 - ✅ Use useCallback for stable function references
@@ -1297,6 +1380,7 @@ const useWebVitals = () => {
 - ✅ Colocate state close to where it's used
 
 #### Bundle Optimization
+
 - ✅ Implement code splitting with React.lazy
 - ✅ Use dynamic imports for large libraries
 - ✅ Enable tree shaking in build tools
@@ -1304,6 +1388,7 @@ const useWebVitals = () => {
 - ✅ Avoid importing entire libraries
 
 #### Rendering Optimization
+
 - ✅ Implement virtual scrolling for large lists
 - ✅ Use proper key props in lists
 - ✅ Avoid unnecessary re-renders
@@ -1311,6 +1396,7 @@ const useWebVitals = () => {
 - ✅ Use Suspense for loading states
 
 #### Asset Optimization
+
 - ✅ Implement image lazy loading
 - ✅ Use responsive images
 - ✅ Optimize image formats (WebP, AVIF)
@@ -1318,6 +1404,7 @@ const useWebVitals = () => {
 - ✅ Use CDN for static assets
 
 #### State Management
+
 - ✅ Normalize complex state structures
 - ✅ Split contexts by update frequency
 - ✅ Avoid unnecessary state updates
@@ -1331,19 +1418,19 @@ const useWebVitals = () => {
 const BadComponent = ({ items }) => {
   // Creating objects in render
   const style = { color: 'red' };
-  
+
   // Expensive operation in render
   const expensiveValue = items.reduce((sum, item) => sum + item.value, 0);
-  
+
   // New function on every render
   const handleClick = () => console.log('clicked');
-  
+
   // Unnecessary state update
   const [count, setCount] = useState(0);
   useEffect(() => {
     setCount(count); // Same value
   }, [count]);
-  
+
   return (
     <div style={style}>
       {items.map((item, index) => (
@@ -1360,17 +1447,17 @@ const BadComponent = ({ items }) => {
 const style = { color: 'red' };
 
 const GoodComponent = ({ items }) => {
-  const expensiveValue = useMemo(() => 
-    items.reduce((sum, item) => sum + item.value, 0), 
+  const expensiveValue = useMemo(
+    () => items.reduce((sum, item) => sum + item.value, 0),
     [items]
   );
-  
+
   const handleClick = useCallback(() => console.log('clicked'), []);
-  
+
   return (
     <div style={style}>
       <div>Total: {expensiveValue}</div>
-      {items.map(item => (
+      {items.map((item) => (
         <div key={item.id} onClick={handleClick}>
           {item.name}
         </div>
@@ -1387,12 +1474,12 @@ const GoodComponent = ({ items }) => {
 const measureComponentPerformance = (WrappedComponent, componentName) => {
   return (props) => {
     const startTime = performance.now();
-    
+
     useEffect(() => {
       const endTime = performance.now();
       console.log(`${componentName} render: ${endTime - startTime}ms`);
     });
-    
+
     return <WrappedComponent {...props} />;
   };
 };
@@ -1404,7 +1491,7 @@ const reportBundleSize = () => {
     console.log('Network:', {
       effectiveType: connection.effectiveType,
       downlink: connection.downlink,
-      rtt: connection.rtt
+      rtt: connection.rtt,
     });
   }
 };
@@ -1416,7 +1503,7 @@ const monitorMemoryUsage = () => {
     console.log('Memory:', {
       used: Math.round(memory.usedJSHeapSize / 1048576) + ' MB',
       total: Math.round(memory.totalJSHeapSize / 1048576) + ' MB',
-      limit: Math.round(memory.jsHeapSizeLimit / 1048576) + ' MB'
+      limit: Math.round(memory.jsHeapSizeLimit / 1048576) + ' MB',
     });
   }
 };
@@ -1424,15 +1511,23 @@ const monitorMemoryUsage = () => {
 
 ### Conclusion
 
-React performance optimization is an ongoing process that requires careful analysis, measurement, and iterative improvement. The key is to identify bottlenecks early, apply appropriate optimization techniques, and continuously monitor performance metrics. Remember that premature optimization can be counterproductive, so always measure before and after implementing optimizations to ensure they provide meaningful benefits.
+React performance optimization is an ongoing process that requires careful
+analysis, measurement, and iterative improvement. The key is to identify
+bottlenecks early, apply appropriate optimization techniques, and continuously
+monitor performance metrics. Remember that premature optimization can be
+counterproductive, so always measure before and after implementing optimizations
+to ensure they provide meaningful benefits.
 
 Focus on the most impactful optimizations first:
+
 1. Eliminate unnecessary re-renders
 2. Implement code splitting for large bundles
 3. Optimize images and assets
 4. Use virtual scrolling for large datasets
 5. Monitor and measure performance regularly
 
-By following these practices and using the techniques outlined in this guide, you can build React applications that are fast, responsive, and provide excellent user experiences across all devices and network conditions.
+By following these practices and using the techniques outlined in this guide,
+you can build React applications that are fast, responsive, and provide
+excellent user experiences across all devices and network conditions.
 
 **[⬆ Back to Top](#table-of-contents)**

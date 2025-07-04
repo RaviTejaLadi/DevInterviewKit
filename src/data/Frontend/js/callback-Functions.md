@@ -4,9 +4,11 @@
 
 ## 🔹 1. Definition
 
-A **callback function** is a function **passed as an argument** to another function and is **executed later**, usually after a task is completed.
+A **callback function** is a function **passed as an argument** to another
+function and is **executed later**, usually after a task is completed.
 
-> A callback gives you **control over the execution flow** in asynchronous and functional programming.
+> A callback gives you **control over the execution flow** in asynchronous and
+> functional programming.
 
 ---
 
@@ -19,14 +21,14 @@ function mainFunction(callback) {
 }
 
 function sayHello() {
-  console.log("Hello, world!");
+  console.log('Hello, world!');
 }
 
 mainFunction(sayHello);
 ```
 
-* `mainFunction` takes a function (`callback`) as a parameter.
-* `sayHello` is passed to it and called within `mainFunction`.
+- `mainFunction` takes a function (`callback`) as a parameter.
+- `sayHello` is passed to it and called within `mainFunction`.
 
 ---
 
@@ -56,15 +58,15 @@ mainFunction(sayHello);
 
 ```javascript
 function greetUser(name, callback) {
-  console.log("Hi " + name);
+  console.log('Hi ' + name);
   callback();
 }
 
 function sayBye() {
-  console.log("Bye!");
+  console.log('Bye!');
 }
 
-greetUser("Ravi", sayBye);
+greetUser('Ravi', sayBye);
 ```
 
 **Output:**
@@ -80,12 +82,12 @@ Bye!
 
 ```javascript
 function processUserInput(callback) {
-  let name = "Ravi";
+  let name = 'Ravi';
   callback(name);
 }
 
-processUserInput(function(name) {
-  console.log("Hello " + name);
+processUserInput(function (name) {
+  console.log('Hello ' + name);
 });
 ```
 
@@ -94,13 +96,13 @@ processUserInput(function(name) {
 ### ✅ Example 3: Callback in Asynchronous Code
 
 ```javascript
-console.log("Start");
+console.log('Start');
 
-setTimeout(function() {
-  console.log("This runs after 2 seconds");
+setTimeout(function () {
+  console.log('This runs after 2 seconds');
 }, 2000);
 
-console.log("End");
+console.log('End');
 ```
 
 **Output:**
@@ -118,7 +120,7 @@ This runs after 2 seconds
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
 
-const squared = numbers.map(function(num) {
+const squared = numbers.map(function (num) {
   return num * num;
 });
 
@@ -141,13 +143,13 @@ console.log(squared); // [1, 4, 9, 16, 25]
 ```javascript
 function fetchData(callback) {
   setTimeout(() => {
-    console.log("Data fetched");
+    console.log('Data fetched');
     callback();
   }, 1000);
 }
 
 fetchData(() => {
-  console.log("Callback after fetch");
+  console.log('Callback after fetch');
 });
 ```
 
@@ -155,13 +157,14 @@ fetchData(() => {
 
 ## 🔹 7. Callback Hell 😖
 
-When callbacks are nested within callbacks, the code becomes hard to read and maintain.
+When callbacks are nested within callbacks, the code becomes hard to read and
+maintain.
 
 ```javascript
 doTask1(() => {
   doTask2(() => {
     doTask3(() => {
-      console.log("All tasks done");
+      console.log('All tasks done');
     });
   });
 });
@@ -173,29 +176,31 @@ doTask1(() => {
 
 ## 🔹 8. Benefits
 
-* Controls execution flow
-* Enables async operations
-* Encourages modular code
+- Controls execution flow
+- Enables async operations
+- Encourages modular code
 
 ---
 
 ## 🔹 9. Drawbacks
 
-* Difficult to debug if nested
-* Can lead to callback hell
-* Error handling is tricky
+- Difficult to debug if nested
+- Can lead to callback hell
+- Error handling is tricky
 
 ---
 
 ## 🔹 10. Best Practices
 
-✅ Name your callback functions clearly
-✅ Avoid deep nesting
-✅ Use Promises or async/await for better readability
-✅ Always handle errors if the callback can fail
+✅ Name your callback functions clearly ✅ Avoid deep nesting ✅ Use Promises or
+async/await for better readability ✅ Always handle errors if the callback can
+fail
 
 ---
 
 ## ✅ Conclusion
 
-Callback functions are a **powerful concept** in JavaScript for handling **asynchronous operations**, **event-driven programming**, and **functional patterns**. Understanding callbacks is essential for writing non-blocking, efficient JavaScript code.
+Callback functions are a **powerful concept** in JavaScript for handling
+**asynchronous operations**, **event-driven programming**, and **functional
+patterns**. Understanding callbacks is essential for writing non-blocking,
+efficient JavaScript code.

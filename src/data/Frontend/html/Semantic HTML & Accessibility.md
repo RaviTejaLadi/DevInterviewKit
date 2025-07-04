@@ -3,15 +3,16 @@
 ## Table of Contents
 
 - [ Semantic HTML](#semantic-html)
-- [ Accessibility (a11y)](#accessibility-(a11y))
+- [ Accessibility (a11y)](<#accessibility-(a11y)>)
 - [ Interview Tips](#interview-tips)
 - [ Summary](#summary)
 
-##  Semantic HTML
+## Semantic HTML
 
 ### 🔹 What is Semantic HTML?
 
-Semantic HTML uses **meaningful tags** that clearly describe their purpose in the document — improving both **readability** and **SEO/accessibility**.
+Semantic HTML uses **meaningful tags** that clearly describe their purpose in
+the document — improving both **readability** and **SEO/accessibility**.
 
 ### ✅ Common Semantic Elements
 
@@ -42,17 +43,18 @@ Semantic HTML uses **meaningful tags** that clearly describe their purpose in th
 
 ### 🔍 Why It Matters
 
-* Helps **search engines** better understand your content.
-* Aids **screen readers** in navigation and context.
-* Makes code more **maintainable and readable** for devs.
+- Helps **search engines** better understand your content.
+- Aids **screen readers** in navigation and context.
+- Makes code more **maintainable and readable** for devs.
 
 ---
 
-##  Accessibility (a11y)
+## Accessibility (a11y)
 
 ### 📌 Goals of Accessibility
 
-Make the web usable for people with disabilities (e.g., vision, mobility, cognitive impairments).
+Make the web usable for people with disabilities (e.g., vision, mobility,
+cognitive impairments).
 
 ### 🔹 Key Accessibility Concepts
 
@@ -93,15 +95,15 @@ Make the web usable for people with disabilities (e.g., vision, mobility, cognit
 
 ### 📌 Common Questions
 
-* What are semantic tags and why are they important?
-* How does HTML contribute to web accessibility?
-* What's the purpose of ARIA roles?
-* How would you make a custom button accessible?
-* How do you ensure screen readers interpret your form correctly?
+- What are semantic tags and why are they important?
+- How does HTML contribute to web accessibility?
+- What's the purpose of ARIA roles?
+- How would you make a custom button accessible?
+- How do you ensure screen readers interpret your form correctly?
 
 ---
 
-##  Summary
+## Summary
 
 | Topic             | Remember                                                                |
 | ----------------- | ----------------------------------------------------------------------- |

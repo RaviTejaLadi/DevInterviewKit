@@ -10,10 +10,10 @@
 - [gRPC Concepts](#grpc-concepts)
 - [Quick Reference Summary](#quick-reference-summary)
 
-
 ## Internet Fundamentals
 
 ### 1. How the Internet Works (Non-Technical Explanation)
+
 Think of the internet like a massive postal system:
 
 ```bash
@@ -45,32 +45,35 @@ Think of the internet like a massive postal system:
 - **Routers** are like sorting facilities that direct your "mail" (data)
 - **Servers** are like businesses that receive and respond to your requests
 
-When you visit a website, you're essentially sending a letter asking for information, and the website sends back the content you requested.
+When you visit a website, you're essentially sending a letter asking for
+information, and the website sends back the content you requested.
 
 ### 2. Role of Protocols in Internet Communication
 
-Protocols are like languages and rules that computers use to communicate effectively.
+Protocols are like languages and rules that computers use to communicate
+effectively.
 
-| Protocol | Purpose | Example |
-|----------|---------|---------|
-| **HTTP/HTTPS** | Web page transfer | Loading websites |
-| **TCP** | Reliable data transmission | Email, file downloads |
-| **IP** | Addressing and routing | Finding the right computer |
-| **DNS** | Domain name resolution | Converting google.com to IP |
-| **FTP** | File transfer | Uploading/downloading files |
-| **SMTP** | Email sending | Sending emails |
+| Protocol       | Purpose                    | Example                     |
+| -------------- | -------------------------- | --------------------------- |
+| **HTTP/HTTPS** | Web page transfer          | Loading websites            |
+| **TCP**        | Reliable data transmission | Email, file downloads       |
+| **IP**         | Addressing and routing     | Finding the right computer  |
+| **DNS**        | Domain name resolution     | Converting google.com to IP |
+| **FTP**        | File transfer              | Uploading/downloading files |
+| **SMTP**       | Email sending              | Sending emails              |
 
 ### 3. HTTP vs HTTPS
 
-| Aspect | HTTP | HTTPS |
-|--------|------|-------|
-| **Security** | No encryption | SSL/TLS encryption |
-| **Port** | 80 | 443 |
-| **Data Protection** | Plain text | Encrypted |
-| **Authentication** | None | Server verification |
-| **SEO Impact** | Lower ranking | Higher ranking |
+| Aspect              | HTTP          | HTTPS               |
+| ------------------- | ------------- | ------------------- |
+| **Security**        | No encryption | SSL/TLS encryption  |
+| **Port**            | 80            | 443                 |
+| **Data Protection** | Plain text    | Encrypted           |
+| **Authentication**  | None          | Server verification |
+| **SEO Impact**      | Lower ranking | Higher ranking      |
 
 **Why HTTPS is Important:**
+
 - Protects sensitive data (passwords, credit cards)
 - Prevents man-in-the-middle attacks
 - Builds user trust
@@ -95,6 +98,7 @@ Browser connects to IP address
 ```
 
 **Process:**
+
 1. You type a domain name
 2. DNS resolver translates it to an IP address
 3. Your browser connects to that IP address
@@ -104,9 +108,11 @@ Browser connects to IP address
 
 ### 5. REST (Representational State Transfer)
 
-REST is an architectural style for designing web services that treats data as resources that can be accessed and manipulated using standard HTTP methods.
+REST is an architectural style for designing web services that treats data as
+resources that can be accessed and manipulated using standard HTTP methods.
 
 **Key Concepts:**
+
 - **Resources:** Everything is a resource (users, products, orders)
 - **URLs:** Each resource has a unique identifier
 - **HTTP Methods:** Standard operations (GET, POST, PUT, DELETE)
@@ -114,14 +120,14 @@ REST is an architectural style for designing web services that treats data as re
 
 ### 6. Key Principles of RESTful API Design
 
-| Principle | Description | Why Important |
-|-----------|-------------|---------------|
-| **Stateless** | No client state stored on server | Scalability, reliability |
+| Principle             | Description                        | Why Important              |
+| --------------------- | ---------------------------------- | -------------------------- |
+| **Stateless**         | No client state stored on server   | Scalability, reliability   |
 | **Uniform Interface** | Consistent resource identification | Easy to understand and use |
-| **Client-Server** | Clear separation of concerns | Independent evolution |
-| **Cacheable** | Responses can be cached | Better performance |
-| **Layered System** | Hierarchical layers | Security, scalability |
-| **Code on Demand** | Optional executable code | Flexibility (rarely used) |
+| **Client-Server**     | Clear separation of concerns       | Independent evolution      |
+| **Cacheable**         | Responses can be cached            | Better performance         |
+| **Layered System**    | Hierarchical layers                | Security, scalability      |
+| **Code on Demand**    | Optional executable code           | Flexibility (rarely used)  |
 
 ### 7. Client-Server Architecture
 
@@ -137,6 +143,7 @@ Client (Frontend)          Server (Backend)
 ```
 
 **Benefits:**
+
 - **Separation of Concerns:** Frontend focuses on UI, backend on data/logic
 - **Scalability:** Can scale client and server independently
 - **Multiple Clients:** One API can serve web, mobile, and desktop apps
@@ -144,27 +151,28 @@ Client (Frontend)          Server (Backend)
 
 ### 8. HTTP Methods in RESTful APIs
 
-| Method | Purpose | Example | Safe | Idempotent |
-|--------|---------|---------|------|------------|
-| **GET** | Retrieve data | `GET /users/123` | ✅ | ✅ |
-| **POST** | Create new resource | `POST /users` | ❌ | ❌ |
-| **PUT** | Update/replace entire resource | `PUT /users/123` | ❌ | ✅ |
-| **PATCH** | Partial update | `PATCH /users/123` | ❌ | ❌ |
-| **DELETE** | Remove resource | `DELETE /users/123` | ❌ | ✅ |
-| **HEAD** | Get headers only | `HEAD /users/123` | ✅ | ✅ |
-| **OPTIONS** | Get allowed methods | `OPTIONS /users` | ✅ | ✅ |
+| Method      | Purpose                        | Example             | Safe | Idempotent |
+| ----------- | ------------------------------ | ------------------- | ---- | ---------- |
+| **GET**     | Retrieve data                  | `GET /users/123`    | ✅   | ✅         |
+| **POST**    | Create new resource            | `POST /users`       | ❌   | ❌         |
+| **PUT**     | Update/replace entire resource | `PUT /users/123`    | ❌   | ✅         |
+| **PATCH**   | Partial update                 | `PATCH /users/123`  | ❌   | ❌         |
+| **DELETE**  | Remove resource                | `DELETE /users/123` | ❌   | ✅         |
+| **HEAD**    | Get headers only               | `HEAD /users/123`   | ✅   | ✅         |
+| **OPTIONS** | Get allowed methods            | `OPTIONS /users`    | ✅   | ✅         |
 
 ### 9. HTTP Status Codes
 
-| Code Range | Category | Common Examples |
-|------------|----------|-----------------|
-| **1xx** | Informational | 100 Continue, 101 Switching Protocols |
-| **2xx** | Success | 200 OK, 201 Created, 204 No Content |
-| **3xx** | Redirection | 301 Moved Permanently, 304 Not Modified |
-| **4xx** | Client Error | 400 Bad Request, 401 Unauthorized, 404 Not Found |
-| **5xx** | Server Error | 500 Internal Server Error, 503 Service Unavailable |
+| Code Range | Category      | Common Examples                                    |
+| ---------- | ------------- | -------------------------------------------------- |
+| **1xx**    | Informational | 100 Continue, 101 Switching Protocols              |
+| **2xx**    | Success       | 200 OK, 201 Created, 204 No Content                |
+| **3xx**    | Redirection   | 301 Moved Permanently, 304 Not Modified            |
+| **4xx**    | Client Error  | 400 Bad Request, 401 Unauthorized, 404 Not Found   |
+| **5xx**    | Server Error  | 500 Internal Server Error, 503 Service Unavailable |
 
 **Most Important Ones:**
+
 - **200 OK:** Request successful
 - **201 Created:** Resource created successfully
 - **400 Bad Request:** Invalid request syntax
@@ -175,7 +183,8 @@ Client (Frontend)          Server (Backend)
 
 ### 10. Statelessness in RESTful APIs
 
-**Stateless means:** Each request must contain all information needed to understand and process it.
+**Stateless means:** Each request must contain all information needed to
+understand and process it.
 
 ```tsx
 ❌ Stateful (Bad):
@@ -188,6 +197,7 @@ Request 2: Get user profile + token
 ```
 
 **Benefits:**
+
 - **Scalability:** Any server can handle any request
 - **Reliability:** No session state to lose
 - **Simplicity:** Easier to understand and debug
@@ -222,6 +232,7 @@ query GetUserWithPosts {
 ```
 
 **Key Differences from REST:**
+
 - Single endpoint vs multiple endpoints
 - Client specifies exactly what data to fetch
 - Nested data in one request vs multiple requests
@@ -229,9 +240,9 @@ query GetUserWithPosts {
 
 ### 12. Solving Over-fetching and Under-fetching
 
-| Problem | REST Example | GraphQL Solution |
-|---------|--------------|------------------|
-| **Over-fetching** | `GET /users` returns all user fields when you only need name and email | Query only specific fields: `{ users { name email } }` |
+| Problem            | REST Example                                                                          | GraphQL Solution                                                             |
+| ------------------ | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **Over-fetching**  | `GET /users` returns all user fields when you only need name and email                | Query only specific fields: `{ users { name email } }`                       |
 | **Under-fetching** | Need multiple requests: `GET /users/1`, `GET /users/1/posts`, `GET /users/1/comments` | Single request: `{ user(id: 1) { name posts { title } comments { text } } }` |
 
 ```bash
@@ -253,7 +264,8 @@ query {
 
 ### 13. GraphQL Schema
 
-A schema defines the structure of your API - what data is available and how it can be accessed.
+A schema defines the structure of your API - what data is available and how it
+can be accessed.
 
 ```graphql
 # Type Definitions
@@ -280,6 +292,7 @@ type Query {
 ```
 
 **Why Schema is Important:**
+
 - **Contract:** Defines what clients can expect
 - **Validation:** Ensures queries are valid before execution
 - **Documentation:** Self-documenting API
@@ -288,32 +301,34 @@ type Query {
 
 ### 14. GraphQL Advantages Over REST
 
-| Aspect | GraphQL | REST |
-|--------|---------|------|
-| **Data Fetching** | Precise, single request | Often over/under-fetching |
-| **API Evolution** | Backward compatible | Version management needed |
-| **Tooling** | Rich ecosystem (GraphiQL, Apollo) | Standard HTTP tools |
-| **Learning Curve** | Steeper | Gentler |
-| **Caching** | More complex | HTTP caching built-in |
-| **Real-time** | Built-in subscriptions | Requires additional setup |
+| Aspect             | GraphQL                           | REST                      |
+| ------------------ | --------------------------------- | ------------------------- |
+| **Data Fetching**  | Precise, single request           | Often over/under-fetching |
+| **API Evolution**  | Backward compatible               | Version management needed |
+| **Tooling**        | Rich ecosystem (GraphiQL, Apollo) | Standard HTTP tools       |
+| **Learning Curve** | Steeper                           | Gentler                   |
+| **Caching**        | More complex                      | HTTP caching built-in     |
+| **Real-time**      | Built-in subscriptions            | Requires additional setup |
 
 ### 15. GraphQL Batching
 
 **DataLoader Pattern:**
+
 ```javascript
 // Without batching (N+1 problem)
-users.forEach(user => {
-  loadPosts(user.id) // Separate database query for each user
-})
+users.forEach((user) => {
+  loadPosts(user.id); // Separate database query for each user
+});
 
 // With batching
 const postLoader = new DataLoader(async (userIds) => {
   // Single database query for all users
-  return loadPostsByUserIds(userIds)
-})
+  return loadPostsByUserIds(userIds);
+});
 ```
 
 **Benefits:**
+
 - Reduces database queries
 - Improves performance
 - Prevents N+1 query problems
@@ -321,37 +336,37 @@ const postLoader = new DataLoader(async (userIds) => {
 
 ### 16. Choosing Between REST and GraphQL
 
-| Use REST When | Use GraphQL When |
-|---------------|------------------|
-| Simple, CRUD operations | Complex data relationships |
-| HTTP caching is crucial | Flexible client requirements |
-| Team has limited GraphQL experience | Multiple client types (web, mobile) |
-| File uploads are primary | Real-time features needed |
-| Microservices architecture | Rapid frontend development |
-| Simple client requirements | Data aggregation from multiple sources |
+| Use REST When                       | Use GraphQL When                       |
+| ----------------------------------- | -------------------------------------- |
+| Simple, CRUD operations             | Complex data relationships             |
+| HTTP caching is crucial             | Flexible client requirements           |
+| Team has limited GraphQL experience | Multiple client types (web, mobile)    |
+| File uploads are primary            | Real-time features needed              |
+| Microservices architecture          | Rapid frontend development             |
+| Simple client requirements          | Data aggregation from multiple sources |
 
 ## HTTP Methods Deep Dive
 
 ### 17. GET vs POST
 
-| Aspect | GET | POST |
-|--------|-----|------|
-| **Purpose** | Retrieve data | Submit data |
-| **Data Location** | URL parameters | Request body |
-| **Caching** | Can be cached | Not cached |
-| **Bookmarking** | Can be bookmarked | Cannot be bookmarked |
-| **Data Limits** | URL length limits (~2048 chars) | No practical limit |
-| **Security** | Less secure (visible in logs) | More secure |
-| **Idempotent** | Yes | No |
+| Aspect            | GET                             | POST                 |
+| ----------------- | ------------------------------- | -------------------- |
+| **Purpose**       | Retrieve data                   | Submit data          |
+| **Data Location** | URL parameters                  | Request body         |
+| **Caching**       | Can be cached                   | Not cached           |
+| **Bookmarking**   | Can be bookmarked               | Cannot be bookmarked |
+| **Data Limits**   | URL length limits (~2048 chars) | No practical limit   |
+| **Security**      | Less secure (visible in logs)   | More secure          |
+| **Idempotent**    | Yes                             | No                   |
 
 ### 18. PUT vs POST
 
-| Scenario | Use POST | Use PUT |
-|----------|----------|---------|
-| **Creating** | When server assigns ID | When client specifies ID |
-| **Updating** | Partial updates | Complete replacement |
-| **Idempotency** | Not required | Must be idempotent |
-| **Example** | `POST /users` (create new user) | `PUT /users/123` (replace user 123) |
+| Scenario        | Use POST                        | Use PUT                             |
+| --------------- | ------------------------------- | ----------------------------------- |
+| **Creating**    | When server assigns ID          | When client specifies ID            |
+| **Updating**    | Partial updates                 | Complete replacement                |
+| **Idempotency** | Not required                    | Must be idempotent                  |
+| **Example**     | `POST /users` (create new user) | `PUT /users/123` (replace user 123) |
 
 ### 19. DELETE Method
 
@@ -364,12 +379,14 @@ Authorization: Bearer token123
 ```
 
 **Use Cases:**
+
 - Delete user account
 - Remove product from catalog
 - Cancel subscription
 - Clear cache
 
 **Best Practices:**
+
 - Return appropriate status codes (200, 202, 204)
 - Consider soft deletes for important data
 - Implement proper authorization
@@ -389,10 +406,12 @@ Content-Type: application/json
 ```
 
 **PATCH vs PUT:**
+
 - **PATCH:** Update only specified fields
 - **PUT:** Replace entire resource
 
 **When to Use PATCH:**
+
 - Updating user profile fields
 - Changing product prices
 - Modifying configuration settings
@@ -413,6 +432,7 @@ Access-Control-Allow-Headers: Content-Type, Authorization
 ```
 
 **Common Uses:**
+
 - **CORS preflight requests:** Browser checks if cross-origin request is allowed
 - **API discovery:** Find out what methods are supported
 - **Capability negotiation:** Determine server capabilities
@@ -423,13 +443,13 @@ Access-Control-Allow-Headers: Content-Type, Authorization
 
 **Purpose:** Tells the server what type of data is being sent
 
-| Content-Type | Use Case | Example |
-|--------------|----------|---------|
-| `application/json` | JSON data | API requests |
-| `application/x-www-form-urlencoded` | HTML forms | Login forms |
-| `multipart/form-data` | File uploads | Image uploads |
-| `text/plain` | Plain text | Simple text data |
-| `application/xml` | XML data | SOAP services |
+| Content-Type                        | Use Case     | Example          |
+| ----------------------------------- | ------------ | ---------------- |
+| `application/json`                  | JSON data    | API requests     |
+| `application/x-www-form-urlencoded` | HTML forms   | Login forms      |
+| `multipart/form-data`               | File uploads | Image uploads    |
+| `text/plain`                        | Plain text   | Simple text data |
+| `application/xml`                   | XML data     | SOAP services    |
 
 ```http
 POST /api/users HTTP/1.1
@@ -450,6 +470,7 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 ```
 
 **Uses for Developers:**
+
 - **Analytics:** Track browser/device usage
 - **Responsive Design:** Serve mobile-optimized content
 - **Feature Detection:** Enable/disable features based on capabilities
@@ -460,7 +481,8 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 
 ### 24. What is gRPC?
 
-**gRPC (Google Remote Procedure Call)** is a high-performance RPC framework that uses HTTP/2 and Protocol Buffers.
+**gRPC (Google Remote Procedure Call)** is a high-performance RPC framework that
+uses HTTP/2 and Protocol Buffers.
 
 ```bash
 Traditional REST:
@@ -471,6 +493,7 @@ Client → HTTP/2 + Protobuf → Server
 ```
 
 **Key Differences:**
+
 - **Communication:** Binary vs Text
 - **Protocol:** HTTP/2 vs HTTP/1.1
 - **Schema:** Strongly typed vs Flexible
@@ -479,16 +502,17 @@ Client → HTTP/2 + Protobuf → Server
 
 ### 25. Protocol Buffers (Protobuf) Benefits
 
-| Aspect | JSON | Protobuf |
-|--------|------|----------|
-| **Size** | Larger (text-based) | Smaller (binary) |
-| **Speed** | Slower parsing | Faster parsing |
-| **Schema** | No built-in schema | Strongly typed schema |
-| **Readability** | Human readable | Binary (not readable) |
-| **Versioning** | Manual handling | Built-in versioning |
-| **Language Support** | Universal | Many languages |
+| Aspect               | JSON                | Protobuf              |
+| -------------------- | ------------------- | --------------------- |
+| **Size**             | Larger (text-based) | Smaller (binary)      |
+| **Speed**            | Slower parsing      | Faster parsing        |
+| **Schema**           | No built-in schema  | Strongly typed schema |
+| **Readability**      | Human readable      | Binary (not readable) |
+| **Versioning**       | Manual handling     | Built-in versioning   |
+| **Language Support** | Universal           | Many languages        |
 
 **Example:**
+
 ```protobuf
 // user.proto
 syntax = "proto3";
@@ -508,19 +532,20 @@ message User {
 service UserService {
   // Unary RPC
   rpc GetUser(GetUserRequest) returns (User);
-  
+
   // Server streaming
   rpc ListUsers(ListUsersRequest) returns (stream User);
-  
+
   // Client streaming
   rpc CreateUsers(stream CreateUserRequest) returns (CreateUsersResponse);
-  
+
   // Bidirectional streaming
   rpc Chat(stream ChatMessage) returns (stream ChatMessage);
 }
 ```
 
 **Why Significant:**
+
 - **Contract-First:** Define API before implementation
 - **Code Generation:** Automatic client/server code
 - **Type Safety:** Compile-time error checking
@@ -529,15 +554,16 @@ service UserService {
 
 ### 27. gRPC and HTTP/2 Advantages
 
-| Feature | HTTP/1.1 | HTTP/2 (gRPC) |
-|---------|----------|---------------|
-| **Multiplexing** | One request per connection | Multiple requests per connection |
-| **Header Compression** | No | Yes (HPACK) |
-| **Server Push** | No | Yes |
-| **Binary Protocol** | Text-based | Binary |
-| **Stream Prioritization** | No | Yes |
+| Feature                   | HTTP/1.1                   | HTTP/2 (gRPC)                    |
+| ------------------------- | -------------------------- | -------------------------------- |
+| **Multiplexing**          | One request per connection | Multiple requests per connection |
+| **Header Compression**    | No                         | Yes (HPACK)                      |
+| **Server Push**           | No                         | Yes                              |
+| **Binary Protocol**       | Text-based                 | Binary                           |
+| **Stream Prioritization** | No                         | Yes                              |
 
 **Advantages:**
+
 - **Performance:** Faster due to multiplexing and compression
 - **Efficiency:** Less bandwidth usage
 - **Streaming:** Built-in bidirectional streaming
@@ -545,18 +571,19 @@ service UserService {
 
 ### 28. REST vs gRPC Comparison
 
-| Aspect | REST APIs | gRPC |
-|--------|-----------|------|
-| **Protocol** | HTTP/1.1, JSON | HTTP/2, Protobuf |
-| **Performance** | Good | Excellent |
-| **Browser Support** | Native | Requires proxy |
-| **Caching** | HTTP caching | Custom caching |
-| **Learning Curve** | Easy | Moderate |
-| **Tooling** | Abundant | Growing |
-| **Streaming** | Limited | Built-in |
-| **Schema** | Flexible | Strict |
+| Aspect              | REST APIs      | gRPC             |
+| ------------------- | -------------- | ---------------- |
+| **Protocol**        | HTTP/1.1, JSON | HTTP/2, Protobuf |
+| **Performance**     | Good           | Excellent        |
+| **Browser Support** | Native         | Requires proxy   |
+| **Caching**         | HTTP caching   | Custom caching   |
+| **Learning Curve**  | Easy           | Moderate         |
+| **Tooling**         | Abundant       | Growing          |
+| **Streaming**       | Limited        | Built-in         |
+| **Schema**          | Flexible       | Strict           |
 
 ### REST Strengths:
+
 - Universal browser support
 - Simple to understand and implement
 - Great HTTP tooling ecosystem
@@ -565,12 +592,14 @@ service UserService {
 - RESTful principles well-understood
 
 ### REST Weaknesses:
+
 - Over/under-fetching issues
 - Multiple round trips for complex data
 - Less efficient serialization
 - Limited real-time capabilities
 
 ### gRPC Strengths:
+
 - High performance and efficiency
 - Strong typing and code generation
 - Built-in streaming support
@@ -579,6 +608,7 @@ service UserService {
 - Built-in load balancing and retries
 
 ### gRPC Weaknesses:
+
 - Limited browser support
 - Steeper learning curve
 - Binary format harder to debug
@@ -590,22 +620,25 @@ service UserService {
 
 ### When to Use What:
 
-| Scenario | Recommended Approach |
-|----------|---------------------|
-| **Public Web APIs** | REST with JSON |
-| **Mobile Apps** | GraphQL or REST |
-| **Microservices Communication** | gRPC |
-| **Real-time Applications** | GraphQL Subscriptions or gRPC Streaming |
-| **Simple CRUD Operations** | REST |
-| **Complex Data Relationships** | GraphQL |
-| **High-Performance Internal APIs** | gRPC |
-| **Browser-based Applications** | REST or GraphQL |
+| Scenario                           | Recommended Approach                    |
+| ---------------------------------- | --------------------------------------- |
+| **Public Web APIs**                | REST with JSON                          |
+| **Mobile Apps**                    | GraphQL or REST                         |
+| **Microservices Communication**    | gRPC                                    |
+| **Real-time Applications**         | GraphQL Subscriptions or gRPC Streaming |
+| **Simple CRUD Operations**         | REST                                    |
+| **Complex Data Relationships**     | GraphQL                                 |
+| **High-Performance Internal APIs** | gRPC                                    |
+| **Browser-based Applications**     | REST or GraphQL                         |
 
 ### Performance Hierarchy:
+
 1. **gRPC** (Fastest - Binary, HTTP/2)
 2. **GraphQL** (Fast - Single endpoint, optimized queries)
 3. **REST** (Good - Multiple endpoints, HTTP/1.1)
 
-This guide covers the essential networking concepts you'll encounter in interviews. Focus on understanding the trade-offs and use cases for each technology rather than memorizing syntax.
+This guide covers the essential networking concepts you'll encounter in
+interviews. Focus on understanding the trade-offs and use cases for each
+technology rather than memorizing syntax.
 
 **[⬆ Back to Top](#table-of-contents)**

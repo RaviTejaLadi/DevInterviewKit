@@ -1,6 +1,7 @@
 # Simple Login Form with Validation (useState and useReducer)
 
-Here are implementations of a login form with validation in both JavaScript and TypeScript, using both `useState` and `useReducer` approaches.
+Here are implementations of a login form with validation in both JavaScript and
+TypeScript, using both `useState` and `useReducer` approaches.
 
 ## JavaScript Versions
 
@@ -81,7 +82,9 @@ const LoginFormUseState = () => {
             onChange={handleChange}
             style={{ width: '100%', padding: '8px' }}
           />
-          {errors.email && <div style={{ color: 'red', fontSize: '14px' }}>{errors.email}</div>}
+          {errors.email && (
+            <div style={{ color: 'red', fontSize: '14px' }}>{errors.email}</div>
+          )}
         </div>
         <div style={{ marginBottom: '15px' }}>
           <label htmlFor="password">Password:</label>
@@ -93,7 +96,11 @@ const LoginFormUseState = () => {
             onChange={handleChange}
             style={{ width: '100%', padding: '8px' }}
           />
-          {errors.password && <div style={{ color: 'red', fontSize: '14px' }}>{errors.password}</div>}
+          {errors.password && (
+            <div style={{ color: 'red', fontSize: '14px' }}>
+              {errors.password}
+            </div>
+          )}
         </div>
         <button
           type="submit"
@@ -202,9 +209,9 @@ const LoginFormUseReducer = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { errors, isValid } = validateForm(state.formData);
-    
+
     dispatch({ type: 'SET_ERRORS', errors });
-    
+
     if (isValid) {
       dispatch({ type: 'SUBMIT_START' });
       // Simulate API call
@@ -229,7 +236,11 @@ const LoginFormUseReducer = () => {
             onChange={handleChange}
             style={{ width: '100%', padding: '8px' }}
           />
-          {state.errors.email && <div style={{ color: 'red', fontSize: '14px' }}>{state.errors.email}</div>}
+          {state.errors.email && (
+            <div style={{ color: 'red', fontSize: '14px' }}>
+              {state.errors.email}
+            </div>
+          )}
         </div>
         <div style={{ marginBottom: '15px' }}>
           <label htmlFor="password">Password:</label>
@@ -241,7 +252,11 @@ const LoginFormUseReducer = () => {
             onChange={handleChange}
             style={{ width: '100%', padding: '8px' }}
           />
-          {state.errors.password && <div style={{ color: 'red', fontSize: '14px' }}>{state.errors.password}</div>}
+          {state.errors.password && (
+            <div style={{ color: 'red', fontSize: '14px' }}>
+              {state.errors.password}
+            </div>
+          )}
         </div>
         <button
           type="submit"
@@ -355,7 +370,9 @@ const LoginFormUseState: React.FC = () => {
             onChange={handleChange}
             style={{ width: '100%', padding: '8px' }}
           />
-          {errors.email && <div style={{ color: 'red', fontSize: '14px' }}>{errors.email}</div>}
+          {errors.email && (
+            <div style={{ color: 'red', fontSize: '14px' }}>{errors.email}</div>
+          )}
         </div>
         <div style={{ marginBottom: '15px' }}>
           <label htmlFor="password">Password:</label>
@@ -367,7 +384,11 @@ const LoginFormUseState: React.FC = () => {
             onChange={handleChange}
             style={{ width: '100%', padding: '8px' }}
           />
-          {errors.password && <div style={{ color: 'red', fontSize: '14px' }}>{errors.password}</div>}
+          {errors.password && (
+            <div style={{ color: 'red', fontSize: '14px' }}>
+              {errors.password}
+            </div>
+          )}
         </div>
         <button
           type="submit"
@@ -461,7 +482,9 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-const validateForm = (formData: FormData): { errors: FormErrors; isValid: boolean } => {
+const validateForm = (
+  formData: FormData
+): { errors: FormErrors; isValid: boolean } => {
   const errors: FormErrors = {
     email: '',
     password: '',
@@ -498,9 +521,9 @@ const LoginFormUseReducer: React.FC = () => {
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     const { errors, isValid } = validateForm(state.formData);
-    
+
     dispatch({ type: 'SET_ERRORS', errors });
-    
+
     if (isValid) {
       dispatch({ type: 'SUBMIT_START' });
       // Simulate API call
@@ -525,7 +548,11 @@ const LoginFormUseReducer: React.FC = () => {
             onChange={handleChange}
             style={{ width: '100%', padding: '8px' }}
           />
-          {state.errors.email && <div style={{ color: 'red', fontSize: '14px' }}>{state.errors.email}</div>}
+          {state.errors.email && (
+            <div style={{ color: 'red', fontSize: '14px' }}>
+              {state.errors.email}
+            </div>
+          )}
         </div>
         <div style={{ marginBottom: '15px' }}>
           <label htmlFor="password">Password:</label>
@@ -537,7 +564,11 @@ const LoginFormUseReducer: React.FC = () => {
             onChange={handleChange}
             style={{ width: '100%', padding: '8px' }}
           />
-          {state.errors.password && <div style={{ color: 'red', fontSize: '14px' }}>{state.errors.password}</div>}
+          {state.errors.password && (
+            <div style={{ color: 'red', fontSize: '14px' }}>
+              {state.errors.password}
+            </div>
+          )}
         </div>
         <button
           type="submit"
@@ -563,6 +594,7 @@ export default LoginFormUseReducer;
 ```
 
 ### Key Features in Both Implementations:
+
 1. Form validation for email format and password length
 2. Error messages display for invalid fields
 3. Loading state during form submission
@@ -570,4 +602,7 @@ export default LoginFormUseReducer;
 5. Proper event typing for form elements
 6. Reusable validation logic
 
-The useReducer version provides better organization for complex form state management, while the useState version is simpler for basic forms. The TypeScript versions add type safety and better developer experience with autocompletion and error checking.
+The useReducer version provides better organization for complex form state
+management, while the useState version is simpler for basic forms. The
+TypeScript versions add type safety and better developer experience with
+autocompletion and error checking.

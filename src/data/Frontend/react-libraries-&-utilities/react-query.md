@@ -4,18 +4,19 @@
 
 - [What is React-Query?](#what-is-react-query?)
 - [Advantages of React-Query](#advantages-of-react-query)
-- [Complete Setup Guide with TypeScript (TSX)](#complete-setup-guide-with-typescript-(tsx))
+- [Complete Setup Guide with TypeScript (TSX)](<#complete-setup-guide-with-typescript-(tsx)>)
   - [1. Installation](#1.-installation)
   - [2. Basic Setup](#2.-basic-setup)
   - [3. Default Options Configuration](#3.-default-options-configuration)
   - [4. Basic Query Example](#4.-basic-query-example)
-  - [5. Mutations (Creating/Updating Data)](#5.-mutations-(creating/updating-data))
+  - [5. Mutations (Creating/Updating Data)](<#5.-mutations-(creating/updating-data)>)
   - [6. Paginated Queries](#6.-paginated-queries)
 - [Best Practices](#best-practices)
 
 ## What is React-Query?
 
 React-Query is a powerful data-fetching library for React applications that:
+
 - Manages server state
 - Handles caching
 - Provides background updates
@@ -31,7 +32,8 @@ React-Query is a powerful data-fetching library for React applications that:
 5. **Pagination Support**: Built-in hooks for paginated data
 6. **TypeScript Support**: Excellent type inference and customization
 7. **Devtools**: Built-in developer tools for debugging
-8. **Window Focus Refetching**: Automatically refetches data when window regains focus
+8. **Window Focus Refetching**: Automatically refetches data when window regains
+   focus
 
 ## Complete Setup Guide with TypeScript (TSX)
 
@@ -60,7 +62,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       {/* Your application components */}
       <Todos />
-      
+
       {/* Devtools (optional) */}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
@@ -173,7 +175,7 @@ function AddTodo() {
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     const title = formData.get('title') as string;
-    
+
     mutation.mutate({ title, completed: false });
     form.reset();
   };
@@ -283,7 +285,9 @@ interface Todo {
   completed: boolean;
 }
 
-const fetchInfiniteTodos = async ({ pageParam = 1 }): Promise<{
+const fetchInfiniteTodos = async ({
+  pageParam = 1,
+}): Promise<{
   data: Todo[];
   nextPage: number | null;
 }> => {
@@ -355,16 +359,19 @@ export default InfiniteTodos;
 
 ## Best Practices
 
-1. **Query Keys**: Use structured query keys for better organization and invalidation
+1. **Query Keys**: Use structured query keys for better organization and
+   invalidation
+
    ```tsx
    // Good
-   ['todos', { status: 'done', page: 1 }]
-   
+   ['todos', { status: 'done', page: 1 }];
+
    // Bad
-   'todos-done-page-1'
+   ('todos-done-page-1');
    ```
 
 2. **Custom Hooks**: Encapsulate queries in custom hooks for reusability
+
    ```tsx
    export function useTodos() {
      return useQuery({
@@ -375,6 +382,7 @@ export default InfiniteTodos;
    ```
 
 3. **Error Handling**: Create a global error handler
+
    ```tsx
    const queryClient = new QueryClient({
      defaultOptions: {
@@ -389,6 +397,7 @@ export default InfiniteTodos;
    ```
 
 4. **Suspense**: Use with React Suspense for better loading states
+
    ```tsx
    const { data } = useQuery({
      queryKey: ['todos'],
@@ -398,13 +407,16 @@ export default InfiniteTodos;
    ```
 
 5. **Prefetching**: Prefetch data for better UX
+
    ```tsx
    const queryClient = useQueryClient();
-   
+
    // Prefetch on hover
    <div onMouseEnter={() => queryClient.prefetchQuery(...)}>
    ```
 
-React-Query significantly simplifies data management in React applications while providing powerful features out of the box. The TypeScript integration ensures type safety throughout your data fetching logic.
+React-Query significantly simplifies data management in React applications while
+providing powerful features out of the box. The TypeScript integration ensures
+type safety throughout your data fetching logic.
 
 **[⬆ Back to Top](#table-of-contents)**

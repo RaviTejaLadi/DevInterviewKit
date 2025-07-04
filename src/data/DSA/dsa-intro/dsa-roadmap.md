@@ -3,13 +3,13 @@
 ## Table of Contents
 
 1. [Learning Path Overview](#learning-path-overview)
-2. [Phase 1: Foundation (2-3 weeks)](#phase-1:-foundation-(2-3-weeks))
-3. [Phase 2: Basic Data Structures (4-6 weeks)](#phase-2:-basic-data-structures-(4-6-weeks))
-4. [Phase 3: Intermediate Data Structures (6-8 weeks)](#phase-3:-intermediate-data-structures-(6-8-weeks))
-5. [Phase 4: Algorithms (8-10 weeks)](#phase-4:-algorithms-(8-10-weeks))
-6. [Phase 5: Advanced Topics (8-10 weeks)](#phase-5:-advanced-topics-(8-10-weeks))
+2. [Phase 1: Foundation (2-3 weeks)](<#phase-1:-foundation-(2-3-weeks)>)
+3. [Phase 2: Basic Data Structures (4-6 weeks)](<#phase-2:-basic-data-structures-(4-6-weeks)>)
+4. [Phase 3: Intermediate Data Structures (6-8 weeks)](<#phase-3:-intermediate-data-structures-(6-8-weeks)>)
+5. [Phase 4: Algorithms (8-10 weeks)](<#phase-4:-algorithms-(8-10-weeks)>)
+6. [Phase 5: Advanced Topics (8-10 weeks)](<#phase-5:-advanced-topics-(8-10-weeks)>)
 7. [Phase 6: Practice & Problem Solving (Ongoing)](#phase-6:-practice--problem-solving-ongoing)
-8. [Phase 7: System Design Basics (4-6 weeks)](#phase-7:-system-design-basics-(4-6-weeks))
+8. [Phase 7: System Design Basics (4-6 weeks)](<#phase-7:-system-design-basics-(4-6-weeks)>)
 9. [JavaScript-Specific DSA Tips](#javascript-specific-dsa-tips)
 10. [Progress Tracking](#progress-tracking)
 11. [Final Tips for Success](#final-tips-for-success)
@@ -34,6 +34,7 @@
 ## Phase 1: Foundation (2-3 weeks)
 
 ### 📚 JavaScript Fundamentals
+
 ```bash
 JavaScript Basics
 ├── Variables & Data Types
@@ -44,11 +45,13 @@ JavaScript Basics
 ```
 
 **Key Topics:**
+
 - **Big O Notation**: Understanding time and space complexity
 - **JavaScript-specific concepts**: Closures, Prototypes, Event Loop
 - **Basic problem-solving patterns**
 
 ### 🧮 Mathematical Foundations
+
 ```bash
 Math Concepts
 ├── Basic Arithmetic Operations
@@ -65,23 +68,15 @@ Math Concepts
 ### 📋 Arrays & Strings
 
 ```html
-Arrays                          Strings
-┌─────────────────┐            ┌─────────────────┐
-│ [1, 2, 3, 4, 5] │            │ "Hello World!"  │
-└─────────────────┘            └─────────────────┘
-         │                              │
-    ┌────┴────┐                    ┌────┴────┐
-    │ Methods │                    │ Methods │
-    ├─────────┤                    ├─────────┤
-    │ push()  │                    │ charAt()│
-    │ pop()   │                    │ slice() │
-    │ shift() │                    │ split() │
-    │ map()   │                    │ indexOf │
-    │ filter()│                    │ replace │
-    └─────────┘                    └─────────┘
+Arrays Strings ┌─────────────────┐ ┌─────────────────┐ │ [1, 2, 3, 4, 5] │ │
+"Hello World!" │ └─────────────────┘ └─────────────────┘ │ │ ┌────┴────┐
+┌────┴────┐ │ Methods │ │ Methods │ ├─────────┤ ├─────────┤ │ push() │ │
+charAt()│ │ pop() │ │ slice() │ │ shift() │ │ split() │ │ map() │ │ indexOf │ │
+filter()│ │ replace │ └─────────┘ └─────────┘
 ```
 
 **Practice Problems:**
+
 - Two Sum, Three Sum
 - Maximum Subarray (Kadane's Algorithm)
 - String Palindrome Check
@@ -109,16 +104,18 @@ Circular Linked List:
 ```
 
 **JavaScript Implementation:**
+
 ```javascript
 class ListNode {
-    constructor(val, next = null) {
-        this.val = val;
-        this.next = next;
-    }
+  constructor(val, next = null) {
+    this.val = val;
+    this.next = next;
+  }
 }
 ```
 
 **Practice Problems:**
+
 - Reverse Linked List
 - Detect Cycle in Linked List
 - Merge Two Sorted Lists
@@ -140,19 +137,21 @@ Stack (LIFO):                  Queue (FIFO):
 ```
 
 **JavaScript Implementation:**
+
 ```javascript
 // Stack using Array
 const stack = [];
 stack.push(1); // [1]
-stack.pop();   // []
+stack.pop(); // []
 
 // Queue using Array
 const queue = [];
-queue.push(1);    // enqueue
-queue.shift();    // dequeue
+queue.push(1); // enqueue
+queue.shift(); // dequeue
 ```
 
 **Practice Problems:**
+
 - Valid Parentheses
 - Implement Stack using Queues
 - Sliding Window Maximum
@@ -183,12 +182,14 @@ Binary Search Tree:
 ```
 
 **Types of Trees:**
+
 - **Binary Trees**: Each node has at most 2 children
 - **Binary Search Trees**: Left < Root < Right
 - **AVL Trees**: Self-balancing BST
 - **Red-Black Trees**: Self-balancing BST with color properties
 
 **Tree Traversals:**
+
 ```bash
        A
       / \
@@ -203,6 +204,7 @@ Level Order:     A → B → C → D → E
 ```
 
 **Practice Problems:**
+
 - Maximum Depth of Binary Tree
 - Validate Binary Search Tree
 - Lowest Common Ancestor
@@ -232,6 +234,7 @@ Right(i) = 2*i + 2
 ```
 
 **Practice Problems:**
+
 - Kth Largest Element
 - Merge K Sorted Lists
 - Top K Frequent Elements
@@ -240,27 +243,20 @@ Right(i) = 2*i + 2
 ### 🗺️ Hash Tables
 
 ```html
-Hash Table Structure:
-┌─────┬─────────────────┐
-│  0  │     NULL        │
-├─────┼─────────────────┤
-│  1  │ "apple" → "red" │
-├─────┼─────────────────┤
-│  2  │     NULL        │
-├─────┼─────────────────┤
-│  3  │ "banana"→"yellow│
-├─────┼─────────────────┤
-│  4  │     NULL        │
-└─────┴─────────────────┘
-
-Hash Function: hash("apple") = 1
+Hash Table Structure: ┌─────┬─────────────────┐ │ 0 │ NULL │
+├─────┼─────────────────┤ │ 1 │ "apple" → "red" │ ├─────┼─────────────────┤ │ 2
+│ NULL │ ├─────┼─────────────────┤ │ 3 │ "banana"→"yellow│
+├─────┼─────────────────┤ │ 4 │ NULL │ └─────┴─────────────────┘ Hash Function:
+hash("apple") = 1
 ```
 
 **Collision Resolution:**
+
 - **Chaining**: Store multiple values in linked lists
 - **Open Addressing**: Find next available slot
 
 **Practice Problems:**
+
 - Two Sum
 - Group Anagrams
 - First Non-Repeating Character
@@ -283,10 +279,12 @@ D: []                 [0, 0, 0, 0]
 ```
 
 **Graph Representations:**
+
 - **Adjacency List**: Space efficient for sparse graphs
 - **Adjacency Matrix**: Space efficient for dense graphs
 
 **Practice Problems:**
+
 - Number of Islands
 - Course Schedule
 - Clone Graph
@@ -309,6 +307,7 @@ Time: O(n)            Time: O(log n)
 ```
 
 **Types:**
+
 - **Linear Search**: O(n)
 - **Binary Search**: O(log n) - sorted arrays only
 - **Depth-First Search (DFS)**: Tree/Graph traversal
@@ -333,14 +332,11 @@ Merge Sort:
  [38][27][43][3] [9][82] [10]
 ```
 
-**Sorting Comparison:**
-| Algorithm | Best Case | Average Case | Worst Case | Space |
-|-----------|-----------|--------------|------------|-------|
-| Bubble    | O(n)      | O(n²)        | O(n²)      | O(1)  |
-| Selection | O(n²)     | O(n²)        | O(n²)      | O(1)  |
-| Insertion | O(n)      | O(n²)        | O(n²)      | O(1)  |
-| Merge     | O(n log n)| O(n log n)   | O(n log n) | O(n)  |
-| Quick     | O(n log n)| O(n log n)   | O(n²)      | O(log n)|
+**Sorting Comparison:** | Algorithm | Best Case | Average Case | Worst Case |
+Space | |-----------|-----------|--------------|------------|-------| | Bubble |
+O(n) | O(n²) | O(n²) | O(1) | | Selection | O(n²) | O(n²) | O(n²) | O(1) | |
+Insertion | O(n) | O(n²) | O(n²) | O(1) | | Merge | O(n log n)| O(n log n) | O(n
+log n) | O(n) | | Quick | O(n log n)| O(n log n) | O(n²) | O(log n)|
 
 ### 🎯 Dynamic Programming
 
@@ -366,11 +362,13 @@ Memoization Table:
 ```
 
 **DP Patterns:**
+
 - **Memoization**: Top-down approach
 - **Tabulation**: Bottom-up approach
 - **Space Optimization**: Reduce space complexity
 
 **Practice Problems:**
+
 - Climbing Stairs
 - House Robber
 - Longest Common Subsequence
@@ -397,9 +395,11 @@ Timeline:
 │     │     │     │     │     │  ├────11─────┤  │
 ```
 
-**Greedy Choice Property**: Local optimal choice leads to global optimal solution
+**Greedy Choice Property**: Local optimal choice leads to global optimal
+solution
 
 **Practice Problems:**
+
 - Activity Selection
 - Fractional Knapsack
 - Huffman Coding
@@ -412,25 +412,14 @@ Timeline:
 ### 🌐 Advanced Graph Algorithms
 
 ```html
-Dijkstra's Algorithm:
-     A ──5── B
-     │ \     │
-     6  2    1
-     │   \   │
-     C ──3── D
-
-Distance Table:
-┌──────┬─────┬─────┬─────┬─────┐
-│ Step │  A  │  B  │  C  │  D  │
-├──────┼─────┼─────┼─────┼─────┤
-│  0   │  0  │  ∞  │  ∞  │  ∞  │
-│  1   │  0  │  5  │  6  │  2  │
-│  2   │  0  │  3  │  5  │  2  │
-│  3   │  0  │  3  │  5  │  2  │
-└──────┴─────┴─────┴─────┴─────┘
+Dijkstra's Algorithm: A ──5── B │ \ │ 6 2 1 │ \ │ C ──3── D Distance Table:
+┌──────┬─────┬─────┬─────┬─────┐ │ Step │ A │ B │ C │ D │
+├──────┼─────┼─────┼─────┼─────┤ │ 0 │ 0 │ ∞ │ ∞ │ ∞ │ │ 1 │ 0 │ 5 │ 6 │ 2 │ │ 2
+│ 0 │ 3 │ 5 │ 2 │ │ 3 │ 0 │ 3 │ 5 │ 2 │ └──────┴─────┴─────┴─────┴─────┘
 ```
 
 **Advanced Graph Topics:**
+
 - **Shortest Path**: Dijkstra's, Bellman-Ford, Floyd-Warshall
 - **Minimum Spanning Tree**: Kruskal's, Prim's
 - **Topological Sort**: DAG ordering
@@ -460,6 +449,7 @@ Segment Tree:
 ```
 
 **Advanced Trees:**
+
 - **Trie**: Efficient string search and prefix matching
 - **Segment Tree**: Range queries and updates
 - **Fenwick Tree**: Cumulative frequency table
@@ -476,6 +466,7 @@ Step 3:  2  3  ×  5  ×  7  ×  ×  ×  11 ×  13 ×  ×
 ```
 
 **Mathematical Topics:**
+
 - **Number Theory**: GCD, LCM, Prime factorization
 - **Modular Arithmetic**: Fast exponentiation
 - **Combinatorics**: Permutations, combinations
@@ -500,6 +491,7 @@ slow   fast                  left  mid    right
 ```
 
 **Common Patterns:**
+
 1. **Two Pointers**: Array problems with pairs
 2. **Sliding Window**: Subarray problems
 3. **Fast & Slow Pointers**: Cycle detection
@@ -558,6 +550,7 @@ Client ←→ Load Balancer ←→ Web Servers ←→ Database
 ```
 
 **Key Concepts:**
+
 - **Scalability**: Horizontal vs Vertical scaling
 - **Load Balancing**: Distribute traffic
 - **Caching**: Redis, Memcached
@@ -572,19 +565,19 @@ Client ←→ Load Balancer ←→ Web Servers ←→ Database
 
 ```javascript
 // Array Methods
-arr.sort((a, b) => a - b);        // O(n log n)
-arr.filter(x => x > 0);           // O(n)
-arr.map(x => x * 2);              // O(n)
-arr.reduce((sum, x) => sum + x);  // O(n)
+arr.sort((a, b) => a - b); // O(n log n)
+arr.filter((x) => x > 0); // O(n)
+arr.map((x) => x * 2); // O(n)
+arr.reduce((sum, x) => sum + x); // O(n)
 
 // String Methods
-str.split('');                     // Convert to array
-str.charAt(i);                     // Get character at index
-str.substring(start, end);         // Extract substring
+str.split(''); // Convert to array
+str.charAt(i); // Get character at index
+str.substring(start, end); // Extract substring
 
 // Set and Map
-const set = new Set([1, 2, 3]);   // O(1) add, delete, has
-const map = new Map();             // O(1) set, get, delete
+const set = new Set([1, 2, 3]); // O(1) add, delete, has
+const map = new Map(); // O(1) set, get, delete
 ```
 
 ### ⚡ Performance Considerations
@@ -666,6 +659,8 @@ Mock Interview Structure:
 
 ---
 
-**Remember**: DSA mastery is a marathon, not a sprint. Focus on understanding concepts deeply rather than solving problems quickly. Good luck on your journey! 🚀
+**Remember**: DSA mastery is a marathon, not a sprint. Focus on understanding
+concepts deeply rather than solving problems quickly. Good luck on your journey!
+🚀
 
 **[⬆ Back to Top](#table-of-contents)**

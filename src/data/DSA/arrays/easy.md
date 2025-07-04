@@ -1,4 +1,4 @@
-#  **🚀 Batch 1: Easy Array Problems**
+# **🚀 Batch 1: Easy Array Problems**
 
 ## Table of Contents
 
@@ -12,15 +12,15 @@
 8. [Find second largest element](#8️.find-second-largest-element)
 9. [Find second smallest element](#9️.find-second-smallest-element)
 10. [Check if two arrays are equal](#10.check-if-two-arrays-are-equal)
-11. [Merge two sorted arrays](#11.merge-two-sorted-arrays)  
-12. [Remove duplicates (unsorted)](#12.remove-duplicates-(unsorted))  
-13. [Remove duplicates (sorted)](#13.remove-duplicates-(sorted))  
-14. [Find frequency of each element](#14.find-frequency-of-each-element)  
-15. [Left rotate array by 1](#15.left-rotate-array-by-1)  
-16. [Right rotate array by 1](#16.right-rotate-array-by-1)  
-17. [Left rotate array by d](#17.left-rotate-array-by-d)  
-18. [Right rotate array by d](#18.right-rotate-array-by-d)  
-19. [Find unique element (others appear twice)](#19.find-unique-element-(others-appear-twice))  
+11. [Merge two sorted arrays](#11.merge-two-sorted-arrays)
+12. [Remove duplicates (unsorted)](<#12.remove-duplicates-(unsorted)>)
+13. [Remove duplicates (sorted)](<#13.remove-duplicates-(sorted)>)
+14. [Find frequency of each element](#14.find-frequency-of-each-element)
+15. [Left rotate array by 1](#15.left-rotate-array-by-1)
+16. [Right rotate array by 1](#16.right-rotate-array-by-1)
+17. [Left rotate array by d](#17.left-rotate-array-by-d)
+18. [Right rotate array by d](#18.right-rotate-array-by-d)
+19. [Find unique element (others appear twice)](<#19.find-unique-element-(others-appear-twice)>)
 20. [Check if array contains pair with given sum](#20.check-if-array-contains-pair-with-given-sum)
 
 ### 📝 **Format for Each Problem**
@@ -40,8 +40,8 @@ Traverse array, keep updating max if current element is greater.
 ### Example:
 
 ```js
-Input: [3, 1, 7, 2, 9, 5]  
-Output: 9
+Input: [3, 1, 7, 2, 9, 5];
+Output: 9;
 ```
 
 ### Code:
@@ -69,8 +69,8 @@ Same as max, but check for smaller element.
 ### Example:
 
 ```js
-Input: [3, 1, 7, 2, 9, 5]  
-Output: 1
+Input: [3, 1, 7, 2, 9, 5];
+Output: 1;
 ```
 
 ### Code:
@@ -98,8 +98,8 @@ Simple loop and accumulate sum.
 ### Example:
 
 ```js
-Input: [3, 1, 7]  
-Output: 11
+Input: [3, 1, 7];
+Output: 11;
 ```
 
 ### Code:
@@ -125,8 +125,8 @@ Loop and return index if found.
 ### Example:
 
 ```js
-Input: arr = [3, 7, 1], element = 7  
-Output: 1
+Input: (arr = [3, 7, 1]), (element = 7);
+Output: 1;
 ```
 
 ### Code:
@@ -153,8 +153,8 @@ Loop and count.
 ### Example:
 
 ```js
-Input: [1, 2, 1, 3, 1], target = 1  
-Output: 3
+Input: [1, 2, 1, 3, 1], (target = 1);
+Output: 3;
 ```
 
 ### Code:
@@ -182,15 +182,16 @@ Two-pointer swap.
 ### Example:
 
 ```js
-Input: [1, 2, 3]  
-Output: [3, 2, 1]
+Input: [1, 2, 3];
+Output: [3, 2, 1];
 ```
 
 ### Code:
 
 ```js
 function reverseArray(arr) {
-  let left = 0, right = arr.length - 1;
+  let left = 0,
+    right = arr.length - 1;
   while (left < right) {
     [arr[left], arr[right]] = [arr[right], arr[left]]; // swap
     left++;
@@ -211,10 +212,10 @@ Loop and check if any adjacent pair breaks order.
 ### Example:
 
 ```js
-Input: [1, 2, 3]  
-Output: true  
-Input: [3, 2, 1]  
-Output: false
+Input: [1, 2, 3];
+Output: true;
+Input: [3, 2, 1];
+Output: false;
 ```
 
 ### Code:
@@ -241,15 +242,16 @@ Track both largest and second largest during loop.
 ### Example:
 
 ```js
-Input: [3, 5, 1, 7, 2]  
-Output: 5
+Input: [3, 5, 1, 7, 2];
+Output: 5;
 ```
 
 ### Code:
 
 ```js
 function secondLargest(arr) {
-  let first = -Infinity, second = -Infinity;
+  let first = -Infinity,
+    second = -Infinity;
   for (let num of arr) {
     if (num > first) {
       second = first;
@@ -273,15 +275,16 @@ Same logic as second largest, but for min.
 ### Example:
 
 ```js
-Input: [3, 5, 1, 7, 2]  
-Output: 2
+Input: [3, 5, 1, 7, 2];
+Output: 2;
 ```
 
 ### Code:
 
 ```js
 function secondSmallest(arr) {
-  let first = Infinity, second = Infinity;
+  let first = Infinity,
+    second = Infinity;
   for (let num of arr) {
     if (num < first) {
       second = first;
@@ -305,10 +308,10 @@ Check lengths + element-wise equality.
 ### Example:
 
 ```js
-Input: [1,2,3], [1,2,3]  
-Output: true  
-Input: [1,2], [1,2,3]  
-Output: false
+Input: [1, 2, 3], [1, 2, 3];
+Output: true;
+Input: [1, 2], [1, 2, 3];
+Output: false;
 ```
 
 ### Code:
@@ -332,15 +335,17 @@ Two pointers — compare elements and merge in order.
 ### Example:
 
 ```js
-Input: [1,3,5], [2,4,6]  
-Output: [1,2,3,4,5,6]
+Input: [1, 3, 5], [2, 4, 6];
+Output: [1, 2, 3, 4, 5, 6];
 ```
 
 ### Code:
 
 ```js
 function mergeSorted(arr1, arr2) {
-  let i = 0, j = 0, merged = [];
+  let i = 0,
+    j = 0,
+    merged = [];
   while (i < arr1.length && j < arr2.length) {
     if (arr1[i] < arr2[j]) {
       merged.push(arr1[i]);
@@ -366,8 +371,8 @@ Use Set to keep unique elements.
 ### Example:
 
 ```js
-Input: [1,2,1,3,2]  
-Output: [1,2,3]
+Input: [1, 2, 1, 3, 2];
+Output: [1, 2, 3];
 ```
 
 ### Code:
@@ -389,8 +394,8 @@ Since sorted, skip duplicates during loop.
 ### Example:
 
 ```js
-Input: [1,1,2,3,3]  
-Output: [1,2,3]
+Input: [1, 1, 2, 3, 3];
+Output: [1, 2, 3];
 ```
 
 ### Code:
@@ -419,7 +424,7 @@ Use object map to count.
 ### Example:
 
 ```js
-Input: [1,2,1,3,1,2]  
+Input: [1,2,1,3,1,2]
 Output: {1: 3, 2: 2, 3: 1}
 ```
 
@@ -446,8 +451,8 @@ Shift first element to last.
 ### Example:
 
 ```js
-Input: [1,2,3]  
-Output: [2,3,1]
+Input: [1, 2, 3];
+Output: [2, 3, 1];
 ```
 
 ### Code:
@@ -472,8 +477,8 @@ Pop last element and insert at start.
 ### Example:
 
 ```js
-Input: [1,2,3]  
-Output: [3,1,2]
+Input: [1, 2, 3];
+Output: [3, 1, 2];
 ```
 
 ### Code:
@@ -498,8 +503,8 @@ Cut first `d`, append at end.
 ### Example:
 
 ```js
-Input: [1,2,3,4], d=2  
-Output: [3,4,1,2]
+Input: [1, 2, 3, 4], (d = 2);
+Output: [3, 4, 1, 2];
 ```
 
 ### Code:
@@ -522,8 +527,8 @@ Cut last `d`, insert at start.
 ### Example:
 
 ```js
-Input: [1,2,3,4], d=2  
-Output: [3,4,1,2]
+Input: [1, 2, 3, 4], (d = 2);
+Output: [3, 4, 1, 2];
 ```
 
 ### Code:
@@ -546,8 +551,8 @@ XOR of all elements → unique element.
 ### Example:
 
 ```js
-Input: [2,3,2]  
-Output: 3
+Input: [2, 3, 2];
+Output: 3;
 ```
 
 ### Code:
@@ -573,10 +578,10 @@ Use Set to check if (sum - num) exists.
 ### Example:
 
 ```js
-Input: [1,2,3,9], sum=8  
-Output: false  
-Input: [1,2,4,4], sum=8  
-Output: true
+Input: [1, 2, 3, 9], (sum = 8);
+Output: false;
+Input: [1, 2, 4, 4], (sum = 8);
+Output: true;
 ```
 
 ### Code:

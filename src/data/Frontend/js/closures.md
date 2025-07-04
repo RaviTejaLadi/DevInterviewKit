@@ -2,9 +2,11 @@
 
 ## 📘 1. Definition
 
-A **closure** is a function that **remembers its outer variables** and has access to them **even after the outer function has returned**.
+A **closure** is a function that **remembers its outer variables** and has
+access to them **even after the outer function has returned**.
 
-> In simpler terms: *A closure is created when a function is defined inside another function and gains access to the outer function’s variables.*
+> In simpler terms: _A closure is created when a function is defined inside
+> another function and gains access to the outer function’s variables._
 
 ---
 
@@ -26,7 +28,9 @@ function outerFunction() {
 
 ## 🛠️ 3. How It Works
 
-When `outerFunction()` is called, it returns `innerFunction`, but `innerFunction` **still retains access** to `outerVariable` even after `outerFunction` has finished executing.
+When `outerFunction()` is called, it returns `innerFunction`, but
+`innerFunction` **still retains access** to `outerVariable` even after
+`outerFunction` has finished executing.
 
 ```javascript
 const closureFunc = outerFunction();
@@ -37,10 +41,10 @@ closureFunc(); // Output: I am from outer scope
 
 ## 🔍 4. Characteristics of Closures
 
-* Can **access variables** from the outer scope.
-* Maintain **state** between function calls.
-* Useful in **data encapsulation** and **functional programming**.
-* Commonly used in **callbacks**, **event handlers**, and **module patterns**.
+- Can **access variables** from the outer scope.
+- Maintain **state** between function calls.
+- Useful in **data encapsulation** and **functional programming**.
+- Commonly used in **callbacks**, **event handlers**, and **module patterns**.
 
 ---
 
@@ -50,13 +54,13 @@ closureFunc(); // Output: I am from outer scope
 
 ```javascript
 function greet(name) {
-  return function(message) {
+  return function (message) {
     console.log(`${message}, ${name}`);
   };
 }
 
-const greetJohn = greet("John");
-greetJohn("Hello"); // Output: Hello, John
+const greetJohn = greet('John');
+greetJohn('Hello'); // Output: Hello, John
 ```
 
 ---
@@ -86,11 +90,11 @@ function secretHolder(secret) {
   return {
     getSecret: function () {
       return secret;
-    }
+    },
   };
 }
 
-const holder = secretHolder("Hidden info");
+const holder = secretHolder('Hidden info');
 console.log(holder.getSecret()); // Output: Hidden info
 ```
 
@@ -112,7 +116,7 @@ for (var i = 0; i < 3; i++) {
 
 ```javascript
 for (var i = 0; i < 3; i++) {
-  (function(index) {
+  (function (index) {
     setTimeout(function () {
       console.log(index); // prints 0, 1, 2
     }, 1000);
@@ -136,14 +140,16 @@ for (var i = 0; i < 3; i++) {
 
 ## 🧼 7. Gotchas / Things to Watch
 
-* Overusing closures may lead to **memory leaks** if variables are not released.
-* Too many closures can make code **hard to read**.
-* Be careful when using closures **inside loops** with `var`.
+- Overusing closures may lead to **memory leaks** if variables are not released.
+- Too many closures can make code **hard to read**.
+- Be careful when using closures **inside loops** with `var`.
 
 ---
 
 ## 🎯 8. Conclusion
 
-Closures are a **powerful core feature** of JavaScript. Mastering them gives you deep control over variable scope, state, and encapsulation.
+Closures are a **powerful core feature** of JavaScript. Mastering them gives you
+deep control over variable scope, state, and encapsulation.
 
-> 💡 *If you understand closures well, you're thinking like a true JavaScript developer.*
+> 💡 _If you understand closures well, you're thinking like a true JavaScript
+> developer._

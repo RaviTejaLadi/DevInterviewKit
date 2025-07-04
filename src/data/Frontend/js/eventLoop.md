@@ -4,9 +4,12 @@
 
 ## 🧠 Definition
 
-The **Event Loop** is a mechanism in JavaScript that manages **execution of code**, **event handling**, and **asynchronous operations** (like `setTimeout`, `fetch`, etc.) in a **non-blocking way** using a **single-threaded** model.
+The **Event Loop** is a mechanism in JavaScript that manages **execution of
+code**, **event handling**, and **asynchronous operations** (like `setTimeout`,
+`fetch`, etc.) in a **non-blocking way** using a **single-threaded** model.
 
-> JS uses the event loop to handle **concurrent operations** like I/O while remaining single-threaded.
+> JS uses the event loop to handle **concurrent operations** like I/O while
+> remaining single-threaded.
 
 ---
 
@@ -24,7 +27,8 @@ The **Event Loop** is a mechanism in JavaScript that manages **execution of code
 
 ## 📜 Syntax or Code Setup
 
-There is **no syntax for the event loop itself**. It’s how JS internally manages code execution.
+There is **no syntax for the event loop itself**. It’s how JS internally manages
+code execution.
 
 However, you interact with it indirectly via:
 
@@ -41,16 +45,18 @@ Promise.resolve().then(() => { ... }); // Microtask
 2. If it encounters **synchronous code**, it's executed immediately.
 3. If it encounters **asynchronous code** (e.g. `setTimeout`, `Promise`):
 
-   * It is sent to **Web APIs**.
+   - It is sent to **Web APIs**.
+
 4. Once async task is complete, the callback is moved to either:
 
-   * **Microtask Queue** (Promise `.then`)
-   * **Callback Queue** (e.g., `setTimeout`)
+   - **Microtask Queue** (Promise `.then`)
+   - **Callback Queue** (e.g., `setTimeout`)
+
 5. The **Event Loop**:
 
-   * Checks if the Call Stack is empty.
-   * If yes, it pushes microtasks first (priority).
-   * Then, it processes macrotasks from the callback queue.
+   - Checks if the Call Stack is empty.
+   - If yes, it pushes microtasks first (priority).
+   - Then, it processes macrotasks from the callback queue.
 
 ---
 
@@ -86,7 +92,7 @@ setTimeout(() => {
 }, 0);
 
 Promise.resolve().then(() => {
-  console.log('Promise');    // Microtask
+  console.log('Promise'); // Microtask
 });
 
 console.log('End');
@@ -114,10 +120,10 @@ setTimeout
 
 ## 🛠️ Real-World Usage
 
-* **setTimeout / setInterval**: Schedule delayed execution.
-* **fetch / XMLHttpRequest**: Handle asynchronous data fetching.
-* **Promises**: Handle async operations in a cleaner way.
-* **Event Listeners**: Register callbacks for user interactions.
+- **setTimeout / setInterval**: Schedule delayed execution.
+- **fetch / XMLHttpRequest**: Handle asynchronous data fetching.
+- **Promises**: Handle async operations in a cleaner way.
+- **Event Listeners**: Register callbacks for user interactions.
 
 ---
 
@@ -133,10 +139,10 @@ setTimeout
 
 ## 🧠 Interview Notes
 
-* JS is **single-threaded** but **asynchronous**, thanks to the event loop.
-* Microtasks (e.g. Promises) have **higher priority** than macrotasks.
-* **Call stack is always cleared first** before micro/macro tasks are handled.
-* `async/await` under the hood uses Promises → microtask queue.
+- JS is **single-threaded** but **asynchronous**, thanks to the event loop.
+- Microtasks (e.g. Promises) have **higher priority** than macrotasks.
+- **Call stack is always cleared first** before micro/macro tasks are handled.
+- `async/await` under the hood uses Promises → microtask queue.
 
 ---
 
