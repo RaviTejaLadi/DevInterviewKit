@@ -5,6 +5,8 @@ import MockInterviews from './pages/MockInterviews';
 import Layout from './components/layout';
 import RouteErrorElement from './components/Errors/RouteErrorElement';
 import NotFoundScreen from './components/Errors/NotFound';
+import CounterPage from './pages/react-machine-coding/basic/counter/CounterPage';
+import TodoPage from './pages/react-machine-coding/basic/todo/TodoPage';
 
 function App() {
   const router = createBrowserRouter([
@@ -16,6 +18,14 @@ function App() {
         {
           path: '/',
           element: <Home />,
+        },
+        {
+          path: '/counter-examples',
+          element: <CounterPage />,
+        },
+                {
+          path: '/todo-examples',
+          element: <TodoPage />,
         },
         {
           path: 'mock-interviews',
