@@ -1,4 +1,4 @@
-# Simple Counter Component
+# Counter Component
 
 ## JavaScript Version
 

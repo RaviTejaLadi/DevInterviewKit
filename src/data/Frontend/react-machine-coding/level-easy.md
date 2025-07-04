@@ -2,12 +2,14 @@
 
 ## 🧩 [Basic Components & State Management](/machine-coding)
 
-1. 🔢 **[Counter Component](/machine-coding/counter-examples)** – Build a simple
-   counter with ➕ / ➖ buttons
-2. 📝 **[Todo List](/machine-coding/todo-examples)** – Add, display, and delete
-   tasks from a list
-3. 🔐 **Login Form** – Form with validation and controlled inputs
-4. 🔄 **Toggle Button** – Switch between different states/themes
+1. 🔢 **[Counter Component](/machine-coding/counter)** – Build a simple counter
+   with ➕ / ➖ buttons
+2. 📝 **[Todo List](/machine-coding/todo)** – Add, display, and delete tasks
+   from a list
+3. 🔐 **[Login Form](/machine-coding/login-form)** – Form with validation and
+   controlled inputs
+4. 🔄 **[Toggle Button](/machine-coding/toggle-button)** – Switch between
+   different states/themes
 5. 🧮 **Simple Calculator** – Perform basic arithmetic operations
 6. 🎨 **Color Picker** – Change background color using buttons
 7. 👻 **Show/Hide Component** – Toggle visibility of content

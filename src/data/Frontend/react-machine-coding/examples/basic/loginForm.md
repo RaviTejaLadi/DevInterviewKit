@@ -1,4 +1,4 @@
-# Simple Login Form with Validation (useState and useReducer)
+# Login Form with Validation
 
 Here are implementations of a login form with validation in both JavaScript and
 TypeScript, using both `useState` and `useReducer` approaches.

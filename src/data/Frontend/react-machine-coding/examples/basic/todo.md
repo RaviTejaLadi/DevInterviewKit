@@ -1,4 +1,4 @@
-# Simple TODO Component with useState and useReducer
+# TODO Component
 
 Here are implementations of a TODO component using both `useState` and
 `useReducer` in JavaScript and TypeScript.

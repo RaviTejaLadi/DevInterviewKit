@@ -1,3 +1,4 @@
+import { machineCodingExamplesData } from '@/data/Frontend/react-machine-coding/examples';
 import { LinkBar } from 'kalki-ui';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -16,11 +17,11 @@ const MachineCodingNav = () => {
     icon?: string;
   }
 
-  const links: Link[] = [
-    { label: 'Counter', to: '/counter' },
-    { label: 'Todo', to: '/todo' },
-    { label: 'Login Form', to: '/login-form' },
-  ];
+  // Generate links dynamically from your data
+  const links: Link[] = machineCodingExamplesData.map((example) => ({
+    label: example.title,
+    to: example.id,
+  }));
 
   return (
     <LinkBar
@@ -35,7 +36,7 @@ const MachineCodingNav = () => {
 
       <LinkBar.Content className="px-2">
         {links.map((link, index) => (
-          <LinkBar.Link key={index} to={`/machine-coding${link.to}`} icon={link.icon}>
+          <LinkBar.Link key={index} to={`/machine-coding/${link.to}`} icon={link.icon}>
             {link.label}
           </LinkBar.Link>
         ))}
