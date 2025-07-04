@@ -5,10 +5,8 @@ import MockInterviews from './pages/MockInterviews';
 import Layout from './components/layout';
 import RouteErrorElement from './components/Errors/RouteErrorElement';
 import NotFoundScreen from './components/Errors/NotFound';
-import CounterPage from './pages/react-machine-coding/basic/counter/CounterPage';
-import TodoPage from './pages/react-machine-coding/basic/todo/TodoPage';
 import MachineCodingPage from './pages/react-machine-coding';
-import LoginFormPage from './pages/react-machine-coding/basic/loginForm/LoginFormPage';
+import { machineCodingRoutes } from './pages/react-machine-coding/machineCodingRoutes';
 
 function App() {
   const router = createBrowserRouter([
@@ -28,21 +26,7 @@ function App() {
         {
           path: '/machine-coding',
           element: <MachineCodingPage />,
-          children: [
-            { path: '/machine-coding', element: <Navigate to="/machine-coding/counter" /> },
-            {
-              path: 'counter',
-              element: <CounterPage />,
-            },
-            {
-              path: 'todo',
-              element: <TodoPage />,
-            },
-            {
-              path: 'login-form',
-              element: <LoginFormPage />,
-            },
-          ],
+          children: machineCodingRoutes,
         },
       ],
     },

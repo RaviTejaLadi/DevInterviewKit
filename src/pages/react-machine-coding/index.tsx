@@ -3,10 +3,10 @@ import { Outlet } from 'react-router-dom';
 
 const MachineCodingPage = () => {
   return (
-    <div>
+    <>
       <MachineCodingNav />
       <Outlet />
-    </div>
+    </>
   );
 };
 
