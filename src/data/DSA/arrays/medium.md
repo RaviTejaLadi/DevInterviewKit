@@ -4,7 +4,8 @@
 
 1. [Find subarray with given sum](#21.find-subarray-with-given-sum-non-negative-numbers)
 2. [Kadane’s algorithm (max subarray sum)](<#22.kadanes-algorithm-(max-subarray-sum)>)
-3. [Find majority element (Boyer-Moore)](<#23.find-majority-element-(>-n/2-times)>)
+3. [Find majority
+   element(Boyer-Moore)](<#23.find-majority-element-(>-n/2-times)>)
 4. [Find leaders in array](#24.find-leaders-in-array)
 5. [Move all zeros to end](<#25.move-all-zeros-to-end-(maintain-order)>)
 6. [Find missing number (1 to N)](<#26.find-missing-number-(1-to-n)>)
