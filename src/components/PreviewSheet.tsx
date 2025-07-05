@@ -12,12 +12,12 @@ const PreviewSheet: React.FC<PreviewSheetProps> = ({ title, component }) => {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetContent className="w-auto border border-border">
+      <SheetContent className="w-auto min-w-[30rem] border border-border">
         <SheetHeader>
           <SheetTitle>{title}</SheetTitle>
           <SheetDescription className="sr-only">Machine coding examples</SheetDescription>
         </SheetHeader>
-        <div className="px-4">{component}</div>
+        <div className="p-4">{component}</div>
       </SheetContent>
     </Sheet>
   );
