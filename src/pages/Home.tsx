@@ -1,5 +1,5 @@
 import Loading from '@/components/Loading';
-import { Sidebar } from '@/components/Sidebar';
+import { Sidebar } from '@/components/sidebar/Sidebar';
 import { markdownData } from '@/data';
 import { useSearchTermStore } from '@/stores/useSearchTermStore';
 import { MarkdownDocument } from '@/types/markdown-content-types';

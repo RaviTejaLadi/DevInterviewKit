@@ -1,16 +1,14 @@
 import { useState, useEffect, useMemo } from 'react';
 import { ChevronDown, ChevronRight, X, Search, FileText } from 'lucide-react';
-import { cn } from '../lib/utils';
 import { Section, MarkdownDocument } from '@/types/markdown-content-types';
-import { ScrollArea } from './ui/scroll-area';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from './ui/sheet';
-import { Separator } from './ui/separator';
-import { Card, CardContent } from './ui/card';
-import Logo from './Logo';
 import { useMobileStore } from '@/stores/useMobileStore';
 import { highlightText } from '@/utils/highlightText';
+import MobileSidebar from './MobileSidebar';
+import { Button, Card, CardContent } from 'kalki-ui';
+import { cn } from '@/lib/utils';
+import { Separator } from '../ui/separator';
+import { Input } from '../ui/input';
+import { ScrollArea } from '../ui/scroll-area';
 
 interface SidebarProps {
   sections: Section[];
@@ -22,7 +20,7 @@ interface SidebarProps {
 export function Sidebar({ sections, selectedDocument, onDocumentSelect, className }: SidebarProps) {
   const [expandedCategories, setExpandedCategories] = useState<Set<string | null>>(new Set());
   const [searchQuery, setSearchQuery] = useState('');
-  const { isMobileOpen, setIsMobileOpen } = useMobileStore();
+  const { setIsMobileOpen } = useMobileStore();
 
   // Initialize expanded categories based on saved document
   useEffect(() => {
@@ -362,16 +360,7 @@ export function Sidebar({ sections, selectedDocument, onDocumentSelect, classNam
       </aside>
 
       {/* Mobile sidebar using Sheet */}
-      <Sheet open={isMobileOpen} onOpenChange={setIsMobileOpen}>
-        <SheetContent side="left" className="w-80 p-0 border border-border">
-          <SheetHeader className="px-4 py-2 border-b border-border">
-            <SheetTitle className="text-left">
-              <Logo />
-            </SheetTitle>
-          </SheetHeader>
-          <ScrollArea className="h-screen">{sidebarContent}</ScrollArea>
-        </SheetContent>
-      </Sheet>
+      <MobileSidebar sidebarContent={sidebarContent} />
     </>
   );
 }
