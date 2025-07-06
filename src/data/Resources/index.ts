@@ -1,6 +1,8 @@
 import htmlCheatSheet from './cheat-sheets/html.md?raw';
 import cssCheatSheet from './cheat-sheets/css.md?raw';
+import sassCheatSheet from './cheat-sheets/sass.md?raw';
 import jsCheatSheet from './cheat-sheets/js.md?raw';
+import es6CheatSheet from './cheat-sheets/es6.md?raw';
 import reactCheatSheet from './cheat-sheets/react.md?raw';
 import gitCheatSheet from './cheat-sheets/git.md?raw';
 import httpCheatSheet from './cheat-sheets/http.md?raw';
@@ -13,6 +15,7 @@ import dsaCheatSheet from './cheat-sheets/dsa.md?raw';
 import javaCheatSheet from './cheat-sheets/java.md?raw';
 import pythonCheatSheet from './cheat-sheets/python.md?raw';
 import reactRouterDomCheatSheet from './cheat-sheets/react-router-dom.md?raw';
+import mySqlCheatSheet from './cheat-sheets/my-sql.md?raw';
 
 import { Sheets } from '@/assets/technologies';
 
@@ -33,6 +36,11 @@ export const resourcesData = [
         content: cssCheatSheet,
       },
       {
+        id: 'sass-cheat-sheet',
+        title: 'SASS 🎨',
+        content: sassCheatSheet,
+      },
+      {
         id: 'tailwind-cheat-sheet',
         title: 'Tailwind CSS 🌬️',
         content: tailwindCheatSheet,
@@ -41,6 +49,11 @@ export const resourcesData = [
         id: 'js-cheat-sheet',
         title: 'JavaScript 📜',
         content: jsCheatSheet,
+      },
+      {
+        id: 'es6-cheat-sheet',
+        title: 'ES6 📜',
+        content: es6CheatSheet,
       },
       {
         id: 'react-cheat-sheet',
@@ -71,6 +84,11 @@ export const resourcesData = [
         id: 'sql-cheat-sheet',
         title: 'SQL 🗄️',
         content: sqlCheatSheet,
+      },
+      {
+        id: 'my-sql-cheat-sheet',
+        title: 'MySQL 🗄️',
+        content: mySqlCheatSheet,
       },
       {
         id: 'mongo-cheat-sheet',
