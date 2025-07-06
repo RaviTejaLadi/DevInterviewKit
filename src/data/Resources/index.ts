@@ -10,6 +10,9 @@ import mongoCheatSheet from './cheat-sheets/mongo.md?raw';
 import nodeCheatSheet from './cheat-sheets/node.md?raw';
 import expressCheatSheet from './cheat-sheets/express.md?raw';
 import dsaCheatSheet from './cheat-sheets/dsa.md?raw';
+import javaCheatSheet from './cheat-sheets/java.md?raw';
+import pythonCheatSheet from './cheat-sheets/python.md?raw';
+import reactRouterDomCheatSheet from './cheat-sheets/react-router-dom.md?raw';
 
 import { Sheets } from '@/assets/technologies';
 
@@ -78,6 +81,21 @@ export const resourcesData = [
         id: 'dsa-cheat-sheet',
         title: 'DSA 🧠',
         content: dsaCheatSheet,
+      },
+      {
+        id: 'java-cheat-sheet',
+        title: 'Java ☕',
+        content: javaCheatSheet,
+      },
+      {
+        id: 'Python-cheat-sheet',
+        title: 'Python 🐍',
+        content: pythonCheatSheet,
+      },
+      {
+        id: 'react-router-dom-cheat-sheet',
+        title: 'React Router Dom ',
+        content: reactRouterDomCheatSheet,
       },
     ],
   },
