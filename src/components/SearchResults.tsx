@@ -1,6 +1,7 @@
 import { MarkdownDocument } from '@/types/markdown-content-types';
 import { highlightText } from '@/utils/highlightText';
 import { FileText, Search, Sparkles } from 'lucide-react';
+import { memo } from 'react';
 
 interface SearchResultsProps {
   results: MarkdownDocument[];
@@ -8,7 +9,7 @@ interface SearchResultsProps {
   onDocumentSelect: (document: MarkdownDocument) => void;
 }
 
-export function SearchResults({ results, searchTerm, onDocumentSelect }: SearchResultsProps) {
+const SearchResults = ({ results, searchTerm, onDocumentSelect }: SearchResultsProps) => {
   if (!searchTerm) {
     return null;
   }
@@ -37,20 +38,35 @@ export function SearchResults({ results, searchTerm, onDocumentSelect }: SearchR
     );
   }
 
-  const getExcerpt = (content: string, searchTerm: string, maxLength: number = 200) => {
+  const getExcerpt = (content: string, searchTerm: string, maxLength: number = 200): string => {
+    if (!content || maxLength <= 0) return '';
+
     const lowerContent = content.toLowerCase();
     const lowerSearchTerm = searchTerm.toLowerCase();
     const index = lowerContent.indexOf(lowerSearchTerm);
 
+    // If no match, return the start slice
     if (index === -1) {
-      return content.substring(0, maxLength) + (content.length > maxLength ? '...' : '');
+      return content.length > maxLength ? content.slice(0, maxLength).trimEnd() + '...' : content;
     }
 
-    const start = Math.max(0, index - 50);
-    const end = Math.min(content.length, index + searchTerm.length + 150);
-    const excerpt = content.substring(start, end);
+    // Calculate start and end to center the searchTerm
+    const halfMax = Math.floor(maxLength / 2);
+    let start = Math.max(0, index - halfMax);
+    let end = start + maxLength;
 
-    return (start > 0 ? '...' : '') + excerpt + (end < content.length ? '...' : '');
+    // Adjust if end exceeds content length
+    if (end > content.length) {
+      end = content.length;
+      start = Math.max(0, end - maxLength);
+    }
+
+    let excerpt = content.slice(start, end).trim();
+
+    if (start > 0) excerpt = '...' + excerpt;
+    if (end < content.length) excerpt = excerpt + '...';
+
+    return excerpt;
   };
 
   return (
@@ -136,4 +152,6 @@ export function SearchResults({ results, searchTerm, onDocumentSelect }: SearchR
       </div>
     </div>
   );
-}
+};
+
+export default memo(SearchResults);

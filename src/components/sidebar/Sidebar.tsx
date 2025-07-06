@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, memo } from 'react';
 import { ChevronDown, ChevronRight, X, Search, FileText } from 'lucide-react';
 import { Section, MarkdownDocument } from '@/types/markdown-content-types';
 import { useMobileStore } from '@/stores/useMobileStore';
@@ -17,7 +17,7 @@ interface SidebarProps {
   className?: string;
 }
 
-export function Sidebar({ sections, selectedDocument, onDocumentSelect, className }: SidebarProps) {
+const Sidebar = ({ sections, selectedDocument, onDocumentSelect, className }: SidebarProps) => {
   const [expandedCategories, setExpandedCategories] = useState<Set<string | null>>(new Set());
   const [searchQuery, setSearchQuery] = useState('');
   const { setIsMobileOpen } = useMobileStore();
@@ -363,4 +363,6 @@ export function Sidebar({ sections, selectedDocument, onDocumentSelect, classNam
       <MobileSidebar sidebarContent={sidebarContent} />
     </>
   );
-}
+};
+
+export default memo(Sidebar);

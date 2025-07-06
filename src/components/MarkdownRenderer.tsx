@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MarkdownDocument } from '@/types/markdown-content-types';
-import React from 'react';
+import React, { memo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
@@ -139,7 +139,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ docContent }) => {
               blockquote: ({ children }) => (
                 <div className="relative my-8">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent rounded-r-xl"></div>
-                  <blockquote className="relative border-l-4 border-primary pl-6 py-4 bg-muted/30 backdrop-blur-sm rounded-r-xl">
+                  <blockquote className="relative h-auto border-l-4 border-primary p-2 bg-muted/30 backdrop-blur-sm rounded-r-xl">
                     <div className="text-foreground/90 italic text-lg leading-relaxed font-medium">{children}</div>
                   </blockquote>
                 </div>
@@ -268,4 +268,4 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ docContent }) => {
   );
 };
 
-export default MarkdownRenderer;
+export default memo(MarkdownRenderer);
