@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MarkdownDocument } from '@/types/markdown-content-types';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -9,7 +10,6 @@ import { ExternalLink, FileText, Hash } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Table, TableCell, TableHead, TableHeader } from './ui/table';
 import { ScrollArea } from './ui/scroll-area';
-
 interface MarkdownRendererProps {
   docContent: MarkdownDocument | null;
 }
@@ -36,6 +36,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ docContent }) => {
       </div>
     );
   }
+
   return (
     <ScrollArea className="container h-screen">
       <div className=" mx-auto px-1 py-8 lg:px-8 lg:py-16 ">
@@ -46,7 +47,10 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ docContent }) => {
             components={{
               // Enhanced heading components with better styling
               h1: ({ children }) => {
-                const id = String(children).toLowerCase().replace(/\s+/g, '-');
+                const id = String(children)
+                  .toLowerCase()
+                  .replace(/\s+/g, '-')
+                  .replace(/[^\w-]/g, '');
                 return (
                   <div className="group relative mb-8">
                     <h1

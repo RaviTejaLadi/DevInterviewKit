@@ -3,12 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
+html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
 }
 
 @layer base {
+
   /* Default Light Theme (Ocean) */
   :root {
     --background: 210 40% 97%;
@@ -312,9 +313,11 @@ html{
     0% {
       transform: perspective(400px) rotateY(0);
     }
+
     50% {
       transform: perspective(400px) rotateY(180deg);
     }
+
     100% {
       transform: perspective(400px) rotateY(360deg);
     }
@@ -324,15 +327,19 @@ html{
     0% {
       transform: rotate(0deg);
     }
+
     25% {
       transform: rotate(-5deg);
     }
+
     50% {
       transform: rotate(0deg);
     }
+
     75% {
       transform: rotate(5deg);
     }
+
     100% {
       transform: rotate(0deg);
     }
@@ -350,5 +357,69 @@ html{
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+  }
+}
+
+@keyframes float-orb-1 {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(180deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(360deg);
+  }
+}
+
+@keyframes float-orb-2 {
+  0% {
+    transform: translate(50%, -50%) scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(50%, -50%) scale(0.9) rotate(-180deg);
+  }
+
+  100% {
+    transform: translate(50%, -50%) scale(1) rotate(-360deg);
+  }
+}
+
+@keyframes float-orb-3 {
+  0% {
+    transform: translate(-50%, 50%) scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-50%, 50%) scale(1.15) rotate(180deg);
+  }
+
+  100% {
+    transform: translate(-50%, 50%) scale(1) rotate(360deg);
+  }
+}
+
+@keyframes pattern-drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(10px, -10px) rotate(90deg);
+  }
+
+  50% {
+    transform: translate(-5px, 5px) rotate(180deg);
+  }
+
+  75% {
+    transform: translate(-10px, -5px) rotate(270deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(360deg);
   }
 }

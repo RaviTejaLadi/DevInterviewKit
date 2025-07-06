@@ -1,4 +1,4 @@
-import { ThemeProvider } from './context/ThemeContext';
+import { useTheme } from './context/ThemeContext';
 import Home from './pages/Home';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import MockInterviews from './pages/MockInterviews';
@@ -7,6 +7,7 @@ import RouteErrorElement from './components/Errors/RouteErrorElement';
 import NotFoundScreen from './components/Errors/NotFound';
 import MachineCodingPage from './pages/react-machine-coding';
 import { machineCodingRoutes } from './pages/react-machine-coding/machineCodingRoutes';
+import BackgroundGradient from './components/BackgroundGradient';
 
 function App() {
   const router = createBrowserRouter([
@@ -40,10 +41,14 @@ function App() {
     },
   ]);
 
+  const { theme } = useTheme();
+  const isDarkMode = theme === 'dark';
+
   return (
-    <ThemeProvider>
+    <div>
+      <BackgroundGradient isDarkMode={isDarkMode} />
       <RouterProvider router={router} />
-    </ThemeProvider>
+    </div>
   );
 }
 
