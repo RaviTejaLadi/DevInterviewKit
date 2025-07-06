@@ -9,6 +9,7 @@ const ContentArea = lazy(() => import('@/components/ContentArea').then((module) 
 const SearchResults = lazy(() =>
   import('@/components/SearchResults').then((module) => ({ default: module.SearchResults }))
 );
+
 const Home = () => {
   const allDocuments = useMemo(() => {
     const docs: MarkdownDocument[] = [];

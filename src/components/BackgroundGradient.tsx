@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 
 interface Particle {
   id: number;
@@ -256,4 +256,4 @@ const BackgroundGradient: React.FC<BackgroundGradientProps> = ({ isDarkMode = fa
   );
 };
 
-export default BackgroundGradient;
+export default memo(BackgroundGradient);
