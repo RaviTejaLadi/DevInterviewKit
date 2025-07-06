@@ -1,7 +1,9 @@
-# Color Picker
+# **Color Picker**
 
-Here's a color picker component that changes the background color using buttons,
-implemented in both JavaScript and TypeScript.
+## Table of Contents
+
+1. [JavaScript Version](#javascript-version)
+2. [TypeScript Version](#typescript-version)
 
 ## JavaScript Version
 
@@ -140,26 +142,3 @@ const ColorPickerTS: React.FC = () => {
 
 export default ColorPickerTS;
 ```
-
-## Key Differences Between JS and TS Versions:
-
-1. **Type Annotations**:
-
-   - In TS, we specify types for props, state, and function parameters
-     (`: string`, `: void`, etc.)
-   - The component is typed as `React.FC` (Function Component)
-
-2. **Array Type**:
-
-   - In TS, we explicitly declare `colors` as a string array with `: string[]`
-
-3. **Function Parameters**:
-   - The `handleColorChange` function in TS has a typed parameter
-     `(color: string)`
-
-Both versions provide the same functionality:
-
-- A set of color buttons that change the background when clicked
-- Smooth color transition effect
-- Display of the current color value
-- Responsive design that works on different screen sizes

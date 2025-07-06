@@ -1,4 +1,9 @@
-# Counter Component
+# **Counter Component**
+
+## Table of Contents
+
+1. [JavaScript Version](#javascript-version)
+2. [TypeScript Version](#typescript-version)
 
 ## JavaScript Version
 
@@ -73,10 +78,3 @@ const Counter: React.FC = () => {
 
 export default Counter;
 ```
-
-### Key Differences in TypeScript Version:
-
-1. Added `React.FC` type to the component
-2. Explicitly typed the state as `number` with `useState<number>(0)`
-3. Added return type `void` to the handler functions
-4. Better type checking for all props and state

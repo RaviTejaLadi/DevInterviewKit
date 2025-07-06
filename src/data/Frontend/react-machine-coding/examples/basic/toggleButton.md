@@ -1,7 +1,9 @@
-# Toggle Button
+# **Toggle Button**
 
-Here's a toggle button component that switches between different states/themes
-in both JavaScript and TypeScript versions.
+## Table of Contents
+
+1. [JavaScript Version](#javascript-version)
+2. [TypeScript Version](#typescript-version)
 
 ## JavaScript Version
 
@@ -200,11 +202,3 @@ const ToggleButtonTS: React.FC = () => {
 
 export default ToggleButtonTS;
 ```
-
-## Features
-
-1. **Toggle Button**: Switches between ON/OFF states with visual feedback
-2. **Theme Switching**: Cycles through light/dark/blue themes
-3. **Smooth Transitions**: All changes have smooth animations
-4. **Type Safety**: TypeScript version includes proper type definitions
-5. **Responsive**: Works on different screen sizes

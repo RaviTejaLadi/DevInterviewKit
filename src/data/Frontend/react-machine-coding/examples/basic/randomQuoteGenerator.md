@@ -1,7 +1,9 @@
-# Random Quote Generator
+# **Random Quote Generator**
 
-Here's a component that displays random quotes from an array, implemented in
-both JavaScript and TypeScript.
+## Table of Contents
+
+1. [JavaScript Version](#javascript-version)
+2. [TypeScript Version](#typescript-version)
 
 ## JavaScript Version
 
@@ -217,30 +219,3 @@ const QuoteGeneratorTS: React.FC = () => {
 
 export default QuoteGeneratorTS;
 ```
-
-## Key Features:
-
-1. **Quote Management**:
-
-   - Stores an array of quote objects (text and author)
-   - Randomly selects a quote when button is clicked
-
-2. **Visual Design**:
-
-   - Clean, card-based layout for the quote display
-   - Responsive design that works on different screen sizes
-   - Hover effects on the button
-
-3. **Type Safety (TS Version)**:
-   - Defines a `Quote` interface for type checking
-   - Ensures proper typing for state and functions
-
-## Differences Between JS and TS Versions:
-
-1. **Type Definitions**:
-
-   - TS version defines an `Quote` interface
-   - State and props are explicitly typed
-
-2. **Function Return Types**:
-   - TS version specifies `void` return type for `getRandomQuote`

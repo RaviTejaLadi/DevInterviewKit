@@ -1,7 +1,9 @@
-# Timer Component
+# **Timer Component**
 
-Here's a component that displays the current time and updates every second,
-implemented in both JavaScript and TypeScript.
+## Table of Contents
+
+1. [JavaScript Version](#javascript-version)
+2. [TypeScript Version](#typescript-version)
 
 ## JavaScript Version
 
@@ -108,31 +110,3 @@ const TimerTS: React.FC = () => {
 
 export default TimerTS;
 ```
-
-## Key Features:
-
-1. **Real-time Updates**:
-
-   - Uses `setInterval` to update the time every second (1000ms)
-   - Cleans up with `clearInterval` in the useEffect cleanup function
-
-2. **Time Formatting**:
-
-   - Uses `toLocaleTimeString()` for locale-aware time display
-   - Could be customized to show different time formats
-
-3. **Clean Design**:
-   - Large, readable time display
-   - Subtle styling for the "updates every second" note
-
-## Differences Between JS and TS Versions:
-
-1. **Type Annotations**:
-
-   - In TS, `useState` is explicitly typed as `Date`
-   - The `formatTime` function has parameter and return type annotations
-   - Component is typed as `React.FC`
-
-2. **Type Safety**:
-   - TS ensures we only pass Date objects to `formatTime`
-   - Prevents accidental misuse of the time value

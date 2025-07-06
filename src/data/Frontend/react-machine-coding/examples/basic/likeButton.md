@@ -1,7 +1,9 @@
-# Like Button
+# **Like Button**
 
-Here's a like button component that toggles state with visual feedback,
-implemented in both JavaScript and TypeScript.
+## Table of Contents
+
+1. [JavaScript Version](#javascript-version)
+2. [TypeScript Version](#typescript-version)
 
 ## JavaScript Version
 
@@ -152,37 +154,3 @@ const LikeButtonTS: React.FC = () => {
 
 export default LikeButtonTS;
 ```
-
-## Key Features:
-
-1. **Visual Feedback**:
-
-   - Heart icon changes color (red when liked, gray when not)
-   - Subtle scale animation when clicked
-   - Like count changes color and weight when liked
-
-2. **State Management**:
-
-   - Tracks like state (isLiked)
-   - Maintains like count
-   - Handles animation state to prevent rapid clicks
-
-3. **Accessibility**:
-
-   - Uses aria-label for screen readers
-   - Button is keyboard-navigable
-
-4. **Prevention of Rapid Clicks**:
-   - Animation state prevents multiple rapid clicks during animation
-
-## Differences Between JS and TS Versions:
-
-1. **Type Annotations**:
-
-   - In TS, all state variables have explicit types (`boolean`, `number`)
-   - The handler function has a `void` return type annotation
-   - Component is typed as `React.FC`
-
-2. **Type Safety**:
-   - TS ensures we only pass proper types to state setters
-   - Prevents accidental misuse of the component

@@ -1,7 +1,9 @@
-# TODO Component
+# **TODO Component**
 
-Here are implementations of a TODO component using both `useState` and
-`useReducer` in JavaScript and TypeScript.
+## Table of Contents
+
+1. [JavaScript Version](#javascript-version)
+2. [TypeScript Version](#typescript-version)
 
 ## JavaScript Versions
 
@@ -369,21 +371,3 @@ const TodoUseReducer: React.FC = () => {
 
 export default TodoUseReducer;
 ```
-
-### Key Differences in TypeScript Versions:
-
-1. Added interfaces for Todo items and State
-2. Defined Action types for useReducer
-3. Added type annotations for all function parameters and return values
-4. Added proper event typing for React events
-5. Type-safe state management with generics in useState and useReducer
-
-Both implementations provide the same functionality:
-
-- Add new todos
-- Toggle completion status
-- Delete todos
-- Input validation to prevent empty todos
-
-The useReducer version is more suitable for complex state logic, while useState
-is simpler for basic cases.

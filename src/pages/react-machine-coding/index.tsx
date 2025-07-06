@@ -19,7 +19,7 @@ const MachineCodingPage = () => {
         <Button
           variant={'outline'}
           onClick={() => setOpen(true)}
-          className={cn(open ? '' : 'fixed top-28 right-10 z-[999]')}
+          className={cn(open ? 'hidden' : 'fixed top-28 right-10 z-[999]')}
         >
           Show Preview
         </Button>

@@ -1,7 +1,9 @@
-# Show/Hide Component
+# **Show/Hide Component**
 
-Here's a component that toggles the visibility of content, implemented in both
-JavaScript and TypeScript.
+## Table of Contents
+
+1. [JavaScript Version](#javascript-version)
+2. [TypeScript Version](#typescript-version)
 
 ## JavaScript Version
 
@@ -110,32 +112,3 @@ const ToggleVisibilityTS: React.FC = () => {
 
 export default ToggleVisibilityTS;
 ```
-
-## Key Features:
-
-1. **Toggle Button**:
-
-   - Button text changes between "Show Content" and "Hide Content" based on
-     state
-   - Clicking the button toggles the visibility state
-
-2. **Conditional Rendering**:
-
-   - Content is only rendered when `isVisible` is true (using `&&` operator)
-   - Smooth appearance/disappearance with CSS transition
-
-3. **Styling**:
-   - Clean, responsive layout
-   - Visual feedback for the hidden content area
-
-## Differences Between JS and TS Versions:
-
-1. **Type Annotations**:
-
-   - In TS, we specify `React.FC` for the component type
-   - The state is typed as `boolean` with `useState<boolean>(false)`
-   - The toggle function has a `: void` return type annotation
-
-2. **Props Typing** (if the component accepted props):
-   - In TS, we would define an interface for props
-   - In JS, props would be used without type checking

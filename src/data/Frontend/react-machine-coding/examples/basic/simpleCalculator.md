@@ -1,7 +1,9 @@
-# Simple Calculator
+# **Simple Calculator**
 
-Here's a simple calculator that performs basic arithmetic operations in both
-JavaScript and TypeScript flavors.
+## Table of Contents
+
+1. [JavaScript Version](#javascript-version)
+2. [TypeScript Version](#typescript-version)
 
 ## JavaScript Version
 
@@ -273,19 +275,3 @@ const CalculatorTS: React.FC = () => {
 
 export default CalculatorTS;
 ```
-
-## Features
-
-1. **Basic Operations**: Handles addition, subtraction, multiplication, and
-   division
-2. **Clear Function**: Resets the calculator to initial state
-3. **Decimal Support**: Can handle floating point numbers
-4. **Operation Chaining**: Supports multiple operations in sequence
-5. **Visual Feedback**: Shows current operation and input
-6. **Responsive Design**: Works on mobile and desktop
-7. **Type Safety**: TS version includes proper type definitions
-
-The calculator follows standard arithmetic rules where operations are performed
-sequentially (no operator precedence). The display shows both the current
-operation and the running result. The TS version adds proper type definitions
-for all state variables and functions.

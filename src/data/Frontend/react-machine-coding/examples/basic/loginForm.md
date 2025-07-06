@@ -1,7 +1,9 @@
-# Login Form with Validation
+# **Login Form with Validation**
 
-Here are implementations of a login form with validation in both JavaScript and
-TypeScript, using both `useState` and `useReducer` approaches.
+## Table of Contents
+
+1. [JavaScript Version](#javascript-version)
+2. [TypeScript Version](#typescript-version)
 
 ## JavaScript Versions
 
@@ -592,17 +594,3 @@ const LoginFormUseReducer: React.FC = () => {
 
 export default LoginFormUseReducer;
 ```
-
-### Key Features in Both Implementations:
-
-1. Form validation for email format and password length
-2. Error messages display for invalid fields
-3. Loading state during form submission
-4. Clean TypeScript interfaces and type safety
-5. Proper event typing for form elements
-6. Reusable validation logic
-
-The useReducer version provides better organization for complex form state
-management, while the useState version is simpler for basic forms. The
-TypeScript versions add type safety and better developer experience with
-autocompletion and error checking.
