@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { ChevronLeft, Play, Award, Zap, Clock, Target } from 'lucide-react';
 import { Quiz } from '../types/quiz';
 import { sampleQuestions } from '../data/quiz-data';
 import { categories } from '../data/quiz-categories';
+import NoQuestionsFallback from './NoQuestionsFallback';
+import { Button } from 'kalki-ui';
+import { cn } from '@/lib/utils';
 
 export default function QuizApp() {
   const [currentRoute, setCurrentRoute] = useState<string>('home');
@@ -293,18 +295,7 @@ export default function QuizApp() {
     }
 
     if (questions.length === 0) {
-      return (
-        <div className="min-h-screen bg-background p-6">
-          <div className="max-w-2xl mx-auto">
-            <Card className="shadow-xl">
-              <CardContent className="p-8 text-center">
-                <p className="text-muted-foreground mb-4">No questions available for this quiz.</p>
-                <Button onClick={handleBackHome}>Back to Home</Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      );
+      return <NoQuestionsFallback goToHome={handleBackHome} />;
     }
 
     return (
@@ -326,7 +317,7 @@ export default function QuizApp() {
             </div>
             <div className="w-full bg-muted rounded-full h-2 mt-4">
               <div
-                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                className="bg-green-600 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${(Object.keys(answers).length / questions.length) * 100}%` }}
               />
             </div>
@@ -339,27 +330,26 @@ export default function QuizApp() {
                 <Card key={questionIndex} className="shadow-lg border-border">
                   <CardHeader>
                     <CardTitle className="text-lg text-foreground">
-                      <span className="text-blue-600 font-bold mr-2">Q {questionIndex + 1}.</span>
+                      <span className="font-bold mr-2">Q {questionIndex + 1}.</span>
                       {question.question}
-                      <pre>
-                        <code className="mr-2">{question?.code}</code>
-                      </pre>
+                      {question?.code && (
+                        <pre>
+                          <code className="mr-2">{question?.code}</code>
+                        </pre>
+                      )}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-3">
+                  <CardContent className="space-y-3 flex flex-col">
                     {question.options.map((option, optionIndex) => (
                       <Button
                         key={optionIndex}
                         onClick={() => handleAnswerSelect(questionIndex, optionIndex)}
-                        variant={answers[questionIndex] === optionIndex ? 'default' : 'outline'}
-                        className={`w-full text-left justify-start p-4 h-auto ${
-                          answers[questionIndex] === optionIndex
-                            ? 'bg-blue-600 text-white'
-                            : 'hover:bg-muted text-foreground'
-                        }`}
+                        variant={answers[questionIndex] === optionIndex ? 'success' : 'outline'}
+                        className={cn(answers[questionIndex] === optionIndex ? 'bg-primary' : 'hover:bg-muted')}
+                        style={{ display: 'flex', justifyContent: 'start' }}
                       >
                         <span className="font-semibold mr-3">{String.fromCharCode(65 + optionIndex)}.</span>
-                        {option}
+                        <span>{option}</span>
                       </Button>
                     ))}
                   </CardContent>
