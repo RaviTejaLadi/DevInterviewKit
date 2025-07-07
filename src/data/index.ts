@@ -15,8 +15,8 @@ import { dsaData } from './DSA';
 
 export const markdownData: Section[] = [
   {
-    id: 'home',
-    title: 'Home',
+    id: 'introduction',
+    title: 'Introduction',
     categories: [
       {
         id: 'welcome',
