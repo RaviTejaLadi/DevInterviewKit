@@ -83,10 +83,7 @@ const TopicsSection = () => {
             {topics.map((topic) => {
               const Icon = topic.icon;
               return (
-                <Card
-                  key={topic.title}
-                  className="border-border"
-                >
+                <Card key={topic.title} className="border-border">
                   <CardHeader className="flex items-center">
                     <div className="flex-shrink-0 bg-primary p-3 rounded-lg">
                       <Icon className="h-6 w-6" />

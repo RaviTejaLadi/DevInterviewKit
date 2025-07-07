@@ -1,79 +1,16 @@
 import Loading from '@/components/Loading';
-import Sidebar from '@/components/sidebar/Sidebar';
+import Sidebar from '@/features/resources/components/sidebar/Sidebar';
 import { markdownData } from '@/data';
 import { useSearchTermStore } from '@/stores/useSearchTermStore';
 import { MarkdownDocument } from '@/types/markdown-content-types';
 import { lazy, memo, Suspense, useEffect, useMemo, useState, useCallback } from 'react';
+import { getAllDocuments } from '../utils/getAllDocuments';
+import { useDebounce } from '@/hooks/useDebounce';
+import { getSearchIndex } from '../utils/getSearchIndex';
 
-const ContentArea = lazy(() => import('@/components/ContentArea'));
-const SearchResults = lazy(() => import('@/components/SearchResults'));
+const ContentArea = lazy(() => import('./ContentArea'));
+const SearchResults = lazy(() => import('./SearchResults'));
 
-// Cache for processed documents - only computed once
-let allDocumentsCache: MarkdownDocument[] | null = null;
-
-const getAllDocuments = (): MarkdownDocument[] => {
-  if (allDocumentsCache) return allDocumentsCache;
-
-  const docs: MarkdownDocument[] = [];
-  markdownData.forEach((section) => {
-    section.categories.forEach((category) => {
-      if (category.documents) {
-        docs.push(...category.documents);
-      } else if (category.document) {
-        docs.push(category.document);
-      }
-    });
-  });
-
-  allDocumentsCache = docs;
-  return docs;
-};
-
-// Create search index for faster searching
-interface SearchIndex {
-  [key: string]: {
-    document: MarkdownDocument;
-    titleWords: string[];
-    contentWords: string[];
-  };
-}
-
-let searchIndexCache: SearchIndex | null = null;
-
-const getSearchIndex = (): SearchIndex => {
-  if (searchIndexCache) return searchIndexCache;
-
-  const index: SearchIndex = {};
-  const allDocs = getAllDocuments();
-
-  allDocs.forEach((doc) => {
-    index[doc.id] = {
-      document: doc,
-      titleWords: doc.title.toLowerCase().split(/\s+/),
-      contentWords: doc.content.toLowerCase().split(/\s+/),
-    };
-  });
-
-  searchIndexCache = index;
-  return index;
-};
-
-// Debounce hook for search
-const useDebounce = (value: string, delay: number) => {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
-};
 const ResourcesContent = () => {
   const allDocuments = useMemo(() => getAllDocuments(), []);
 

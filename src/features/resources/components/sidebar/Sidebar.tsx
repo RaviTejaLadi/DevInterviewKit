@@ -6,9 +6,9 @@ import { highlightText } from '@/utils/highlightText';
 import MobileSidebar from './MobileSidebar';
 import { Button, Card, CardContent } from 'kalki-ui';
 import { cn } from '@/lib/utils';
-import { Separator } from '../ui/separator';
-import { Input } from '../ui/input';
-import { ScrollArea } from '../ui/scroll-area';
+import { Separator } from '@/components/ui/separator';
+import { Input } from '@/components/ui/input';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface SidebarProps {
   sections: Section[];

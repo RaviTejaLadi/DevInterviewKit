@@ -1,8 +1,8 @@
 import { useMobileStore } from '@/stores/useMobileStore';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '../ui/sheet';
-import Logo from '../Logo';
+import Logo from '../../../../components/Logo';
 import { ScrollArea } from '@radix-ui/react-scroll-area';
 import { ReactNode } from 'react';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 interface MobileSidebarProps {
   sidebarContent: ReactNode;

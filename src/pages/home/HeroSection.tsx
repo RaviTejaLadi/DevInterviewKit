@@ -7,8 +7,7 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold text-primary tracking-tight sm:text-5xl lg:text-6xl">
-            🚀 Your Ultimate Destination for
-Full-Stack Interview Success
+            🚀 Your Ultimate Destination for Full-Stack Interview Success
           </h1>
           <p className="mt-6 max-w-3xl mx-auto text-xl text-muted-foreground">
             📚 A comprehensive collection of resources, interactive tools, and coding challenges to help you prepare for

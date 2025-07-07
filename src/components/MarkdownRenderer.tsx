@@ -8,8 +8,9 @@ import rehypeRaw from 'rehype-raw';
 import 'highlight.js/styles/github-dark.css';
 import { ExternalLink, FileText, Hash } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Table, TableCell, TableHead, TableHeader } from './ui/table';
-import { ScrollArea } from './ui/scroll-area';
+import { Table, TableCell, TableHead, TableHeader } from '@/components/ui/table';
+import { ScrollArea } from '@/components/ui/scroll-area';
+
 interface MarkdownRendererProps {
   docContent: MarkdownDocument | null;
 }

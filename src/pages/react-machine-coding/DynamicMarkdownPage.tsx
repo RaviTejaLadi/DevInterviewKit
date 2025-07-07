@@ -1,6 +1,6 @@
 import { useParams, Navigate } from 'react-router-dom';
-import MarkdownRenderer from '@/components/MarkdownRenderer';
 import { machineCodingExamplesData } from '@/data/Frontend/react-machine-coding/examples';
+import MarkdownRenderer from '@/components/MarkdownRenderer';
 
 const DynamicMarkdownPage = () => {
   const { id } = useParams();

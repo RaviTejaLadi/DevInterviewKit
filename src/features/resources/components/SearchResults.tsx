@@ -1,8 +1,8 @@
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { MarkdownDocument } from '@/types/markdown-content-types';
 import { highlightText } from '@/utils/highlightText';
 import { FileText, Search, Sparkles } from 'lucide-react';
 import { memo } from 'react';
-import { ScrollArea } from './ui/scroll-area';
 
 interface SearchResultsProps {
   results: MarkdownDocument[];

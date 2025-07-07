@@ -1,6 +1,6 @@
 import { MarkdownDocument } from '@/types/markdown-content-types';
-import MarkdownRenderer from './MarkdownRenderer';
 import { memo } from 'react';
+import MarkdownRenderer from '../../../components/MarkdownRenderer';
 
 interface ContentAreaProps {
   selectedDocument: MarkdownDocument | null;
