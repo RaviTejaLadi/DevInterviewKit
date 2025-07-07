@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // import { useTheme } from './context/ThemeContext';
 import Home from './pages/Home';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
@@ -7,9 +8,18 @@ import RouteErrorElement from './components/Errors/RouteErrorElement';
 import NotFoundScreen from './components/Errors/NotFound';
 import MachineCodingPage from './pages/react-machine-coding';
 import { machineCodingRoutes } from './pages/react-machine-coding/machineCodingRoutes';
+import { useEffect } from 'react';
 // import BackgroundGradient from './components/BackgroundGradient';
 
 function App() {
+  useEffect(() => {
+    if (import.meta.env.NODE_ENV === 'development') {
+      const handleContextMenu = (e: { preventDefault: () => any }) => e.preventDefault();
+      window.addEventListener('contextmenu', handleContextMenu);
+      return () => window.removeEventListener('contextmenu', handleContextMenu);
+    }
+  }, []);
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -21,11 +31,11 @@ function App() {
           element: <Home />,
         },
         {
-          path: 'mock-interviews',
+          path: 'mock-assessment',
           element: <MockInterviews />,
         },
         {
-          path: '/machine-coding',
+          path: 'machine-coding',
           element: <MachineCodingPage />,
           children: machineCodingRoutes,
         },

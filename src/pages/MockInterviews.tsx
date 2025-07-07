@@ -1,9 +1,9 @@
-import ComingSoonPage from '@/components/Errors/ComingSoonPage';
+import QuizApp from '@/features/mockInterviews/components';
 
 const MockInterviews = () => {
   return (
     <div className="container">
-      <ComingSoonPage />
+      <QuizApp />
     </div>
   );
 };

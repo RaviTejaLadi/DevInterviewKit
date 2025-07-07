@@ -2,6 +2,7 @@ import { MarkdownDocument } from '@/types/markdown-content-types';
 import { highlightText } from '@/utils/highlightText';
 import { FileText, Search, Sparkles } from 'lucide-react';
 import { memo } from 'react';
+import { ScrollArea } from './ui/scroll-area';
 
 interface SearchResultsProps {
   results: MarkdownDocument[];
@@ -95,7 +96,7 @@ const SearchResults = ({ results, searchTerm, onDocumentSelect }: SearchResultsP
       </div>
 
       {/* Enhanced Results */}
-      <div className="p-6 lg:p-8">
+      <ScrollArea className="h-screen p-6 lg:p-8">
         <div className="space-y-4 flex flex-wrap gap-2 justify-evenly items-center">
           {results.map((document, index) => {
             const excerpt = getExcerpt(document.content, searchTerm);
@@ -149,7 +150,7 @@ const SearchResults = ({ results, searchTerm, onDocumentSelect }: SearchResultsP
             End of search results • Click any document to view details
           </p>
         </div>
-      </div>
+      </ScrollArea>
     </div>
   );
 };
