@@ -1,4 +1,4 @@
-import { Css, HTML, JavaScript, NextJS, React, Tailwind } from '@/assets/technologies';
+import { Css, HTML, JavaScript, NextJS, React, Tailwind, Vue } from '@/assets/technologies';
 import { Quiz } from '../types/quiz';
 // import { BookOpen, Code, Globe } from 'lucide-react';
 
@@ -55,6 +55,15 @@ export const quizzesCards: Quiz[] = [
     questions: 30,
     icon: <NextJS className="w-8 h-8" />,
     color: 'bg-gradient-to-br from-gray-200 to-slate-500',
+    description: 'Test your Next js knowledge with hooks, components, and state management',
+    category: 'Frontend',
+  },
+  {
+    id: 'vuejs',
+    title: 'Vue js',
+    questions: 30,
+    icon: <Vue className="w-8 h-8" />,
+    color: 'bg-gradient-to-br from-gray-200 to-green-500',
     description: 'Test your Next js knowledge with hooks, components, and state management',
     category: 'Frontend',
   },

@@ -5,6 +5,7 @@ import { jsQuestions } from './frontend/js';
 import { nextjsQuestions } from './frontend/next';
 import { reactQuestions } from './frontend/react';
 import { tailwindQuestions } from './frontend/tailwind';
+import { vueQuestions } from './frontend/vue';
 
 export const sampleQuestions: Record<string, Question[]> = {
   react: reactQuestions,
@@ -13,6 +14,7 @@ export const sampleQuestions: Record<string, Question[]> = {
   css: cssQuestions,
   tailwind: tailwindQuestions,
   nextjs: nextjsQuestions,
+  vuejs: vueQuestions,
   python: [
     {
       id: 1,
