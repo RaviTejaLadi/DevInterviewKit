@@ -1,4 +1,4 @@
-import { Question } from "@/features/mockInterviews/types/questions";
+import { Question } from '@/features/mockInterviews/types/questions';
 
 export const reactQuestions: Question[] = [
   {

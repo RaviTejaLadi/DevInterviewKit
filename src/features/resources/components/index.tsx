@@ -74,8 +74,7 @@ const useDebounce = (value: string, delay: number) => {
 
   return debouncedValue;
 };
-
-const Home = () => {
+const ResourcesContent = () => {
   const allDocuments = useMemo(() => getAllDocuments(), []);
 
   // Initialize selected document from localStorage or default to first document
@@ -175,4 +174,4 @@ const Home = () => {
   );
 };
 
-export default memo(Home);
+export default memo(ResourcesContent);

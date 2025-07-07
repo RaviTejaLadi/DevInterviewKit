@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { useTheme } from './context/ThemeContext';
-import Home from './pages/Home';
+import Home from './pages/home/Home';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import MockInterviews from './pages/MockInterviews';
 import Layout from './components/layout';
@@ -9,6 +9,7 @@ import NotFoundScreen from './components/Errors/NotFound';
 import MachineCodingPage from './pages/react-machine-coding';
 import { machineCodingRoutes } from './pages/react-machine-coding/machineCodingRoutes';
 import { useEffect } from 'react';
+import Resources from './pages/Resources';
 // import BackgroundGradient from './components/BackgroundGradient';
 
 function App() {
@@ -29,6 +30,10 @@ function App() {
         {
           path: '/',
           element: <Home />,
+        },
+        {
+          path: '/resources',
+          element: <Resources />,
         },
         {
           path: 'mock-assessment',
