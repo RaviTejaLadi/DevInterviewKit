@@ -4,11 +4,14 @@ import App from './App.tsx';
 import 'kalki-ui/dist/index.css';
 import './index.css';
 import { ThemeProvider } from './context/ThemeContext.tsx';
+import { AlertDialogWrapper } from './components/ui/alert-dialog/AlertDialogWrapper.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider>
-      <App />
+      <AlertDialogWrapper>
+        <App />
+      </AlertDialogWrapper>
     </ThemeProvider>
   </StrictMode>
 );

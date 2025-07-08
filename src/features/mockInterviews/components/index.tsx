@@ -1,24 +1,60 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChevronLeft, Play, Award, Zap, Clock, Target } from 'lucide-react';
+import { ChevronLeft, Award } from 'lucide-react';
 import { Quiz } from '../types/quiz';
 import { sampleQuestions } from '../data/quiz-data';
-import { categories } from '../data/quiz-categories';
 import NoQuestionsFallback from './NoQuestionsFallback';
 import { Button } from 'kalki-ui';
 import { cn } from '@/lib/utils';
+import { useShowAlertHandler } from '@/hooks/useShowAlertHandler';
+import QuizHome from './QuizHome';
+import { formatTime } from '../utils/formatTime';
+import QuizReport from './QuizReport';
+import { useQuizDataStore } from '../stores/useQuizDataStore';
+import { useResultStore } from '../stores/useResultStore';
+import { useRouteStore } from '../stores/useRouteStore';
+import { useTimerStore } from '../stores/useTimerStore';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function QuizApp() {
-  const [currentRoute, setCurrentRoute] = useState<string>('home');
-  const [selectedQuiz, setSelectedQuiz] = useState<Quiz | null>(null);
-  const [answers, setAnswers] = useState<Record<number, number>>({});
-  const [score, setScore] = useState<number>(0);
-  const [showResult, setShowResult] = useState<boolean>(false);
-  const [timeLeft, setTimeLeft] = useState<number>(300); // 5 minutes
-  const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
-  const [maxStreak, setMaxStreak] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(0);
+  const [timeLeft, setTimeLeft] = useState<number>(300);
+
   const questionsPerPage = 5;
+
+  const { currentRoute, setCurrentRoute } = useRouteStore(
+    useShallow((state) => ({
+      currentRoute: state.currentRoute,
+      setCurrentRoute: state.setCurrentRoute,
+    }))
+  );
+
+  const { isTimerActive, setIsTimerActive } = useTimerStore(
+    useShallow((state) => ({
+      isTimerActive: state.isTimerActive,
+      setIsTimerActive: state.setIsTimerActive,
+    }))
+  );
+
+  const { selectedQuiz, setSelectedQuiz, answers, setAnswers } = useQuizDataStore(
+    useShallow((state) => ({
+      selectedQuiz: state.selectedQuiz,
+      setSelectedQuiz: state.setSelectedQuiz,
+      answers: state.answers,
+      setAnswers: state.setAnswers,
+    }))
+  );
+
+  const { score, setScore, showResult, setShowResult, maxStreak, setMaxStreak } = useResultStore(
+    useShallow((state) => ({
+      score: state.score,
+      setScore: state.setScore,
+      showResult: state.showResult,
+      setShowResult: state.setShowResult,
+      maxStreak: state.maxStreak,
+      setMaxStreak: state.setMaxStreak,
+    }))
+  );
 
   // Timer effect
   useEffect(() => {
@@ -41,12 +77,6 @@ export default function QuizApp() {
   const handleTimeUp = () => {
     setShowResult(true);
     calculateFinalScore();
-  };
-
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
   const calculateFinalScore = () => {
@@ -88,10 +118,22 @@ export default function QuizApp() {
     setAnswers(newAnswers);
   };
 
+  const { showCustomAlertDialog } = useShowAlertHandler();
+
   const handleFinishQuiz = () => {
-    setIsTimerActive(false);
-    calculateFinalScore();
-    setShowResult(true);
+    showCustomAlertDialog({
+      confirmActionFn: () => {
+        setIsTimerActive(false);
+        calculateFinalScore();
+        setShowResult(true);
+      },
+      isDestructive: false,
+      title: 'Submit Quiz?',
+      description:
+        'Are you sure you want to submit the quiz? You won’t be able to change your answers after submission.',
+      cancelBtnText: 'Cancel',
+      confirmBtnText: 'Submit Quiz',
+    });
   };
 
   const handleBackHome = () => {
@@ -125,58 +167,7 @@ export default function QuizApp() {
   };
 
   if (currentRoute === 'home') {
-    return (
-      <div className="min-h-screen bg-background p-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-foreground mb-4">Mock Assessments</h1>
-            <p className="text-xl text-muted-foreground">Test your knowledge in web development technologies</p>
-          </div>
-
-          <div className="space-y-12">
-            {categories.map((category) => (
-              <div key={category.name} className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className={`${category.color} p-3 rounded-lg text-white shadow-md`}>{category.icon}</div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-foreground">{category.name}</h2>
-                    <p className="text-muted-foreground">{category.quizzes.length} quizzes available</p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {category.quizzes.map((quiz) => (
-                    <Card
-                      key={quiz.id}
-                      className="cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-0 overflow-hidden"
-                      onClick={() => handleCardClick(quiz)}
-                    >
-                      <div className={`${quiz.color} p-6 text-white`}>
-                        <div className="flex items-center justify-between mb-4">
-                          {quiz.icon}
-                          <div className="text-right">
-                            <div className="text-2xl font-bold">{quiz.questions}</div>
-                            <div className="text-sm opacity-90">Questions</div>
-                          </div>
-                        </div>
-                        <CardTitle className="text-2xl font-bold text-white mb-2">{quiz.title}</CardTitle>
-                      </div>
-                      <CardContent className="p-6">
-                        <p className="text-muted-foreground mb-4">{quiz.description}</p>
-                        <div className="flex items-center text-blue-600 font-semibold">
-                          <Play className="w-4 h-4 mr-2" />
-                          Start Quiz
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
+    return <QuizHome startQuiz={handleCardClick} />;
   }
 
   if (currentRoute === 'quiz' && selectedQuiz) {
@@ -191,106 +182,14 @@ export default function QuizApp() {
       const timeTaken = 300 - timeLeft;
 
       return (
-        <div className="min-h-screen bg-background p-6">
-          <div className="max-w-4xl mx-auto">
-            <Card className="shadow-2xl border-0 overflow-hidden">
-              <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-8 text-white">
-                <div className="text-center">
-                  <Award className="w-20 h-20 mx-auto mb-4 text-yellow-300" />
-                  <h2 className="text-4xl font-bold mb-2">Quiz Complete!</h2>
-                  <p className="text-xl opacity-90">Outstanding performance!</p>
-                </div>
-              </div>
-
-              <CardContent className="p-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                  <div className="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl">
-                    <Target className="w-12 h-12 mx-auto mb-3 text-green-600" />
-                    <div className="text-3xl font-bold text-green-600 mb-1">
-                      {score}/{questions.length}
-                    </div>
-                    <div className="text-muted-foreground">Score</div>
-                  </div>
-
-                  <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl">
-                    <Zap className="w-12 h-12 mx-auto mb-3 text-blue-600" />
-                    <div className="text-3xl font-bold text-blue-600 mb-1">{percentage}%</div>
-                    <div className="text-muted-foreground">Accuracy</div>
-                  </div>
-
-                  <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl">
-                    <Clock className="w-12 h-12 mx-auto mb-3 text-purple-600" />
-                    <div className="text-3xl font-bold text-purple-600 mb-1">{formatTime(timeTaken)}</div>
-                    <div className="text-muted-foreground">Time Taken</div>
-                  </div>
-                </div>
-
-                <div className="mb-8">
-                  <h3 className="text-xl font-semibold mb-4 text-foreground">Performance Metrics</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="flex items-center space-x-3 p-4 bg-background rounded-lg">
-                      <Award className="w-6 h-6 text-yellow-500" />
-                      <div>
-                        <div className="font-semibold text-foreground">Max Streak</div>
-                        <div className="text-sm text-muted-foreground">{maxStreak} correct answers in a row</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-3 p-4 bg-background rounded-lg">
-                      <Zap className="w-6 h-6 text-orange-500" />
-                      <div>
-                        <div className="font-semibold text-foreground">Average Time</div>
-                        <div className="text-sm text-muted-foreground">
-                          {Math.round(timeTaken / questions.length)}s per question
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="text-center">
-                  <div className="mb-6">
-                    <div className="text-2xl font-bold text-foreground mb-2">
-                      {percentage >= 90
-                        ? '🎉 Exceptional!'
-                        : percentage >= 75
-                        ? '🚀 Great Job!'
-                        : percentage >= 60
-                        ? '👍 Good Work!'
-                        : '📚 Keep Learning!'}
-                    </div>
-                    <p className="text-muted-foreground">
-                      {percentage >= 90
-                        ? "You're a true expert in this field!"
-                        : percentage >= 75
-                        ? 'You have solid knowledge with room to grow!'
-                        : percentage >= 60
-                        ? "You're on the right track, keep practicing!"
-                        : 'Review the concepts and try again!'}
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    <Button
-                      onClick={handleRetakeQuiz}
-                      className="w-full md:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      <Play className="w-5 h-5 mr-2" />
-                      Retake Quiz
-                    </Button>
-                    <Button
-                      onClick={handleBackHome}
-                      variant="outline"
-                      className="w-full md:w-auto ml-0 md:ml-4 px-8 py-3 rounded-lg font-semibold"
-                    >
-                      <ChevronLeft className="w-5 h-5 mr-2" />
-                      Back to Home
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+        <QuizReport
+          score={score / questions.length}
+          percentage={percentage}
+          timeTaken={timeTaken / questions.length}
+          maxStreak={maxStreak}
+          backToHome={handleBackHome}
+          retakeQuiz={handleRetakeQuiz}
+        />
       );
     }
 

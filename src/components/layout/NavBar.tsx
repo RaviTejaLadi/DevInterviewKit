@@ -1,6 +1,6 @@
 import { Github, Menu, Search, X } from 'lucide-react';
 import React from 'react';
-import { Button } from '../ui/button';
+import { Button } from '../ui/button/button';
 import {
   NavigationMenu,
   NavigationMenuContent,
