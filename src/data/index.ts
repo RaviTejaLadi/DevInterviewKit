@@ -12,6 +12,7 @@ import { resourcesData } from './Resources';
 import { humanResourcesData } from './HR Round';
 import { cloudServicesData } from './Cloud';
 import { dsaData } from './DSA';
+import { roadmapData } from './Roadmaps';
 
 export const markdownData: Section[] = [
   {
@@ -46,6 +47,11 @@ export const markdownData: Section[] = [
     id: 'human-resources-round',
     title: 'Human Resources',
     categories: humanResourcesData,
+  },
+  {
+    id: 'developer-roadmaps',
+    title: 'Developer Roadmaps',
+    categories: roadmapData,
   },
   {
     id: 'frontend',

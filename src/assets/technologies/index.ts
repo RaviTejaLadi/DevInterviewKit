@@ -39,8 +39,10 @@ import HR from './HR';
 import AWS from './AWS';
 import AZURE from './AZURE';
 import ArrayIcon from './ArrayIcon';
+import Roadmap from './Roadmap';
 
 export {
+  Roadmap,
   ArrayIcon,
   AZURE,
   AWS,
