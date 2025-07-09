@@ -1,9 +1,15 @@
-import QuizApp from '@/features/mockInterviews/components';
+import MockInterviewsSkeleton from '@/components/skeletons/MockInterviewsSkeleton';
+import { lazy, Suspense } from 'react';
+
+// Lazy load the QuizApp component
+const QuizApp = lazy(() => import('@/features/mockInterviews/components'));
 
 const MockInterviews = () => {
   return (
     <div className="container">
-      <QuizApp />
+      <Suspense fallback={<MockInterviewsSkeleton />}>
+        <QuizApp />
+      </Suspense>
     </div>
   );
 };
