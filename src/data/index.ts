@@ -26,17 +26,17 @@ export const markdownData: Section[] = [
         documents: [
           {
             id: 'introduction',
-            title: 'Introduction',
+            title: '👋 Introduction',
             content: introduction,
           },
           {
             id: 'content-policy',
-            title: 'Content Policy',
+            title: '📜 Content Policy',
             content: contentPolicy,
           },
           {
             id: 'contribution',
-            title: 'Contribution Guide',
+            title: '✨ Contribution Guide',
             content: contribution,
           },
         ],

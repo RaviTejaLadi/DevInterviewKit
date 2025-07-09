@@ -14,32 +14,32 @@ export const humanResourcesData = [
     documents: [
       {
         id: 'hr-round-intro',
-        title: 'Introduction',
+        title: '👋 Introduction',
         content: Intro,
       },
       {
         id: 'hr-round-traditional-questions',
-        title: 'Traditional Questions',
+        title: '📜 Traditional Questions',
         content: Traditional,
       },
       {
         id: 'hr-round-behavioral-questions',
-        title: 'Behavioral Questions',
+        title: '💬 Behavioral Questions',
         content: Behavioral,
       },
       {
         id: 'hr-round-opinion-based-questions',
-        title: 'OpinionBased Questions',
+        title: '💭 Opinion-Based Questions',
         content: OpinionBased,
       },
       {
         id: 'hr-round-brainteaser-questions',
-        title: 'Brainteaser  Questions',
+        title: '🧩 Brainteaser Questions',
         content: Brainteaser,
       },
       {
         id: 'hr-round-salary-based-questions',
-        title: 'Salary Based Questions',
+        title: '💰 Salary Based Questions',
         content: Salary,
       },
     ],

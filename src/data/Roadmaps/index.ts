@@ -12,17 +12,17 @@ export const roadmapData = [
     documents: [
       {
         id: 'frontend',
-        title: 'Frontend',
+        title: '🖥️ Frontend',
         content: frontendRoadmap,
       },
       {
         id: 'backend',
-        title: 'Backend',
+        title: '⚙️ Backend',
         content: backendRoadmap,
       },
       {
         id: 'full-stack',
-        title: 'Full stack',
+        title: '🚀 Full Stack',
         content: fullstackRoadmap,
       },
     ],
