@@ -17,6 +17,7 @@ import reactJsx from './react-Jsx.md?raw';
 import reactErrorHandling from './react-ErrorHandling.md?raw';
 import reactSSR from './react-SSR.md?raw';
 import reactComponentTypes from './react-Component-Types.md?raw';
+import top25ImportantQuestions from './top-20.md?raw';
 
 export const reactConcepts = [
   {
@@ -31,8 +32,13 @@ export const reactConcepts = [
   },
   {
     id: 'react-q&a',
-    title: '❓ React Interview Questions',
+    title: '❓ Interview Questions',
     content: reactInterviewQuestions,
+  },
+  {
+    id: 'react-top-25',
+    title: '📌 Most Asked Top 25 Interview Questions',
+    content: top25ImportantQuestions,
   },
   {
     id: 'quick-review-checklist',
