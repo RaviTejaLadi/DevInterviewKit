@@ -25,7 +25,7 @@ const RenderSearchResults = ({
   selectedDocument,
 }: RenderSearchResultsProps) => {
   return (
-    <div className="space-y-4 w-72">
+    <div className="space-y-4 w-[17rem]">
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium text-muted-foreground">
           {searchResults.length} result{searchResults.length !== 1 ? 's' : ''} found

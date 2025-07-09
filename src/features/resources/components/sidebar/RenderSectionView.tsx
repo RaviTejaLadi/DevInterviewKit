@@ -22,7 +22,7 @@ const RenderSectionView = ({
   searchQuery,
 }: RenderSectionViewProps) => {
   return (
-    <div className="space-y-6 pb-[5rem]">
+    <div className="space-y-6 w-[17rem] px-1 pb-[5rem]">
       {filteredSections.map((section) => (
         <div key={section.id} className="space-y-3">
           {/* Section Heading */}
@@ -81,7 +81,7 @@ const RenderSectionView = ({
                                 {selectedDocument?.id === document.id && (
                                   <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
                                 )}
-                                <span className="text-left">{highlightText(document.title, searchQuery)}</span>
+                                <span className="text-left truncate">{highlightText(document.title, searchQuery)}</span>
                               </div>
                             </Button>
                           ))}
