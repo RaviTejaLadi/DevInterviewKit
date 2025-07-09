@@ -51,7 +51,7 @@ export default function ResourcesContentSkeleton() {
             <div>
               <SectionHeader width="w-24" />
               <MenuItem widths={['w-20']} />
-              <div className="ml-6 space-y-2">
+              <div className="ml-6 mt-2 space-y-2">
                 <Skeleton className="w-24 h-4 bg-slate-800 rounded" />
                 <Skeleton className="w-32 h-4 bg-slate-800 rounded" />
                 <Skeleton className="w-28 h-4 bg-slate-800 rounded" />
@@ -61,11 +61,21 @@ export default function ResourcesContentSkeleton() {
             <div>
               <SectionHeader width="w-32" />
               <MenuItem widths={['w-20']} />
+              <div className="ml-6 mt-2 space-y-2">
+                <Skeleton className="w-24 h-4 bg-slate-800 rounded" />
+                <Skeleton className="w-32 h-4 bg-slate-800 rounded" />
+                <Skeleton className="w-28 h-4 bg-slate-800 rounded" />
+              </div>
             </div>
 
             <div>
               <SectionHeader width="w-20" />
-              <MenuItem widths={['w-16', 'w-12', 'w-24', 'w-20', 'w-18']} />
+              <MenuItem widths={['w-20']} />
+              <div className="ml-6 mt-2 space-y-2">
+                <Skeleton className="w-24 h-4 bg-slate-800 rounded" />
+                <Skeleton className="w-32 h-4 bg-slate-800 rounded" />
+                <Skeleton className="w-28 h-4 bg-slate-800 rounded" />
+              </div>
             </div>
           </div>
         </div>
@@ -73,20 +83,6 @@ export default function ResourcesContentSkeleton() {
 
       {/* Main Content */}
       <div className="flex-1 bg-background">
-        {/* Top Navigation */}
-        <div className="flex items-center justify-between p-6 border-b border-slate-800">
-          <div className="flex items-center space-x-8">
-            <TextLine width="w-24" />
-            <TextLine width="w-20" />
-            <TextLine width="w-32" />
-          </div>
-          <div className="flex items-center space-x-4">
-            <Skeleton className="w-48 h-9 bg-slate-800 rounded-md" />
-            <Skeleton className="w-8 h-8 bg-slate-800 rounded" />
-            <Skeleton className="w-8 h-8 bg-slate-800 rounded" />
-          </div>
-        </div>
-
         <div className="p-8">
           {/* Main Header */}
           <div className="mb-12">
