@@ -41,6 +41,7 @@ import webWorkers from './js/webWorkers.md?raw';
 import strictMode from './js/strictMode.md?raw';
 import generators from './js/generators.md?raw';
 import proxyAndReflect from './js/proxyAndReflect.md?raw';
+import polyfills from './js/polyfills.md?raw';
 
 import tsIntro from './ts/Introduction to TypeScript.md?raw';
 import tsInterviewQuestions from './ts/interview-questions-theory.md?raw';
@@ -162,6 +163,11 @@ export const frontendData = [
         id: 'js-l1-l2-interview',
         title: 'L1 & L2 interviews Questions',
         content: JSL1andL2InterviewQuestions,
+      },
+      {
+        id: 'js-polyfills',
+        title: 'PolyFills',
+        content: polyfills,
       },
       {
         id: 'js-variables-&-scoping',
