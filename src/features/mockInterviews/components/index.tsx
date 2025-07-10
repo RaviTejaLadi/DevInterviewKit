@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChevronLeft, Award } from 'lucide-react';
+import { ChevronLeft, Award, Clock } from 'lucide-react';
 import { Quiz } from '../types/quiz';
 import { sampleQuestions } from '../data/quiz-data';
 import NoQuestionsFallback from './NoQuestionsFallback';
@@ -212,7 +212,10 @@ export default function QuizApp() {
                 <div className="text-sm text-muted-foreground">
                   Page {currentPage + 1} of {totalPages} ({questions.length} Total Questions)
                 </div>
-                <div className="text-sm font-semibold text-foreground">⏱️ {formatTime(timeLeft)}</div>
+                <div className="flex items-center bg-red-50 px-3 py-1 rounded-full">
+                  <Clock className="w-4 h-4 mr-1 text-red-600" />
+                  <span className="text-sm font-medium text-red-600">{formatTime(timeLeft)}</span>
+                </div>
               </div>
             </div>
             <div className="w-full bg-muted rounded-full h-2 mt-4">
@@ -245,10 +248,20 @@ export default function QuizApp() {
                         key={optionIndex}
                         onClick={() => handleAnswerSelect(questionIndex, optionIndex)}
                         variant={answers[questionIndex] === optionIndex ? 'success' : 'outline'}
-                        className={cn(answers[questionIndex] === optionIndex ? 'bg-primary' : 'hover:bg-muted')}
+                        className={cn(
+                          answers[questionIndex] === optionIndex ? 'bg-primary' : 'hover:bg-muted',
+                          'group h-10'
+                        )}
                         style={{ display: 'flex', justifyContent: 'start' }}
                       >
-                        <span className="font-semibold mr-3">{String.fromCharCode(65 + optionIndex)}.</span>
+                        <span
+                          className={cn(
+                            answers[questionIndex] === optionIndex ? 'border-none hover:bg-inherit' : 'border-border',
+                            'font-semibold border  rounded-full h-6 flex items-center justify-center text-center p-2 w-6 mr-3 group-hover:bg-green-600'
+                          )}
+                        >
+                          {String.fromCharCode(65 + optionIndex)}
+                        </span>
                         <span>{option}</span>
                       </Button>
                     ))}
