@@ -30,6 +30,13 @@ import { terraformQuestions } from './devops/terraform';
 import { githubActionsQuestions } from './devops/github-actions';
 import { kotlinQuestions } from './mobile/kotlin';
 import { swiftQuestions } from './mobile/swift';
+import { jestQuestions } from './testing/jest';
+import { cypressQuestions } from './testing/cypress';
+import { seleniumQuestions } from './testing/selenium';
+import { kafkaQuestions } from './data & analytics/kafka';
+import { elasticsearchQuestions } from './data & analytics/elasticsearch';
+import { webSecurityQuestions } from './security/web-security';
+import { oauthQuestions } from './security/oauth';
 
 export const sampleQuestions: Record<string, Question[]> = {
   //frontend
@@ -64,9 +71,23 @@ export const sampleQuestions: Record<string, Question[]> = {
   kubernetes: kubernetesQuestions,
   terraform: terraformQuestions,
   'github-actions': githubActionsQuestions,
+
   //mobile
   'react-native': reactNativeQuestions,
   flutter: flutterQuestions,
   kotlin: kotlinQuestions,
   swift: swiftQuestions,
+
+  //testing
+  jest: jestQuestions,
+  cypress: cypressQuestions,
+  selenium: seleniumQuestions,
+
+  //data & analytics
+  elasticsearch: elasticsearchQuestions,
+  kafka: kafkaQuestions,
+
+  //security
+  oauth: oauthQuestions,
+  'web-security': webSecurityQuestions,
 };
