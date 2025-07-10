@@ -15,6 +15,7 @@ import { useResultStore } from '../stores/useResultStore';
 import { useRouteStore } from '../stores/useRouteStore';
 import { useTimerStore } from '../stores/useTimerStore';
 import { useShallow } from 'zustand/react/shallow';
+import { SyntaxHighlighter } from '@/components/SyntaxHighLighter';
 
 export default function QuizApp() {
   const [currentPage, setCurrentPage] = useState<number>(0);
@@ -232,9 +233,9 @@ export default function QuizApp() {
                       <span className="font-bold mr-2">Q {questionIndex + 1}.</span>
                       {question.question}
                       {question?.code && (
-                        <pre>
-                          <code className="mr-2">{question?.code}</code>
-                        </pre>
+                        <div className="py-2">
+                          <SyntaxHighlighter code={question?.code} />
+                        </div>
                       )}
                     </CardTitle>
                   </CardHeader>

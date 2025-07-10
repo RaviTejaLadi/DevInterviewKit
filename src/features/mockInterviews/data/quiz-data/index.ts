@@ -1,13 +1,38 @@
 import { Question } from '../../types/questions';
+import { expressQuestions } from './backend/express';
+import { mongoQuestions } from './backend/mongodb';
+import { nodeQuestions } from './backend/node';
+import { pythonQuestions } from './backend/python';
+import { sqlQuestions } from './backend/sql';
+import { awsQuestions } from './devops/aws';
+import { azureQuestions } from './devops/azure';
+import { dockerQuestions } from './devops/docker';
+import { graphqlQuestions } from './backend/graphql';
+import { angularQuestions } from './frontend/angular';
 import { cssQuestions } from './frontend/css';
 import { htmlQuestions } from './frontend/html';
 import { jsQuestions } from './frontend/js';
 import { nextjsQuestions } from './frontend/next';
 import { reactQuestions } from './frontend/react';
+import { svelteQuestions } from './frontend/svelte';
 import { tailwindQuestions } from './frontend/tailwind';
+import { typescriptQuestions } from './frontend/typescript';
 import { vueQuestions } from './frontend/vue';
+import { flutterQuestions } from './mobile/flutter';
+import { reactNativeQuestions } from './mobile/reactNative';
+import { redisQuestions } from './backend/redis';
+import { fastApiQuestions } from './backend/fastapi';
+import { postgreSqlQuestions } from './backend/postgresql';
+import { springBootQuestions } from './backend/springboot';
+import { jenkinsQuestions } from './devops/jenkins';
+import { kubernetesQuestions } from './devops/kubernetes';
+import { terraformQuestions } from './devops/terraform';
+import { githubActionsQuestions } from './devops/github-actions';
+import { kotlinQuestions } from './mobile/kotlin';
+import { swiftQuestions } from './mobile/swift';
 
 export const sampleQuestions: Record<string, Question[]> = {
+  //frontend
   react: reactQuestions,
   html: htmlQuestions,
   javascript: jsQuestions,
@@ -15,52 +40,33 @@ export const sampleQuestions: Record<string, Question[]> = {
   tailwind: tailwindQuestions,
   nextjs: nextjsQuestions,
   vuejs: vueQuestions,
-  python: [
-    {
-      id: 1,
-      question: 'What is the correct way to create a function in Python?',
-      options: ['function myFunction():', 'def myFunction():', 'create myFunction():', 'func myFunction():'],
-      correctAnswer: 1,
-    },
-  ],
-  sql: [
-    {
-      id: 1,
-      question: 'Which SQL statement is used to extract data from a database?',
-      options: ['GET', 'EXTRACT', 'SELECT', 'OPEN'],
-      correctAnswer: 2,
-    },
-  ],
-  docker: [
-    {
-      id: 1,
-      question: 'What is Docker?',
-      options: ['A programming language', 'A containerization platform', 'A database', 'A web server'],
-      correctAnswer: 1,
-    },
-  ],
-  aws: [
-    {
-      id: 1,
-      question: 'What does AWS stand for?',
-      options: ['Amazon Web Services', 'Amazon Web Storage', 'Amazon Web Security', 'Amazon Web Solutions'],
-      correctAnswer: 0,
-    },
-  ],
-  'react-native': [
-    {
-      id: 1,
-      question: 'What is React Native?',
-      options: ['A web framework', 'A mobile app development framework', 'A database', 'A testing library'],
-      correctAnswer: 1,
-    },
-  ],
-  flutter: [
-    {
-      id: 1,
-      question: 'What programming language is Flutter based on?',
-      options: ['Java', 'JavaScript', 'Dart', 'Python'],
-      correctAnswer: 2,
-    },
-  ],
+  typescript: typescriptQuestions,
+  angular: angularQuestions,
+  svelte: svelteQuestions,
+
+  // backend
+  nodejs: nodeQuestions,
+  expressjs: expressQuestions,
+  python: pythonQuestions,
+  sql: sqlQuestions,
+  mongodb: mongoQuestions,
+  graphql: graphqlQuestions,
+  redis: redisQuestions,
+  postgresql: postgreSqlQuestions,
+  fastapi: fastApiQuestions,
+  'spring-boot': springBootQuestions,
+
+  // devops
+  docker: dockerQuestions,
+  aws: awsQuestions,
+  azure: azureQuestions,
+  jenkins: jenkinsQuestions,
+  kubernetes: kubernetesQuestions,
+  terraform: terraformQuestions,
+  'github-actions': githubActionsQuestions,
+  //mobile
+  'react-native': reactNativeQuestions,
+  flutter: flutterQuestions,
+  kotlin: kotlinQuestions,
+  swift: swiftQuestions,
 };
