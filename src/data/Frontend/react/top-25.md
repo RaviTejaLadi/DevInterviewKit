@@ -592,3 +592,236 @@ class ErrorBoundary extends React.Component {
 ```
 
 - **Limitations:** Does not catch errors in event handlers or async code.
+
+## Question 21. Explain Lifecycle Methods in ReactJS?
+
+React class components have special lifecycle methods that run at different
+stages of a component's life — mounting, updating, and unmounting.
+
+- `componentDidMount` runs once after the component appears on screen. Perfect
+  for fetching data.
+- `componentDidUpdate` runs after every update (props or state change).
+- `componentWillUnmount` runs right before the component disappears — clean up
+  timers, listeners here.
+
+**Example:**
+
+```javascript
+class Timer extends React.Component {
+  // Runs once after the component mounts
+  componentDidMount() {
+    console.log('Timer mounted');
+    // Start an interval timer that logs "Tick" every second
+    this.timerID = setInterval(() => console.log('Tick'), 1000);
+  }
+
+  // Runs after every update; checks if 'start' prop changed
+  componentDidUpdate(prevProps) {
+    if (prevProps.start !== this.props.start) {
+      console.log('Start prop changed');
+    }
+  }
+
+  // Runs before the component unmounts; clean up the interval timer
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+    console.log('Timer cleaned up');
+  }
+
+  // Render method outputs some text
+  render() {
+    return <div>Timer is running</div>;
+  }
+}
+```
+
+In functional components, you handle these with `useEffect`:
+
+```javascript
+useEffect(() => {
+  // Runs once when the component mounts
+  console.log('Mounted');
+
+  // Cleanup function runs when the component unmounts
+  return () => console.log('Cleanup on unmount');
+}, []); // Empty dependency array means this runs only on mount and unmount
+```
+
+---
+
+## Question 22. What is the difference between Redux, Redux Toolkit, Redux Thunk, and Zustand in ReactJS?
+
+Managing global state can be done in different ways:
+
+- **Redux**: Classic state management tool. Uses actions and reducers. Requires
+  some boilerplate.
+- **Redux Toolkit (RTK)**: The modern, recommended way to use Redux. Less
+  boilerplate, built-in utilities like `createSlice`.
+- **Redux Thunk**: Middleware that lets you write async logic in Redux action
+  creators.
+- **Zustand**: Lightweight alternative. No actions or reducers, just direct
+  state and setters.
+
+**Redux Toolkit example:**
+
+```javascript
+import { createSlice } from '@reduxjs/toolkit';
+
+// Define a slice for counter state with initial value 0
+const counterSlice = createSlice({
+  name: 'counter', // Name of this slice
+  initialState: 0, // Initial state value
+  reducers: {
+    // Reducer to increment the counter
+    increment: (state) => state + 1,
+    // Reducer to decrement the counter
+    decrement: (state) => state - 1,
+  },
+});
+
+// Export the generated action creators for use in components
+export const { increment, decrement } = counterSlice.actions;
+
+// Export the reducer to configure the store
+export default counterSlice.reducer;
+```
+
+**Zustand example:**
+
+```javascript
+import create from 'zustand';
+
+// Create a Zustand store with initial state and actions
+const useStore = create((set) => ({
+  count: 0, // Initial count value
+
+  // Action to increment the count
+  increment: () => set((state) => ({ count: state.count + 1 })),
+}));
+
+// Usage in components:
+// const count = useStore(state => state.count);
+// const increment = useStore(state => state.increment);
+```
+
+---
+
+## Question 23. What is React Router and RBAC (Route-Based Access Control)? How to implement private protected routes?
+
+React Router lets you declare routes in your React app, like `/home`,
+`/profile`, etc.  
+RBAC means controlling access based on user roles (admin, user, guest).
+
+To protect routes, wrap components in a private route that checks auth:
+
+```javascript
+import { Navigate } from 'react-router-dom';
+
+// Component to protect routes that require authentication
+const PrivateRoute = ({ children }) => {
+  // Check if the user is logged in by looking for token in localStorage
+  const isLoggedIn = Boolean(localStorage.getItem('token'));
+
+  // If logged in, render children components; otherwise redirect to login
+  return isLoggedIn ? children : <Navigate to="/login" />;
+};
+```
+
+Use it like this:
+
+```javascript
+<Route
+  path="/dashboard" // Define the route path
+  element={
+    // Wrap the Dashboard component inside PrivateRoute
+    // This ensures only authenticated users can access it
+    <PrivateRoute>
+      <Dashboard />
+    </PrivateRoute>
+  }
+/>
+```
+
+You can extend it for roles:
+
+```javascript
+const RoleProtectedRoute = ({ children, allowedRoles }) => {
+  // Get the current user's role (e.g., from localStorage,
+  // context, or a utility)
+  const userRole = getUserRole();
+
+  // Check if the user's role is allowed to access this route
+  if (!allowedRoles.includes(userRole)) {
+    // If not allowed, redirect to an "unauthorized" page
+    return <Navigate to="/unauthorized" />;
+  }
+
+  // If allowed, render the child components
+  return children;
+};
+```
+
+---
+
+## Question 24. Explain React testing. Like Unit-testing, JEST, react-testing-library, etc.
+
+Unit testing tests small pieces (functions, components) individually.  
+Jest is the test runner and assertion library.  
+React Testing Library (RTL) helps test React components from a user's
+perspective.
+
+**Example test with Jest and RTL:**
+
+```javascript
+import { render, screen, fireEvent } from '@testing-library/react';
+import Button from './Button';
+
+test('calls onClick when clicked', () => {
+  // Create a mock function to track clicks
+  const onClick = jest.fn();
+
+  // Render the Button component with label and mock click handler
+  render(<Button label="Click me" onClick={onClick} />);
+
+  // Simulate a user clicking the button by finding it via its text
+  fireEvent.click(screen.getByText('Click me'));
+
+  // Assert that the click handler was called exactly once
+  expect(onClick).toHaveBeenCalledTimes(1);
+});
+```
+
+This tests that clicking the button calls the click handler.
+
+---
+
+### Question 25. Why would you choose Next.js instead of React.js?
+
+Next.js is built on React but comes with many features out of the box:
+
+- Supports Server-Side Rendering (SSR) and Static Site Generation (SSG) for
+  better SEO and performance.
+- Uses file-based routing, so you don't manually configure routes.
+- Has API routes to write backend endpoints inside your app.
+- Provides image optimization and automatic code splitting.
+
+**Simple Next.js page example:**
+
+```javascript
+// pages/about.js
+
+// This is a simple page component in Next.js
+// Because it's inside the "pages" folder,
+// it automatically becomes a route at "/about"
+export default function About() {
+  return <h1>About Us</h1>; // Render a heading on the page
+}
+```
+
+No router setup needed — the filename becomes the route.
+
+**Choose Next.js if you want:**
+
+- Better SEO out of the box
+- Faster initial page loads
+- A full-stack React framework

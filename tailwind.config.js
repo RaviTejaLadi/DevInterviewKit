@@ -26,6 +26,7 @@ export default {
       '2xl': ['1.45rem', '2rem'],
       '3xl': ['1.825rem', '2.25rem'],
       '4xl': ['2.2rem', '2.5rem'],
+      '5xl': ['2.5rem', '2.75rem'],
     },
     extend: {
       colors: {

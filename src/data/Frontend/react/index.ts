@@ -17,7 +17,7 @@ import reactJsx from './react-Jsx.md?raw';
 import reactErrorHandling from './react-ErrorHandling.md?raw';
 import reactSSR from './react-SSR.md?raw';
 import reactComponentTypes from './react-Component-Types.md?raw';
-import top25ImportantQuestions from './top-20.md?raw';
+import top25ImportantQuestions from './top-25.md?raw';
 
 export const reactConcepts = [
   {
