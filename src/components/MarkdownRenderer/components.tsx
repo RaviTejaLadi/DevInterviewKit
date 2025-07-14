@@ -1,15 +1,13 @@
 import { ExternalLink, Hash } from 'lucide-react';
 import { Table, TableCell, TableHead, TableHeader } from '../ui/table';
 import { cn } from '@/lib/utils';
+import { generateId } from '@/utils/generateIdForMarkdown';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const components = {
   // Enhanced heading components with better styling
   h1: ({ children }: any) => {
-    const id = String(children)
-      .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[^\w-]/g, '');
+    const id = generateId(children);
     return (
       <div className="group relative mb-8">
         <h1
@@ -30,7 +28,7 @@ export const components = {
     );
   },
   h2: ({ children }: any) => {
-    const id = String(children).toLowerCase().replace(/\s+/g, '-');
+    const id = generateId(children);
     return (
       <div className="group relative mt-16 mb-6 flex items-center gap-3">
         <div className="w-1 h-8 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
@@ -48,7 +46,7 @@ export const components = {
     );
   },
   h3: ({ children }: any) => {
-    const id = String(children).toLowerCase().replace(/\s+/g, '-');
+    const id = generateId(children);
     return (
       <div className="group relative mt-12 mb-4 flex items-center gap-2">
         <div className="w-0.5 h-6 bg-primary/70 rounded-full"></div>
@@ -66,7 +64,7 @@ export const components = {
     );
   },
   h4: ({ children }: any) => {
-    const id = String(children).toLowerCase().replace(/\s+/g, '-');
+    const id = generateId(children);
     return (
       <div className="group relative mt-8 mb-3 flex items-center gap-2">
         <div className="w-2 h-2 bg-primary rounded-full"></div>

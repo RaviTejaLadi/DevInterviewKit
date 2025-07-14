@@ -1,4 +1,4 @@
-import { Express, Node, System } from '@/assets/technologies';
+import { Express, Node } from '@/assets/technologies';
 
 import nodeIntro from './node/intro.md?raw';
 import nodeTheory from './node/theory-questions.md?raw';
@@ -7,11 +7,6 @@ import nodeCoding from './node/coding-questions.md?raw';
 import expressIntro from './express/intro.md?raw';
 import expressTheory from './express/theory-questions.md?raw';
 import expressCoding from './express/coding-questions.md?raw';
-
-import webSecurity from './SystemDesign/web-security.md?raw';
-import networking from './SystemDesign/networking.md?raw';
-import errorLogging from './SystemDesign/logging-and-monitoring.md?raw';
-import owasp from './SystemDesign/owasp.md?raw';
 
 export const backendData = [
   {
@@ -55,33 +50,6 @@ export const backendData = [
         id: 'express-coding-questions',
         title: 'Coding Questions',
         content: expressCoding,
-      },
-    ],
-  },
-  {
-    id: 'system-design',
-    title: 'System Design',
-    Icon: System,
-    documents: [
-      {
-        id: 'web-security-intro',
-        title: 'Web Security',
-        content: webSecurity,
-      },
-      {
-        id: 'networking-questions',
-        title: 'Networking',
-        content: networking,
-      },
-      {
-        id: 'error-logging-questions',
-        title: 'Logging & Monitoring',
-        content: errorLogging,
-      },
-      {
-        id: 'owasp',
-        title: 'OWASP',
-        content: owasp,
       },
     ],
   },

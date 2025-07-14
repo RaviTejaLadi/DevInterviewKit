@@ -1,4 +1,4 @@
-# 🔒 Web Application Security Guide
+# **🔒 Web Application Security Guide**
 
 Web security is crucial for protecting applications and users from various
 attacks. Here are the key concepts with JavaScript examples:

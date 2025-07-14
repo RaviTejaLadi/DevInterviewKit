@@ -1,4 +1,4 @@
-# OWASP Best Practices with JS/HTML/React Examples 🔐
+# **OWASP Best Practices with JS/HTML/React Examples 🔐**
 
 ## Table of Contents
 

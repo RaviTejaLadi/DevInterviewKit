@@ -1,4 +1,4 @@
-# Networking Interview Questions & Answers Guide
+# **Networking Interview Questions & Answers Guide**
 
 ## Table of Contents
 

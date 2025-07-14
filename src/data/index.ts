@@ -13,6 +13,7 @@ import { humanResourcesData } from './HR Round';
 import { cloudServicesData } from './Cloud';
 import { dsaData } from './DSA';
 import { roadmapData } from './Roadmaps';
+import { systemDesignData } from './SystemDesign';
 
 export const markdownData: Section[] = [
   {
@@ -57,6 +58,11 @@ export const markdownData: Section[] = [
     id: 'frontend',
     title: 'Frontend',
     categories: frontendData,
+  },
+  {
+    id: 'system-design',
+    title: 'System Design',
+    categories: systemDesignData,
   },
   {
     id: 'backend',
