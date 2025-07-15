@@ -1,4 +1,4 @@
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { useOpenSearchDialog } from '@/stores/useOpenSearchDialog';
 import { MarkdownDocument } from '@/types/markdown-content-types';
 import { highlightText } from '@/utils/highlightText';
 import { FileText, Search, Sparkles } from 'lucide-react';
@@ -11,6 +11,8 @@ interface SearchResultsProps {
 }
 
 const SearchResults = ({ results, searchTerm, onDocumentSelect }: SearchResultsProps) => {
+  const { setIsSearchDialogOpen } = useOpenSearchDialog();
+
   if (!searchTerm) {
     return null;
   }
@@ -70,11 +72,16 @@ const SearchResults = ({ results, searchTerm, onDocumentSelect }: SearchResultsP
     return excerpt;
   };
 
+  const handleDocumentSelect = (document: MarkdownDocument) => {
+    onDocumentSelect(document);
+    setIsSearchDialogOpen(false);
+  };
+
   return (
-    <div className="flex-1 bg-gradient-to-br from-background via-background to-muted/10">
+    <div className=" bg-gradient-to-br from-background via-background to-muted/10">
       {/* Enhanced Header */}
-      <div className="sticky top-0 z-10 backdrop-blur-xl bg-background/80 border-b border-border/50 shadow-sm">
-        <div className="p-6 lg:p-8">
+      <div className="fixed w-[98%] mx-2 top-12 z-10 backdrop-blur-xl bg-inherit border-b mb-2 border-border/50 shadow-sm">
+        <div className="flex  items-center justify-between p-1">
           <div className="flex items-center space-x-3 mb-2">
             <div className="p-2 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg">
               <Sparkles className="w-5 h-5 text-blue-600 dark:text-blue-400" />
@@ -96,61 +103,48 @@ const SearchResults = ({ results, searchTerm, onDocumentSelect }: SearchResultsP
       </div>
 
       {/* Enhanced Results */}
-      <ScrollArea className="h-screen p-6 lg:p-8">
-        <div className="space-y-4 flex flex-wrap gap-2 justify-evenly items-center">
-          {results.map((document, index) => {
-            const excerpt = getExcerpt(document.content, searchTerm);
+      <div className="mt-12 flex flex-wrap gap-2 justify-evenly items-center">
+        {results.map((document, index) => {
+          const excerpt = getExcerpt(document.content, searchTerm);
+          return (
+            <div
+              key={document.id}
+              onClick={() => handleDocumentSelect(document)}
+              className="group relative p-2 w-[49%] h-auto border dark:border-gray-200/10 rounded-lg hover:border-border hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-white/5 cursor-pointer transition-all duration-300 hover:-translate-y-1 bg-card/50 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              {/* Subtle gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-            return (
-              <div
-                key={document.id}
-                onClick={() => onDocumentSelect(document)}
-                className="group relative p-6 w-full h-auto border dark:border-gray-200/10 rounded-xl hover:border-border hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-white/5 cursor-pointer transition-all duration-300 hover:-translate-y-1 bg-card/50 backdrop-blur-sm animate-in fade-in-50 slide-in-from-bottom-4"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {/* Subtle gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative flex items-start space-x-4">
+                {/* Enhanced icon */}
+                <div className="flex-shrink-0 p-2 bg-gradient-to-br from-muted to-muted/50 rounded-lg group-hover:from-blue-500/10 group-hover:to-purple-500/10 transition-all duration-300">
+                  <FileText className="w-4 h-4 text-muted-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300" />
+                </div>
 
-                <div className="relative flex items-start space-x-4">
-                  {/* Enhanced icon */}
-                  <div className="flex-shrink-0 p-2.5 bg-gradient-to-br from-muted to-muted/50 rounded-lg group-hover:from-blue-500/10 group-hover:to-purple-500/10 transition-all duration-300">
-                    <FileText className="w-5 h-5 text-muted-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300" />
-                  </div>
+                <div className="flex-1 min-w-0 space-y-3">
+                  {/* Enhanced title */}
+                  <h3 className="text-xl font-semibold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight">
+                    {highlightText(document.title, searchTerm)}
+                  </h3>
 
-                  <div className="flex-1 min-w-0 space-y-3">
-                    {/* Enhanced title */}
-                    <h3 className="text-xl font-semibold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight">
-                      {highlightText(document.title, searchTerm)}
-                    </h3>
-
-                    {/* Enhanced excerpt */}
-                    <div className="prose prose-sm max-w-none">
-                      <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300 line-clamp-3 leading-relaxed">
-                        {highlightText(excerpt, searchTerm)}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Subtle arrow indicator */}
-                  <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                    <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                  {/* Enhanced excerpt */}
+                  <div className="prose prose-sm max-w-none">
+                    <p className="text-muted-foreground text-sm group-hover:text-foreground/80 transition-colors duration-300 line-clamp-3 leading-relaxed">
+                      {highlightText(excerpt, searchTerm)}
+                    </p>
                   </div>
                 </div>
 
-                {/* Enhanced hover border effect */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl"></div>
+                {/* Subtle arrow indicator */}
+                <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                  <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                </div>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Results footer */}
-        <div className="mt-8 pt-6 border-t border-border/30">
-          <p className="text-center text-sm text-muted-foreground">
-            End of search results • Click any document to view details
-          </p>
-        </div>
-      </ScrollArea>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

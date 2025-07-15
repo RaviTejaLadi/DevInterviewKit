@@ -1,6 +1,6 @@
-import { Github, Menu, Search, X } from 'lucide-react';
-import React from 'react';
-import { Button } from '../ui/button/button';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Github, Menu } from 'lucide-react';
+import React, { useEffect } from 'react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,8 +12,9 @@ import {
 import Logo from '../Logo';
 import { ThemeToggle } from '../ThemeToggle';
 import { useMobileStore } from '@/stores/useMobileStore';
-import { Input } from '../ui/input';
 import { useLocation } from 'react-router-dom';
+import { useOpenSearchDialog } from '@/stores/useOpenSearchDialog';
+import { Button } from 'kalki-ui';
 
 interface MenuItem {
   title: string;
@@ -25,9 +26,6 @@ interface MenuItem {
 
 interface NavbarProps {
   menu?: MenuItem[];
-
-  searchTerm: string;
-  onSearchChange: (term: string) => void;
 }
 
 const Navbar = ({
@@ -35,15 +33,28 @@ const Navbar = ({
     { title: 'Resources', url: '/resources' },
     { title: 'Mock Assessment', url: '/mock-assessment' },
   ],
-  searchTerm,
-  onSearchChange,
 }: NavbarProps) => {
   const location = useLocation();
   const { toggleMobile } = useMobileStore();
+  const { isSearchDialogOpen, setIsSearchDialogOpen, toggleSearchDialog } = useOpenSearchDialog();
 
-  const clearSearch = () => {
-    onSearchChange('');
-  };
+  // Handle Ctrl+K keyboard shortcut
+  useEffect(() => {
+    const handleKeyDown = (event: { ctrlKey: any; key: string; preventDefault: () => void }) => {
+      if (event.ctrlKey && event.key === 'k') {
+        event.preventDefault();
+        toggleSearchDialog();
+      }
+
+      // Close dialog on Escape
+      if (event.key === 'Escape' && isSearchDialogOpen) {
+        setIsSearchDialogOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isSearchDialogOpen, setIsSearchDialogOpen, toggleSearchDialog]);
 
   return (
     <div className="flex h-11 justify-between space-x-10 fixed top-0 z-50 w-full  border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-inherit">
@@ -67,24 +78,10 @@ const Navbar = ({
             {location.pathname === '/resources' && (
               <div className="p-4 lg:p-6">
                 <div className="relative max-w-md">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                  <Input
-                    type="text"
-                    placeholder="Search topic..."
-                    value={searchTerm}
-                    onChange={(e) => onSearchChange(e.target.value)}
-                    className="w-full pl-10 pr-4 py-1 text-sm border-none border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
-                  />
-                  {searchTerm && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={clearSearch}
-                      className="absolute right-1 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0 hover:bg-muted"
-                    >
-                      <X className="w-3 h-3" />
-                    </Button>
-                  )}
+                  <Button variant="ghost" size="xs" className="border border-border" onClick={toggleSearchDialog}>
+                    Search topics...
+                    <kbd className="bg-muted/30 px-2 py-0.5 ml-5 rounded text-xs font-mono">Ctrl k</kbd>
+                  </Button>
                 </div>
               </div>
             )}
@@ -94,7 +91,7 @@ const Navbar = ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="ghost" size="icon" accessKey="View source code" aria-label="View source code">
+              <Button variant="ghost" size="xs" accessKey="View source code" aria-label="View source code">
                 <Github className="h-4 w-4" />
               </Button>
             </a>
@@ -106,7 +103,7 @@ const Navbar = ({
       <div className="lg:hidden py-1 flex justify-between items-center w-full">
         <div className="flex items-center justify-start gap-4">
           {/* Mobile menu button */}
-          <Button size={'icon'} variant={'outline'} onClick={toggleMobile}>
+          <Button size={'xs'} variant={'outline'} onClick={toggleMobile}>
             <Menu className="w-5 h-5" />
           </Button>
           {/* Logo */}
@@ -121,7 +118,7 @@ const Navbar = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button variant="ghost" size="icon" accessKey="View source code" aria-label="View source code">
+            <Button variant="ghost" size="xs" accessKey="View source code" aria-label="View source code">
               <Github className="h-4 w-4" />
             </Button>
           </a>

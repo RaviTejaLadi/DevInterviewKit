@@ -7,9 +7,9 @@ import { lazy, memo, Suspense, useEffect, useMemo, useState, useCallback } from 
 import { getAllDocuments } from '../utils/getAllDocuments';
 import { useDebounce } from '@/hooks/useDebounce';
 import { getSearchIndex } from '../utils/getSearchIndex';
+import SearchResultsDialog from './searchResults/SearchResultsDialog';
 
 const ContentArea = lazy(() => import('./ContentArea'));
-const SearchResults = lazy(() => import('./SearchResults'));
 
 const ResourcesContent = () => {
   const allDocuments = useMemo(() => getAllDocuments(), []);
@@ -97,15 +97,13 @@ const ResourcesContent = () => {
     <div className="flex h-full">
       <Sidebar sections={markdownData} selectedDocument={selectedDocument} onDocumentSelect={handleDocumentSelect} />
       <Suspense fallback={<Loading />}>
-        {showSearchResults ? (
-          <SearchResults
-            results={searchResults}
-            searchTerm={debouncedSearchTerm}
-            onDocumentSelect={handleDocumentSelect}
-          />
-        ) : (
-          <ContentArea selectedDocument={selectedDocument} />
-        )}
+        <ContentArea selectedDocument={selectedDocument} />
+        <SearchResultsDialog
+          searchResults={searchResults}
+          showSearchResults={showSearchResults}
+          debouncedSearchTerm={debouncedSearchTerm}
+          handleDocumentSelect={handleDocumentSelect}
+        />
       </Suspense>
     </div>
   );
