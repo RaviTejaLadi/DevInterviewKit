@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { useTheme } from './context/ThemeContext';
 import Home from './pages/home/Home';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import MockInterviews from './pages/MockInterviews';
@@ -10,7 +9,6 @@ import MachineCodingPage from './pages/react-machine-coding';
 import { machineCodingRoutes } from './pages/react-machine-coding/machineCodingRoutes';
 import { useEffect } from 'react';
 import Resources from './pages/Resources';
-// import BackgroundGradient from './components/BackgroundGradient';
 
 function App() {
   useEffect(() => {
@@ -56,13 +54,9 @@ function App() {
     },
   ]);
 
-  // const { theme } = useTheme();
-  // const isDarkMode = theme === 'dark';
-
   return (
     <div>
       <RouterProvider router={router} />
-      {/* <BackgroundGradient isDarkMode={isDarkMode} /> */}
     </div>
   );
 }
