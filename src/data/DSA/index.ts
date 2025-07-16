@@ -2,9 +2,7 @@ import { ArrayIcon, Dsa } from '@/assets/technologies';
 
 import dsaIntro from './dsa-intro/intro.md?raw';
 import dsaRoadMap from './dsa-intro/dsa-roadmap.md?raw';
-import levelOneDsa from './dsa-intro/15-easy.md?raw';
-import levelTwoDsa from './dsa-intro/25-medium.md?raw';
-import levelThreeDsa from './dsa-intro/10-hard.md?raw';
+import top35 from './dsa-intro/q-and-a.md?raw';
 
 import batch1 from './arrays/easy.md?raw';
 import batch2 from './arrays/medium.md?raw';
@@ -28,19 +26,9 @@ export const dsaData = [
         content: dsaRoadMap,
       },
       {
-        id: 'level-one-dsa-easy',
-        title: 'Level 1 - Easy',
-        content: levelOneDsa,
-      },
-      {
-        id: 'level-two-dsa-medium',
-        title: 'Level 2 - Medium',
-        content: levelTwoDsa,
-      },
-      {
-        id: 'level-three-dsa-hard',
-        title: 'Level 3 - Hard',
-        content: levelThreeDsa,
+        id: 'top-35-most-asked-dsa-questions',
+        title: 'Top 35 Questions',
+        content: top35,
       },
     ],
   },
