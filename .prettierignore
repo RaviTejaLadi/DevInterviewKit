@@ -16,7 +16,6 @@ themes/coo/source/css/style.css
 themes/coo/source/js/fuse_*.js
 *.min.js
 *.min.css
-
 # Large asset files
 source/assets/image/
 source/assets/icon/
