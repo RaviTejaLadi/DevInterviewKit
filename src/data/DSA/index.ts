@@ -7,6 +7,9 @@ import top40 from './Q-And-A/top-40-array.md?raw';
 import top20 from './Q-And-A/top-20-object.md?raw';
 import top20string from './Q-And-A/top-20-string.md?raw';
 
+import arrays from './dsa-concepts/arrays.md?raw';
+import strings from './dsa-concepts/strings.md?raw';
+
 export const dsaData = [
   {
     id: 'dsa',
@@ -22,6 +25,23 @@ export const dsaData = [
         id: 'dsa-roadmap',
         title: 'Roadmap',
         content: dsaRoadMap,
+      },
+    ],
+  },
+  {
+    id: 'dsa-topics',
+    title: 'DSA Topics',
+    Icon: Dsa,
+    documents: [
+      {
+        id: 'dsa-arrays',
+        title: 'Arrays',
+        content: arrays,
+      },
+      {
+        id: 'dsa-strings',
+        title: 'Strings',
+        content: strings,
       },
     ],
   },
