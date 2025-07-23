@@ -16,17 +16,17 @@ export const databaseData = [
     documents: [
       {
         id: 'mongo-intro',
-        title: 'Introduction',
+        title: '📚 Introduction',
         content: mongoIntro,
       },
       {
         id: 'mongo-theory-questions',
-        title: 'Theory Questions',
+        title: '❓ Theory Questions',
         content: mongoTheoryQuestions,
       },
       {
         id: 'mongo-coding-questions',
-        title: 'Coding Questions',
+        title: '💻 Coding Questions',
         content: mongoCodingQuestions,
       },
     ],
@@ -38,17 +38,17 @@ export const databaseData = [
     documents: [
       {
         id: 'sql-intro',
-        title: 'Introduction',
+        title: '📚 Introduction',
         content: sqlIntro,
       },
       {
         id: 'sql-theory-questions',
-        title: 'Theory Questions',
+        title: '❓ Theory Questions',
         content: sqlTheoryQuestions,
       },
       {
         id: 'sql-coding-questions',
-        title: 'Coding Questions',
+        title: '💻 Coding Questions',
         content: sqlCodingQuestions,
       },
     ],

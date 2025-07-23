@@ -6,22 +6,22 @@ import vueCodingQuestions from './coding-questions.md?raw';
 export const vueConcepts = [
   {
     id: 'vue-js-intro',
-    title: 'Introduction',
+    title: '📚 Introduction',
     content: vueIntro,
   },
   {
     id: 'vue-js-files-and-folders-structure',
-    title: 'Files and Folders Structure',
+    title: '📁 Files and Folders Structure',
     content: vueFilesAndFoldersStructure,
   },
   {
     id: 'theory-vue-js-interview-questions',
-    title: 'Theory Interview Questions',
+    title: '❓ Theory Interview Questions',
     content: vueTheoryQuestions,
   },
   {
     id: 'coding-vue-js-interview-questions',
-    title: 'coding Interview Questions',
+    title: '💻 Coding Interview Questions',
     content: vueCodingQuestions,
   },
 ];

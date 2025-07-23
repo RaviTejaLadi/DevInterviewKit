@@ -7,27 +7,27 @@ import reactMachineCodingExpertLevel from './level-expert.md?raw';
 export const reactCodingConcepts = [
   {
     id: 'intro-to-react-machine-coding',
-    title: 'Introduction',
+    title: '📚 Introduction',
     content: reactMachineCodingIntro,
   },
   {
     id: 'level-easy-react-machine-coding',
-    title: 'Easy Level',
+    title: '🟢 Easy Level',
     content: reactMachineCodingEasyLevel,
   },
   {
     id: 'level-medium-react-machine-coding',
-    title: 'Medium Level',
+    title: '🟡 Medium Level',
     content: reactMachineCodingMediumLevel,
   },
   {
     id: 'level-hard-react-machine-coding',
-    title: 'Hard Level',
+    title: '🟠 Hard Level',
     content: reactMachineCodingHardLevel,
   },
   {
     id: 'level-expert-react-machine-coding',
-    title: 'Expert Level',
+    title: '🔴 Expert Level',
     content: reactMachineCodingExpertLevel,
   },
 ];

@@ -38,22 +38,22 @@ import polyfills from './polyfills.md?raw';
 export const jsConcepts = [
   {
     id: 'intro-to-js',
-    title: 'Introduction',
+    title: '📚 Introduction',
     content: jsIntro,
   },
   {
     id: 'js-top30q&a',
-    title: 'Interview Questions',
+    title: '❓ Interview Questions',
     content: jsInterviewQuestions,
   },
   {
     id: 'js-l1-l2-interview',
-    title: 'L1 & L2 interviews Questions',
+    title: '📝 L1 & L2 interviews Questions',
     content: JSL1andL2InterviewQuestions,
   },
   {
     id: 'js-polyfills',
-    title: 'PolyFills',
+    title: '✨ PolyFills',
     content: polyfills,
   },
   {

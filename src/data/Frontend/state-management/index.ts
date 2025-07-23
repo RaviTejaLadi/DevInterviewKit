@@ -6,22 +6,22 @@ import useReducerSetup from './useReducer and useContext in TypeScript.md?raw';
 export const stateManagementConcepts = [
   {
     id: 'intro-to-state-management',
-    title: 'Introduction',
+    title: '📚 Introduction',
     content: stateManagementIntro,
   },
   {
     id: 'use-reducer-setup',
-    title: 'useReducer Setup',
+    title: '⚙️ useReducer Setup',
     content: useReducerSetup,
   },
   {
     id: 'redux-toolkit',
-    title: 'Redux Toolkit',
+    title: '📦 Redux Toolkit',
     content: reduxToolkit,
   },
   {
     id: 'zustand',
-    title: 'Zustand',
+    title: '🐻 Zustand',
     content: zustand,
   },
 ];

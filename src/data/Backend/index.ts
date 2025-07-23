@@ -16,17 +16,17 @@ export const backendData = [
     documents: [
       {
         id: 'node-intro',
-        title: 'Introduction',
+        title: '📚 Introduction',
         content: nodeIntro,
       },
       {
         id: 'theory-questions',
-        title: 'Theory Questions',
+        title: '❓ Theory Questions',
         content: nodeTheory,
       },
       {
         id: 'coding-questions',
-        title: 'Coding Questions',
+        title: '💻 Coding Questions',
         content: nodeCoding,
       },
     ],
@@ -38,17 +38,17 @@ export const backendData = [
     documents: [
       {
         id: 'express-intro',
-        title: 'Introduction',
+        title: '📚 Introduction',
         content: expressIntro,
       },
       {
         id: 'express-theory-questions',
-        title: 'Theory Questions',
+        title: '❓ Theory Questions',
         content: expressTheory,
       },
       {
         id: 'express-coding-questions',
-        title: 'Coding Questions',
+        title: '💻 Coding Questions',
         content: expressCoding,
       },
     ],

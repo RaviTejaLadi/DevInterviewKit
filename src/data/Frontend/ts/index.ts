@@ -4,12 +4,12 @@ import tsInterviewQuestions from './interview-questions-theory.md?raw';
 export const tsConcepts = [
   {
     id: 'intro-to-ts',
-    title: 'Introduction',
+    title: '📚 Introduction',
     content: tsIntro,
   },
   {
     id: 'ts-q-&-a',
-    title: 'TypeScript Interview Questions',
+    title: '❓ TypeScript Interview Questions',
     content: tsInterviewQuestions,
   },
 ];

@@ -12,13 +12,13 @@ export const cloudServicesData = [
     Icon: AWS,
     documents: [
       {
-        id: 'aws-intro',
-        title: 'Introduction',
+        id: 'aws-intro', 
+        title: '📚 Introduction',
         content: awsIntro,
       },
       {
-        id: 'aws-theory-questions',
-        title: 'Theory Questions',
+        id: 'aws-theory-questions', 
+        title: '❓ Theory Questions',
         content: awsTheoryQuestions,
       },
     ],
@@ -29,13 +29,13 @@ export const cloudServicesData = [
     Icon: AZURE,
     documents: [
       {
-        id: 'azure-intro',
-        title: 'Introduction',
+        id: 'azure-intro', 
+        title: '📚 Introduction',
         content: azureIntro,
       },
       {
-        id: 'azure-theory-questions',
-        title: 'Theory Questions',
+        id: 'azure-theory-questions', 
+        title: '❓ Theory Questions',
         content: azureTheoryQuestions,
       },
     ],

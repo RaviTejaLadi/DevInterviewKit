@@ -6,22 +6,22 @@ import SemanticHTMLAccessibility from './Semantic HTML & Accessibility.md?raw';
 export const htmlConcepts = [
   {
     id: 'html-intro',
-    title: 'Introduction to HTML',
+    title: '📚 Introduction to HTML',
     content: htmlIntro,
   },
   {
     id: 'html-quick-review-checklist',
-    title: 'Quick Review Checklist',
+    title: '📝 Quick Review Checklist',
     content: htmlQuickReview,
   },
   {
     id: 'semantic-html-and-accessibility',
-    title: 'Semantic HTML & Accessibility',
+    title: '♿ Semantic HTML & Accessibility',
     content: SemanticHTMLAccessibility,
   },
   {
     id: 'html-top50q&a',
-    title: 'HTML Interview Questions',
+    title: '❓ HTML Interview Questions',
     content: htmlInterviewQuestions,
   },
 ];
