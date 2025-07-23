@@ -2,13 +2,13 @@
 
 ## 📚 Table of Contents
 
-1. [🔗 Directed vs. Undirected Graphs](#-directed-vs-undirected-graphs)
-2. [⚖️ Weighted vs. Unweighted Graphs](#️-weighted-vs-unweighted-graphs)
-3. [🗂️ Graph Representation: Adjacency List/Matrix](#️-graph-representation-adjacency-listmatrix)
-4. [🚶 Graph Traversals: BFS & DFS](#-graph-traversals-bfs--dfs)
-5. [📋 Topological Sorting](#-topological-sorting)
-6. [🌲 Minimum Spanning Tree](#-minimum-spanning-tree)
-7. [🛣️ Shortest Path Algorithms](#️-shortest-path-algorithms)
+1. [🔗 Directed vs. Undirected Graphs](#directed-vs-undirected-graphs)
+2. [⚖️ Weighted vs. Unweighted Graphs](#️weighted-vs-unweighted-graphs)
+3. [🗂️ Graph Representation: Adjacency List/Matrix](#️graph-representation-adjacency-listmatrix)
+4. [🚶 Graph Traversals: BFS and DFS](#graph-traversals-bfs-and-dfs)
+5. [📋 Topological Sorting](#topological-sorting)
+6. [🌲 Minimum Spanning Tree](#minimum-spanning-tree)
+7. [🛣️ Shortest Path Algorithms](#️shortest-path-algorithms)
 
 ---
 
@@ -232,7 +232,7 @@ class AdjacencyMatrixGraph {
 
 ---
 
-## 🚶 Graph Traversals: BFS & DFS
+## 🚶 Graph Traversals: BFS and DFS
 
 ### Definition
 

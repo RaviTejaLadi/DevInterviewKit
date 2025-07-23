@@ -2,13 +2,13 @@
 
 ## 📋 Table of Contents
 
-- [📖 Definition](#-definition)
-- [🔑 Key Characteristics](#-key-characteristics)
-- [💻 Syntax/Implementation](#-syntaximplementation)
-- [🎨 Visualization](#-visualization)
-- [🌍 Real-World Example](#-real-world-example)
-- [⚡ Code Example](#-code-example)
-- [⚠️ Common Pitfalls](#️-common-pitfalls)
+- [📖 Definition](#definition)
+- [🔑 Key Characteristics](#key-characteristics)
+- [💻 Syntax/Implementation](#syntaximplementation)
+- [🎨 Visualization](#visualization)
+- [🌍 Real-World Example](#real-world-example)
+- [⚡ Code Example](#code-example)
+- [⚠️ Common Pitfalls](#️common-pitfalls)
 
 ## 📖 Definition
 
