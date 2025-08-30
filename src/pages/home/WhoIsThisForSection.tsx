@@ -41,7 +41,7 @@ const WhoIsThisForSection = () => {
               <Card key={index} className="border-border">
                 <CardHeader>
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary">
-                    <Icon size={20} />
+                    <Icon size={20}  />
                   </div>
                 </CardHeader>
                 <CardContent>

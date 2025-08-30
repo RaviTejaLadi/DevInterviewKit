@@ -9,6 +9,7 @@ import MachineCodingPage from './pages/react-machine-coding';
 import { machineCodingRoutes } from './pages/react-machine-coding/machineCodingRoutes';
 import { useEffect } from 'react';
 import Resources from './pages/Resources';
+import RoadMaps from './pages/RoadMaps';
 
 function App() {
   useEffect(() => {
@@ -32,6 +33,10 @@ function App() {
         {
           path: '/resources',
           element: <Resources />,
+        },
+        {
+          path: '/road-maps',
+          element: <RoadMaps />,
         },
         {
           path: 'mock-assessment',
