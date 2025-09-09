@@ -8,13 +8,20 @@ export const getAllDocuments = (): MarkdownDocument[] => {
   if (allDocumentsCache) return allDocumentsCache;
 
   const docs: MarkdownDocument[] = [];
+  const collectFromCategory = (category: any) => {
+    if (category.documents && Array.isArray(category.documents)) {
+      docs.push(...category.documents);
+    }
+    if (category.document) {
+      docs.push(category.document);
+    }
+    if (category.children && Array.isArray(category.children)) {
+      category.children.forEach((child: any) => collectFromCategory(child));
+    }
+  };
   markdownData.forEach((section) => {
     section.categories.forEach((category) => {
-      if (category.documents) {
-        docs.push(...category.documents);
-      } else if (category.document) {
-        docs.push(category.document);
-      }
+      collectFromCategory(category);
     });
   });
 

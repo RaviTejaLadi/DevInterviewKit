@@ -24,96 +24,132 @@ export const resourcesData = [
     id: 'cheat-sheets',
     title: 'Cheat Sheets',
     Icon: Sheets,
-    documents: [
+    children: [
       {
-        id: 'html-cheat-sheet',
-        title: 'HTML 🧱',
-        content: htmlCheatSheet,
+        id: 'frontend-cheats',
+        title: 'Frontend',
+        documents: [
+          {
+            id: 'html-cheat-sheet',
+            title: 'HTML 🧱',
+            content: htmlCheatSheet,
+          },
+          {
+            id: 'css-cheat-sheet',
+            title: 'CSS 🎨',
+            content: cssCheatSheet,
+          },
+          {
+            id: 'sass-cheat-sheet',
+            title: 'SASS 🎨',
+            content: sassCheatSheet,
+          },
+          {
+            id: 'tailwind-cheat-sheet',
+            title: 'Tailwind CSS 🌬️',
+            content: tailwindCheatSheet,
+          },
+          {
+            id: 'js-cheat-sheet',
+            title: 'JavaScript 📜',
+            content: jsCheatSheet,
+          },
+          {
+            id: 'es6-cheat-sheet',
+            title: 'ES6 📜',
+            content: es6CheatSheet,
+          },
+          {
+            id: 'react-cheat-sheet',
+            title: 'React ⚛️',
+            content: reactCheatSheet,
+          },
+          {
+            id: 'react-router-dom-cheat-sheet',
+            title: 'React Router Dom ',
+            content: reactRouterDomCheatSheet,
+          },
+        ],
       },
       {
-        id: 'css-cheat-sheet',
-        title: 'CSS 🎨',
-        content: cssCheatSheet,
+        id: 'backend-cheats',
+        title: 'Backend',
+        documents: [
+          {
+            id: 'node-cheat-sheet',
+            title: 'Node.js 🟢',
+            content: nodeCheatSheet,
+          },
+          {
+            id: 'express-cheat-sheet',
+            title: 'Express 🚂',
+            content: expressCheatSheet,
+          },
+        ],
       },
       {
-        id: 'sass-cheat-sheet',
-        title: 'SASS 🎨',
-        content: sassCheatSheet,
+        id: 'database-cheats',
+        title: 'Databases',
+        documents: [
+          {
+            id: 'sql-cheat-sheet',
+            title: 'SQL 🗄️',
+            content: sqlCheatSheet,
+          },
+          {
+            id: 'my-sql-cheat-sheet',
+            title: 'MySQL 🗄️',
+            content: mySqlCheatSheet,
+          },
+          {
+            id: 'mongo-cheat-sheet',
+            title: 'MongoDB 🍃',
+            content: mongoCheatSheet,
+          },
+        ],
       },
       {
-        id: 'tailwind-cheat-sheet',
-        title: 'Tailwind CSS 🌬️',
-        content: tailwindCheatSheet,
+        id: 'languages-cheats',
+        title: 'Languages',
+        documents: [
+          {
+            id: 'java-cheat-sheet',
+            title: 'Java ☕',
+            content: javaCheatSheet,
+          },
+          {
+            id: 'Python-cheat-sheet',
+            title: 'Python 🐍',
+            content: pythonCheatSheet,
+          },
+        ],
       },
       {
-        id: 'js-cheat-sheet',
-        title: 'JavaScript 📜',
-        content: jsCheatSheet,
+        id: 'tools-and-protocols-cheats',
+        title: 'Tools & Protocols',
+        documents: [
+          {
+            id: 'git-cheat-sheet',
+            title: 'Git 🔧',
+            content: gitCheatSheet,
+          },
+          {
+            id: 'http-cheat-sheet',
+            title: 'HTTP 🌐',
+            content: httpCheatSheet,
+          },
+        ],
       },
       {
-        id: 'es6-cheat-sheet',
-        title: 'ES6 📜',
-        content: es6CheatSheet,
-      },
-      {
-        id: 'react-cheat-sheet',
-        title: 'React ⚛️',
-        content: reactCheatSheet,
-      },
-      {
-        id: 'git-cheat-sheet',
-        title: 'Git 🔧',
-        content: gitCheatSheet,
-      },
-      {
-        id: 'http-cheat-sheet',
-        title: 'HTTP 🌐',
-        content: httpCheatSheet,
-      },
-      {
-        id: 'node-cheat-sheet',
-        title: 'Node.js 🟢',
-        content: nodeCheatSheet,
-      },
-      {
-        id: 'express-cheat-sheet',
-        title: 'Express 🚂',
-        content: expressCheatSheet,
-      },
-      {
-        id: 'sql-cheat-sheet',
-        title: 'SQL 🗄️',
-        content: sqlCheatSheet,
-      },
-      {
-        id: 'my-sql-cheat-sheet',
-        title: 'MySQL 🗄️',
-        content: mySqlCheatSheet,
-      },
-      {
-        id: 'mongo-cheat-sheet',
-        title: 'MongoDB 🍃',
-        content: mongoCheatSheet,
-      },
-      {
-        id: 'dsa-cheat-sheet',
-        title: 'DSA 🧠',
-        content: dsaCheatSheet,
-      },
-      {
-        id: 'java-cheat-sheet',
-        title: 'Java ☕',
-        content: javaCheatSheet,
-      },
-      {
-        id: 'Python-cheat-sheet',
-        title: 'Python 🐍',
-        content: pythonCheatSheet,
-      },
-      {
-        id: 'react-router-dom-cheat-sheet',
-        title: 'React Router Dom ',
-        content: reactRouterDomCheatSheet,
+        id: 'dsa-cheats',
+        title: 'DSA',
+        documents: [
+          {
+            id: 'dsa-cheat-sheet',
+            title: 'DSA 🧠',
+            content: dsaCheatSheet,
+          },
+        ],
       },
     ],
   },
