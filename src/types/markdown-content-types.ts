@@ -8,9 +8,10 @@ export interface MarkdownDocument {
 export interface Category {
   id: string;
   title: string;
-  Icon: React.ComponentType<any>;
+  Icon?: React.ComponentType<any>;
   documents?: MarkdownDocument[];
   document?: MarkdownDocument;
+  children?: Category[];
 }
 
 export interface Section {

@@ -1,6 +1,6 @@
 import { Css, Flow, HTML, JavaScript, NextJS, React, TypeScript, Utils, Vue } from '@/assets/technologies';
 
-import { jsConcepts } from './js';
+import { jsCategories } from './js';
 import { reactConcepts } from './react';
 import { htmlConcepts } from './html';
 import { cssConcepts } from './css';
@@ -29,7 +29,7 @@ export const frontendData = [
     id: 'javascript',
     title: 'JavaScript',
     Icon: JavaScript,
-    documents: jsConcepts,
+    children: jsCategories,
   },
   {
     id: 'javascript-oops',

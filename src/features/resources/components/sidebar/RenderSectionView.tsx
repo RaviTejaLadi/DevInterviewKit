@@ -1,6 +1,6 @@
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
-import { MarkdownDocument, Section } from '@/types/markdown-content-types';
+import { Category, MarkdownDocument, Section } from '@/types/markdown-content-types';
 import { highlightText } from '@/utils/highlightText';
 import { Button } from 'kalki-ui';
 import { ChevronDown, ChevronRight } from 'lucide-react';
@@ -21,6 +21,94 @@ const RenderSectionView = ({
   expandedCategories,
   searchQuery,
 }: RenderSectionViewProps) => {
+  const renderCategory = (category: Category, index: number, level = 0) => {
+    const { Icon } = category;
+    const isExpanded = expandedCategories.has(category.id);
+    const hasMultipleDocuments = category.documents && category.documents.length > 0;
+    const singleDocument = category.document;
+    const hasChildren = category.children && category.children.length > 0;
+
+    const leftPaddingClass = level > 0 ? `ml-${Math.min(level * 4 + 2, 10)}` : '';
+
+    return (
+      <div key={category.id} className="space-y-1">
+        {/* Parent toggle if has docs or children */}
+        {(hasMultipleDocuments || hasChildren) ? (
+          <>
+            <Button
+              variant="ghost"
+              onClick={() => toggleCategory(category.id)}
+              style={{ animationDelay: `${index * 100}ms` }}
+              className={cn(
+                'group w-full justify-between py-2 px-3 h-auto font-medium hover:bg-accent transition-all duration-300',
+                'animate-in fade-in-50 slide-in-from-bottom-4',
+                isExpanded && 'bg-accent/50',
+              )}
+            >
+              <div className="flex items-center space-x-2">
+                {isExpanded && (
+                  <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
+                )}
+                {Icon && <Icon className="w-4 h-4" />}
+                <span className="text-left">{highlightText(category.title, searchQuery)}</span>
+              </div>
+              {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+            </Button>
+
+            {isExpanded && (
+              <div className={cn('space-y-1 relative pl-3 border-l border-border/40', level === 0 ? 'ml-6' : 'ml-4')}>
+                {/* Documents under this category */}
+                {category?.documents?.map((document) => (
+                  <Button
+                    key={document.id}
+                    variant="ghost"
+                    onClick={() => handleDocumentSelect(document)}
+                    className={cn(
+                      'w-full justify-start py-2 px-3 h-auto text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-colors',
+                      selectedDocument?.id === document.id &&
+                        'bg-primary/10 border border-primary/20 font-medium text-foreground hover:bg-primary/15'
+                    )}
+                  >
+                    <div className="flex items-center gap-2 w-full">
+                      {selectedDocument?.id === document.id && (
+                        <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
+                      )}
+                      <span className="text-left truncate">{highlightText(document.title, searchQuery)}</span>
+                    </div>
+                  </Button>
+                ))}
+
+                {/* Render child categories recursively */}
+                {category?.children?.map((child, childIndex) => renderCategory(child, childIndex, level + 1))}
+              </div>
+            )}
+          </>
+        ) : singleDocument ? (
+          <Button
+            variant="ghost"
+            onClick={() => handleDocumentSelect(singleDocument)}
+            style={{ animationDelay: `${index * 100}ms` }}
+            className={cn(
+              'group w-full justify-start py-2 px-3 h-auto font-medium hover:bg-accent transition-all duration-300',
+              'animate-in fade-in-50 slide-in-from-bottom-4',
+              selectedDocument?.id === singleDocument.id &&
+                'bg-primary/10 border border-primary/20 hover:bg-primary/15',
+              leftPaddingClass
+            )}
+          >
+            <div className="flex items-center space-x-2 w-full">
+              {selectedDocument?.id === singleDocument.id && (
+                <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
+              )}
+              {Icon && <Icon className="w-4 h-4" />}
+              <span className="text-left">{highlightText(category.title, searchQuery)}</span>
+            </div>
+          </Button>
+        ) : null}
+      </div>
+    );
+  };
+
   return (
     <div className="space-y-6 w-[17rem] px-1 pb-[5rem]">
       {filteredSections.map((section) => (
@@ -34,84 +122,7 @@ const RenderSectionView = ({
 
           {/* Categories in this section */}
           <div className="space-y-1">
-            {section.categories.map((category, index) => {
-              const { Icon } = category;
-              const isExpanded = expandedCategories.has(category.id);
-              const hasMultipleDocuments = category.documents && category.documents.length > 0;
-              const singleDocument = category.document;
-
-              return (
-                <div key={category.id} className="space-y-1">
-                  {hasMultipleDocuments ? (
-                    <>
-                      <Button
-                        variant="ghost"
-                        onClick={() => toggleCategory(category.id)}
-                        style={{ animationDelay: `${index * 100}ms` }}
-                        className={cn(
-                          'group w-full justify-between py-2 px-3 h-auto font-medium hover:bg-accent transition-all duration-300',
-                          'animate-in fade-in-50 slide-in-from-bottom-4',
-                          isExpanded && 'bg-accent/50'
-                        )}
-                      >
-                        <div className="flex items-center space-x-2">
-                          {isExpanded && (
-                            <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
-                          )}
-                          {Icon && <Icon className="w-4 h-4" />}
-                          <span className="text-left">{highlightText(category.title, searchQuery)}</span>
-                        </div>
-                        {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-                      </Button>
-
-                      {isExpanded && (
-                        <div className="ml-6 space-y-1">
-                          {category?.documents?.map((document) => (
-                            <Button
-                              key={document.id}
-                              variant="ghost"
-                              onClick={() => handleDocumentSelect(document)}
-                              className={cn(
-                                'w-full justify-start py-2 px-3 h-auto text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-colors',
-                                selectedDocument?.id === document.id &&
-                                  'bg-primary/10 border border-primary/20 font-medium text-foreground hover:bg-primary/15'
-                              )}
-                            >
-                              <div className="flex items-center gap-2 w-full">
-                                {selectedDocument?.id === document.id && (
-                                  <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
-                                )}
-                                <span className="text-left truncate">{highlightText(document.title, searchQuery)}</span>
-                              </div>
-                            </Button>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : singleDocument ? (
-                    <Button
-                      variant="ghost"
-                      onClick={() => handleDocumentSelect(singleDocument)}
-                      style={{ animationDelay: `${index * 100}ms` }}
-                      className={cn(
-                        'group w-full justify-start py-2 px-3 h-auto font-medium hover:bg-accent transition-all duration-300',
-                        'animate-in fade-in-50 slide-in-from-bottom-4',
-                        selectedDocument?.id === singleDocument.id &&
-                          'bg-primary/10 border border-primary/20 hover:bg-primary/15'
-                      )}
-                    >
-                      <div className="flex items-center space-x-2 w-full">
-                        {selectedDocument?.id === singleDocument.id && (
-                          <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
-                        )}
-                        {Icon && <Icon className="w-4 h-4" />}
-                        <span className="text-left">{highlightText(category.title, searchQuery)}</span>
-                      </div>
-                    </Button>
-                  ) : null}
-                </div>
-              );
-            })}
+            {section.categories.map((category, index) => renderCategory(category, index, 0))}
           </div>
         </div>
       ))}

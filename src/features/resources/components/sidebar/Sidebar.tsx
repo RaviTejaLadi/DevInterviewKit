@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, memo } from 'react';
-import { Section, MarkdownDocument } from '@/types/markdown-content-types';
+import { Section, MarkdownDocument, Category } from '@/types/markdown-content-types';
 import { useMobileStore } from '@/stores/useMobileStore';
 import MobileSidebar from './MobileSidebar';
 import { cn } from '@/lib/utils';
@@ -20,36 +20,39 @@ const Sidebar = ({ sections, selectedDocument, onDocumentSelect, className }: Si
   const [searchQuery, setSearchQuery] = useState('');
   const { setIsMobileOpen } = useMobileStore();
 
+  // Helper: find all ancestor category ids for a document id within a section's categories
+  const findAncestorIdsForDoc = (categories: Category[], docId: string, path: string[] = []): string[] | null => {
+    for (const category of categories) {
+      const currentPath = [...path, category.id];
+      // Single document match
+      if (category.document && category.document.id === docId) {
+        return currentPath;
+      }
+      // Multiple documents match
+      if (category.documents && category.documents.some((doc) => doc.id === docId)) {
+        return currentPath;
+      }
+      // Recurse into children
+      if (category.children && category.children.length > 0) {
+        const foundInChild = findAncestorIdsForDoc(category.children, docId, currentPath);
+        if (foundInChild) return foundInChild;
+      }
+    }
+    return null;
+  };
+
   // Initialize expanded categories based on saved document
   useEffect(() => {
     const savedDocumentId = localStorage.getItem('selectedDocumentId');
     if (!savedDocumentId) return;
 
-    // Find the category that contains the saved document
-    let categoryToExpand: string | null = null;
-
+    // Find the ancestor chain to expand
     for (const section of sections) {
-      for (const category of section.categories) {
-        // Check if category has a single document that matches
-        if (category.document && category.document.id === savedDocumentId) {
-          categoryToExpand = category.id;
-          break;
-        }
-
-        // Check if category has multiple documents that include the saved one
-        if (category.documents) {
-          const foundDoc = category.documents.find((doc) => doc.id === savedDocumentId);
-          if (foundDoc) {
-            categoryToExpand = category.id;
-            break;
-          }
-        }
+      const ancestors = findAncestorIdsForDoc(section.categories, savedDocumentId);
+      if (ancestors && ancestors.length > 0) {
+        setExpandedCategories(new Set(ancestors));
+        break;
       }
-      if (categoryToExpand) break;
-    }
-
-    if (categoryToExpand) {
-      setExpandedCategories(new Set([categoryToExpand]));
     }
   }, [sections]);
 
@@ -61,49 +64,44 @@ const Sidebar = ({ sections, selectedDocument, onDocumentSelect, className }: Si
 
     const query = searchQuery.toLowerCase();
 
+    const filterCategory = (category: Category): Category | null => {
+      const categoryMatches = category.title.toLowerCase().includes(query);
+
+      const filteredDocuments = (category.documents || []).filter(
+        (doc) => doc.title.toLowerCase().includes(query) || doc.content?.toLowerCase().includes(query)
+      );
+
+      const singleDocumentMatches =
+        !!category.document &&
+        (category.document.title.toLowerCase().includes(query) || category.document.content?.toLowerCase().includes(query));
+
+      const filteredChildren = (category.children || [])
+        .map((child) => filterCategory(child))
+        .filter(Boolean) as Category[];
+
+      const shouldInclude = categoryMatches || filteredDocuments.length > 0 || singleDocumentMatches || filteredChildren.length > 0;
+
+      if (!shouldInclude) return null;
+
+      return {
+        ...category,
+        documents: filteredDocuments.length > 0 ? filteredDocuments : category.documents,
+        children: filteredChildren.length > 0 ? filteredChildren : category.children,
+      };
+    };
+
     return sections
       .map((section) => {
         const filteredCategories = section.categories
-          .map((category) => {
-            // Check if category title matches
-            const categoryMatches = category.title.toLowerCase().includes(query);
+          .map((category) => filterCategory(category))
+          .filter(Boolean) as Category[];
 
-            // Filter documents within the category
-            let filteredDocuments: MarkdownDocument[] = [];
+        if (filteredCategories.length === 0) return null;
 
-            if (category.documents) {
-              filteredDocuments = category.documents.filter(
-                (doc) => doc.title.toLowerCase().includes(query) || doc.content?.toLowerCase().includes(query)
-              );
-            }
-
-            // Check single document
-            const singleDocumentMatches =
-              category.document &&
-              (category.document.title.toLowerCase().includes(query) ||
-                category.document.content?.toLowerCase().includes(query));
-
-            // Include category if it matches or has matching documents
-            if (categoryMatches || filteredDocuments.length > 0 || singleDocumentMatches) {
-              return {
-                ...category,
-                documents: filteredDocuments.length > 0 ? filteredDocuments : category.documents,
-              };
-            }
-
-            return null;
-          })
-          .filter(Boolean);
-
-        // Include section if it has matching categories
-        if (filteredCategories.length > 0) {
-          return {
-            ...section,
-            categories: filteredCategories,
-          };
-        }
-
-        return null;
+        return {
+          ...section,
+          categories: filteredCategories,
+        };
       })
       .filter(Boolean) as Section[];
   }, [sections, searchQuery]);
@@ -117,34 +115,27 @@ const Sidebar = ({ sections, selectedDocument, onDocumentSelect, className }: Si
     const query = searchQuery.toLowerCase();
     const results: Array<{ document: MarkdownDocument; categoryTitle: string; sectionTitle: string }> = [];
 
-    sections.forEach((section) => {
-      section.categories.forEach((category) => {
-        // Check single document
-        if (
-          category.document &&
-          (category.document.title.toLowerCase().includes(query) ||
-            category.document.content?.toLowerCase().includes(query))
-        ) {
-          results.push({
-            document: category.document,
-            categoryTitle: category.title,
-            sectionTitle: section.title,
-          });
-        }
-
-        // Check multiple documents
-        if (category.documents) {
-          category.documents.forEach((doc) => {
-            if (doc.title.toLowerCase().includes(query) || doc.content?.toLowerCase().includes(query)) {
-              results.push({
-                document: doc,
-                categoryTitle: category.title,
-                sectionTitle: section.title,
-              });
-            }
-          });
+    const traverse = (category: Category, ancestors: string[], sectionTitle: string) => {
+      // Single document
+      if (
+        category.document &&
+        (category.document.title.toLowerCase().includes(query) || category.document.content?.toLowerCase().includes(query))
+      ) {
+        results.push({ document: category.document, categoryTitle: [...ancestors, category.title].join(' / '), sectionTitle });
+      }
+      // Multiple documents
+      (category.documents || []).forEach((doc) => {
+        if (doc.title.toLowerCase().includes(query) || doc.content?.toLowerCase().includes(query)) {
+          results.push({ document: doc, categoryTitle: [...(ancestors || []), category.title].join(' / '), sectionTitle });
         }
       });
+      // Children
+      (category.children || []).forEach((child) => traverse(child, [...ancestors, category.title], sectionTitle));
+    };
+
+    sections.forEach((section) => {
+      const currentSectionTitle = section.title;
+      section.categories.forEach((category) => traverse(category, [], currentSectionTitle));
     });
 
     return results;

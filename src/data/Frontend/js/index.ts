@@ -35,185 +35,81 @@ import generators from './generators.md?raw';
 import proxyAndReflect from './proxyAndReflect.md?raw';
 import polyfills from './polyfills.md?raw';
 
-export const jsConcepts = [
+export const jsCategories = [
   {
-    id: 'intro-to-js',
-    title: '📚 Introduction',
-    content: jsIntro,
+    id: 'js-interview-prep',
+    title: '🎯 Interview Prep',
+    documents: [
+      { id: 'js-top30q&a', title: '❓ Top 30 Q&A', content: jsInterviewQuestions },
+      { id: 'js-l1-l2-interview', title: '📝 L1 & L2 Interviews', content: JSL1andL2InterviewQuestions },
+    ],
   },
   {
-    id: 'js-top30q&a',
-    title: '❓ Interview Questions',
-    content: jsInterviewQuestions,
+    id: 'js-fundamentals',
+    title: '📚 Fundamentals',
+    documents: [
+      { id: 'intro-to-js', title: '📖 Introduction', content: jsIntro },
+      { id: 'js-variables-&-scoping', title: '🧠 Variables & Scoping', content: variablesAndScoping },
+      {
+        id: 'js-datatypes-And-TypeConversion',
+        title: '🔢 Data Types & Type Conversion',
+        content: dataTypesAndTypeConversion,
+      },
+      { id: 'js-functions', title: '📞 Functions', content: functions },
+      { id: 'js-functions-best-practices', title: '📃 Functions Best Practices', content: functionsBestPractices },
+      { id: 'js-array-methods', title: '📊 Array Methods', content: Arrays },
+      { id: 'js-objects', title: '🗃️ Object Methods', content: objects },
+      { id: 'js-looping-statements', title: '🔄 Looping Statements', content: loopingStatements },
+      { id: 'js-conditional-statements', title: '❓ Conditional Statements', content: conditionalStatements },
+      { id: 'js-modules', title: '📦 Modules (ES6)', content: modules },
+      { id: 'js-strict-mode', title: '📏 Strict Mode', content: strictMode },
+    ],
   },
   {
-    id: 'js-l1-l2-interview',
-    title: '📝 L1 & L2 interviews Questions',
-    content: JSL1andL2InterviewQuestions,
+    id: 'js-core-concepts',
+    title: '🧩 Core Concepts',
+    documents: [
+      { id: 'js-closures', title: '🔒 Closures', content: closures },
+      { id: 'js-this-keyword', title: '👈 this Keyword', content: thisKeyword },
+      { id: 'js-call-apply-bind', title: '🔗 call, apply & bind', content: callApplyBind },
+      { id: 'js-prototypes-inheritance', title: '🧬 Prototypes & Inheritance', content: prototypesAndInheritance },
+      { id: 'js-error-handling', title: '❌ Error Handling', content: errorHandling },
+      { id: 'js-hoisting', title: '🔼 Hoisting', content: hoisting },
+    ],
   },
   {
-    id: 'js-polyfills',
-    title: '✨ PolyFills',
-    content: polyfills,
+    id: 'js-async-concurrency',
+    title: '⏱️ Async & Concurrency',
+    documents: [
+      { id: 'js-async-await', title: '⏳ Async/Await', content: asyncAwait },
+      { id: 'js-promises', title: '🤝 Promise Combinators', content: promises },
+      { id: 'js-event-loop', title: '♻️ Event Loop', content: eventLoop },
+      { id: 'js-callback-functions', title: '📲 Callback Functions', content: callbackFunctions },
+      { id: 'js-debouncing-&-throttling', title: '⏱️ Debouncing & Throttling', content: debounceAndThrottle },
+      { id: 'js-fetch-api', title: '🌐 Fetch API', content: fetchApi },
+    ],
   },
   {
-    id: 'js-variables-&-scoping',
-    title: '🧠 Variables & Scoping',
-    content: variablesAndScoping,
+    id: 'js-dom-browser',
+    title: '🖥️ DOM & Browser',
+    documents: [
+      { id: 'js-dom-manipulation', title: '🖥️ DOM Manipulation', content: domManipulation },
+      { id: 'js-event-handling', title: '🎮 Event Handling', content: eventHandling },
+      { id: 'js-web-storage-api', title: '💾 Web Storage API', content: webStorageApi },
+    ],
   },
   {
-    id: 'js-datatypes-And-TypeConversion',
-    title: '🔢 Data Types & Type Conversion',
-    content: dataTypesAndTypeConversion,
-  },
-  {
-    id: 'js-functions',
-    title: '📞 Functions',
-    content: functions,
-  },
-  {
-    id: 'js-functions-best-practices',
-    title: '📃 Functions Best Practices',
-    content: functionsBestPractices,
-  },
-  {
-    id: 'js-array-methods',
-    title: '📊 Array Methods',
-    content: Arrays,
-  },
-  {
-    id: 'js-objects',
-    title: '🗃️ Object Methods',
-    content: objects,
-  },
-  {
-    id: 'js-dom-manipulation',
-    title: '🖥️ DOM Manipulation',
-    content: domManipulation,
-  },
-  {
-    id: 'js-event-handling',
-    title: '🎮 Event Handling',
-    content: eventHandling,
-  },
-  {
-    id: 'js-async-await',
-    title: '⏳ Async/Await',
-    content: asyncAwait,
-  },
-  {
-    id: 'js-promises',
-    title: '🤝 Promises Combinators',
-    content: promises,
-  },
-  {
-    id: 'js-fetch-api',
-    title: '🌐 Fetch API',
-    content: fetchApi,
-  },
-  {
-    id: 'js-es6-features',
-    title: '✨ ES6+ Features',
-    content: es6Features,
-  },
-  {
-    id: 'js-closures',
-    title: '🔒 Closures',
-    content: closures,
-  },
-  {
-    id: 'js-this-keyword',
-    title: '👈 this Keyword',
-    content: thisKeyword,
-  },
-  {
-    id: 'js-call-apply-bind',
-    title: '🔗 call, apply & bind',
-    content: callApplyBind,
-  },
-  {
-    id: 'js-prototypes-inheritance',
-    title: '🧬 Prototypes & Inheritance',
-    content: prototypesAndInheritance,
-  },
-  {
-    id: 'js-event-loop',
-    title: '♻️ Event Loop',
-    content: eventLoop,
-  },
-  {
-    id: 'js-debouncing-&-throttling',
-    title: '⏱️ Debouncing & Throttling',
-    content: debounceAndThrottle,
-  },
-  {
-    id: 'js-web-storage-api',
-    title: '💾 Web Storage API',
-    content: webStorageApi,
-  },
-  {
-    id: 'js-modules',
-    title: '📦 Modules (ES6)',
-    content: modules,
-  },
-  {
-    id: 'js-error-handling',
-    title: '❌ Error Handling',
-    content: errorHandling,
-  },
-  {
-    id: 'js-hoisting',
-    title: '🔼 Hoisting',
-    content: hoisting,
-  },
-  {
-    id: 'js-callback-functions',
-    title: '📲 Callback Functions',
-    content: callbackFunctions,
-  },
-  {
-    id: 'js-looping-statements',
-    title: '🔄 Looping Statements',
-    content: loopingStatements,
-  },
-  {
-    id: 'js-conditional-statements',
-    title: '❓ Conditional Statements',
-    content: conditionalStatements,
-  },
-  {
-    id: 'js-currying',
-    title: '🏹 Currying',
-    content: currying,
-  },
-  {
-    id: 'js-design-patterns',
-    title: '🎨 Design Patterns',
-    content: designPatterns,
-  },
-  {
-    id: 'js-strict-mode',
-    title: '📏 Strict Mode',
-    content: strictMode,
-  },
-  {
-    id: 'js-memory-management',
-    title: '🧠 Memory Management',
-    content: memoryManagement,
-  },
-  {
-    id: 'js-web-workers',
-    title: '👷 Web Workers',
-    content: webWorkers,
-  },
-  {
-    id: 'js-generators',
-    title: '🌀 Generators',
-    content: generators,
-  },
-  {
-    id: 'js-proxy-reflect',
-    title: '🪞 Proxy & Reflect',
-    content: proxyAndReflect,
+    id: 'js-advanced',
+    title: '🚀 Advanced',
+    documents: [
+      { id: 'js-es6-features', title: '✨ ES6+ Features', content: es6Features },
+      { id: 'js-currying', title: '🏹 Currying', content: currying },
+      { id: 'js-design-patterns', title: '🎨 Design Patterns', content: designPatterns },
+      { id: 'js-memory-management', title: '🧠 Memory Management', content: memoryManagement },
+      { id: 'js-web-workers', title: '👷 Web Workers', content: webWorkers },
+      { id: 'js-generators', title: '🌀 Generators', content: generators },
+      { id: 'js-proxy-reflect', title: '🪞 Proxy & Reflect', content: proxyAndReflect },
+      { id: 'js-polyfills', title: '✨ Polyfills', content: polyfills },
+    ],
   },
 ];
