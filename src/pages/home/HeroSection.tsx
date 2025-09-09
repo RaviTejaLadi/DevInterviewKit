@@ -19,7 +19,7 @@ const HeroSection = () => {
             <a href="/resources" className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}>
               Explore Resources
             </a>
-            <a href="/mock-assessment" className={cn(buttonVariants({ variant: 'primary', size: 'sm' }))}>
+            <a href="/mock-assessment" className={cn(buttonVariants({ variant: 'primary', size: 'sm' }), 'text-white')}>
               Start Challenge
             </a>
           </div>

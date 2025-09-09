@@ -14,7 +14,7 @@ const FinalQuoteSection = () => {
           </p>
           <div className="mt-8 flex justify-center">
             <div className="inline-flex rounded-md shadow">
-              <a href="/resources" className={cn(buttonVariants({ variant: 'light', size: 'sm' }))}>
+              <a href="/resources" className={cn(buttonVariants({ variant: 'light', size: 'sm' }), 'text-white')}>
                 Start Your Journey Today 🚀
               </a>
             </div>
