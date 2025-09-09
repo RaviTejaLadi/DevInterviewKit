@@ -1,4 +1,6 @@
 import { ExternalLink, Hash } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
+import { Clipboard, Check, Quote } from 'lucide-react';
 import { Table, TableCell, TableHead, TableHeader } from '../ui/table';
 import { cn } from '@/lib/utils';
 import { generateId } from '@/utils/generateIdForMarkdown';
@@ -96,8 +98,11 @@ export const components = {
   blockquote: ({ children }: any) => (
     <div className="relative my-8">
       <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent rounded-r-xl"></div>
-      <blockquote className="relative h-auto border-l-4 border-primary p-2 bg-muted/30 backdrop-blur-sm rounded-r-xl">
-        <div className="text-foreground/90 italic text-lg leading-relaxed font-medium">{children}</div>
+      <blockquote className="relative h-auto border-l-4 border-primary p-4 bg-muted/30 backdrop-blur-sm rounded-r-xl">
+        <div className="flex items-start gap-3">
+          <Quote className="w-5 h-5 text-primary mt-1 shrink-0" />
+          <div className="text-foreground/90 italic text-lg leading-relaxed font-medium">{children}</div>
+        </div>
       </blockquote>
     </div>
   ),
@@ -144,14 +149,16 @@ export const components = {
   ),
   table: ({ children }: any) => (
     <div className="my-8 overflow-hidden rounded-xl border border-border/50 shadow-lg bg-card/30 backdrop-blur-sm">
-      <Table className="min-w-full">{children}</Table>
+      <div className="w-full overflow-x-auto">
+        <Table className="min-w-full">{children}</Table>
+      </div>
     </div>
   ),
   thead: ({ children }: any) => (
-    <TableHeader className="bg-gradient-to-r from-muted to-muted/50">{children}</TableHeader>
+    <TableHeader className="bg-gradient-to-r from-muted to-muted/50 sticky top-0 z-10">{children}</TableHeader>
   ),
   th: ({ children }: any) => (
-    <TableHead className="border-none px-6 py-4 text-left font-bold text-foreground text-sm uppercase tracking-wider">
+    <TableHead className="border-none px-6 py-3 text-left font-bold text-foreground text-xs uppercase tracking-wider">
       {children}
     </TableHead>
   ),
@@ -200,6 +207,11 @@ export const components = {
       {children}
     </em>
   ),
+  kbd: ({ children }: any) => (
+    <kbd className="inline-flex items-center justify-center min-w-[1.5rem] px-2 h-6 rounded-md border border-border/50 bg-muted/60 text-xs font-mono text-foreground shadow-sm">
+      {children}
+    </kbd>
+  ),
   hr: () => (
     <div className="my-16 flex items-center justify-center">
       <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
@@ -216,9 +228,15 @@ export const components = {
     </div>
   ),
   // Image with rounded corners and subtle shadow
-  img: ({ src, alt }: any) => (
-    <div className="my-8 flex justify-center">
-      <img src={src} alt={alt} className="rounded-xl shadow-lg border border-border/30 max-w-full h-auto" />
-    </div>
-  ),
+  img: ({ src, alt }: any) => {
+    const [altText, caption] = (alt ?? '').split('|').map((s: string) => s.trim());
+    return (
+      <figure className="my-8 flex flex-col items-center">
+        <img src={src} alt={altText} className="rounded-xl shadow-lg border border-border/30 max-w-full h-auto" />
+        {caption && (
+          <figcaption className="mt-3 text-sm text-muted-foreground">{caption}</figcaption>
+        )}
+      </figure>
+    );
+  },
 };
