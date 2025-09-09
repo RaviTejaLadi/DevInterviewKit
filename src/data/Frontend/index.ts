@@ -10,7 +10,6 @@ import { reactCodingConcepts } from './react-machine-coding';
 import { stateManagementConcepts } from './state-management';
 import { tsConcepts } from './ts';
 import { vueConcepts } from './vue';
-import { jsOOPSConcepts } from './js-oops';
 
 export const frontendData = [
   {
@@ -30,12 +29,6 @@ export const frontendData = [
     title: 'JavaScript',
     Icon: JavaScript,
     children: jsCategories,
-  },
-  {
-    id: 'javascript-oops',
-    title: 'JS OOPS',
-    Icon: JavaScript,
-    documents: jsOOPSConcepts,
   },
   {
     id: 'typescript',

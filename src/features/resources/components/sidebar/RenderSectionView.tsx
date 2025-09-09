@@ -28,27 +28,23 @@ const RenderSectionView = ({
     const singleDocument = category.document;
     const hasChildren = category.children && category.children.length > 0;
 
-    const leftPaddingClass = level > 0 ? `ml-${Math.min(level * 4 + 2, 10)}` : '';
-
     return (
       <div key={category.id} className="space-y-1">
         {/* Parent toggle if has docs or children */}
-        {(hasMultipleDocuments || hasChildren) ? (
+        {hasMultipleDocuments || hasChildren ? (
           <>
             <Button
               variant="ghost"
               onClick={() => toggleCategory(category.id)}
               style={{ animationDelay: `${index * 100}ms` }}
               className={cn(
-                'group w-full justify-between py-2 px-3 h-auto font-medium hover:bg-accent transition-all duration-300',
+                'group w-full justify-between py-2 px-2 h-auto font-medium hover:bg-accent transition-all duration-300',
                 'animate-in fade-in-50 slide-in-from-bottom-4',
-                isExpanded && 'bg-accent/50',
+                isExpanded && 'bg-accent/50'
               )}
             >
               <div className="flex items-center space-x-2">
-                {isExpanded && (
-                  <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
-                )}
+                {isExpanded && <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />}
                 {Icon && <Icon className="w-4 h-4" />}
                 <span className="text-left">{highlightText(category.title, searchQuery)}</span>
               </div>
@@ -56,7 +52,7 @@ const RenderSectionView = ({
             </Button>
 
             {isExpanded && (
-              <div className={cn('space-y-1 relative pl-3 border-l border-border/40', level === 0 ? 'ml-6' : 'ml-4')}>
+              <div className={cn('space-y-1 relative pl-3 border-l border-border/40', level === 0 ? 'ml-6' : 'ml-2')}>
                 {/* Documents under this category */}
                 {category?.documents?.map((document) => (
                   <Button
@@ -91,9 +87,7 @@ const RenderSectionView = ({
             className={cn(
               'group w-full justify-start py-2 px-3 h-auto font-medium hover:bg-accent transition-all duration-300',
               'animate-in fade-in-50 slide-in-from-bottom-4',
-              selectedDocument?.id === singleDocument.id &&
-                'bg-primary/10 border border-primary/20 hover:bg-primary/15',
-              leftPaddingClass
+              selectedDocument?.id === singleDocument.id && 'bg-primary/10 border border-primary/20 hover:bg-primary/15'
             )}
           >
             <div className="flex items-center space-x-2 w-full">

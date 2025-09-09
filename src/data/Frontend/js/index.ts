@@ -34,6 +34,7 @@ import strictMode from './strictMode.md?raw';
 import generators from './generators.md?raw';
 import proxyAndReflect from './proxyAndReflect.md?raw';
 import polyfills from './polyfills.md?raw';
+import { jsOOPSConcepts } from './js-oops';
 
 export const jsCategories = [
   {
@@ -111,5 +112,10 @@ export const jsCategories = [
       { id: 'js-proxy-reflect', title: '🪞 Proxy & Reflect', content: proxyAndReflect },
       { id: 'js-polyfills', title: '✨ Polyfills', content: polyfills },
     ],
+  },
+  {
+    id: 'javascript-oops',
+    title: '📖 JS OOPS',
+    children: jsOOPSConcepts,
   },
 ];
