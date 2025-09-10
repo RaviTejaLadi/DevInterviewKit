@@ -73,13 +73,15 @@ const Sidebar = ({ sections, selectedDocument, onDocumentSelect, className }: Si
 
       const singleDocumentMatches =
         !!category.document &&
-        (category.document.title.toLowerCase().includes(query) || category.document.content?.toLowerCase().includes(query));
+        (category.document.title.toLowerCase().includes(query) ||
+          category.document.content?.toLowerCase().includes(query));
 
       const filteredChildren = (category.children || [])
         .map((child) => filterCategory(child))
         .filter(Boolean) as Category[];
 
-      const shouldInclude = categoryMatches || filteredDocuments.length > 0 || singleDocumentMatches || filteredChildren.length > 0;
+      const shouldInclude =
+        categoryMatches || filteredDocuments.length > 0 || singleDocumentMatches || filteredChildren.length > 0;
 
       if (!shouldInclude) return null;
 
@@ -119,14 +121,23 @@ const Sidebar = ({ sections, selectedDocument, onDocumentSelect, className }: Si
       // Single document
       if (
         category.document &&
-        (category.document.title.toLowerCase().includes(query) || category.document.content?.toLowerCase().includes(query))
+        (category.document.title.toLowerCase().includes(query) ||
+          category.document.content?.toLowerCase().includes(query))
       ) {
-        results.push({ document: category.document, categoryTitle: [...ancestors, category.title].join(' / '), sectionTitle });
+        results.push({
+          document: category.document,
+          categoryTitle: [...ancestors, category.title].join(' / '),
+          sectionTitle,
+        });
       }
       // Multiple documents
       (category.documents || []).forEach((doc) => {
         if (doc.title.toLowerCase().includes(query) || doc.content?.toLowerCase().includes(query)) {
-          results.push({ document: doc, categoryTitle: [...(ancestors || []), category.title].join(' / '), sectionTitle });
+          results.push({
+            document: doc,
+            categoryTitle: [...(ancestors || []), category.title].join(' / '),
+            sectionTitle,
+          });
         }
       });
       // Children

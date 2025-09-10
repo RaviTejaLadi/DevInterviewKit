@@ -1,6 +1,5 @@
-import { ExternalLink, Hash } from 'lucide-react';
-import React, { useMemo, useState } from 'react';
-import { Clipboard, Check, Quote } from 'lucide-react';
+import { ExternalLink, Hash, Quote } from 'lucide-react';
+import React from 'react';
 import { Table, TableCell, TableHead, TableHeader } from '../ui/table';
 import { cn } from '@/lib/utils';
 import { generateId } from '@/utils/generateIdForMarkdown';
@@ -233,9 +232,7 @@ export const components = {
     return (
       <figure className="my-8 flex flex-col items-center">
         <img src={src} alt={altText} className="rounded-xl shadow-lg border border-border/30 max-w-full h-auto" />
-        {caption && (
-          <figcaption className="mt-3 text-sm text-muted-foreground">{caption}</figcaption>
-        )}
+        {caption && <figcaption className="mt-3 text-sm text-muted-foreground">{caption}</figcaption>}
       </figure>
     );
   },

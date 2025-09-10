@@ -58,7 +58,13 @@ const SearchResultsDialog = ({
               </span>
             </div>
             <span className="text-xs text-muted-foreground">
-              {hasChildren ? `${category.children.length} groups` : hasDocumentsArray ? `${category.documents.length} links` : hasSingleDocument ? '1 link' : ''}
+              {hasChildren
+                ? `${category.children.length} groups`
+                : hasDocumentsArray
+                ? `${category.documents.length} links`
+                : hasSingleDocument
+                ? '1 link'
+                : ''}
             </span>
           </button>
         )}
@@ -175,9 +181,7 @@ const SearchResultsDialog = ({
                             )}
                             <div className="flex flex-wrap gap-2">
                               {/* Use existing recursive renderer to support children/doc/document */}
-                              <div className="w-full">
-                                {renderCategory(category)}
-                              </div>
+                              <div className="w-full">{renderCategory(category)}</div>
                             </div>
                           </div>
                         ))}

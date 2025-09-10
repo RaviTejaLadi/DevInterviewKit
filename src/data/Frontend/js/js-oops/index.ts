@@ -52,9 +52,7 @@ export const jsOOPSConcepts = [
   {
     id: 'js-oops-introduction',
     title: '📖 Introduction',
-    documents: [
-      { id: 'intro-to-js-oops', title: 'Introduction to JS OOPS', content: jsOOPSIntro },
-    ],
+    documents: [{ id: 'intro-to-js-oops', title: 'Introduction to JS OOPS', content: jsOOPSIntro }],
   },
   {
     id: 'js-oops-core-concepts',
@@ -112,7 +110,11 @@ export const jsOOPSConcepts = [
     title: '🧩 Mixins & Composition',
     documents: [
       { id: 'mixins', title: 'Mixins', content: mixins },
-      { id: 'composition-over-inheritance', title: 'Composition over Inheritance', content: compositionOverInheritance },
+      {
+        id: 'composition-over-inheritance',
+        title: 'Composition over Inheritance',
+        content: compositionOverInheritance,
+      },
       { id: 'delegation', title: 'Delegation', content: delegation },
     ],
   },

@@ -4,6 +4,7 @@ import Behavioral from './Behavioral.md?raw';
 import OpinionBased from './Opinion-Based.md?raw';
 import Brainteaser from './Brainteaser.md?raw';
 import Salary from './Salary.md?raw';
+import Jira from './Jira.md?raw';
 import { HR } from '@/assets/technologies';
 
 export const humanResourcesData = [
@@ -41,6 +42,11 @@ export const humanResourcesData = [
         id: 'hr-round-salary-based-questions',
         title: '💰 Salary Based Questions',
         content: Salary,
+      },
+      {
+        id: 'hr-round-jira-questions',
+        title: '🧭 Jira Interview Topics & Questions',
+        content: Jira,
       },
     ],
   },
