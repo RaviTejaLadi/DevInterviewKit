@@ -31,7 +31,7 @@ interface NavbarProps {
 const Navbar = ({
   menu = [
     { title: 'Resources', url: '/resources' },
-    // { title: 'RoadMaps', url: '/road-maps' },
+    { title: 'RoadMaps', url: '/road-maps' },
     { title: 'Mock Assessment', url: '/mock-assessment' },
   ],
 }: NavbarProps) => {
