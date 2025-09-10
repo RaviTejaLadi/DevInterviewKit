@@ -15,6 +15,8 @@ import { useMobileStore } from '@/stores/useMobileStore';
 import { useLocation } from 'react-router-dom';
 import { useOpenSearchDialog } from '@/stores/useOpenSearchDialog';
 import { Button } from 'kalki-ui';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface MenuItem {
   title: string;
@@ -36,7 +38,7 @@ const Navbar = ({
   ],
 }: NavbarProps) => {
   const location = useLocation();
-  const { toggleMobile } = useMobileStore();
+  const { isMobileOpen, setIsMobileOpen, toggleMobile } = useMobileStore();
   const { isSearchDialogOpen, setIsSearchDialogOpen, toggleSearchDialog } = useOpenSearchDialog();
 
   // Handle Ctrl+K keyboard shortcut
@@ -104,11 +106,17 @@ const Navbar = ({
       <div className="lg:hidden py-1 flex justify-between items-center w-full">
         <div className="flex items-center justify-start gap-4">
           {/* Mobile menu button */}
-          {(location.pathname === '/resources' || location.pathname === '/road-maps') && (
-            <Button size={'xs'} variant={'outline'} onClick={toggleMobile}>
-              <Menu className="w-5 h-5" />
-            </Button>
-          )}
+          <Button
+            size={'xs'}
+            variant={'outline'}
+            onClick={() =>
+              (location.pathname === '/resources' || location.pathname === '/road-maps')
+                ? toggleMobile()
+                : setIsMobileOpen(true)
+            }
+          >
+            <Menu className="w-5 h-5" />
+          </Button>
           {/* Logo */}
           <a href="/" className="text-md w-auto">
             <Logo />
@@ -127,6 +135,36 @@ const Navbar = ({
           </a>
         </div>
       </div>
+
+      {/* Mobile sheet for routes without their own sidebar (e.g., Home) */}
+      {location.pathname !== '/resources' && location.pathname !== '/road-maps' && (
+        <Sheet open={isMobileOpen} onOpenChange={setIsMobileOpen}>
+          <SheetContent side="left" className="w-80 p-0 border border-border">
+            <SheetHeader className="px-4 py-2 border-b border-border">
+              <SheetTitle className="text-left">
+                <Logo />
+              </SheetTitle>
+            </SheetHeader>
+            <ScrollArea className="h-screen">
+              <nav className="py-4">
+                <ul className="flex flex-col">
+                  {menu.map((item) => (
+                    <li key={item.title}>
+                      <a
+                        href={item.url}
+                        className="block px-4 py-3 text-sm hover:bg-muted"
+                        onClick={() => setIsMobileOpen(false)}
+                      >
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </ScrollArea>
+          </SheetContent>
+        </Sheet>
+      )}
     </div>
   );
 };
