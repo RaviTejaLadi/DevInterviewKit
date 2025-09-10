@@ -4,7 +4,7 @@ import App from './App.tsx';
 // import 'kalki-ui/dist/index.css';
 import './index.css';
 import '@xyflow/react/dist/style.css';
-import { ThemeProvider } from './context/ThemeContext.tsx';
+import { ThemeProvider } from './context/ThemeTestContext.tsx';
 import { AlertDialogWrapper } from './components/ui/alert-dialog/AlertDialogWrapper.tsx';
 import { ToastProvider } from 'kalki-ui-toast';
 
