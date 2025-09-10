@@ -1,6 +1,6 @@
 import { useMobileStore } from '@/stores/useMobileStore';
 import Logo from '../../../../components/Logo';
-import { ScrollArea } from '@radix-ui/react-scroll-area';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { ReactNode } from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 

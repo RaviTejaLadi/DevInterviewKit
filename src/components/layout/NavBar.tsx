@@ -104,7 +104,7 @@ const Navbar = ({
       <div className="lg:hidden py-1 flex justify-between items-center w-full">
         <div className="flex items-center justify-start gap-4">
           {/* Mobile menu button */}
-          {location.pathname === '/resources' && (
+          {(location.pathname === '/resources' || location.pathname === '/road-maps') && (
             <Button size={'xs'} variant={'outline'} onClick={toggleMobile}>
               <Menu className="w-5 h-5" />
             </Button>
